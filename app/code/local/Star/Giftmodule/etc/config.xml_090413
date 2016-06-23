@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Star_Giftmodule>
+      <version>0.1.0</version>
+    </Star_Giftmodule>
+  </modules>
+  <global>
+    <helpers>
+      <giftmodule>
+        <class>Star_Giftmodule_Helper</class>
+      </giftmodule>
+    </helpers>
+  </global>
+</config> 

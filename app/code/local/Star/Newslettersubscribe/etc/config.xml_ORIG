@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Star_Newslettersubscribe>
+      <version>0.1.0</version>
+    </Star_Newslettersubscribe>
+  </modules>
+  <global>
+    <helpers>
+      <newslettersubscribe>
+        <class>Star_Newslettersubscribe_Helper</class>
+      </newslettersubscribe>
+    </helpers>
+  </global>
+</config> 

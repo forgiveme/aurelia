@@ -1,0 +1,47 @@
+<config>
+    <modules>
+        <Aurelia_Loyality>
+            <version>0.1.0</version>
+        </Aurelia_Loyality>
+    </modules>
+    <global>
+        <models>
+            <loyality>
+                <class>Aurelia_Loyality_Model</class>
+            </loyality>
+        </models>
+		
+        <helpers>
+            <loyality>
+                <class>Aurelia_Loyality_Helper</class>
+            </loyality>
+        </helpers>
+     </global>
+	 
+	 <adminhtml>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <aurelia>
+                                        <title>Aurelia- All</title>
+                                    </aurelia>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>
+	 
+	 
+</config>

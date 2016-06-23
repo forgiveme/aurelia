@@ -1,0 +1,274 @@
+<?php
+    $cron_data = $this->getData('cron_data');
+    $prod_crons = $this->getData('prod_crons');
+    $offer_crons = $this->getData('offer_crons');
+?>
+  <div class="schedular_block">
+    <div class="product-upload">
+      <form action = "<?php echo $this->getFormAction(); ?>" method = "post" name = "schedule" id="product-form" class="form-horizontal">
+        <div class="header-scheduler">
+            <h1>Scheduler</h1>
+            <span class='input-group col-sm-4 date'>
+                <label>Current date and time in server: 
+                <?php echo $cur_time = strftime("%Y-%m-%d %H:%M:%S",  mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"))); ?></label>
+            </span>
+        </div>
+        <div id="container" class="Daily">
+            <div class="form-group border grey">
+            <label for="date" class="col-sm-4 control-label">Upload Type</label>
+                <div class="sch_label cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                    <select id="action" name = "name" class="cnc_marketplace_select_box">
+                        <option value = "product_upload">Product</option>
+                        <option value = "offer_upload">Stock</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group border grey">
+            <label for="courier" class="col-sm-4 control-label">Recurrence</label>
+                <div class="sch_label cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                    <select class="recurrence cnc_marketplace_select_box" name = "type" id="recurrence" onchange="Cn_Cmi_showrec()">
+                        <option value = "daily">Daily</option>
+                        <option value = "weekly">Weekly</option>
+                        <option value = "custom">Custom</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Daily Start here -->
+            <div class="form-group border grey disable daily-show" id='showcustom-daily'>
+                <div id="schedulerOnce" class="scheduleDate form-group">
+                <label for="date" class="select_date control-label">Date & Time</label>
+                    <div class="sch_label">
+                        <div class='cnc_date_div' id='datetimepicker_daily'>
+                            <input type="text" name="date_sp" id="date_sp" value="" class="cnc_marketplace_text_box date_cmi" /> <!--<span class="calendarImg">Image</span>-->
+                            <span class="add-on input-group-addon-date">
+                                <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group border grey disable daily-show">
+                    <label for="date" class="col-sm-4 control-label">Recurrence Option</label>               
+                    <label class = "radio_label"><input type="radio" name="every_day" checked value="all" class="l_spce cnc_radio cnc_hide" id="everyDay"> <label for="everyDay" class="radio-label cnc_marketplace_sprite_icons"></label>Every Day</label>
+                    <label class = "radio_label"><input type="radio" name="every_day" value="weekday" class="l_spce cnc_radio cnc_hide" id="everyWeek"> <label for="everyWeek" class="radio-label cnc_marketplace_sprite_icons"></label>Every Week Day ( Monday - Friday )</label>
+                </div>
+            </div>
+            <!-- Daily end here -->
+            
+            <!-- Weekly Start here -->
+            <div class="form-group border grey disable weekly-show cnc_hide" id='showcustom-weekly'>
+                    
+            <div id="schedulerOnce" class="scheduleDate form-group">
+                <label for="date" class="select_date control-label">Date & Time </label>
+                    <div class="sch_label">
+                        <div class='cnc_date_div' id='datetimepicker_weekly'>
+                            <input type="text" name="date_sp_week" id="date_sp_week" value="" class="cnc_marketplace_text_box date_cmi" /> 
+                            <span class="add-on input-group-addon-date">
+                                <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cust_con">
+                    <label for="date" class="col-sm-4 control-label">Select Day</label>
+                    <div class="checkbox_con">
+                        <input type="checkbox" id="sunday" name="daysofweek[]" value="Sunday" class="cnc_checkbox cnc_hide">
+                        <label for="sunday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day">Sunday</label>
+    
+                        <input type="checkbox" id="monday" name="daysofweek[]" value="Monday" class="cnc_checkbox cnc_hide">
+                        <label for="monday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day">Monday</label>
+    
+                        <input type="checkbox" id="tuesday" name="daysofweek[]" value="Tuesday" class="cnc_checkbox cnc_hide">
+                        <label for="tuesday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day">Tuesday</label>
+    
+                        <input type="checkbox" id="wednesday" name="daysofweek[]" value="Wednesday" class="cnc_checkbox cnc_hide">
+                        <label for="wednesday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day wednesday">Wednesday</label>
+                        <br />
+                        <input type="checkbox" id="thursday" name="daysofweek[]" value="Thursday" class="cnc_checkbox cnc_hide">
+                        <label for="thursday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day thursday">Thursday</label>
+    
+                        <input type="checkbox" id="friday" name="daysofweek[]" value="Friday" class="cnc_checkbox cnc_hide">
+                        <label for="friday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day friday">Friday</label>
+    
+                        <input type="checkbox" id="saturday" name="daysofweek[]" value="Saturday" class="cnc_checkbox cnc_hide">
+                        <label for="saturday" class="cnc_marketplace_sprite_icons"></label><label class="weekly_day">Saturday</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Weekly end here -->
+            
+            <!-- Custom Start here -->
+            <div class="form-group border grey disable custom-show cnc_hide" id='showcustom-custom'>
+              <div id="schedulerOnce" class="scheduleDate form-group">
+                <label for="date" class="select_date control-label">Date & Time </label>
+                <div class="sch_label">
+                    <div class='cnc_date_div' id='datetimepicker_custom'>
+                        <input type="text" name="date_sp_custom" id="date_sp_custom" value="" class="cnc_marketplace_text_box date_cmi" /> <!--<span class="calendarImg">Image</span>-->
+                        <span class="add-on input-group-addon-date">
+                            <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                        </span>
+                    </div>
+                </div>
+              </div>
+                <div class="cust_con">
+                    <label for="date" class="col-sm-4 cust_lef">Custom option</label>
+                    <div class="week_con cust_lef custom-option">
+                      <label class="control-label custom-lable">Every <input type="text" id="minutes" name="minutes" class="e_spc form-control cnc_marketplace_text_box evry-min"> Minutes</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Custom end here -->
+            
+            <div class="form-group buttons">
+                <div class="sch_add_but_con">
+                    <button type="submit" class="cnc_button" onclick = "Cn_Cmi_showWaitNoReason()">Add Schedule</button>
+                </div>
+            </div>
+            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+            </form>
+         </div>
+    </div>
+   
+    <div class="grid clear blocks">
+    <?php
+    if(is_array($cron_data) && count($cron_data) != 0)
+    {
+    ?>
+      <table class="data" cellspacing="0">
+            <tbody>
+                <tr class="headings block-headings">
+                    <th class="no-link"><span class="nobr">Activity</span></th>
+                    <th class="no-link"><span class="nobr">Type</span></th>
+                    <th class="no-link"><span class="nobr">Option</span></th>
+                    <th class="no-link"><span class="nobr">Last scheduled Date/Time</span></th>
+                    <th class="no-link">
+                      <span class="nobr">
+                          Remove
+                      </span>
+                    </th>
+                </tr>
+            </tbody>
+            <tbody>
+              <?php
+                  foreach($cron_data as $cron) { ?>
+                      <tr class="odd">
+                          <?php if($cron['name'] == 'product_upload')
+                          {
+                            $onclick = "Cn_Cmi_openCronProd('cron_products')";
+                          }else {
+                            $onclick = "Cn_Cmi_openCronProd('cron_offers')";
+                          }
+                          ?>
+                          <td class="center"><div  class = "modal_open scheduleopen" onclick = "<?php echo $onclick; ?>"><?php if($cron['name'] == 'product_upload') { echo 'Product upload'; } else { echo 'Offer Upload'; } ?></div></td>
+                          <td class="center"><?php echo $cron['type']; ?></td>
+                          <td class="center">
+                            <?php
+                                if($cron['type'] == 'daily')
+                                {
+                                    if($cron['weekdays'] == 0)
+                                        echo 'Everyday';
+                                    else
+                                        echo 'Every Week Day';
+                                }
+                                else if($cron['type'] == 'weekly')
+                                {
+                                    echo $cron['days'];
+                                }
+                                else if($cron['type'] == 'custom')
+                                {
+                                    echo 'Every '.$cron['recursive_value'].' minutes';
+                                }
+                            ?>
+                          </td>
+                          <td class="center"><?php echo $cron['next_time']; ?></td>
+                          <td class="center">
+                              <form action = "<?php echo $this->getDeleteCronAction(); ?>" method = "post" name = "del_cron">
+                                  <button type = "submit" onclick = "Cn_Cmi_showWaitNoReason()" class ="sch_close_icon cnc_marketplace_sprite_icons"></button>
+                                  <input type = "hidden" name = "cron_type" value = "<?php echo $cron['name']; ?>" />
+                                  <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                              </form>
+                          </td>
+                      </tr>
+              <?php   }
+                  
+              ?>
+            </tbody>
+       </table>
+      <?php }?>
+    </div>
+  <div class="modal fade" id="cron_products">
+      <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <h3>Product Crons</h3> (Latest 20 Scheduled crons)
+              <form action = "<?php echo $this->getScheduleRefreshAction(); ?>" method = "post" name = "schduleRefresh" id = "schduleRefresh">
+                <div class="refresh_schedule btn btn-default btn-orange" onclick="Cn_Cmi_refreshSchedule('products')">Refresh schedules</div>
+                <input type = "hidden" name = "type" id = "ajax_schedule_type" value = "products" />
+                <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+              </form>
+              <div class="grid blocks">
+                <table class="data" cellspacing="0">
+                  <tbody>
+                    <tr class="headings block-headings">
+                      <th class="no-link"><span class="nobr">Schedule ID</span></th>
+                      <th class="no-link"><span class="nobr">Status</span></th>
+                      <th class="no-link"><span class="nobr">Scheduled Date/Time</span></th>
+                      <th class="no-link"><span class="nobr">Error Message</span></th>
+                      <th class="no-link"><span class="nobr">Executed at</span></th>
+                    </tr>
+                  </tbody>
+                  <tbody id = "prod_ajax_update">
+                    <?php foreach($prod_crons as $prod_cron) { ?>
+                      <tr class="odd">
+                        <td class="center"><?php echo $prod_cron['schedule_id']; ?></td>
+                        <td class="center"><?php echo $prod_cron['status']; ?></td>
+                        <td class="center"><?php echo $prod_cron['scheduled_at']; ?></td>
+                        <td class="center"><?php echo $prod_cron['messages']; ?></td>
+                        <td class="center"><?php echo $prod_cron['executed_at']; ?></td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table> <br /><br />
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal fade" id="cron_offers">
+      <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <h3>Offer Crons</h3>(Latest 20 Crons)
+              <form action = "<?php echo $this->getScheduleRefreshAction(); ?>" method = "post" name = "schduleRefresh" id = "schduleRefresh">
+                <div class="refresh_schedule btn btn-default btn-orange" onclick="Cn_Cmi_refreshSchedule('offers')">Refresh schedules</div>
+                <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+              </form>
+              <div class="grid blocks">
+                <table class="data" cellspacing="0">
+                  <tbody>
+                    <tr class="headings block-headings">
+                      <th class="no-link"><span class="nobr">Schedule ID</span></th>
+                      <th class="no-link"><span class="nobr">Status</span></th>
+                      <th class="no-link"><span class="nobr">Scheduled Date/Time</span></th>
+                      <th class="no-link"><span class="nobr">Error Message</span></th>
+                      <th class="no-link"><span class="nobr">Executed at</span></th>
+                    </tr>
+                  </tbody>
+                  <tbody id = "offer_ajax_update">
+                    <?php foreach($offer_crons as $offer_cron) { ?>
+                      <tr class="odd">
+                        <td class="center"><?php echo $offer_cron['schedule_id']; ?></td>
+                        <td class="center"><?php echo $offer_cron['status']; ?></td>
+                        <td class="center"><?php echo $offer_cron['scheduled_at']; ?></td>
+                        <td class="center"><?php echo $offer_cron['messages']; ?></td>
+                        <td class="center"><?php echo $offer_cron['executed_at']; ?></td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

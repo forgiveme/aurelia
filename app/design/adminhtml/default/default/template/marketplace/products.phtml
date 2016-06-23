@@ -1,0 +1,132 @@
+<?php
+    $product_fields = $this->getData('product_fields');
+    $prod_import_ids = $this->getData('prod_import_ids');
+    $selected_field_attributes = $this->getData('selected_field_attributes');
+    $total_pages =  $this->getData('prod_import_total_pages');
+    $prod_imports_page_nr = $this->getData('prod_imports_page_nr');
+?>
+<div class="product-page">
+<?php
+if(count($prod_import_ids) > 0) {
+?>
+    <div id="product_imports_messages"></div>
+    <div class = "prev_imports_grid">
+        <div class="label_floater full_float">
+            <h4 class="fieldset-legend">Previous imports</h4>
+        </div>
+        <div class = "floater full_float">
+            <form action = "<?php echo $this->getListAction(); ?>" method="post" id = "importList" name = "getlist">
+                <button class = "bulk_action_button cnc_float_right" type = "button" onclick = "Cn_Cmi_getImportList_Products(false)">Refresh Status</button>
+                <input name = "type" type = "hidden" value = "product" />
+                <input name = "imports" id = "prod_imports_id" type = "hidden" value = "" />
+                <input type="hidden" name="prod_imports_page_nr" value="<?php echo $prod_imports_page_nr; ?>" />
+                <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+            </form>
+        </div>
+        <div class = "clear"></div>
+        <div class="grid blocks">
+            <div class="hor-scroll">
+                <table name = "product_imports_table" cellspacing="0" id="export_filter_grid_table" class="data">
+                    <colgroup>
+                        <col width="55">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr class="headings block-headings">
+                            <th class=" no-link"><span class="nobr">Select</span></th>
+                            <th class=" no-link"><span class="nobr">Import ID</span></th>
+                            <th class=" no-link"><span class="nobr">Date</span></th>
+                            <th class=" no-link"><span class="nobr">Status</span></th>
+                            <th class=" no-link"><span class="nobr">Mapping status</span></th>
+                            <th class=" no-link"><span class="nobr">Trasnsform File</span></th>
+                        </tr>
+                    </thead>
+                    <tbody name="product_imports_body">
+                    </tbody>
+                </table>
+                <!-- Pagination start -->
+                <div class="navigation">
+                    <form action = "" name = "previous" method = "post">
+                        <input type = "hidden" name = "prod_imports_page_nr" value = "<?php echo $prod_imports_page_nr-1; ?>">
+                        <input type = "submit" id="prev" <?php if($prod_imports_page_nr-1 <= 0) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled'; } else { echo 'class = "cnc_marketplace_sprite_icons"'; } ?>  value = "" />
+                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                    </form>
+                    <div class="content">
+                        <span>Page</span>
+                        <span id="page_nr"><?php echo $prod_imports_page_nr; ?></span>
+                        <span>of</span>
+                        <span id="total"><?php echo $total_pages; ?></span>
+                    </div>
+                    <form action = "" name = "next" method = "post">
+                        <input type = "hidden" name = "prod_imports_page_nr" value = "<?php echo $prod_imports_page_nr+1; ?>">
+                        <input type = "submit" id="next" <?php if($prod_imports_page_nr+1 > $total_pages) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled';  } else { echo 'class = "cnc_marketplace_sprite_icons"'; }?> value = "" />
+                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                    </form>
+                </div>
+                <!-- Pagination end -->
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<div id="export_filter_container" class="entry-edit container-blocks">
+
+    <form method="post" name = "process_product_fields" action="<?php echo $this->getFormAction(); ?>" id="export_filter_form">
+        <div id="export_filter_grid_container">
+            <div id="export_filter_grid">
+                <div class="label_floater full_float">
+                    <h4 class="fieldset-legend">Field Attributes</h4>
+                </div>
+                <div class = "floater full_float">
+                    <button class = "cnc_upload_button cnc_marketplace_sprite_icons" onclick = "return Cn_Cmi_validateAttributes()" type = "submit">Upload product data to MarketPlace</button>
+                </div>
+                <div class = "clear"></div>
+                <div class="grid blocks">
+                    <div class="hor-scroll">
+                        <table cellspacing="0" id="export_filter_grid_table" class="data">
+                            <colgroup>
+                                <col width="55">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr class="headings block-headings">
+                                    <th class=" no-link"><span class="nobr">Select</span></th>
+                                    <th class=" no-link"><span class="nobr align-left">Attribute Label</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 0;
+                                $selected_fields = json_decode($selected_field_attributes);
+                                foreach($product_fields as $key=>$product_field)
+                                {
+                                ?>
+                                    <tr class = "<?php echo $key; ?>">
+                                        <td>
+                                            <input id="AttrSelected<?php echo $i;?>" type = "checkbox" class = "prod_action cnc_checkbox cnc_hide" <?php if (in_array($product_field['field_code'],$selected_fields)) { echo 'checked'; } ?> name = "field_key_values[]" value = "<?php echo $product_field['field_code']; ?>"/>
+                                            <label class = "cnc_marketplace_sprite_icons" for="AttrSelected<?php echo $i;?>"></label>
+                                            <?php $i++?>
+                                        </td>
+                                        <td class="align-left" title="<?php echo $product_field['field_name']; ?>"><?php echo $product_field['field_code']; ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+    </form>
+</div>
+    <script>
+        window.onload = function () {
+            Cn_Cmi_getImportList_Products(true);
+        }
+        <?php
+            if(trim($selected_field_attributes) == '[]') {?>
+            Cn_Cmi_checkboxActionHandler('prod_action cnc_checkbox cnc_hide');
+        <?php } ?>
+    </script>
+</div>

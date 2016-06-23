@@ -1,0 +1,69 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="dashboard">
+    <div class="page-title">
+        <h1><?php echo $this->__('My Dashboard') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('hello') ?>
+    <?php echo $this->getChildHtml('top') ?>
+    <?php echo $this->getChildHtml('newsletter') ?>
+    <div class="box-account box-info">
+        <!--div class="box-head">
+            <h2><?php //echo $this->__('Account Information') ?></h2>
+        </div-->
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
+        <?php //echo $this->getChildHtml('info') ?>
+        <?php echo $this->getChildHtml('address') ?>
+    </div>
+
+		
+		<div class="dashboard-loyalty">
+    <?php 
+        $loyalty=Mage::getSingleton('customer/session')->getCustomer()->getLoyalty() ?>
+		
+		<div class="loyaltytxt">
+		<h3>Aurelia Loyalty</h3>
+		<p> <?php echo $this->__("Once you have cumulatively spent £350 we will send you a beautifully boxed £35 Aurelia gift card.  Don’t forget Free UK Delivery all orders over £50 and Free international delivery when you spend over £150."); ?></p>
+		
+		</div>
+		
+		<div class="point-box-dash">
+	<div class="point-inner">
+	<div class="point-dotted">
+	<h1><?php echo $this->__('Your loyalty progress')?> </h1>
+	<p> <?php echo Mage::helper('checkout')->formatPrice($loyalty);?> </p>
+	</div>
+	</div>
+	</div>
+	</div>
+		
+	
+    <?php echo $this->getChildHtml('info1') ?>
+    <?php echo $this->getChildHtml('info2') ?>
+</div>

@@ -1,0 +1,52 @@
+<?php if ($message = $this->getMessage()) {
+    ?>
+<div class="notification-global">
+    <strong class="label">Style.com/ Notifications:</strong>
+    There are 
+    <?php if(isset($message['waiting_acceptance']['counts']) > 0) {?>
+    <a href="#" onclick="Cn_Cmi_ListNewOrders()"><strong class="label"><?php echo $message['waiting_acceptance']['order_state'].' ('.$message['waiting_acceptance']['counts'].')';?></strong></a>
+    &nbsp;
+    <?php } ?>
+    <?php if(isset($message['unread_incidents']['counts'])) {?>
+    <a href="#" onclick="Cn_Cmi_ListUnreadOrders('incident')"><strong class="label"><?php echo 'INCIDENTS (<span id = "incident_number">'.$message["unread_incidents"]["counts"].'</span>)' ?></strong></a>
+    &nbsp;
+    <?php } ?>
+    <?php if(isset($message['unread_error_messages']['counts'])) {?>
+    <a href="#" onclick="Cn_Cmi_ListUnreadOrders('error')"><strong class="label"><?php echo 'ERROR MESSAGES ('.$message['unread_error_messages']['counts'].')' ?></strong></a>
+    &nbsp;
+    <?php } ?>
+    <?php
+    if(isset($message['unread_msg_order']['counts'])) {?>
+    <a href="#" onclick="Cn_Cmi_ListUnreadMsg('order')"><strong class="label"><?php echo 'ORDER MESSAGES (<span id = "ordermsg_number">'.$message['unread_msg_order']['counts'].'</span>)' ?></strong></a>
+    &nbsp;&nbsp;&nbsp;
+    <?php }
+    if(isset($message['unread_msg_offer']['counts'])) {?>
+    <a href="#" onclick="Cn_Cmi_ListUnreadMsg('offer')"><strong class="label"><?php echo 'OFFER MESSAGES (<span id = "ordermsg_number">'.trim($message['unread_msg_offer']['counts']).'</span>)' ?></strong></a>
+    &nbsp;
+    <?php } ?>
+</div>
+<form action = "<?php echo $this->getUrl('adminhtml/marketplace_orders/index'); ?>" name = "newOrdersForm" id ="newOrdersForm" method = "post">
+    <input type = "hidden" name = "filter_item[]" value = '<?php echo $message['waiting_acceptance']['order_state']; ?>'>
+    <input type="hidden" name="filter_exit" value="true" />
+    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+</form>
+<form action = "<?php echo $this->getUrl('adminhtml/marketplace_orders/index'); ?>" name = "unreadOrdersForm" id ="unreadOrdersForm" method = "post">
+    <input type = "hidden" name = "filter_item[]" value = ''>
+    <input type="hidden" name="unread_orders" id ="unread_orders" value="" />
+    <input type="hidden" name="filter_exit" value="false" />
+    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+</form>
+<?php
+    $unread_msg_order = json_encode($message['unread_msg_order']['order_offer_ids']);
+    $unread_msg_offer = json_encode($message['unread_msg_offer']['order_offer_ids']);
+?>
+<form action ="<?php echo $this->getUrl('adminhtml/marketplace_orders/index'); ?>" name = "unread_msg_order" id ="unread_msg_order" method = "post" >
+    <input type = "hidden" name = "order_message_filter" id = "order_message_filter" value = '<?php echo $unread_msg_order; ?>' />
+    <input type="hidden" name="filter_exit" value="true" />
+    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+</form>
+<form action ="<?php echo $this->getUrl('adminhtml/marketplace_offers/index'); ?>" name = "unread_msg_offer" id ="unread_msg_offer" method = "post" >
+    <input type = "hidden" name = "offer_message_filter" id = "offer_message_filter" value = '<?php echo $unread_msg_offer; ?>' />
+    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+</form>
+<?php } ?>

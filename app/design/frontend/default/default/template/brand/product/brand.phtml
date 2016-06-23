@@ -1,0 +1,31 @@
+<?php 
+$brandIds=$this->getBrandIds();
+$productId=$this->getProductId();
+$collection=Mage::getModel('brand/brand')->getCollection()->addFieldToFilter('brand_id',array('in' => $brandIds));
+if($collection->count()>0):
+
+?>
+<div class="pro">
+<ul id="pro-slider">
+<?php 
+foreach ($collection as $row ) 
+{ ?>
+	<li ><a href="#"><img width="40" height="40" src="<?php echo Mage::getBaseUrl('media').$row ['filename'];?>" alt="" /></a></li>
+<?php 
+}
+?>
+</ul>
+
+</div>
+
+<script>
+// bxSlider for brand slider
+jQuery('#pro-slider').bxSlider({
+   minSlides: 4,
+  maxSlides: 4,
+  slideWidth: 170,
+  pager: false,
+  slideMargin: 10
+});
+</script>
+<?php endif; ?>

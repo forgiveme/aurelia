@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <promotion translate="label" module="promotion">
+        <groups>
+         <sample>
+           <label>Free Sample</label>
+             <frontend_type>text</frontend_type>
+             <sort_order>200</sort_order>
+             <show_in_default>1</show_in_default>
+             <show_in_website>1</show_in_website>
+             <show_in_store>1</show_in_store>
+             <fields>
+
+              <no_of_samples>
+                <label>No Of Samples Allowed</label>
+                <comment>Allow customer to add number of product in cart.</comment>
+                 <frontend_type>text</frontend_type>
+     <sort_order>10</sort_order>
+     <show_in_default>1</show_in_default>
+     <show_in_website>1</show_in_website>
+     <show_in_store>1</show_in_store>
+     <validate>validate-digits required-entry</validate>
+              </no_of_samples>
+
+
+      <sample_category>
+                <label>Samples Category</label>
+                <comment>Select category to which sample products belong.</comment>
+                 <frontend_type>select</frontend_type>
+     <sort_order>20</sort_order>
+     <source_model>ChilliApple_FreeSample_Model_System_Config_Source_Category</source_model>
+     <show_in_default>1</show_in_default>
+     <show_in_website>1</show_in_website>
+     <show_in_store>1</show_in_store>
+              </sample_category>
+
+              <!--allow_multiple_sample>
+                <label>Multiple Samples</label>
+                <comment>Allow customer to add multiple samples in cart.</comment>
+                 <frontend_type>select</frontend_type>
+		 <sort_order>10</sort_order>
+		 <source_model>adminhtml/system_config_source_yesno</source_model>
+		 <show_in_default>1</show_in_default>
+		 <show_in_website>1</show_in_website>
+		 <show_in_store>1</show_in_store>
+              </allow_multiple_sample>
+              
+              <allow_multiple_units>
+                <label>Multiple Units</label>
+                <comment>Allow customer to add more than one unit in cart.</comment>
+                 <frontend_type>select</frontend_type>
+		 <sort_order>20</sort_order>
+		 <source_model>adminhtml/system_config_source_yesno</source_model>
+		 <show_in_default>1</show_in_default>
+		 <show_in_website>1</show_in_website>
+		 <show_in_store>1</show_in_store>
+              </allow_multiple_units-->
+              
+             </fields>
+          </sample>
+         </groups>
+        </promotion>
+    </sections>
+</config>   

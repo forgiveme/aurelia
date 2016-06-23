@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <emailpreview translate="label" module="emailpreview">
+            <label>EmailPreview Module</label>
+            <sort_order>300</sort_order>
+        </emailpreview>
+    </tabs>
+    <sections>
+        <emailpreview translate="label" module="emailpreview">
+            <label>EmailPreview Configuration</label>
+            <tab>emailpreview</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <emailpreview_group>
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<field1 translate="label">
+                             <label>Field:</label>
+                               <comment></comment>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>10</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</field1>
+                    </fields>
+                </emailpreview_group>
+            </groups>
+        </emailpreview>
+    </sections>
+</config>

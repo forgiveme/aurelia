@@ -1,0 +1,16 @@
+AuthUserFile /home/webdev/orangemedia.co.uk/downloader/.htpasswd
+AuthName "Please Log In"
+AuthType Basic
+require user aurelia
+
+<IfModule mod_deflate.c>
+
+    RemoveOutputFilter DEFLATE
+    RemoveOutputFilter GZIP
+
+</IfModule>
+
+<Files ~ "\.(cfg|ini|xml)$">
+    order allow,deny
+    deny from all
+</Files> 

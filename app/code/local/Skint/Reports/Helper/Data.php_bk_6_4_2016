@@ -1,0 +1,181 @@
+<?php
+class Skint_Reports_Helper_Data extends Mage_Core_Helper_Abstract
+{
+	
+	public function getskintoolsCsvdata($sktData) {
+		
+		$excludedArray = array('entity_id', 'entity_type_id', 'attribute_set_id', 'website_id', 'group_id', 'increment_id', 'store_id', 'is_active', 'disable_auto_group_change', 'id', 'address', 'questiondata_id', 'request_uri');
+		
+		$csv_output = "";
+		$_columns = array("Email address","Customer Since","Updated at","Name","How does it all begin","Most mornings I'm feeling","Morning skincare regime","Usually happy with the results","What you don't love","I'd love to look","How old I look on a good day","How hydrated are you","At 5pm","My stress levels are..","What's in the beauty bag","What matters most","How does your day end at 10pm?","How do you feel at the end of the day?", "First name", "Last name", "DOB");
+		$csv_output[] = $_columns;
+		$i = 1;
+		
+		foreach($sktData as $skintoolDatas) {
+			$skintoolData = $skintoolDatas->getData();
+			//echo "<pre>";
+			//print_r($skintoolData);
+			//exit;
+			$_data = array();
+			foreach($skintoolData as $key => $value){
+				if(!in_array($key, $excludedArray)) {
+					if($key == 'question3') {
+						$value = ($value=='1'?'Ready for bed!':($value=='2'?'Balanced':($value=='3'?'Ready for life!':'')));
+					}
+					if($key == 'question4') {
+						$value = ($value=='regime1'?'I am yet to start one':($value=='regime2'?'Simple and quick':($value=='regime3'?'My tried and tested - cleanse, tone, moisturise':($value=='regime4'?'The complete routine':''))));
+					}
+					if($key == 'question8') {
+						$value = ($value=='0'?'Twenties':($value=='1'?'Thirties':($value=='2'?'Forties':($value=='3'?'Older & Wiser':($value=='4'?'Teens':'')))));
+					}
+					if(in_array($key, array('question9', 'question11', 'question15'))) {
+						$value = $value."%";
+					}
+					if($key == 'question12') {
+						$answer12 = str_Replace("bag1", "All the basics", $value);
+						$answer12 = str_Replace("bag2", "Ethical & fair trade", $answer12);
+						$answer12 = str_Replace("bag3", "Organic / Biorganic", $answer12);
+						$answer12 = str_Replace("bag4", "Anti-Ageing/New Science", $answer12);
+						$answer12 = str_Replace("bag5", "The latest beauty recommendations", $answer12);
+						$answer12 = str_Replace("bag6", "My go to classics", $answer12);
+						$answer12 = str_Replace("bag7", "Mostly one brand, but all the products", $answer12);
+						$value = trim($answer12, ",");
+					}
+					if($key == 'dob') {
+						$value = date("Y-m-d", strtotime($value));
+					}					
+					$_data[] = $value;
+				}
+			}
+			$csv_output[] = $_data;
+			//echo "<pre>";
+			//print_r($csv_output);
+			//exit;
+			$i++;
+		}
+		return $csv_output;		
+	}
+	
+	public function getskintoolsorderCsvdata($sktData) {
+		
+		$excludedArray = array('entity_id', 'entity_type_id', 'attribute_set_id', 'website_id', 'group_id', 'increment_id', 'store_id', 'is_active', 'disable_auto_group_change', 'id', 'address', 'questiondata_id', 'request_uri','orderId');
+		
+		$csv_output = "";
+		$_columns = array("Email address","Customer Since","Updated at","Name","How does it all begin","Most mornings I'm feeling","Morning skincare regime","Usually happy with the results","What you don't love","I'd love to look","How old I look on a good day","How hydrated are you","At 5pm","My stress levels are..","What's in the beauty bag","What matters most","How does your day end at 10pm?","How do you feel at the end of the day?", "First name", "Last name", "DOB", "Product Ordered");
+		$csv_output[] = $_columns;
+		$i = 1;
+		//echo "<pre>";
+		//print_r($sktData);
+		//exit;
+		foreach($sktData as $skintoolDatas) {
+			$productsOrdered = "";
+			$skintoolData = $skintoolDatas->getData();
+			$customerId = $skintoolData['entity_id'];
+			$_data = array();
+			
+			$orders = Mage::getResourceModel('sales/order_collection')
+				->addFieldToSelect('*')
+				->addFieldToFilter('customer_id', $customerId)
+				->setOrder('created_at', 'desc');
+			foreach ($orders as $order) {
+				
+				$orderItems = $order->getItemsCollection();
+				foreach ($orderItems as $item){
+					$product_name = $item->getName();
+					$productsOrdered .= $product_name.",";
+				}
+				//echo "<br>----".$order->getRealOrderId().'&nbsp;at&nbsp;'.$order->getCreatedAtStoreDate().'&nbsp;('.$order->formatPrice($order->getGrandTotal()).')';
+			}
+			if(!isset($skintoolData['dob'])) {
+				$skintoolData['dob'] = "N/A";
+			}
+			$skintoolData['products_ordered'] = trim($productsOrdered,',');
+			
+			foreach($skintoolData as $key => $value){
+				if(!in_array($key, $excludedArray)) {
+					if($key == 'question3') {
+						$value = ($value=='1'?'Ready for bed!':($value=='2'?'Balanced':($value=='3'?'Ready for life!':'')));
+					}
+					if($key == 'question4') {
+						$value = ($value=='regime1'?'I am yet to start one':($value=='regime2'?'Simple and quick':($value=='regime3'?'My tried and tested - cleanse, tone, moisturise':($value=='regime4'?'The complete routine':''))));
+					}
+					if($key == 'question8') {
+						$value = ($value=='0'?'Twenties':($value=='1'?'Thirties':($value=='2'?'Forties':($value=='3'?'Older & Wiser':($value=='4'?'Teens':'')))));
+					}
+					if(in_array($key, array('question9', 'question11', 'question15'))) {
+						$value = $value."%";
+					}
+					if($key == 'question12') {
+						$answer12 = str_Replace("bag1", "All the basics", $value);
+						$answer12 = str_Replace("bag2", "Ethical & fair trade", $answer12);
+						$answer12 = str_Replace("bag3", "Organic / Biorganic", $answer12);
+						$answer12 = str_Replace("bag4", "Anti-Ageing/New Science", $answer12);
+						$answer12 = str_Replace("bag5", "The latest beauty recommendations", $answer12);
+						$answer12 = str_Replace("bag6", "My go to classics", $answer12);
+						$answer12 = str_Replace("bag7", "Mostly one brand, but all the products", $answer12);
+						$value = trim($answer12, ",");
+					}
+					if($key == 'dob') {
+						if($value!='N/A')
+							$value = date("Y-m-d", strtotime($value));
+					}
+					$_data[] = $value;
+				}
+			}
+			$csv_output[] = $_data;
+			
+			$i++;
+		}
+		//echo "<pre>";
+		//print_r($csv_output);
+		//exit;
+		return $csv_output;		
+	}
+	
+	public function getcustomerproductsCsvdata($sktData) {
+		
+		$csv_output = "";
+		$_columns = array("Customer Id", "Customer Name", "Products Ordered", "Total Order Amount");
+		$_columnspro = array("Product Id", "Product Name", "Customers Ordered");
+		if(isset($sktData[0]['product_id'])) {
+			$csv_output[] = $_columnspro;
+		} else {
+			$csv_output[] = $_columns;
+		}
+		$i = 1;
+		//echo "<pre>";
+		//print_r($sktData);
+		//exit;
+		foreach($sktData as $skintoolDatas) {
+			$_data = array();
+			foreach($skintoolDatas as $key => $value){
+				$_data[] = $value;
+			}
+			$csv_output[] = $_data;
+			
+			$i++;
+		}
+		return $csv_output;	
+		
+	}
+	public function getguestproductsCsvdata($sktData) {
+		
+		$csv_output = "";
+		$_columns = array("Product Id", "Product Name", "Customers Ordered");
+		$csv_output[] = $_columns;
+		$i = 1;
+		//echo "<pre>";
+		//print_r($sktData);
+		//exit;
+		foreach($sktData as $skintoolDatas) {
+			$_data = array();
+			foreach($skintoolDatas as $key => $value){
+				$_data[] = $value;
+			}
+			$csv_output[] = $_data;
+			
+			$i++;
+		}
+		return $csv_output;
+	}
+}

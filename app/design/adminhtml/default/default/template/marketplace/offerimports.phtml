@@ -1,0 +1,33 @@
+<tbody name = "offer_imports_body">
+<?php
+$offer_imports = $this->getData('offer_imports');
+$downloadAction = Mage::getUrl( '*/*/downloadError' );
+$formKey = Mage::getSingleton('core/session')->getFormKey();
+
+foreach($offer_imports as $key=>$offer_import)
+{
+    ?>
+    <tr class = "<?php echo $key ; ?>">
+        <td>
+            <input type = "checkbox" value = "<?php echo $offer_import['import_id']; ?>" name = "offer_import" id="<?php echo $offer_import['import_id']; ?>" class="cnc_hide cnc_checkbox" />
+            <label class = "cnc_marketplace_sprite_icons" for="<?php echo $offer_import['import_id']; ?>"></label>
+        </td>
+        <td><?php echo $offer_import['import_id']; ?></td>
+        <td><?php echo $offer_import['date_created']; ?></td>
+        <td><?php echo $offer_import['status']; ?></td>
+        <td>
+            <form action = "<?php echo $downloadAction ?>" name = "error_download" method="post">
+                <input type = "hidden" name = "import_id" value = "<?php echo $offer_import['import_id']; ?>" />
+                <input type = "hidden" name = "type" value = "offer" />
+                <input type = "hidden" name = "err_type" value = "error_report" />
+                <?php if($offer_import['error']) { ?>
+                    Error File: <input id="errorfileDownload" class = "cnc_marketplace_sprite_icons" type = "submit" value = "Download" />
+                <?php } ?>
+                <input type="hidden" name="form_key" value="<?php echo $formKey ?>" />
+            </form>
+        </td>
+    </tr>
+    <?php
+}
+?>
+</tbody>

@@ -1,0 +1,110 @@
+<?php $preference = $this->getPreferences()?>
+<?php $storeUrl = str_replace("https", "http", Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)); ?>
+<?php if(!$preference->getAureliaFeedback() && !$preference->getOtherBrands()) {
+	$url = Mage::getUrl('preferences/index/edit');
+	header("location:$url");
+	exit;
+} ?>
+<?php $skintoolData = $preference->getData('skintools_data'); ?>
+<?php if(count($skintoolData[0]) > 0) { ?>
+	<div class="personal-sec">
+		<h1><?php echo $this->__('A PERSONALISED SKINCARE CONSULTION JUST FOR YOU'); ?></h1>
+		<a href="<?php echo $storeUrl; ?>skintools/" target="_blank"><img src="<?php echo $this->getSkinUrl('images/skinare-tool-img1.jpg') ?>" /></a>
+	</div>
+	 <div class="personal-secinner">
+	<div class="start-btn">
+		<a target="_blank" href="<?php echo $storeUrl; ?>skintools/response.html<?php echo $skintoolData[0]['request_uri']; ?>&preview=only" class="left-btn" ><?php echo $this->__('View your results'); ?></a><a target="_blank" href="<?php echo $storeUrl; ?>" class="right-btn"><?php echo $this->__('retake the tool'); ?></a>
+	</div>
+<?php } else { ?>
+	<div class="personal-sec">
+		<h1><?php echo $this->__('A PERSONALISED SKINCARE CONSULTION JUST FOR YOU');?></h1>  
+		<a href="<?php echo $storeUrl; ?>skintools/" target="_blank"><img class="skintoolimg" align="right" src="<?php echo $this->getSkinUrl('images/skinare-tool-img.jpg') ?>" /></a>
+		<p><?php echo $this->__('Do you want to get the glow back into your skin or are you new to Aurelia and need some help with where to begin?');?></p>
+		<p>
+			<?php echo $this->__('Discover the products we think your skin will love alongside our tailored lifestyle advice and top tips to revolutionise your skincare routine.');?>
+			<p><?php echo $this->__('Complete the Aurelia Skin Tool, taking just 5  minutes of your time and receive £10 off your must have products.');?></p>
+		</p>
+	</div>
+	<div class="start-btn">
+		<a href="<?php echo $storeUrl; ?>skintools/" target="_blank"><?php echo $this->__('Start Your Consultation');?></a>
+	</div>
+</p>
+<?php } ?>
+<div class="welcome-msg">
+    <h1><?php echo $this->__('YOUR FEEDBACKS & SUGGESTIONS') ?></h1>
+    <p>
+    <?php echo $this->__('Thank you for sharing your feedback with us. Your suggestions will help us to decide what new additions we will bring to the Aurelia Probiotic Skincare range.') ?>
+    </p>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <div class="preferences-left">
+        <div class="fieldset">
+            <ul class="form-list">
+                <!-- <li>
+                    <label for="primary_concern" class="required"><?php echo $this->__('Your primary skin concern is:') ?></label>
+                    <div class="input-box">
+                        <?php echo $preference->getData('primary_concern_text'); ?>
+                    </div>
+                </li>
+                <li>
+                    <label for="secondary_concern" class="required"><?php echo $this->__('Your secondary skin concern is:') ?></label>
+                    <div class="input-box">
+                        <?php echo $preference->getData('secondary_concern_text'); ?>
+                    </div>
+                </li> -->
+				<li>
+                    <label for="aurelia_feedback" ><?php echo $this->__('Your feedback and suggestions:') ?></label>
+                    <div class="input-box">
+						<?php echo nl2br($preference->getAureliaFeedback())?>
+                    </div>
+                </li>
+                <li>
+                    <label >
+						<?php echo $this->__('Do you find labels hard to read?') ?>
+                    </label>
+                    <div class="input-box">
+						<ul>
+							<li>
+								<div class="checker">
+								 <?php echo $preference->getData('has_glasses_text') ?>
+								</div>
+							</li>
+						</ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="preferences-right">
+        <div class="fieldset">
+            <ul class="form-list">
+				<li>
+                    <label for="other_brands" ><?php echo $this->__('Other skincare brands & products you love') ?></label>
+                    <div class="input-box">
+                    <?php echo nl2br($preference->getOtherBrands())?>
+                    </div>
+                </li>
+                <!-- <li>
+                    <label for="skin_care"><?php echo $this->__('What is important to you when you choosing your skincare:') ?></label>
+                    <br/><br/>
+                    <div class="input-box">
+                    <?php
+                    $i=0;
+		    $options=$preference->getData('skincare_options');
+                    $options=is_array($options)?$options:array();
+                    foreach($options as $option)
+                    {
+					?>
+                    <div class="checker-main">
+                    <label><?php echo $option['label']?></label>
+                    </div>
+                    <?php } ?>
+                    </div>
+                </li> -->
+                <li>
+                    <button class="button" onclick="location.href='<?php echo $this->getUrl('preferences/index/edit')?>'"><span><span><?php echo $this->__('EDIT MY FEEDBACK')?></span></span></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+	</div>

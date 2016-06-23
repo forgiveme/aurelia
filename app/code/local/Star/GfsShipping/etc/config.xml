@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Star_GfsShipping>
+            <version>0.1.0</version>
+        </Star_GfsShipping>
+    </modules>
+    <global>
+        <models>
+            <star_gfsshipping>
+                <class>Star_GfsShipping_Model</class>
+            </star_gfsshipping>
+        </models>
+    </global>
+    <global>
+         <helpers>
+            <GfsShipping>
+				<class>Star_GfsShipping_Helper</class>
+			</GfsShipping>
+		</helpers>
+	</global>
+    <default>
+        <carriers>
+            <gfs>
+                <active>1</active>
+                <model>star_gfsshipping/carrier_gfs</model>
+                <title>GFS</title>
+                <name>Tracking Only</name>
+            </gfs>
+        </carriers>
+    </default>
+</config>

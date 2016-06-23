@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addCss"><stylesheet>marketplace/main.css</stylesheet></action>
+			<action method="addJs"><script>marketplace/main.js</script></action>
+		</reference>
+		<reference name="notifications">
+			<block type="marketplace/adminhtml_notificationbar" name="notification_cnc" template="marketplace/cnc_notification.phtml" />
+		</reference>
+	</default>
+	<adminhtml_marketplace_configuration_index>
+		<reference name="content">
+			<block type="marketplace/adminhtml_configuration" name="configuration" template="marketplace/configuration.phtml"/>
+		</reference>
+	</adminhtml_marketplace_configuration_index>
+	<adminhtml_marketplace_products_index>
+		<reference name="content">
+			<block type="marketplace/adminhtml_products" name="products" template="marketplace/products.phtml"/>
+		</reference>
+	</adminhtml_marketplace_products_index>
+	<adminhtml_marketplace_offers_index>
+		<reference name="content">
+			<block type="marketplace/adminhtml_offers" name="offers" template="marketplace/offers.phtml"/>
+		</reference>
+	</adminhtml_marketplace_offers_index>
+	<adminhtml_marketplace_orders_index>
+		<reference name="content">
+			<block type="marketplace/adminhtml_orders" name="orders" template="marketplace/orders.phtml"/>
+		</reference>
+	</adminhtml_marketplace_orders_index>
+	<adminhtml_marketplace_scheduler_index>
+		<reference name="content">
+			<block type="marketplace/adminhtml_scheduler" name="scheduler" template="marketplace/scheduler.phtml"/>
+		</reference>
+	</adminhtml_marketplace_scheduler_index>
+</layout>

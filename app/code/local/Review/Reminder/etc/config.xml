@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Review_Reminder>
+            <version>0.1.0</version>
+        </Review_Reminder>
+    </modules>
+    <frontend>
+        <routers>
+            <reminder>
+                <use>standard</use>
+                <args>
+                    <module>Review_Reminder</module>
+                    <frontName>reminder</frontName>
+                </args>
+            </reminder>
+        </routers>	
+    </frontend>
+    <admin>
+        <routers>
+			<reminder>
+				<use>admin</use>
+				<args>
+					<module>Review_Reminder</module>
+					<frontName>reminder</frontName>
+				</args>
+			</reminder>
+        </routers>
+    </admin>
+    <adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<!--Review_Reminder>
+							<title>Reminder Module</title>
+							<sort_order>10</sort_order>
+						</Review_Reminder>-->
+						<reminder module="reminder">
+							<children>
+								<items module="reminder">
+									<title>Manage Reminder</title>
+									<sort_order>11</sort_order>
+								</items>
+							</children>
+						</reminder>
+						  <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <reminder>
+                                            <title>Reminder Module</title>
+                                        </reminder>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<reminder>
+					<file>reminder.xml</file>
+				</reminder>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <reminder>
+                <class>Review_Reminder_Model</class>
+               
+            </reminder>
+          
+        </models>
+       
+        <blocks>
+            <reminder>
+                <class>Review_Reminder_Block</class>
+            </reminder>
+        </blocks>
+        <helpers>
+            <reminder>
+                <class>Review_Reminder_Helper</class>
+            </reminder>
+        </helpers>
+    </global>
+	 <crontab>
+        <jobs>
+            <review_reminder>
+                <schedule>
+                    <cron_expr>00 00 * * *</cron_expr>
+                    <!-- minute(0-59) Hour(0-23) day of month(1-31) month(1-12) day of week(0-7 0 or 7 is Sunday)-->
+                </schedule>
+                <run>
+                    <model>reminder/observer::sendReviewReminder</model>
+                </run>
+            </review_reminder>
+        </jobs>
+    </crontab>
+</config>

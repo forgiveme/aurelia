@@ -1,0 +1,19 @@
+<div class="loyalty-main">
+<div class="loyalty-inner">
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('account-loyalty-data')->toHtml() ?>1111
+</div>
+</div>
+<div class="loyalty-form-right">
+<div class="loyalty-inner-right">
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('account-loyalty-right')->toHtml() ?>
+<?php $loyalty=Mage::getSingleton('customer/session')->getCustomer()->getLoyalty() ?>
+<div>
+<h1><?php echo $this->__('LOYALTY POINT DASHBOARD')?></h1>
+<?php echo $this->__('Your loyalty points')?> : <?php echo Mage::helper('checkout')->formatPrice($loyalty);?> 
+</div>
+<?php ?>
+</div>
+</div>
+<style>
+.join-btn-btn{display:none;}
+</style>

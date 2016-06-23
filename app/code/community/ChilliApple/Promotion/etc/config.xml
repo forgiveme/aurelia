@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ChilliApple_Promotion>
+            <version>0.1.0</version>
+        </ChilliApple_Promotion>
+    </modules>
+    <frontend>
+        <routers>
+            <promotion>
+                <use>standard</use>
+                <args>
+                    <module>ChilliApple_Promotion</module>
+                    <frontName>promotion</frontName>
+                </args>
+            </promotion>
+        </routers>
+        <layout>
+            <updates>
+                <promotion>
+                    <file>promotion.xml</file>
+                </promotion>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<promotion>
+				<use>admin</use>
+				<args>
+					<module>ChilliApple_Promotion</module>
+					<frontName>promotion</frontName>
+				</args>
+			</promotion>
+        </routers>
+    </admin>
+    <adminhtml>
+		<acl>
+		  <resources>
+			<all>
+			  <title>Allow Everything</title>
+			</all>
+			  <admin>
+				<children>
+			        	<promotion module="promotion">
+				 	  <children>
+						<items module="promotion">
+							<title>Manage Promotion</title>
+								<sort_order>11</sort_order>
+							</items>
+						</children>
+					</promotion>
+			<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <promotion>
+                                            <title>Chilli Apple Promotion</title>
+                                        </promotion>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+			</children>
+			</admin>
+		 </resources>
+		</acl>
+		<layout>
+			<updates>
+				<promotion>
+					<file>promotion.xml</file>
+				</promotion>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+    	<events>
+    	 <!--sales_order_payment_pay>
+    	 	<observers>
+    	 	  <customer_loyalty_update>
+    	 	  <type>singleton</type>
+    	 	  <class>ChilliApple_Promotion_Model_Observer</class>
+                  <method>updateLoyalty</method>
+    	 	  </customer_loyalty_update>
+    	 	</observers>
+    	 </sales_order_payment_pay>
+    	 <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>ChilliApple_Promotion_Model_Observer</class>
+                        <method>appendLoyaltyColumn</method>
+                    </customgrid_column_append>
+                </observers>
+            </core_block_abstract_prepare_layout_before-->
+    	 <salesrule_validator_process>
+    	 	<observers>
+    	 	  <customer_loyalty_update>
+    	 	  <type>singleton</type>
+    	 	  <class>ChilliApple_Promotion_Model_Observer</class>
+                  <method>validateCoupon</method>
+    	 	  </customer_loyalty_update>
+    	 	</observers>
+    	 </salesrule_validator_process>
+    	 
+    	 <sales_order_save_commit_after>
+    	 	<observers>
+    	 	  <customer_loyalty_update>
+    	 	    <type>singleton</type>
+    	 	    <class>ChilliApple_Promotion_Model_Observer</class>
+                    <method>updateLoyalty</method>
+                  </customer_loyalty_update>
+                  
+                  <refer_a_friend>
+    	 	    <type>singleton</type>
+    	 	    <class>ChilliApple_Promotion_Model_Observer</class>
+                    <method>referAFriend</method>
+                  </refer_a_friend>
+                  
+    	 	</observers>
+    	 </sales_order_save_commit_after>
+    	 
+    	 <customer_register_success>
+    	 	<observers>
+    	 	  <promotion_new_customer>
+    	 	  <type>singleton</type>
+    	 	  <class>ChilliApple_Promotion_Model_Observer</class>
+                  <method>sendNewRegistrationCoupon</method>
+    	 	  </promotion_new_customer>
+    	 	</observers>
+    	 </customer_register_success>
+    	 
+    	 
+    	</events>
+    	<template>
+	   <email>
+		  <loyalty_coupon_email_template module="promotion">
+			<label>Loyalty coupon email</label>
+			<file>loyalty_coupon.html</file>
+			<type>html</type>
+		   </loyalty_coupon_email_template>
+		   
+		   <referafriend_coupon_email_template module="promotion">
+			<label>Refer a friend email</label>
+			<file>refer_a_friend.html</file>
+			<type>html</type>
+		   </referafriend_coupon_email_template>
+		   
+		   <referee_coupon_email_template module="promotion">
+			<label>Referee coupon email</label>
+			<file>referee_coupon.html</file>
+			<type>html</type>
+		   </referee_coupon_email_template>
+		   
+		   <birthday_coupon_email_template module="promotion">
+			<label>Birthday coupon email</label>
+			<file>birthday_coupon.html</file>
+			<type>html</type>
+		   </birthday_coupon_email_template>
+		   
+		   <promotion_new_customer module="promotion">
+			<label>Free shipping coupon email on sign up</label>
+			<file>account_new_coupon.html</file>
+			<type>html</type>
+		   </promotion_new_customer>
+		   
+	    </email>
+	</template>
+        <models>
+            <promotion>
+                <class>ChilliApple_Promotion_Model</class>
+                <resourceModel>promotion_resource</resourceModel>
+            </promotion>
+            <promotion_resource>
+                <class>ChilliApple_Promotion_Model_Resource</class>
+                <deprecatedNode>promotion_mysql4</deprecatedNode>
+                <entities>
+                    <loyalty>
+                        <table>loyalty</table>
+                    </loyalty>
+                    
+                    <referafriend>
+                        <table>referafriend</table>
+                    </referafriend>
+                    
+                    <birthday>
+                        <table>birthday</table>
+                    </birthday>
+                    
+                </entities>
+            </promotion_resource>
+            <customer>
+                <rewrite>
+                    <customer>ChilliApple_Promotion_Model_Customer</customer>
+                </rewrite>
+            </customer>
+        </models>
+        <resources>
+            <promotion_setup>
+                <setup>
+                    <module>ChilliApple_Promotion</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </promotion_setup>
+            <promotion_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </promotion_write>
+            <promotion_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </promotion_read>
+        </resources>
+        <blocks>
+            <promotion>
+                <class>ChilliApple_Promotion_Block</class>
+            </promotion>
+            <adminhtml>
+            	<rewrite>
+            	  <customer_grid>ChilliApple_Promotion_Block_Adminhtml_Promotion_Customer_Grid</customer_grid>
+            	</rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <promotion>
+                <class>ChilliApple_Promotion_Helper</class>
+            </promotion>
+        </helpers>
+    </global>
+	<default>
+		<promotion>
+		   <loyalty>
+		    <threshold>0</threshold>
+		    <coupon_amount>0</coupon_amount>
+		   </loyalty>
+		   
+		   <referafriend>
+		   <friend_coupon_amount>0</friend_coupon_amount>
+		   <referee_coupon_amount>0</referee_coupon_amount>
+		   </referafriend>
+		   
+		</promotion>
+	</default>
+	<!--crontab>
+          <jobs>
+            <promotion_loyalty_points>
+              <schedule>
+                <cron_expr>0 * * * *</cron_expr>
+              </schedule>
+              <run>
+              <model>promotion/cron::loyaltyPoints</model>
+              </run>
+            </promotion_loyalty_points>
+            
+            
+            <promotion_birthday>
+              <schedule>
+                <cron_expr>5 0 * * *</cron_expr>
+              </schedule>
+              <run>
+              <model>promotion/cron::birthdayCoupons</model>
+              </run>
+            </promotion_birthday>
+            
+          </jobs>
+        </crontab-->
+</config>

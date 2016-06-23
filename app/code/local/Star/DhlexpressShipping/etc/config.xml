@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Star_DhlexpressShipping>
+            <version>0.1.0</version>
+        </Star_DhlexpressShipping>
+    </modules>
+    <global>
+        <models>
+            <star_dhlexpressshipping>
+                <class>Star_DhlexpressShipping_Model</class>
+            </star_dhlexpressshipping>
+        </models>
+    </global>
+    <global>
+         <helpers>
+            <DhlexpressShipping>
+				<class>Star_DhlexpressShipping_Helper</class>
+			</DhlexpressShipping>
+		</helpers>
+	</global>
+    <default>
+        <carriers>
+            <dhlexpress>
+                <active>1</active>
+                <model>star_dhlexpressshipping/carrier_dhlexpress</model>
+                <title>DHL Express</title>
+                <name>Tracking Only</name>
+            </dhlexpress>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Skint_Reports>
+            <version>0.0.1</version>
+        </Skint_Reports>
+    </modules>
+    <global>
+		<models>
+            <skintreports>
+                <class>Skint_Reports_Model</class>
+            </skintreports>
+		</models>
+        <helpers>
+            <skintreports>
+                <class>Skint_Reports_Helper</class>
+            </skintreports>
+        </helpers>
+        <blocks>
+            <skintreports>
+                <class>Skint_Reports_Block</class>
+            </skintreports>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <skintreports after="Mage_Adminhtml">Skint_Reports</skintreports>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <skintreports>
+                                            <title>Data Report Settings</title>
+                                        </skintreports>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

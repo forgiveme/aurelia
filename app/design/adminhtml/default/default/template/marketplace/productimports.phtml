@@ -1,0 +1,38 @@
+<tbody name = "product_imports_body">
+<?php
+
+$prod_imports = $this->getData('prod_imports');
+$formKey = Mage::getSingleton('core/session')->getFormKey();
+$downloadAction = Mage::getUrl( '*/*/downloadError' );
+
+foreach($prod_imports as $key=>$prod_import){ ?><tr class = "<?php echo $key; ?>">
+    <td>
+      <input type = "checkbox" name = "product_import" value = "<?php echo $prod_import['import_id']; ?>" class = "cnc_checkbox cnc_hide" id="<?php echo $prod_import['import_id']; ?>" />
+      <label class = "cnc_marketplace_sprite_icons" for="<?php echo $prod_import['import_id']; ?>"/>
+    </td>
+    <td><?php echo $prod_import['import_id']; ?></td>
+    <td><?php echo $prod_import['date_created']; ?></td>
+    <td><?php echo $prod_import['status']; ?></td>
+    <td>
+      <form action = "<?php echo $downloadAction ?>" name = "error_download" method="post">
+        <input type = "hidden" name = "import_id" value = "<?php echo $prod_import['import_id']; ?>" />
+        <input type = "hidden" name = "type" value = "product" />
+        <input type = "hidden" name = "err_type" value = "transformation_error_report" />
+        <?php if($prod_import['transform_error']) { ?>
+          Error File: <input id="ErrorDownload" class = "cnc_marketplace_sprite_icons" type = "submit" value = "Download" />
+        <?php } ?>
+        <input type="hidden" name="form_key" value="<?php echo $formKey ?>" />
+      </form>
+    </td>
+    <td>
+      <form action = "<?php echo $downloadAction ?>" name = "error_download" method="post">
+        <input type = "hidden" name = "import_id" value = "<?php echo $prod_import['import_id']; ?>" />
+        <input type = "hidden" name = "type" value = "product" />
+        <input type = "hidden" name = "err_type" value = "transformed_file" />
+        <?php if($prod_import['transform']) { ?>
+          <input id="TransformDownload" class = "cnc_marketplace_sprite_icons" type = "submit" value = "Download" />
+        <?php } ?>
+        <input type="hidden" name="form_key" value="<?php echo $formKey ?>" />
+      </form>
+    </td>
+  </tr><?php } ?> </tbody>

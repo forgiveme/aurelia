@@ -1,0 +1,111 @@
+html,
+body {
+    /*width: 100%;*/
+}
+
+img.title_img {
+    height: 200px;
+}
+
+#main_20 img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main_20 p {
+    font-size: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
+    line-height: 60px;
+}
+
+#thankyou,
+div#learntabout {
+    margin-top: 20px;
+}
+
+input#email {
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+    width: 97%;
+    height: 100px;
+    font-size: 29px;
+    text-align: center;
+    border: none;
+    max-width: 870px;
+}
+
+button#email_submit {
+    width: 97%;
+    height: 100px;
+    font-size: 31px;
+    background-color: #95918E;
+    border: navajowhite;
+    color: white;
+    font-family: AdobeDevanagari-Italic;
+    text-transform: uppercase;
+    font-weight: 100;
+    max-width: 870px;
+}
+
+#tips-container .tip-answer {
+    margin-bottom: 150px;
+}
+
+.product_img {
+    width: 95%;
+}
+
+.buy_product_img {
+    width: 100%;
+    max-width: 500px;
+}
+
+#tips-container .tip-blurb span {
+    float: none;
+}
+
+.tip-blurb-more {
+    margin-top: 45px;
+}
+
+#tips-container .tip-blurb .tip-blurb-more {
+    width: 100%;
+    /*background-color: #95918E;*/
+    background-position: 50%;
+    height: 100px;
+    background-size: contain;
+    margin-bottom: 89px
+}
+
+.tip-header {
+    text-align: center;
+}
+
+#tips-container .tip-blurb span {
+    float: none;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+#tips-container .tip-blurb {
+    text-align: center;
+}
+
+#tips-container .tip-header {
+    font-size: 50px;
+}
+
+#morehelp {
+    background: none;
+    background-color: white;
+    height: inherit;
+}
+
+img.begin_dots_img {
+    position: absolute;
+    height: 100px;
+    left: 50%;
+    margin-left: -1px;
+}

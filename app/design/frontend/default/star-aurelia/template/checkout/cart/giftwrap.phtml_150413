@@ -1,0 +1,128 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+
+
+<?php
+$isGiftWrap = false;
+$giftMessage = '';
+$giftSender = '';
+$giftRecipient = '';
+
+$cart = Mage::getSingleton('checkout/cart');
+$quote = $cart->getQuote();
+$_productId = Mage::getStoreConfig('onestepcheckout/extra_products/product_ids');
+$_giftProduct = Mage::getModel('catalog/product')->load($_productId);
+$_giftProductPrice = Mage::helper('core')->currency($_giftProduct->getPrice());
+
+
+if ($quote->getGiftMessageId()) {
+    $giftMessage = Mage::getModel('giftmessage/message')->load($quote->getGiftMessageId())->getMessage();
+    $giftSender = Mage::getModel('giftmessage/message')->load($quote->getGiftMessageId())->getSender();
+    $giftRecipient = Mage::getModel('giftmessage/message')->load($quote->getGiftMessageId())->getRecipient();
+	$giftHasMessage = Mage::getModel('giftmessage/message')->load($quote->getGiftMessageId());
+}
+
+ if (!empty($giftMessage) || !empty($giftSender) || !empty($giftRecipient)){
+ 	$status = 1;
+ } else {
+	 $status = 0;
+ }
+
+foreach($quote->getAllVisibleItems() AS $_item) {
+    if ($_item->getProduct()->getId() == $_productId) {
+        $isGiftWrap = true;
+        break;
+    }
+}
+?>
+
+
+<div class="giftwrap">
+    <div class="giftwrap_header">
+        <h2><?php echo $this->__('GIFT WRAP') ?></h2>
+    </div>
+
+    <div class="gift-holder">
+
+        <p>Items are packaged as one gift in a luxurious black box, lined with crisp <br />black tissue. The box is then wrapped with grosgrain Aurelia ribbon.</p>
+
+        <div class="gift-wrap-holder">
+        <form action="<?php echo Mage::getUrl('giftmodule/index/giftwrap'); ?>" method="post">
+            <p>
+            	<span class="giftbox<?php echo ($isGiftWrap) ? " checked" : ''; ?>">
+                	<input type="checkbox" name="gift_wrap_check" id="gift_wrap_check<?php echo ($isGiftWrap) ? "_checked" : ''; ?>" <?php echo ($isGiftWrap) ? 'checked="checked"' : ''; ?> />
+                </span>
+                <label>Gift Wrap: <?php echo $_giftProductPrice; ?></label>
+            </p>
+
+           <!-- <p><input type="submit" style="display:none" class="gift-wrap-submit gift-submit" value="Apply Gift Wrap" name="submit_gifwrap" /></p>-->
+
+        </form>
+       </div>
+
+	<div class="gift-message-holder">
+        <form name="giftmessageform" id="giftmessageform" action="<?php echo Mage::getUrl('giftmodule/index'); ?>" method="post">
+
+
+            <div class="gift-message-wrapper">
+           		 <p>
+                    <span class="giftbox <?php if ($status){ echo "checked";} ?>">
+
+                     <input type="checkbox" name="gift_message_check" id="gift_message_check" <?php if ($status){ echo 'checked="checked"';} ?> />
+                     <label>Would you like a handwritten note to be sent with this ? </label>
+                    </span>
+             	</p>
+                <div <?php if (!$status){ echo 'style="display:none"';} ?> class="gift-message-fields">
+                    <p>
+                        <label>From:</label><input type="text" name="gift_sender" id="sender" value="<?php echo $giftSender; ?>">
+                    </p>
+                    <p>
+                        <label>To:</label><input type="text" name="gift_recipient" id="recipient" value="<?php echo $giftRecipient; ?>">
+                    </p>
+                    <p>
+                       <label> Message:</label><textarea cols="40" rows="5" title="Message" name="gift_message" id="gift_message"><?php echo $giftMessage; ?></textarea>
+                    </p>
+                    <p>
+                        <input type="submit" class="gift-submit" value="Apply Message" name="submit_gifwrap" />
+                    </p>
+                </div>
+            </div>
+
+        </form>
+       </div>
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+//< ![CDATA[
+var giftmessageForm = new VarienForm('giftmessageform');
+//]]>
+</script>

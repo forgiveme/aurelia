@@ -1,0 +1,1256 @@
+/*********************************************** Global css start ***********************************************/
+@font-face {
+   font-family: Apercu;
+   src: url(fonts/Apercu-Medium.ttf); 
+   font-weight: normal;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_sprite_icons,
+.adminhtml-marketplace-orders-index .order_container .cnc_marketplace_sprite_icons,
+.adminhtml-marketplace-products-index .product-page .cnc_marketplace_sprite_icons,
+.adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_sprite_icons,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_sprite_icons
+{
+   background-image: url("../../../../../skin/adminhtml/default/default/marketplace/magento_tool_icons.png");
+   background-repeat: no-repeat;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_select_box_div,
+.adminhtml-marketplace-orders-index .order_container .cnc_marketplace_select_box_div,
+.adminhtml-marketplace-products-index .product-page .cnc_marketplace_select_box_div,
+.adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_select_box_div,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_select_box_div
+{
+   margin: 10px 0 20px;
+   overflow: hidden;
+   width: 100%;
+   border: 1px solid #000000;
+   background-position: 460px -304px;
+   max-width: 500px;
+   background-color: #FAFAFA;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_select_box,
+.adminhtml-marketplace-orders-index .order_container .cnc_marketplace_select_box,
+.adminhtml-marketplace-products-index .product-page .cnc_marketplace_select_box,
+.adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_select_box,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_select_box
+{
+   font: 400 12px arial;
+   width: 100%;
+   padding: 10px 20% 10px 5px;
+   text-indent: 5px;
+   text-transform: uppercase;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   text-indent: 0.01px;
+   text-overflow: '';
+   background-color: transparent;
+   border-radius:0;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_select_box::-ms-expand,
+.adminhtml-marketplace-orders-index .order_container .cnc_marketplace_select_box::-ms-expand,
+.adminhtml-marketplace-products-index .product-page .cnc_marketplace_select_box::-ms-expand,
+.adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_select_box::-ms-expand,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_select_box::-ms-expand
+{
+   display:none;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_text_box,
+.adminhtml-marketplace-orders-index .order_container .cnc_marketplace_text_box,
+.adminhtml-marketplace-products-index .product-page .cnc_marketplace_text_box,
+.adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_text_box,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_text_box
+{
+   background-color: #FAFAFA;
+   border: 1px solid #000000;
+   margin: 10px 0 20px;
+   width: 100%;
+   padding: 10px 0;
+   text-indent: 10px;
+   max-width:500px;
+}
+.adminhtml-marketplace-configuration-index .login_container .floater,
+.adminhtml-marketplace-orders-index .order_container .floater,
+.adminhtml-marketplace-products-index .product-page .floater,
+.adminhtml-marketplace-offers-index .offer-page .floater,
+.adminhtml-marketplace-scheduler-index .schedular_block .floater{
+   width :49%;
+   float:left;
+}
+
+.adminhtml-marketplace-configuration-index .login_container .label_floater,
+.adminhtml-marketplace-orders-index .order_container .label_floater,
+.adminhtml-marketplace-products-index .product-page .label_floater,
+.adminhtml-marketplace-offers-index .offer-page .label_floater,
+.adminhtml-marketplace-scheduler-index .schedular_block .label_floater
+{
+   width :49%;
+   float:left;
+   margin-top: 20px;
+}
+.adminhtml-marketplace-configuration-index .middle,
+.adminhtml-marketplace-orders-index .middle,
+.adminhtml-marketplace-products-index .middle,
+.adminhtml-marketplace-offers-index .middle,
+.adminhtml-marketplace-scheduler-index .middle
+{
+   min-height: 600px;
+   background-color: #f7f7f7;
+}
+.adminhtml-marketplace-configuration-index .footer,
+.adminhtml-marketplace-orders-index .footer,
+.adminhtml-marketplace-products-index .footer,
+.adminhtml-marketplace-offers-index .footer,
+.adminhtml-marketplace-scheduler-index .footer
+{
+   padding: 7px 2.8em 0px 2.8em;
+   background: #e6e6e6;
+}
+.adminhtml-marketplace-configuration-index .login_container,
+.adminhtml-marketplace-orders-index .order_container,
+.adminhtml-marketplace-products-index .product-page,
+.adminhtml-marketplace-offers-index .offer-page,
+.adminhtml-marketplace-scheduler-index .schedular_block
+{
+   margin-bottom: 50px;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_button,
+.adminhtml-marketplace-orders-index .order_container .cnc_button,
+.adminhtml-marketplace-products-index .product-page .cnc_button,
+.adminhtml-marketplace-offers-index .offer-page .cnc_button,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_button
+{
+   background: none repeat scroll 0 0 #333333;
+   border: 1px solid #333333;
+   color: #FFFFFF;
+   float: right;
+   font-size: 13px;
+   font-weight: bold;
+   margin: 10px 0;
+   padding: 10px 25px;
+   text-transform: uppercase;
+   cursor: pointer;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_float_right,
+.adminhtml-marketplace-orders-index .order_container .cnc_float_right,
+.adminhtml-marketplace-products-index .product-page .cnc_float_right,
+.adminhtml-marketplace-offers-index .offer-page .cnc_float_right,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_float_right
+{
+   float: right;
+}
+.adminhtml-marketplace-configuration-index .login_container .align-left,
+.adminhtml-marketplace-orders-index .order_container .align-left,
+.adminhtml-marketplace-products-index .product-page .align-left,
+.adminhtml-marketplace-offers-index .offer-page .align-left,
+.adminhtml-marketplace-scheduler-index .schedular_block .align-left
+{
+   text-align: left;
+   text-indent: 1px;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_button:hover,
+.adminhtml-marketplace-orders-index .order_container .cnc_button:hover,
+.adminhtml-marketplace-products-index .product-page .cnc_button:hover,
+.adminhtml-marketplace-offers-index .offer-page .cnc_button:hover,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_button:hover
+{
+   background-color:#7f7f7f;
+}
+.adminhtml-marketplace-configuration-index .login_container .clear,
+.adminhtml-marketplace-orders-index .order_container .clear,
+.adminhtml-marketplace-products-index .product-page .clear,
+.adminhtml-marketplace-offers-index .offer-page .clear,
+.adminhtml-marketplace-scheduler-index .schedular_block .clear
+{
+   clear: both;
+   margin: 5px 0px;
+}
+.adminhtml-marketplace-configuration-index .login_container .full_float,
+.adminhtml-marketplace-orders-index .order_container .full_float,
+.adminhtml-marketplace-products-index .product-page .full_float,
+.adminhtml-marketplace-offers-index .offer-page .full_float,
+.adminhtml-marketplace-scheduler-index .schedular_block .full_float
+{
+   width: 50%;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_hide,
+.adminhtml-marketplace-orders-index .order_container .cnc_hide,
+.adminhtml-marketplace-products-index .product-page .cnc_hide,
+.adminhtml-marketplace-offers-index .offer-page .cnc_hide,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_hide
+{
+   display: none;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_checkbox + label,
+.adminhtml-marketplace-orders-index .order_container .cnc_checkbox + label,
+.adminhtml-marketplace-products-index .product-page .cnc_checkbox + label,
+.adminhtml-marketplace-offers-index .offer-page .cnc_checkbox + label,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_checkbox + label
+{
+   background-position: 0 -206px;
+   display: inline-block;
+   height: 25px;
+   text-align: center;
+   width: 25px;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_checkbox:checked + label,
+.adminhtml-marketplace-orders-index .order_container .cnc_checkbox:checked + label,
+.adminhtml-marketplace-products-index .product-page .cnc_checkbox:checked + label,
+.adminhtml-marketplace-offers-index .offer-page .cnc_checkbox:checked + label,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_checkbox:checked + label
+{
+   background-position: 0px -247px;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_absolute,
+.adminhtml-marketplace-orders-index .order_container .cnc_absolute,
+.adminhtml-marketplace-products-index .product-page .cnc_absolute,
+.adminhtml-marketplace-offers-index .offer-page .cnc_absolute,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_absolute
+{
+   position:absolute;
+}
+.adminhtml-marketplace-configuration-index .login_container .cnc_input_error_top,
+.adminhtml-marketplace-orders-index .order_container .cnc_input_error_top,
+.adminhtml-marketplace-products-index .product-page .cnc_input_error_top,
+.adminhtml-marketplace-offers-index .offer-page .cnc_input_error_top,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_input_error_top
+{
+   top: 45px;  
+}
+/*********************************************** Global css end ***********************************************/
+/*********************************************** Common for only some pages ***********************************************/
+.adminhtml-marketplace-orders-index .order_container .bulk_action_button,
+.adminhtml-marketplace-products-index .product-page .bulk_action_button,
+.adminhtml-marketplace-offers-index .offer-page .bulk_action_button,
+.adminhtml-marketplace-scheduler-index .schedular_block .bulk_action_button
+{
+   background: none repeat scroll 0 0 transparent;
+   border: 1px solid #333333;
+   clear: both;
+   color: #333333;
+   padding: 15px 20px;
+   text-transform: uppercase;
+   cursor: pointer;
+   font: bold 12px arial,helvetica,sans-serif;
+}
+.adminhtml-marketplace-orders-index .order_container .bulk_action_button:hover,
+.adminhtml-marketplace-products-index .product-page .bulk_action_button:hover,
+.adminhtml-marketplace-offers-index .offer-page .bulk_action_button:hover,
+.adminhtml-marketplace-scheduler-index .schedular_block .bulk_action_button:hover
+{
+   background-color: #333333;
+   color: #FFFFFF;
+}
+.adminhtml-marketplace-products-index .product-page .cnc_upload_button,
+.adminhtml-marketplace-offers-index .offer-page .cnc_upload_button
+{
+   background-color: #fff;
+   width: auto;
+   padding: 15px 80px 15px 30px;
+   cursor: pointer;
+   border: 1px solid #7f7f7f;
+   background-position: 331px -126px;
+   font: bold 12px arial,helvetica,sans-serif;
+   color: #333;
+   text-transform: uppercase;
+   float:right;
+}
+.adminhtml-marketplace-products-index .product-page .cnc_upload_button:hover,
+.adminhtml-marketplace-offers-index .offer-page .cnc_upload_button:hover
+{
+   background-position: 331px -160px;
+}
+.adminhtml-marketplace-products-index .product-page .container-blocks,
+.adminhtml-marketplace-offers-index .offer-page .container-blocks
+{
+   margin-top:20px;
+}
+.adminhtml-marketplace-orders-index .order_container .blocks tr.block-headings,
+.adminhtml-marketplace-products-index .product-page tr.block-headings,
+.adminhtml-marketplace-offers-index .offer-page tr.block-headings,
+.adminhtml-marketplace-scheduler-index .schedular_block tr.block-headings
+{
+   background:#7f7f7f;
+}
+.adminhtml-marketplace-orders-index .order_container .blocks tr.block-headings th,
+.adminhtml-marketplace-products-index .product-page tr.block-headings th,
+.adminhtml-marketplace-offers-index .offer-page tr.block-headings th,
+.adminhtml-marketplace-scheduler-index .schedular_block tr.block-headings th
+{
+   padding: 5px;
+   vertical-align: middle;
+}
+.adminhtml-marketplace-orders-index .order_container .blocks th span,
+.adminhtml-marketplace-products-index .product-page  th span,
+.adminhtml-marketplace-offers-index .offer-page .blocks th span,
+.adminhtml-marketplace-scheduler-index .schedular_block .blocks th span
+{
+   color:#fff;
+   text-transform: uppercase;
+   padding:5px;
+   text-align:center;
+}
+.adminhtml-marketplace-orders-index .order_container tbody tr td,
+.adminhtml-marketplace-products-index .product-page tbody tr td,
+.adminhtml-marketplace-offers-index .offer-page tbody tr td,
+.adminhtml-marketplace-scheduler-index .schedular_block tbody tr td
+{
+   text-align: center;
+   vertical-align: middle;
+}
+.adminhtml-marketplace-orders-index .order_container .modal,
+.adminhtml-marketplace-products-index .product-page .modal,
+.adminhtml-marketplace-offers-index .offer-page .modal,
+.adminhtml-marketplace-scheduler-index .schedular_block .modal
+{
+   left: 0;
+   margin: 0 auto;
+   right: 0;
+   top: 5%;
+   background-color: #fff;
+   padding: 20px;
+   position: fixed;
+   text-align: left;
+   width: 600px;
+   max-height:480px;
+   display:none;
+   z-index: 200;
+   border:2px solid #999;
+   overflow:auto;
+   z-index:100;
+   min-height: 200px;
+}
+.adminhtml-marketplace-orders-index .order_container .close_modal,
+.adminhtml-marketplace-products-index .product-page .close_modal,
+.adminhtml-marketplace-offers-index .offer-page .close_modal,
+.adminhtml-marketplace-scheduler-index .schedular_block .close_modal
+{
+   background-position: 3px -1083px;
+   background-repeat: no-repeat;
+   cursor: pointer;
+   float: left;
+   height: 20px;
+   position: absolute;
+   right: 12px;
+   top: 5px;
+   width: 20px;
+}
+.adminhtml-marketplace-products-index .product-page #ErrorDownload,
+.adminhtml-marketplace-products-index .product-page #TransformDownload,
+.adminhtml-marketplace-offers-index .offer-page #export_filter_grid_table #errorfileDownload
+{
+   background-position: 98px -1020px;
+   border: 0 none;
+   cursor: pointer;
+   font-size: 13px;
+   text-decoration: underline;
+   vertical-align: middle;
+   background-color:transparent;
+   width: 120px;
+   position:relative;
+   top: -2px;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog textarea,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog textarea
+{
+    width: 100%;
+    background: none repeat scroll 0 0 #FAFAFA;
+    border: 1px solid #999999;
+    padding: 12px 0;
+    text-indent: 5px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset ,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .offer_msg_fieldset{
+   background: #eee;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .offer_msg_message,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .offer_msg_message{
+   background: #fff;
+   width: 60%;
+   float:left;
+   margin-bottom: 20px;
+   padding:10px;
+   position:relative;
+   word-break:break-all;
+   word-wrap:break-word;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .cust_msg .offer_msg_message:after,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .cust_msg .offer_msg_message:after{
+   border-bottom: 10px solid transparent;
+   border-left: 20px solid #FFFFFF;
+   border-top: 10px solid transparent;
+   content: "";
+   position: absolute;
+   right: -10px;
+   top: 10px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .your_msg .offer_msg_answer:before,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .your_msg .offer_msg_answer:before{
+   border-bottom: 10px solid transparent;
+   border-right: 20px solid #FFFFFF;
+   border-top: 10px solid transparent;
+   content: "";
+   position: absolute;
+   left: -10px;
+   top: 10px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog .scroll_holder,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .scroll_holder{
+   max-height: 200px;
+   overflow:auto;
+   margin-bottom: 20px;
+}
+.adminhtml-marketplace-offers-index #export_filter_grid_table .messages_offer,
+.adminhtml-marketplace-orders-index .order_container .messages_order{
+   background-position: 0 -1459px;
+   margin-right: 10px;
+   display: inline-block;
+   height: 25px;
+   width: 25px;
+   position:relative;
+   top:5px;
+   cursor: pointer;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .offer_msg_answer,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .offer_msg_answer{
+   background: #fff;
+   width: 60%;
+   float:right;
+   margin-bottom: 20px;
+   padding:10px;
+   position:relative;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .your_msg .by_you,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog .your_msg .by_you{
+   float:right;
+   margin-right: 30px;
+   margin-top: 12px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .cust_msg .by_him,
+.adminhtml-marketplace-orders-index .order_container #order_message_dialog  .cust_msg .by_him{
+   float:left;
+   margin-left: 30px;
+   margin-top: 12px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog fieldset.offer_msg_fieldset .offer_msg_date,
+.adminhtml-marketplace-orders-index .order_container .order_msg_date{
+   color: #999;
+   font-style:italic;
+}
+.adminhtml-marketplace-offers-index #export_filter_grid_table .messages_offer .number_msgs,
+.adminhtml-marketplace-orders-index .order_container .messages_order .number_msgs{
+   background: none repeat scroll 0 0 #000000;
+   border-radius: 50% 50% 50% 50%;
+   color: #FFFFFF;
+   font-size: 9px;
+   height: 15px;
+   position: absolute;
+   right: -2px;
+   text-indent: 1px;
+   top: -2px;
+   width: 15px;
+}
+.adminhtml-marketplace-offers-index .offer-page .input-group-addon-date,
+.adminhtml-marketplace-scheduler-index .schedular_block .input-group-addon-date
+{
+   border: 1px solid #000000;
+   border-radius: 0 0 0 0;
+   display: block;
+   height: 34px;
+   padding: 0;
+   position: absolute;
+   right: -1px;
+   top: 10px;
+   border-right: none;
+   width: 40px;
+}
+.adminhtml-marketplace-offers-index .offer-page .date_together
+{
+   width: 240px;
+   float:left;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset.mid_level {
+   margin-top:20px;
+}
+.adminhtml-marketplace-offers-index .offer-page .date_together.first {
+   margin-right:20px;
+}
+.adminhtml-marketplace-offers-index .offer-page .calendar-icon,
+.adminhtml-marketplace-scheduler-index .schedular_block .calendar-icon
+{
+   background-position: 5px -1278px;
+   display: block;
+   width: 40px;
+   height: 31px;
+}
+.adminhtml-marketplace-offers-index .offer_dialog .offer_dialog_inputs,
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_date_div{
+   position: relative;
+   max-width: 500px;
+}
+
+/* pagination CSS */
+.adminhtml-marketplace-products-index .product-page .navigation,
+.adminhtml-marketplace-orders-index .order_container .navigation,
+.adminhtml-marketplace-offers-index .offer-page .navigation{
+  float: right;
+  overflow: hidden;
+  margin : 20px 0px;
+}
+.adminhtml-marketplace-products-index .product-page .navigation #next,
+.adminhtml-marketplace-products-index .product-page .navigation #prev,
+.adminhtml-marketplace-orders-index .order_container .navigation #next,
+.adminhtml-marketplace-orders-index .order_container .navigation #prev,
+.adminhtml-marketplace-offers-index .offer-page .navigation #next,
+.adminhtml-marketplace-offers-index .offer-page .navigation #prev{
+  cursor: pointer;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  float:left;
+  padding: 0px 0 0;
+  border: none;
+  background-color:transparent;
+}
+.adminhtml-marketplace-products-index .product-page .navigation #next.inactive,
+.adminhtml-marketplace-orders-index .order_container .navigation #next.inactive,
+.adminhtml-marketplace-offers-index .offer-page .navigation #next.inactive{
+   background-position: 10px -456px;
+   cursor: auto;
+}
+.adminhtml-marketplace-products-index .product-page .navigation #prev.inactive,
+.adminhtml-marketplace-orders-index .order_container .navigation #prev.inactive,
+.adminhtml-marketplace-offers-index .offer-page .navigation #prev.inactive
+{
+   background-position: 5px -397px;
+   cursor: auto;
+}
+.adminhtml-marketplace-products-index .product-page .navigation #prev,
+.adminhtml-marketplace-orders-index .order_container .navigation #prev,
+.adminhtml-marketplace-offers-index .offer-page .navigation #prev
+{
+   background-position: 5px -427px;
+}
+.adminhtml-marketplace-products-index .product-page .navigation #next,
+.adminhtml-marketplace-orders-index .order_container .navigation #next,
+.adminhtml-marketplace-offers-index .offer-page .navigation #next{
+   background-position: 5px -487px;
+}
+.adminhtml-marketplace-products-index .product-page .navigation .content,
+.adminhtml-marketplace-orders-index .order_container .navigation .content,
+.adminhtml-marketplace-offers-index .offer-page .navigation .content
+{
+  margin: 0;
+  padding:10px;
+  font: 700 12px arial;
+  color: #666;
+  float: left;
+}
+/* Pagination css end */
+/*********************************************** Common some pages end ***********************************************/
+
+/*********************************************** Config page start ***********************************************/
+.adminhtml-marketplace-configuration-index .login_container .automation_selectbox {
+   background-position: 190px -304px;
+}
+.adminhtml-marketplace-configuration-index #messages {
+   display:none;
+}
+.adminhtml-marketplace-configuration-index .login_container #login_messages, .adminhtml-marketplace-configuration-index .config_messages {
+   width: 540px;
+   margin: 0 auto;
+}
+.adminhtml-marketplace-configuration-index .login_container .style-logo{
+  width: 500px;
+  height: 52px;
+  margin: 0 auto 20px;
+}
+
+/*automation select options:*/
+.adminhtml-marketplace-configuration-index .login_container fieldset {
+  clear: both;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 10px 0 10px 0px;
+}
+.adminhtml-marketplace-configuration-index .login_container fieldset legend {
+  height: auto;
+  line-height: 16px;
+  width: auto;
+  visibility: visible;
+  margin-left: -10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.adminhtml-marketplace-configuration-index .login_container .loginContainer {
+   width: 500px;
+   border: 1px solid #D6D6D6;
+   margin: 0 auto;
+   padding:20px;
+   background:none repeat scroll 0 0 #FAFAFA;
+   overflow:auto;
+}
+.adminhtml-marketplace-configuration-index .login_container .debug_label {
+   position:relative;
+   top:5px;
+   display: inline-block;
+   margin-bottom: 25px;
+}
+.adminhtml-marketplace-configuration-index .login_container #order_automatic,
+.adminhtml-marketplace-configuration-index .hidden_mirakle
+{
+   display:none;
+}
+/*********************************************** Config page end ***********************************************/
+
+/*********************************************** Offer page start ***********************************************/
+
+.adminhtml-marketplace-offers-index .offer-page .plain-headers{
+   background: none repeat scroll 0 0 #EEEEEE;
+   padding: 10px 0 5px 0;
+   text-indent: 10px;
+   top: 0;
+   width: 100%;
+   cursor:pointer;
+   position: relative;
+}
+
+.adminhtml-marketplace-offers-index .offer-page .offers_list_block,
+.adminhtml-marketplace-offers-index .offer-page .offers_imports_block,
+.adminhtml-marketplace-offers-index .offer-page .offer_export_mapping{
+   background: none repeat scroll 0 0 #FFFFFF;
+   border: 1px solid #CCCCCC;
+   margin: 10px 0;
+}
+.adminhtml-marketplace-offers-index .offer-page .accordian_arrow {
+   background-position:0 -278px;
+   background-repeat: no-repeat;
+   display: inline-block;
+   float: right;
+   height: 30px;
+   position: absolute;
+   right: 10px;
+   top: 4px;
+   width: 30px;
+}
+.adminhtml-marketplace-offers-index .offer-page .accordian_arrow.closed {
+   background-position: 0 -337px;
+}
+.adminhtml-marketplace-offers-index .offer-page .export_filter_container {
+    padding:10px;
+}
+
+.adminhtml-marketplace-offers-index .offer-page #OfferMappingTable tbody tr td{
+   vertical-align: middle;
+   text-align:left;
+}
+
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset{
+   margin: 0;
+   padding:0;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog .fieldset_pad {
+   padding: 10px;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset.top_level {
+   background: #eee;
+   margin: 10px 0;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset.top_level .legend{
+   background: #7F7F7F;
+   color: #fff;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset.mid_level .legend{
+   background: #fafafa;
+   color: #000;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog fieldset .legend{
+   background: #fafafa;
+   width: 100%;
+   padding: 5px 0;
+   text-indent: 5px;
+   border-bottom: 1px solid #EEEEEE;
+   font-weight: bold;
+}
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog label {
+   font-weight: bold;
+}
+
+.adminhtml-marketplace-offers-index .offer-page .offer_dialog .form-group {
+   margin-top: 10px;
+}
+.adminhtml-marketplace-offers-index .offer-page #export_filter_grid_table .messages_offer.background_none {
+   background:none;
+   cursor:auto;
+}
+.adminhtml-marketplace-offers-index .offer-page #export_filter_grid_table .delete_offer {
+   background-color: transparent;
+   background-position: 1px -946px;
+   background-repeat: no-repeat;
+   border: medium none;
+   cursor: pointer;
+   display: inline-block;
+   height: 30px;
+   position: relative;
+   width: 25px;
+}
+
+.adminhtml-marketplace-offers-index #export_filter_grid_table .edit_box_offrs {
+   background-position: 0px -1540px;
+   margin: 0 20px;
+   background-repeat: no-repeat;
+   top: -10px;
+   display: inline-block;
+   height: 25px;
+   width: 25px;
+   position:relative;
+   cursor: pointer;
+}
+.adminhtml-marketplace-offers-index .offer-page #export_filter_grid_table td {
+   max-width: 200px;
+   word-wrap: break-word;
+}
+/*********************************************** Offer page end ***********************************************/
+/*********************************************** Order page start ***********************************************/
+.adminhtml-marketplace-orders-index .order_container .filter-item .control-label{
+   color: #2F2F2F;
+   font: bold 14px/2.5em Arial,Helvetica,sans-serif;
+   padding:0 0 10px 30px;
+   margin-top: 3px;
+   white-space: nowrap;
+}
+
+.adminhtml-marketplace-orders-index .order_container .order_filter #filter-container {
+   background-color: #efeeed;
+   border: 1px solid #cccccc;
+   padding: 15px;
+   text-align: left;
+   z-index: 999;
+   position: absolute;
+   width: 200px;
+   top: 47px;
+   left: 1px;
+}
+.adminhtml-marketplace-orders-index .order_container .search_orders { float:right; }
+.adminhtml-marketplace-orders-index .order_container .status-filter {
+   margin-top:14px;
+}
+.adminhtml-marketplace-orders-index .order_container .status-filter .fil-span{
+   border: 1px solid #cccccc;
+   padding: 15px;
+   text-align: left;
+}
+.adminhtml-marketplace-orders-index .order_container .status-filter #filter-dropdown{
+   border: 1px solid #cccccc;
+   border-left: 0px;
+   padding: 15px;
+   background-position: 6px -302px;
+}
+.adminhtml-marketplace-orders-index .order_container .status-filter #filter-uparrow{
+   border:1px solid #cccccc;
+   border-left:0px;
+   padding: 15px;
+   display: inline;
+   background-color: #efeeed;
+   background-position: 6px -363px;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container{
+  padding: 12px;
+  background:#fafafa;
+  border-radius:5px;
+  margin:5px 0px;
+  border:1px solid #999;
+}
+.adminhtml-marketplace-orders-index .order_container .leaf-container{
+  padding: 5px;
+  background:#f9f6f1;
+  margin:10px 0px;
+  border-radius: 4px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  border:1px solid #ccc;
+  overflow:auto;
+}
+.adminhtml-marketplace-orders-index .order_container .leaf-container.parsed {
+   background:none;
+   padding:0;
+   margin:0;
+   border:none;
+   box-shadow:none;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container.parsed {
+   background-color:#eee;
+   padding:0px;
+   margin:10px 0;
+   border: 1px solid #999999;
+   border-radius: 5px 5px 0px 0px;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container.parsed .parent-heading{
+   background: #999;
+   display:block;
+   padding:15px;
+   border-radius: 5px 5px 0px 0px;
+   margin-bottom:15px;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container.parsed .parent-container.parsed {
+   margin:15px;
+   background-color:#fff;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container.parsed .main-container
+{
+   padding:25px;
+}
+.adminhtml-marketplace-orders-index .order_container .parsed.child-heading {
+   text-transform:capitalize;
+   font-weight:bold;
+}
+.adminhtml-marketplace-orders-index .order_container .order_line_items {
+   background: none repeat scroll 0 0 #EEEEEE;
+   font-weight: bold;
+}
+.adminhtml-marketplace-orders-index .order_container .unread_order {
+   font-weight:bold;
+}
+.adminhtml-marketplace-orders-index .order_container .order-id{
+   cursor:pointer;
+}
+.adminhtml-marketplace-orders-index .order_container .order_filter {
+   float: left;
+   margin: 0;
+   position: relative;
+   text-align: right;
+   width: 95px;
+}
+.adminhtml-marketplace-orders-index .order_container .order_filter #filter-container .filter-item {
+  border-bottom: 1px solid #FFF;
+}
+.adminhtml-marketplace-orders-index .order_container .order_filter #filter-container .status-collapse .go-button
+{
+   background: inherit;
+   border: 1px solid #333333;
+   float: right;
+   font-size: 14px;
+   height: 40px;
+   margin: 10px 10px 0;
+   padding: 0 8px;
+   text-align: center;
+   text-transform: uppercase;
+}
+.adminhtml-marketplace-orders-index .order_container .order_filter #filter-container .status-collapse .go-button:hover
+{
+   background-color: #333333;
+   cursor:pointer;
+   color: #fff;
+}
+.adminhtml-marketplace-orders-index .order_container #tracking,
+.adminhtml-marketplace-orders-index .order_container #refund_dialog .refund_orderinputs
+{
+   width: 500px;
+}
+.adminhtml-marketplace-orders-index .order_container #refund_dialog .form-group,
+.adminhtml-marketplace-orders-index .order_container #tracking .form-group{
+   padding:7px 0;
+}
+/*tool tip CSS */
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]{
+  position: relative;
+  cursor: pointer;
+}
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:after {
+  position: absolute;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 
+      opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    -moz-transition:    
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    transition:         
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform:    translate3d(0, 0, 0);
+  transform:         translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:hover:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:hover:after,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:focus:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:focus:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:before {
+  z-index: 1001;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+}
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:after {
+  z-index: 1000;
+  padding: 8px;
+  width: 160px;
+  text-align: center;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  font-size: 14px;
+  line-height: 1.2;
+}
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:after {
+  bottom: 100%;
+  left: 35%;
+}
+
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:before{
+  margin-left: -6px;
+  margin-bottom: -12px;
+  border-top-color: #000;
+  border-top-color: hsla(0, 0%, 20%, 0.9);
+}
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:after {
+  margin-left: -80px;
+}
+
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:hover:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:hover:after,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:focus:before,
+.adminhtml-marketplace-orders-index .order_container [data-tooltip]:focus:after {
+  -webkit-transform: translateY(-12px);
+  -moz-transform:    translateY(-12px);
+  transform:         translateY(-12px); 
+}
+/* end of tool tip CSS*/
+
+.adminhtml-marketplace-orders-index .order_container #refundForm .refund_diff_fields{
+   border-top: 1px solid #ccc;
+   clear: both;
+}
+.adminhtml-marketplace-orders-index .order_container #refundForm .parent-container.one_step {
+   background: none;
+   border:none;
+   margin:0;
+   padding:0;
+}
+.adminhtml-marketplace-orders-index .order_container .order-action span {
+   background-image: url("../../../../../skin/adminhtml/default/default/marketplace/magento_tool_icons.png");
+   background-repeat: no-repeat;
+   float: left;
+   height: 15px;
+   width: 30px;
+   cursor: pointer;
+   padding: 20px 5px 0;
+}
+.adminhtml-marketplace-orders-index .order_container .prod_sku_table {
+   width: 150px;
+}
+.adminhtml-marketplace-orders-index .order_container .reject_manual {
+   background-position: 5px -1365px;
+}
+.adminhtml-marketplace-orders-index .order_container .reject_manual#reject_manual_greyed_out {
+   background-position: 5px -1407px;
+   cursor: auto;
+}
+.adminhtml-marketplace-orders-index .order_container .confirm{
+   background-position: 6px -518px;
+}
+.adminhtml-marketplace-orders-index .order_container .confirm#confirm_greyed_out{
+   background-position: 5px -560px;
+   cursor: auto;
+}
+.adminhtml-marketplace-orders-index .order_container .shipped{
+   background-position: 5px -605px;
+}
+.adminhtml-marketplace-orders-index .order_container .shipped#shipped_greyed_out
+{
+   background-position: 5px -652px;
+   cursor: auto;
+}
+.adminhtml-marketplace-orders-index .order_container .tracking{
+   background-position: 5px -690px;
+}
+.adminhtml-marketplace-orders-index .order_container .tracking#tracking_greyed_out{
+   background-position: 5px -725px;
+   cursor: auto;
+}
+.adminhtml-marketplace-orders-index .order_container .refund{
+   background-position: 5px -766px;
+}
+.adminhtml-marketplace-orders-index .order_container .refund#refund_greyed_out{
+   background-position: 5px -811px;
+   cursor: auto;
+}
+.adminhtml-marketplace-orders-index .order_container .order_lines {
+   text-align:left;
+   width: 130px;
+   margin:0 auto;
+}
+.adminhtml-marketplace-orders-index .order_container .filter_status{
+   border: 1px solid #cccccc;
+   border-left:none;
+   white-space:nowrap;
+   float:left;
+   width:70%;
+   padding: 4px;
+   background:#fff;
+}
+.adminhtml-marketplace-orders-index .order_container .filterlist{
+  display: inline-block;
+  white-space:normal;
+  height:20px;
+  margin-left:5px;
+  background-color:#E6E6E6;
+  font-size:11px;
+  padding:3px 5px;
+  text-transform: uppercase;
+  letter-spacing:1px;
+}
+
+.adminhtml-marketplace-orders-index .order_container .filter_status > div {
+   display:inline-block;
+}
+
+.adminhtml-marketplace-orders-index .order_container #scroller {
+   width: 85%;
+   overflow: hidden;
+   margin: 0 auto;
+   position: relative;
+   top: 2px;
+}
+.adminhtml-marketplace-orders-index .order_container #inner-scroller {
+   white-space:nowrap;
+}
+.adminhtml-marketplace-orders-index .order_container .filterlist span{
+  padding-left:10px;
+  cursor:pointer;
+  float:right;  
+}
+.adminhtml-marketplace-orders-index .order_container .filter_text {
+   position: relative;
+   top: -7px;
+}
+.adminhtml-marketplace-orders-index .order_container .scroll {
+   position: relative;
+   top: 6px;
+}
+.adminhtml-marketplace-orders-index .order_container .scroll a {
+   color: #fff;
+}
+.adminhtml-marketplace-orders-index .order_container .left_scroll{
+   cursor: pointer;
+   height: 30px;
+   width: 30px;
+   background-position: 0px -400px;
+}
+.adminhtml-marketplace-orders-index .order_container .left_scroll:hover{
+   background-position: 0px -430px;
+}
+.adminhtml-marketplace-orders-index .order_container .right_scroll{
+   cursor: pointer;
+   height: 30px;
+   width: 30px;
+   background-position: 0px -460px;
+}
+.adminhtml-marketplace-orders-index .order_container .right_scroll:hover {
+   background-position: 0px -490px;
+}
+.adminhtml-marketplace-orders-index .order_container .remove_filter_icon {
+   background-color: transparent;
+   border: medium none;
+   cursor: pointer;
+   height: 20px;
+   padding: 0 0 0;
+   text-align: center;
+   width: 20px;
+   background-position: 10px -1085px;
+}
+.adminhtml-marketplace-orders-index .order_container .download_json {
+   margin:0;
+   float:right;
+   background: inherit;
+   border: 1px solid #333333;
+   color: #333;
+   font-family: ButtonFonts;
+   text-align: center;
+   text-transform: uppercase;
+}
+.adminhtml-marketplace-orders-index .order_container .select_boxes_popups{
+   width: 250px;
+}
+.adminhtml-marketplace-orders-index .order_container #trackingForm label{
+   margin-bottom: 5px;
+   display:block;
+}
+.adminhtml-marketplace-orders-index .order_container .download_json:hover{
+   background: #333;
+   color:#fff;
+}
+
+.adminhtml-marketplace-orders-index .order_container .bold-heading {
+   font-size:12px;
+   font-weight:bold;
+   text-transform:capitalize;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-heading {
+   font-size:13px;
+   font-weight:bold;
+   text-transform:uppercase;
+}
+.adminhtml-marketplace-orders-index .order_container .open_incident{
+   cursor:pointer;
+   font-weight:bold;
+   text-transform:uppercase;
+}
+
+.adminhtml-marketplace-orders-index .order_container .parent-container .floater .radio_holder{
+   float:right;
+   padding: 10px;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container .floater .radio_holder input{
+   margin: 5px;
+}
+.adminhtml-marketplace-orders-index .order_container .parent-container.one_step
+{
+   background: #eee;
+   overflow:auto;
+}
+.adminhtml-marketplace-orders-index .order_container .order_lines_table thead{
+   background: #ccc;
+   border: 1px solid #999;
+}
+.adminhtml-marketplace-orders-index .order_container #OrderDetails {
+   table-layout:fixed;
+   border-collapse:collapse;
+}
+.adminhtml-marketplace-orders-index .order_container #OrderDetails td,
+.adminhtml-marketplace-orders-index .order_container #OrderDetails th,
+.adminhtml-marketplace-orders-index .order_container #OrderDetails td span,
+.adminhtml-marketplace-orders-index .order_container #OrderDetails th span
+{
+   white-space: normal;
+   word-wrap: break-word;
+}
+.adminhtml-marketplace-orders-index .order_container #OrderDetails .order_lines_td {
+   padding: 15px;
+}
+.adminhtml-marketplace-orders-index .order_container .bulk-action {
+   margin-top:10px;
+}
+.adminhtml-marketplace-orders-index .order_container .order_det {
+   margin-top:40px;
+}
+.adminhtml-marketplace-orders-index .order_container .cnc_clockdiv_inner div {
+   display:inline-block;
+}
+/*********************************************** Order page end ***********************************************/
+/*********************************************** Scheduler page start ***********************************************/
+.adminhtml-marketplace-scheduler-index .schedular_block #product-form .control-label{
+  padding-top:20px;
+  padding-bottom:20px;
+  display: block;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .refresh_schedule {
+   background: none repeat scroll 0 0 #f77c16;
+   border: 1px solid #ccc;
+   font: bold 12px arial;
+   text-transform:uppercase;
+   margin: 10px 0;
+   color:#fff;
+   padding: 4px;
+   text-align: center;
+   width: 140px;
+   cursor:pointer;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_radio + .radio-label
+{
+   height: 20px;
+   width: 20px;
+   display: inline-block;
+   padding: 0;
+   padding-right: 2px;
+   position: relative;
+   top: 5px;
+   background-position: 0px -866px;
+   background-color: transparent;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .cnc_radio:checked + .radio-label
+{
+   background-position: 0px -906px;
+   background-color: transparent;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .radio_label {
+   margin-right: 10px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .sch_add_but_con .cnc_button {
+   float:left;
+   margin: 30px 0px;
+}
+
+.adminhtml-marketplace-scheduler-index .schedular_block .weekly_day {
+   position:relative;
+   top:-5px;
+   margin-right: 60px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .weekly_day.thursday {
+   margin-right: 48px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .weekly_day.friday {
+   margin-right: 71px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .header-scheduler{
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding:10px;
+}
+
+.adminhtml-marketplace-scheduler-index .schedular_block .header-scheduler .date{
+  float:right;
+  font-family: Apercu;
+  font-weight: normal;
+  font-size: 9pt;
+  padding-top:3px;
+}
+
+.adminhtml-marketplace-scheduler-index .schedular_block h1{
+  font-family: Apercu;
+  font-weight: normal;
+  font-size: 13pt;
+  padding: 10px 0 10px 0px;
+  display:inline;
+}
+
+.adminhtml-marketplace-scheduler-index .schedular_block #container label{
+  font-family: Apercu;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .scheduleopen {
+   cursor:pointer;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .sch_close_icon{
+   background-position: 0 -1085px;
+   cursor: pointer;
+   width: 20px;
+   height: 20px;
+   text-align:center;
+   background-color:transparent;
+   border:0px;
+}
+.adminhtml-marketplace-scheduler-index .schedular_block .sch_close_icon:hover{
+   background-position: 0 -1118px;
+}
+/*********************************************** Scheduler page end ***********************************************/

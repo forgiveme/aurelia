@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.0.10.7
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Oct 30, 2015 at 09:49 AM
+- Server version: 5.5.42-cll-lve
+- PHP Version: 5.4.31
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="AureliaSkinDB" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="emails">
+                CREATE TABLE `emails` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `address` varchar(64) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=222 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="questionsdata">
+                CREATE TABLE `questionsdata` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `question1` varchar(200) NOT NULL,
+                  `question2` varchar(200) NOT NULL,
+                  `question3` varchar(200) NOT NULL,
+                  `question4` varchar(200) NOT NULL,
+                  `question5` varchar(200) NOT NULL,
+                  `question6` varchar(200) NOT NULL,
+                  `question7` varchar(200) NOT NULL,
+                  `question8` varchar(200) NOT NULL,
+                  `question9` varchar(200) NOT NULL,
+                  `question10` varchar(200) NOT NULL,
+                  `question11` varchar(200) NOT NULL,
+                  `question12` varchar(200) NOT NULL,
+                  `question13` varchar(200) NOT NULL,
+                  `question14` varchar(200) NOT NULL,
+                  `question15` varchar(200) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=554 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index',
+                  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s name, unique',
+                  `user_password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s password in salted and hashed format',
+                  `user_email` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s email, unique',
+                  PRIMARY KEY (`user_id`),
+                  UNIQUE KEY `user_name` (`user_name`),
+                  UNIQUE KEY `user_email` (`user_email`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data';
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'AureliaSkinDB'
+    -->
+    <database name="AureliaSkinDB">
+        <!-- Table emails -->
+        <table name="emails">
+            <column name="id">31</column>
+            <column name="address">antonia@aureliaskincare.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">32</column>
+            <column name="address">antonia_knox@hotmail.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">33</column>
+            <column name="address">antonia@aureliaskincare.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">34</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">35</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">36</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">37</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">38</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">39</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">40</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">41</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">42</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">43</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">44</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">45</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">46</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">47</column>
+            <column name="address">jess@aureliaskincare.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">48</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">49</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">50</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">51</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">52</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">53</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">54</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">55</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">56</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">57</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">58</column>
+            <column name="address">romeromckaydesigns@gmail.com</column>
+        </table>
+        <table name="emails">
+            <column name="id">59</column>
+            <column name="address">priya@wallacehealth.co.uk</column>
+        </table>
+        <table name="emails">
+            <column name="id">60</column>
+            <column name="address">victoria@wallacehealth.co.uk</column>
+        </table>
+        <!-- Table questionsdata -->
+        <table name="questionsdata">
+            <column name="id">0</column>
+            <column name="question1">wallace</column>
+            <column name="question2">excercise</column>
+            <column name="question3">1</column>
+            <column name="question4">regime1</column>
+            <column name="question5">never</column>
+            <column name="question6">
+</column>
+            <column name="question7">asyoung</column>
+            <column name="question8">0</column>
+            <column name="question9">-1</column>
+            <column name="question10"></column>
+            <column name="question11">1</column>
+            <column name="question12"></column>
+            <column name="question13">beauty</column>
+            <column name="question14">awake</column>
+            <column name="question15">0</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">1</column>
+            <column name="question1">wallace</column>
+            <column name="question2">coffee</column>
+            <column name="question3">2</column>
+            <column name="question4">regime2</column>
+            <column name="question5">sometimes</column>
+            <column name="question6"></column>
+            <column name="question7">natural</column>
+            <column name="question8">1</column>
+            <column name="question9">-1</column>
+            <column name="question10">travelling</column>
+            <column name="question11">33</column>
+            <column name="question12"></column>
+            <column name="question13">ingredients</column>
+            <column name="question14">wine</column>
+            <column name="question15">100</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">2</column>
+            <column name="question1">wallace</column>
+            <column name="question2">social_media</column>
+            <column name="question3">3</column>
+            <column name="question4">regime3</column>
+            <column name="question5">always</column>
+            <column name="question6"></column>
+            <column name="question7"></column>
+            <column name="question8">2</column>
+            <column name="question9">-1</column>
+            <column name="question10">work</column>
+            <column name="question11">66</column>
+            <column name="question12"></column>
+            <column name="question13">trust</column>
+            <column name="question14">sleep</column>
+            <column name="question15">-1</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">3</column>
+            <column name="question1">wallace</column>
+            <column name="question2">breakfast</column>
+            <column name="question3"></column>
+            <column name="question4">regime4</column>
+            <column name="question5"></column>
+            <column name="question6"></column>
+            <column name="question7">fresh</column>
+            <column name="question8">3</column>
+            <column name="question9">-1</column>
+            <column name="question10">children_2</column>
+            <column name="question11">-1</column>
+            <column name="question12"></column>
+            <column name="question13">null</column>
+            <column name="question14">null</column>
+            <column name="question15">-1</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">4</column>
+            <column name="question1">wallace</column>
+            <column name="question2">children</column>
+            <column name="question3"></column>
+            <column name="question4"></column>
+            <column name="question5"></column>
+            <column name="question6"></column>
+            <column name="question7"></column>
+            <column name="question8">4</column>
+            <column name="question9">-1</column>
+            <column name="question10">somethingelse</column>
+            <column name="question11">-1</column>
+            <column name="question12"></column>
+            <column name="question13">null</column>
+            <column name="question14">null</column>
+            <column name="question15">-1</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">5</column>
+            <column name="question1">wallace</column>
+            <column name="question2">house_work</column>
+            <column name="question3"></column>
+            <column name="question4"></column>
+            <column name="question5"></column>
+            <column name="question6"></column>
+            <column name="question7">thebest</column>
+            <column name="question8">5</column>
+            <column name="question9">-1</column>
+            <column name="question10">relaxing</column>
+            <column name="question11">-1</column>
+            <column name="question12"></column>
+            <column name="question13">null</column>
+            <column name="question14">null</column>
+            <column name="question15">-1</column>
+        </table>
+        <table name="questionsdata">
+            <column name="id">6</column>
+            <column name="question1">wallace</column>
+            <column name="question2">shower</column>
+            <column name="question3"></column>
+            <column name="question4"></column>
+            <column name="question5"></column>
+            <column name="question6"></column>
+            <column name="question7"></column>
+            <column name="question8">-1</column>
+            <column name="question9">-1</column>
+            <column name="question10">shopping</column>
+            <column name="question11">-1</column>
+            <column name="question12"></column>
+            <column name="question13">null</column>
+            <column name="question14">null</column>
+            <column name="question15">-1</column>
+        </table>
+        <!-- Table users -->
+        <table name="users">
+            <column name="user_id">1</column>
+            <column name="user_name">hellodemo</column>
+            <column name="user_password_hash">$2y$10$XMVTUJJNhqmAbcM0kwE1/.BIaGg8PvI4e4KUtGnmrWE7h.uVJRqVW</column>
+            <column name="user_email">hellodemo@hellodemo.com</column>
+        </table>
+    </database>
+</pma_xml_export>

@@ -1,0 +1,104 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $storePhone = Mage::getStoreConfig('general/store_information/phone'); ?>
+<?php $storeAddress = Mage::getStoreConfig('general/store_information/address'); ?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<div class="sidebar">
+        	<ul id="sidebar-nav">
+            	<li><a href="contact.php" id="sidenav-custservice">Contact Us</a></li>  
+                               
+                <!--<li><a id="sidenav-help" href="help.php">Help</a></li>  -->
+            </ul><!-- /sidebar-nav-->
+            </div>
+<div id="content-center-text">
+             <div id="text-section">
+             <h1>Contact Us</h1>
+                <p>If you need help or would like to talk to us, we'd love to hear from you. Please drop us a line below or email us <a href="mailto:customerservices@aureliaskincare.com">customerservices@aureliaskincare.com</a>
+                <?php if(!empty($storePhone)) :?>
+                   alternatively please call the Aurelia office on <?php echo $storePhone; ?> from 9am-5.30pm Monday-Friday. </p>
+                <?php endif; ?>
+                <?php if(!empty($storeAddress)) :?>
+                    <p class="address-txt"><?php echo $storeAddress; ?></p>
+                <?php endif; ?>
+             
+<form action="<?php echo $this->getFormAction(); ?>" id="contactform" method="post">
+    <div class="fieldset">
+      
+        
+                <div class="field">
+                    <label for="name" class="required"><?php echo Mage::helper('contacts')->__('Your Name*') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><?php echo Mage::helper('contacts')->__('Your Email Address*') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+<div class="fieldtext">
+                <label for="comment" class="required"><?php echo Mage::helper('contacts')->__('Your Message*') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+				<p class="required">* Required Fields</p>
+				 <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" id="form-submit"><span><span><?php echo Mage::helper('contacts')->__('SUBMIT') ?></span></span></button>
+   
+				</div>
+
+    </div>
+ 
+       
+       
+</form>
+
+
+
+</div>
+<div class="skincare-contact">
+ <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-skincare')->toHtml(); 
+?> 
+</div>
+</div>
+
+
+
+
+<div class="content-right-images">
+                 <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-images')->toHtml(); 
+?> 
+             </div>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>

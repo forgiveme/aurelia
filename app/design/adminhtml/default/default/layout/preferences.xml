@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <preferences_adminhtml_preferences_index>
+        <reference name="content">
+            <block type="preferences/adminhtml_preferences" name="preferences" />
+        </reference>
+    </preferences_adminhtml_preferences_index>
+	
+	<preferences_adminhtml_primaryconcern_index>
+        <reference name="content">
+            <block type="preferences/adminhtml_primaryconcern" name="primaryconcern" />
+        </reference>
+    </preferences_adminhtml_primaryconcern_index>
+	
+	<preferences_adminhtml_secondaryconcern_index>
+        <reference name="content">
+            <block type="preferences/adminhtml_secondaryconcern" name="secondaryconcern" />
+        </reference>
+    </preferences_adminhtml_secondaryconcern_index>
+	
+	<preferences_adminhtml_skincare_index>
+        <reference name="content">
+            <block type="preferences/adminhtml_skincare" name="skincare" />
+        </reference>
+    </preferences_adminhtml_skincare_index>
+
+   <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <action method="addTab">
+                <name>preferences_tab</name>
+                <block>preferences/adminhtml_customer_tab</block>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+</layout>

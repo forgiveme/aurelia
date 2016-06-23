@@ -1,0 +1,33 @@
+<div class="welcome-msg">
+    <h1><?php echo $this->__('Share the love!') ?></h1>
+    <p>
+    <?php echo $this->__('Enter your friends email and we will send them a welcome email and exclusive offer so they too can discover the glow of Aurelia Probiotic Skincare!') ?>
+    </p>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form name="form-validate" id="form-validate" method="POST">
+<div class="fieldset">
+    <ul class="form-list">
+    <li>
+    <div class="input-box">
+<input type="text" name="email" class="validate-email input-text required-entry" placeholder="<?php echo $this->__('Enter their email address')?>"/>
+  </div>
+ </li>
+ <li>
+ <div class="buttons-set">
+<button name="btnSubmit" id="btnSubmit" class="button">
+<span><span><?php echo $this->__('Sign  your friend up') ?></span></span>
+</button>
+</div>
+ </li>
+ </ul>
+
+
+
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate');
+//]]>
+</script>

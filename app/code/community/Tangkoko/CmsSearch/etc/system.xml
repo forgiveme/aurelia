@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Tangkoko Cms Search Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@tangkoko.com  and you will be sent
+ * a copy immediately.
+ *
+ * @category   Tangkoko
+ * @package    CmsSearch
+ * @author     Vincent Decrombecque
+ * @copyright  Copyright (c) 2012 Tangkoko sarl (http://www.tangkoko.com) 
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+	<sections>
+		<cmssearch translate="label" module="cmssearch">
+			<label>Cms search</label>
+			<tab>general</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>7000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<fuzzy translate="label">
+                    <label>Query Term Similarity</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<fuzzy_search>
+							<label>Enable Fuzzy search</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fuzzy_search>
+						<fuzzy_fields>
+							<label>Similarity Number (between 0 and 1)</label>
+		                    <frontend_type>text</frontend_type>
+							<backend_model>cmssearch/system_config_backend_serialized_fuzzy</backend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+                        </fuzzy_fields>
+					</fields>
+				</fuzzy>
+				<weight translate="label">
+                    <label>Fields Weights</label>
+					<comment>&lt;strong&gt;Important Notice:&lt;/strong&gt; The Catalog Search Index need to be rebuilt after each change.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<attributes translate="label">
+							<label>Field Weight</label>
+		                    <comment>Add page fields to manage custom weigths. By default, each attribute is included in the search with a weight equals to 1</comment>
+							<frontend_model>cmssearch/system_config_form_field_weight</frontend_model>
+							<backend_model>cmssearch/system_config_backend_serialized_weight</backend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</attributes>
+					</fields>
+				</weight>
+				<cmspage translate="label">
+                    <label>Cms Pages</label>
+					<comment>&lt;strong&gt;Important Notice:&lt;/strong&gt; The Catalog Search Index need to be rebuilt after each change.</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>30</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<page_search>
+							<label>Enable search in CMS Pages</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</page_search>
+						<page_fields>
+							<label>Fields indexed</label>
+		                    <comment>Selected fields are included in the search. Not selected fields are excluded from the search.</comment>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>cmssearch/system_config_source_field_block</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+                        </page_fields>
+					</fields>
+				</cmspage>
+				<categories translate="label">
+					<label>Categories</label>
+					<comment>&lt;strong&gt;Important Notice:&lt;/strong&gt; The Catalog Search Index need to be rebuilt after each change.</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>40</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<cat_search>
+							<label>Enable search in categories</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cat_search>
+						<cat_fields>
+							<label>Fields indexed</label>
+		                    <comment>Selected fields are included in the search. Not selected fields are excluded from the search.</comment>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>cmssearch/system_config_source_field_block</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</cat_fields>
+					</fields>
+				</categories>
+				<faq translate="label">
+					<label>Faq</label>
+					<comment>&lt;strong&gt;Important Notice:&lt;/strong&gt; The Catalog Search Index need to be rebuilt after each change.</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<faq_search>
+							<label>Enable search in faqs</label>
+		                    <comment>Select Yes to allow searching in Flagbit FAQs. The Magento extension Flagbit FAQ must be installed and activated.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</faq_search>
+						<faq_fields>
+							<label>Fields indexed</label>
+		                    <comment>Selected fields are included in the search. Not selected fields are excluded from the search.</comment>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>cmssearch/system_config_source_field_faq</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</faq_fields>
+					</fields>
+				</faq>
+				<blogs>
+					<label>Blog</label>
+					<comment>&lt;strong&gt;Important Notice:&lt;/strong&gt; The Catalog Search Index need to be rebuilt after each change.</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>60</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<blog_search>
+							<label>Enable search in blogs</label>
+		                    <comment>Select Yes to allow searching in aheadWorks Blog Posts. The Magento extension aheadWorks Blog Posts must be installed and activated.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</blog_search>
+						<blog_fields>
+							<label>Fields indexed</label>
+		                    <comment>Selected fields are included in the search. Not selected fields are excluded from the search.</comment>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>cmssearch/system_config_source_field_block</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</blog_fields>
+					</fields>
+				</blogs>
+			</groups>
+		</cmssearch>
+	</sections>
+</config>

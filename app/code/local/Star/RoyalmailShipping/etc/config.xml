@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Star_RoyalmailShipping>
+            <version>0.1.0</version>
+        </Star_RoyalmailShipping>
+    </modules>
+    <global>
+        <models>
+            <star_royalmailshipping>
+                <class>Star_RoyalmailShipping_Model</class>
+            </star_royalmailshipping>
+        </models>
+    </global>
+    <global>
+         <helpers>
+            <RoyalmailShipping>
+				<class>Star_RoyalmailShipping_Helper</class>
+			</RoyalmailShipping>
+		</helpers>
+	</global>
+    <default>
+        <carriers>
+            <royalmail>
+                <active>1</active>
+                <model>star_royalmailshipping/carrier_royalmail</model>
+                <title>Royal Mail</title>
+                <name>Tracking Only</name>
+            </royalmail>
+        </carriers>
+    </default>
+</config>

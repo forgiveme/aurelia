@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <emailpreview_adminhtml_emailpreview_index>
+        <reference name="content">
+            <block type="emailpreview/adminhtml_emailpreview" name="emailpreview" />
+        </reference>
+    </emailpreview_adminhtml_emailpreview_index>
+</layout>

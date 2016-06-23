@@ -1,0 +1,149 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * @see Mage_Page_Block_Template_Links
+ */
+?>
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+<div class="desktop" id="nav-floater">
+<div id="main-nav-top">
+&nbsp;
+</div>
+<ul class="blockeasing" id="main-nav">
+    <li class="nav-dropdown"><a id="nav-about" title="ABOUT" href="/about">About</a>
+    	<ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+            <li id="empty1"></li>
+            <li><a href="/about">Philosophy &amp; Principles</a></li>
+            <li><a href="/our-team">Our Team</a></li>
+            <li><a href="/a-z-ingredients">A-Z Ingredients</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/biography">Biography</a></li>
+            <li><a href="/founders-letter">Letter from the Founder</a></li>
+         </ul>
+    </li>
+    <li class="nav-dropdown"><a id="nav-productws" title="PRODUCTS" href="/products.html">Products</a>
+    <ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+    	<li id="empty2"></li>
+    	 <li><a href="/products.html">Products</a></li>
+         <li><a href="/products/aurelia-miracle-cleanser.html">Cleanser</a></li>
+         <li><a href="/products/cell-revitalise-day-moisturiser.html">Day Moisturiser</a></li>
+         <li><a href="/products/cell-revitalise-night-moisturiser.html">Night Moisturiser</a></li>
+         <li><a href="/products/revitalise-and-glow-serum.html">Serum</a></li>
+         <li><a href="/products/cell-repair-night-oil.html">Facial Oil</a></li>
+          <li><a href="/products/monday-to-sunday-bamboo-muslins.html">Muslins</a></li>
+    </ul>
+   </li>
+    
+    
+    <li class="nav-dropdown"><a id="nav-science" title="THE SCIENCE" href="/science-qa">The Science</a>
+    	<ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+            <li id="empty3"></li>
+            <!--<li><a href="animation-video.php">Animation Video</a></li>-->
+            <li><a href="/science-qa">Explaining the Science Q&amp;A</a></li>
+            <li><a href="/graphical-data">Scientific Data</a></li>
+         </ul></li>
+    <li class="nav-dropdown"><a title="AURELIA TV" id="nav-tv" href="/aurelia-tv">Aurelia TV</a>
+    	<ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+            <li id="empty4"></li>
+            <li><a title="Aurelia TV - Your skin - a year in a day" href="http://www.youtube.com/v/ELreMrZwKpA?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video1">
+Your Skin - A Year In A Day</a></li>
+            
+            <li> <a href="http://www.youtube.com/v/ht_u4Y03pZA?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video2">
+Behind The Scenes</a></li>
+           
+            <li><a title="Aurelia TV - Botanical African Research Trip" href="http://www.youtube.com/v/CPcsYA8-9bo?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video3">
+Botanical African Research</a></li>
+            
+            <li> <a href="http://www.youtube.com/v/3jg-htbRgVk?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video4">Cleansers</a></li>
+            
+            <li><a href="http://www.youtube.com/v/NA7VVOOvFRE?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video5">
+Day Moisturiser</a></li>
+           
+            <li><a href="http://www.youtube.com/v/BYBI277g4xU?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video6">Night Moisturiser</a></li>
+           
+           <li><a href="http://www.youtube.com/v/cyHdDS-Mc4g?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video7">Serums</a></li>
+           
+           <li><a href="http://www.youtube.com/v/nfmT-QSLXiA?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" class="fancyYoutube" id="video8">Night Oil</a></li>
+        </ul></li>
+    <li class="nav-dropdown"><a title="PRESS" id="nav-press" href="/press-coverage">Press</a>
+    	<ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+            <li id="empty5"></li>                                    
+            <li><a href="/press-coverage">Press Articles</a></li>
+            <li><a href="/blog">Blogger Articles</a></li>
+            <li><a rel="external" href="http://31.222.169.29/media/pdf/aurelia_probiotic_skincare_press.pdf" target="_blank">Press Pack</a></li>
+         </ul>
+    <li class="nav-dropdown"><a title="BLOG" href="http://blog.aureliaskincare.com">Blog</a>
+    	<ul class="subnav" style="height: 0px; opacity: 0; overflow: hidden;">
+            <li id="empty5"></li>                                    
+            <li><a href="http://blog.aureliaskincare.com">Blog</a></li>
+            <li><a href="http://www.facebook.com/AureliaProbioticSkincare" rel="external" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com/AureliaSkincare" rel="external" target="_blank">Twitter</a></li>                                    <li><a href="http://www.youtube.com/user/AureliaSkincare" rel="external" target="_blank">YouTube</a></li> 
+           
+            
+            
+         </ul></li>
+    <li><a id="nav-contact" title="CONTACT" href="/contacts">Contact</a></li>
+</ul>
+<div id="shopping-bag">
+            <?php foreach($_links as $_link): ?>
+        <?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+            <?php echo $_link->toHtml() ?>
+        <?php else: ?>
+           <a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+        <?php endif;?>
+    <?php endforeach; ?>
+    <a class="shopping-bag-link" href="/checkout/cart/">SHOPPING BAG</a>
+</div>
+</div>
+<?php endif; ?>
+
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+<div class="mobile" id="nav-floater">
+<div id="main-nav-top">
+ <h1 class="logo"><strong>Aurelia Probiotic Skincare Ltd</strong><a class="logo" title="Aurelia Probiotic Skincare Ltd" href="http://www.aureliaskincare.com/"><img alt="Aurelia Probiotic Skincare Ltd" src="http://www.aureliaskincare.com/skin/frontend/default/star-aurelia/images/aurelia-logo.jpg"></a></h1>
+ <div id="shopping-bag">
+ 		<a class="search-aurelia">SEARCH</a>
+            <?php foreach($_links as $_link): ?>
+        <?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+            <?php echo $_link->toHtml() ?>
+        <?php else: ?>
+           <a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+        <?php endif;?>
+    <?php endforeach; ?>
+    <a class="shopping-bag-link" href="/checkout/cart/">SHOPPING BAG</a>
+</div>
+
+</div>
+
+
+</div>
+<?php endif; ?>
+
+

@@ -1,0 +1,243 @@
+<?php
+    $api_url = $this->getData('api_url');
+    $state_mapping = $this->getData('state_mapping');
+    $status_mapping = $this->getData('status_mapping');
+    $mirakle_status = $this->getData('mirakle_status');
+    $order_acceptance = $this->getData('order_acceptance');
+    $magento_order_status = $this->getData('magento_order_status');
+    $magento_order_states = $this->getData('magento_order_states');
+    $carrier_mapping = $this->getData('carrier_mapping');
+    $carriers = $this->getData('carriers');
+    $magento_carriers = $this->getData('magento_carriers');
+    $url_validation = $this->getData('config_valid_data');
+    $exported = $this->getData('exported');
+    $product_admin_url = $this->getData('product_admin_url');
+    $has_products = $this->getData('has_products');
+    $magento_config_errors = $this->getData('magento_configuration_errors');
+    $config_post = $this->getData('config_post');
+
+?>
+
+<div class = "login_container">
+
+  <div class="loginContainer">
+    <div class="style-logo cnc_marketplace_sprite_icons"></div>
+  </div>
+
+  <div class = "clear"></div>
+    <?php if(count($magento_config_errors) > 0){ ?>
+        <div class="config_messages">
+            <ul class="messages">
+                <?php foreach($magento_config_errors as $error) { ?>
+                    <li class="error-msg">
+                        <ul>
+                            <li><span><?php echo($error); ?></span></li>
+                        </ul>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    <?php }  ?>
+    <?php if ($config_post != true) { ?>
+        <div class="config_messages">
+        <?php echo $this->getMessagesBlock()->getGroupedHtml();?>
+        </div>
+    <?php } ?>
+
+    <div class="loginContainer">
+
+    <?php if ($has_products) { ?>
+
+      <h1>Step 1 of 3</h1>
+
+      <h1>You have products allocated to style.com</h1>
+      <p>Go to the <a href="<?php echo $product_admin_url; ?>">product manager</a> to review your selection.</p>
+
+    <?php } else { ?>
+
+      <h1>Step 1 of 3</h1>
+
+      <h1>No products are allocated to style.com</h1>
+      <p>Add them in the <a href="<?php echo $product_admin_url; ?>">product manager</a>.</p>
+
+    <?php } ?>
+
+  </div>
+
+  <div class = "clear"></div>
+
+  <div class="loginContainer">
+
+    <?php if ($has_products) { ?>
+
+      <h1>Step 2 of 3</h1>
+      <h2>Download the Mirakl CSV</h2>
+
+      <form action = "<?php echo $this->getExportAction(); ?>" method = "post">
+        <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+        <div>
+          <input type = "submit" class="cnc_button" value = "Download" />
+        </div>
+      </form>
+
+    <?php } else { ?>
+
+      <h1>Step 2 of 3</h1>
+      <h2>Download the Mirakl CSV...</h2>
+      <p>...once you've completed step 1 of 3 above.</p>
+
+    <?php } ?>
+
+    <p>Follow the guide to map your products in Mirakl using this CSV.</p>
+
+  </div>
+
+  <div class = "clear"></div>
+
+  <fieldset <?php if( !$has_products) { echo "disabled='disabled'"; } else { echo ''; } ?> style="border: none; margin: 0; padding: 0;">
+
+    <form method="post" name = "api_url_crendentials" onsubmit = "return Cn_Cmi_FormManValidation('classValidation')"  action="<?php echo $this->getFormAction(); ?>">
+        <div class="vcenter">
+            <div id="login_messages">
+                <?php if ($config_post == true) {echo $this->getMessagesBlock()->getGroupedHtml();} ?>
+                <ul class="messages cnc_hide error_msg_none"><li class="error-msg"><ul><li><span class= "error_msg_block"></span></li></ul></li></ul>
+            </div>
+            <div class="loginContainer">
+
+                <h1>Step 3 of 3</h1>
+
+                <div class="login-field">
+                    <div>
+                        <label for="inputUsername" class="control-label url-field">URL<span class="req" >*</span></label>
+                        <div class="login_input_field">
+                            <input type="text" name = "credentials[url]" data-attribute="url" class="cnc_marketplace_text_box classValidation" id="url" value = "<?php echo $api_url->url; ?>">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="inputPassword" class="control-label">API Key<span class="req">*</span></label>
+                        <div class="login_input_field">
+                            <input type="text" name = "credentials[api_key]" data-attribute="input" class="cnc_marketplace_text_box classValidation" id="api" value = "<?php echo $api_url->api_key; ?>">
+                        </div>
+                    </div>
+                    <?php if($url_validation == '1') { ?>
+                    <div>
+                        <label for="inputUsername" class="control-label label-accept">Acceptance<span class="req">*</span></label>
+                        <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                            <select class="cnc_marketplace_select_box" onchange = "Cn_Cmi_toggleAuto(this.value)" name = "accept" id="sel1">
+                            <option value = "0" <?php if($order_acceptance == '0' || $order_acceptance == '') { echo "selected"; } ?>>Manual</option>
+                            <option value = "1" <?php if($order_acceptance == '1') { echo "selected"; } ?>>Automation</option>
+                            </select>
+                        </div>
+                    </div>
+                    <?php }?>
+                </div>
+                <?php if($url_validation == '1') { ?>
+                    <?php if($order_acceptance == '1') { $classname = "classValidation"; } else { $classname = ''; }  ?>
+                    <div id = "order_automatic" <?php if($order_acceptance == '1') { echo "style='display:block;'"; } ?>>
+                        <fieldset class="order_automatic">
+                            <legend>State Mapping</legend>
+                            <div>
+                                  <div>
+                                    <div class="label_floater">Shipping confirmation</div>
+                                        <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons floater automation_selectbox">
+                                            <select name = "ship_state_mapping" class="cnc_marketplace_select_box <?php echo $classname; ?>" data-attribute="select" id="shippingInfo">
+                                                <option value = "">-Select-</option>
+                                                <?php
+                                                    echo $this->getOptionsStateMapping($magento_order_states, $state_mapping->ship_state_mapping);
+                                                ?>
+                                            </select>
+                                        </div>
+                                  </div>
+                                <div>
+                                    <div class="label_floater">Tracking Details</div>
+                                    <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons floater automation_selectbox">
+                                        <select name = "track_state_mapping" data-attribute="select" class="cnc_marketplace_select_box <?php echo $classname; ?>" id="trackingDetails">
+                                            <option value = "">-Select-</option>
+                                            <?php
+                                                    echo $this->getOptionsStateMapping($magento_order_states, $state_mapping->track_state_mapping);
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="order_automatic">
+                            <legend>Status Mapping</legend>
+                            <div>
+                                <?php foreach($mirakle_status as $key=>$mirakle_state) {
+                                    if($mirakle_state != 'STAGING' && $mirakle_state != 'WAITING_ACCEPTANCE' && $mirakle_state != 'WAITING_DEBIT' && $mirakle_state != 'WAITING_DEBIT_PAYMENT'  && $mirakle_state != 'TO_COLLECT')
+                                    {
+                                        ?>
+                                        <div>
+                                            <div class="label_floater"><?php echo $mirakle_state; ?><span class="req">*</span></div>
+                                                <input type = "hidden" name = "order_status_label[]" value = "<?php echo $mirakle_state; ?>" />
+                                                <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons floater automation_selectbox">
+                                                    <select id = "<?php echo 'js_validate_'.$mirakle_state; ?>" name = "status_mapping[]" class="cnc_marketplace_select_box <?php echo $classname; ?>" data-attribute="select">
+                                                        <option value = "">-Select-</option>
+                                                        <?php foreach($magento_order_status as $magento_order_state) { ?>
+                                                            <option <?php if(isset($status_mapping[$key]->$mirakle_state) && $status_mapping[$key]->$mirakle_state == $magento_order_state['status']) { echo 'selected'; } ?> value = "<?php echo $magento_order_state['status']; ?>"><?php echo $magento_order_state['label']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                          </div>
+                                        <?php
+                                    }
+                                    else{
+                                    ?>
+                                        <div class="hidden_mirakle">
+                                            <div class="label_floater"><?php echo $mirakle_state; ?><span class="req">*</span></div>
+                                                <input type = "hidden" name = "order_status_label[]" value = "<?php echo $mirakle_state; ?>" />
+                                                <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons floater automation_selectbox">
+                                                    <select id = "<?php echo 'js_validate_'.$mirakle_state; ?>" name = "status_mapping[]" class="custom-selectfield">
+                                                        <option value = "">-Select-</option>
+                                                        <?php foreach($magento_order_status as $magento_order_state) { ?>
+                                                            <option <?php if(isset($status_mapping[$key]->$mirakle_state) && $status_mapping[$key]->$mirakle_state == $magento_order_state['status']) { echo 'selected'; } ?> value = "<?php echo $magento_order_state['status']; ?>"><?php echo $magento_order_state['label']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                          </div>
+                                    <?php } ?>
+                                <?php } ?>
+                             </div>
+
+                        </fieldset>
+                        <fieldset class="order_automatic">
+                            <legend>Carriers Mapping</legend>
+                            <div>
+                                <?php foreach($magento_carriers as $key=>$magentoCarrier) { ?>
+                                <div>
+                                    <div class="label_floater"><?php echo $magentoCarrier['label']; ?><span class="req">*</span></div>
+                                        <input type = "hidden" name = "magento_carrier[]" value = "<?php echo $magentoCarrier['value']; ?>" />
+                                        <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons floater automation_selectbox">
+                                            <select class="cnc_marketplace_select_box <?php echo $classname; ?>" id = "shipping_carrier_<?php echo $key; ?>" name = "mirakle_carrier[]" data-attribute="select">
+                                                <option value = "">-Select-</option>
+                                                <?php
+                                                foreach($carriers->carriers as $carrier)
+                                                {
+                                                    ?>
+                                                        <option <?php if(isset($carrier_mapping[$key]->$magentoCarrier['value']) && $carrier_mapping[$key]->$magentoCarrier['value'] == $carrier->code) { echo 'selected'; } ?> value ="<?php echo $carrier->code; ?>"><?php echo $carrier->label; ?></option>;
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                  </div>
+                                <?php } ?>
+                            </div>
+                        </fieldset>
+                    </div>
+                <?php } ?>
+                <div>
+                    <input type = "submit" class="cnc_button" id="loginsubmit" value = "Submit" />
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+    </form>
+    <div class = "clear"></div>
+    <div class="loginContainer">
+        Style.com Extension Version: <b><?php echo Mage::helper('marketplace/util')->getCncMarketPlacePluginVersion(); ?></b>
+    </div>
+
+  </fieldset>
+</div>

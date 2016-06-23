@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    
+    <promotion_index_index>
+    <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>Aurelia Loyalty</title></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="promotion/promotion" name="promotion" template="promotion/promotion.phtml" />
+        </reference>
+
+        <reference name="left">
+          <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+    </promotion_index_index>
+    
+    <promotion_index_referafriend>
+    <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>Refer A Friend</title></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="refer_a_friend" template="promotion/referafriend.phtml" />
+        </reference>
+
+        <reference name="left">
+          <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+    </promotion_index_referafriend>
+<!--customer_account translate="label">
+<reference name="customer_account_navigation">
+    <action method="addLink" translate="label" module="promotion"><name>promotion-loyalty</name><path>promotion/index/</path><label>Aurelia Loyalty</label></action>
+    </reference>
+ </customer_account-->
+</layout> 

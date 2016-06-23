@@ -1,0 +1,8 @@
+RewriteEngine  on
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{HTTPS} on
+	RewriteRule .* http://%{HTTP_HOST}%{REQUEST_URI}
+</IfModule>
+
+RewriteRule ^$ index.html [L]

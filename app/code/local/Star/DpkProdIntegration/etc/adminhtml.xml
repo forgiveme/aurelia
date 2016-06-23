@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<dpk_product_import_tab translate="title" module="DpkProdIntegration">
+											<title>DalePak Product Integration Details Section</title>
+											<sort_order>0</sort_order>
+										</dpk_product_import_tab>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

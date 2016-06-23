@@ -1,0 +1,36 @@
+<?php
+
+	$videos = $this->getVideos();
+
+?>
+
+<div class="video__header">
+<div class="video__header--left">
+<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>/wysiwyg/video-header-placeholder.jpg" alt="" />
+</div>
+<div clas="video__header--right">&nbsp;</div>
+</div>
+<div class="videos">
+
+
+<?php
+
+foreach ($videos as $video){
+
+?>
+
+<div class="video">
+<div class="video__thumbnail">
+<a href="#" data-video-src="<?php echo $video->getVideoLink(); ?>" title="Play Video"><img src="<?php if (strlen($video->getThumbnail()) > 1){ } else { echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>wysiwyg/video-placeholder.jpg" <?php } ?> alt="Play Video" /></a>
+</div>
+<div class="video__body">
+<h3><?php echo $video->getVideoName(); ?></h3>
+<p><?php echo $video->getVideoDescription(); ?></p>
+</div>
+</div>
+<?php
+
+}
+
+?>
+</div>

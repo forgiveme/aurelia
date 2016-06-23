@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Star_ThirteenTenCarrier>
+            <version>0.1.0</version>
+        </Star_ThirteenTenCarrier>
+    </modules>
+    <global>
+         <helpers>
+            <thirteentencarrier>
+				<class>Star_ThirteenTenCarrier_Helper</class>
+            </thirteentencarrier>
+		</helpers>
+        <models>
+            <thirteentencarrier>
+                <class>Star_ThirteenTenCarrier_Model</class>
+            </thirteentencarrier>
+        </models>
+    </global>
+    <default>
+        <carriers>
+            <ten13>
+                <active>1</active>
+                <model>thirteentencarrier/carrier_thirteenten</model>
+                <title>13Ten</title>
+                <name>Tracking Only</name>
+            </ten13>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Stardigital_Ordercountry>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Stardigital_Ordercountry>
+    </modules>
+</config>

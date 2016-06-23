@@ -1,0 +1,139 @@
+<?php $storeUrl = str_replace("https", "http", Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)); ?>
+<?php $preference = $this->getPreferences(); ?>
+<?php $skintoolData = $preference->getData('skintools_data'); ?>
+<?php if(count($skintoolData[0]) == 0) { ?>
+	<div class="personal-sec">
+		<h1><?php echo $this->__('A PERSONALISED SKINCARE CONSULTION JUST FOR YOU');?></h1>  
+		<a href="<?php echo Mage::getBaseUrl(); ?>/skintools/" target="_blank"><img class="skintoolimg" align="right" src="<?php echo $this->getSkinUrl('images/skinare-tool-img.jpg') ?>" /></a>
+		<p><?php echo $this->__('Do you want to get the glow back into your skin or are you new to Aurelia and need some help with where to begin?');?></p>
+		<p>
+			<?php echo $this->__('Discover the products we think your skin will love alongside our tailored lifestyle advice and top tips to revolutionise your skincare routine.');?>
+			<p><?php echo $this->__('Complete the Aurelia Skin Tool, taking just 5  minutes of your time and receive £10 off your must have products.');?></p>
+		</p>
+	</div>
+	<div class="start-btn">
+		<a href="<?php echo $storeUrl; ?>skintools/" target="_blank"><?php echo $this->__('Start Your Consultation');?></a>
+	</div>
+<?php } else { ?>
+	<div class="personal-sec">
+		<h1><?php echo $this->__('A PERSONALISED SKINCARE CONSULTION JUST FOR YOU'); ?></h1>
+		<a href="<?php echo $storeUrl; ?>skintools/" target="_blank"><img src="<?php echo $this->getSkinUrl('images/skinare-tool-img1.jpg') ?>" /></a>
+	</div>
+	<div class="start-btn">
+		<a target="_blank" href="<?php echo $storeUrl; ?>/skintools/response.html<?php echo $skintoolData[0]['request_uri']; ?>&preview=only" class="left-btn" ><?php echo $this->__('View your results'); ?></a><a target="_blank" href="http://skintools.newsoftdemo.info/" class="right-btn"><?php echo $this->__('retake the tool'); ?></a>
+	</div>
+<?php } ?>
+<div class="welcome-msg">
+    <h1><?php echo $this->__('YOUR FEEDBACK AND SUGGESTIONS') ?></h1>
+    <p>
+    <?php echo $this->__('As a new young company we value your insight and support. Please take a few moments to share your suggestions as it helps us to decide on what new addition we can bring to the Aurelia Probiotic Skincare range.') ?>
+    </p>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $preference=$this->getPreferences()?>
+<form name="form-validate" id="form-validate" method="POST" action="<?php echo $this->getUrl('preferences/index/post')?>">
+    <div class="preferences-left edit">
+        <div class="fieldset">
+            <ul class="form-list">
+                <!-- <li>
+                    <label for="primary_concern" class="required"><em>*</em><?php echo $this->__('Your primary skin concern') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->getPrimaryConcerns()?>
+                    </div>
+                </li>
+                <li>
+                    <label for="secondary_concern" class="required"><em>*</em><?php echo $this->__('Your secondary skin concern') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->getSecondaryConcerns()?>
+                    </div>
+                </li> -->
+                <li>
+                    <label for="aurelia_feedback" ><?php echo $this->__('Please share any feedback with us on the Aurelia range and any products you would love to add!') ?></label>
+                    <div class="input-box">
+                    <textarea name="aurelia_feedback"><?php echo $preference->getAureliaFeedback()?></textarea>
+                    </div>
+                </li>
+                <li class="dotxt">
+                    <label >
+                    <span class="do"><?php echo $this->__('DO YOU FIND LABELS HARD TO READ?') ?><span>
+                    <br/>
+                    <?php echo $this->__('We include stickers with our Moisturisers and Rose Mask to help you quickly identify your product') ?>
+                    </label>
+                    <div class="input-box">
+					<ul>
+					<li>
+                    <div class="checker">
+                    <span <?php if($preference->getHasGlasses()=="1") { echo "class='checked'"; } ?>>
+                    <input type="checkbox" id="has_glasses" name="has_glasses" value="1" <?php if($preference->getHasGlasses()=="1") { echo " checked='checked' "; echo "class='focus'"; } ?>/>
+                    </span>
+                        </div>
+                    <label for="has_glasses"><?php echo $this->__('Yes please');?></label>
+					</li>
+					</ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="preferences-right edit">
+        <div class="fieldset">
+            <ul class="form-list">
+				<li>
+                    <label for="other_brands" ><?php echo $this->__('What other skincare brands or products do you love?') ?></label>
+                    <div class="input-box">
+                    <textarea id="other_brnds" name="other_brands"><?php echo $preference->getOtherBrands()?></textarea>
+                    </div>
+                </li>
+                <!-- <li>
+                    <label for="skin_care"><?php echo $this->__('What is important to you when choosing your skincare.') ?></label>
+                    <em>(<?php echo $this->__('please select 3');?>)</em>
+                    <div class="input-box">
+                    <div id="advice-validate-checkbox-len-alert" class="validation-advice no-display"><?php echo $this->__('please select at least 3.');?></div>
+                    <?php
+                    $i=0;
+		   $skincares=explode(',',$preference->getSkinCares());
+                    foreach($this->getSkinCares() as $option) {
+		   $checked=(in_array($option['value'],$skincares));
+		     ?>
+                    <div class="checker-main">
+                    <div class="checker">
+                    <span <?php if($checked) { echo "class='checked'"; } ?>>
+                        <input type="checkbox" id="skin_care_<?php echo $i?>" name="skin_care[]" value="<?php echo $option['value']?>" <?php if($checked)  { echo " checked='checked' "; echo "class=' validate-checkbox-len focus'"; } else { echo "class='validate-checkbox-len'";} ?>/>
+                    </span>
+                    </div>
+                    <label for="skin_care_<?php echo $i?>"><?php echo $option['label']?></label>
+                    </div>
+                    <?php $i++; } ?>
+                    </div>
+                </li> -->
+                <li>
+                    <button class="button"><span><span><?php echo $this->__('SAVE MY FEEDBACK')?></span></span></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="please-txt">
+	<?php echo $this->__('Please call the Aurelia office if you have any questions or to discuss any concerns you might have. We are available from Monday - Friday 9am-5:30pm GMT +44(0)207 751 0022 or email us at info@aureliaskincare.com');?></a>
+	</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+      jQuery("input[type=checkbox]" ).click(function() {
+      jQuery(this).toggleClass( "focus" );
+      jQuery(this).parent().toggleClass( "checked" );
+    });
+Validation.add('validate-checkbox-len', '&nbsp;', function(v) {
+    var r=($$('.validate-checkbox-len:checked').length == 3);
+        if(r)
+        {
+          jQuery('#advice-validate-checkbox-len-alert').addClass('no-display');
+        }
+        else
+        {
+         jQuery('#advice-validate-checkbox-len-alert').removeClass('no-display');
+        }
+        return r;
+})
+    var dataForm = new VarienForm('form-validate');
+//]]>
+</script>

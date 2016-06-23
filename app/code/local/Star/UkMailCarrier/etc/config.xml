@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Star_UkmailCarrier>
+            <version>0.1.0</version>
+        </Star_UkmailCarrier>
+    </modules>
+    <global>
+         <helpers>
+            <ukmailcarrier>
+				<class>Star_UkMailCarrier_Helper</class>
+			</ukmailcarrier>
+		</helpers>
+        <models>
+            <ukmailcarrier>
+				<class>Star_UkMailCarrier_Model</class>
+            </ukmailcarrier>
+        </models>
+	</global>
+    <default>
+        <carriers>
+            <ukmail>
+                <active>1</active>
+                <model>ukmailcarrier/carrier_ukmail</model>
+                <name>Tracking Only</name>
+                <title>UK Mail</title>
+            </ukmail>
+        </carriers>
+    </default>
+</config>

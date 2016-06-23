@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<dpk_prod_integration_tab translate="label" module="DpkProdIntegration">
+            <label>Dalepak Product Integration</label>
+            <sort_order>150</sort_order>
+        </dpk_prod_integration_tab>
+	</tabs>
+	<sections>
+		<dpk_product_import_tab translate="label" module="DpkProdIntegration">                    
+			<label>Dalepak Product Integration Details</label>
+			<tab>dpk_prod_integration_tab</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>0</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>            
+			<groups>
+				<account_details translate="label"> 
+					<label>Account Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<company_name translate="label">
+							<label>Company Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your Company Name i.e. Amazon</comment>
+						</company_name>				
+					</fields>
+				</account_details>
+				<shipping_details translate="label"> 
+					<label>Shipping Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<shipping_int_carrier1 translate="label">
+							<label>1st Carrier - Internal Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your internal shipping carrier name</comment>
+						</shipping_int_carrier1>
+						<shipping_carrier1 translate="label">
+							<label>1st Carrier - Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier name</comment>
+						</shipping_carrier1>
+						<shipping_service1 translate="label">
+							<label>1st Carrier - Service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier service</comment>
+						</shipping_service1>
+						<delivery_exp_days1>
+							<label>1st Carrier - Expected Delivery</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Number of days expected for delivery</comment>
+						</delivery_exp_days1>
+						<delivery_cutoff_time1>
+							<label>1st Carrier - Delivery Cutoff Time</label>
+							<frontend_type>time</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Time a customer has to order by to start
+							processing that day. If ordered after this time, processing
+							will start next day.
+							</comment>
+						</delivery_cutoff_time1>
+						<delivery_days1>
+							<label>1st Carrier - Delivery Days</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>star_dpkprodintegration/system_config_source_dropdown_daysofweek</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Days available for delivery</comment>
+						</delivery_days1>
+						<shipping_int_carrier2 translate="label">
+							<label>2nd Carrier - Internal Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your internal shipping carrier name</comment>
+						</shipping_int_carrier2>
+						<shipping_carrier2 translate="label">
+							<label>2nd Carrier - Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier name</comment>
+						</shipping_carrier2>
+						<shipping_service2 translate="label">
+							<label>2nd Carrier - Service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier service</comment>
+						</shipping_service2>
+						<delivery_exp_days2>
+							<label>2nd Carrier - Expected Delivery</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Number of days expected for delivery</comment>
+						</delivery_exp_days2>
+						<delivery_cutoff_time2>
+							<label>2nd Carrier - Delivery Cutoff Time</label>
+							<frontend_type>time</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Time a customer has to order by to start
+							processing that day. If ordered after this time, processing
+							will start next day.
+							</comment>
+						</delivery_cutoff_time2>
+						<delivery_days2>
+							<label>2nd Carrier - Delivery Days</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>star_dpkprodintegration/system_config_source_dropdown_daysofweek</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Days available for delivery</comment>
+						</delivery_days2>
+						<shipping_int_carrier3 translate="label">
+							<label>3rd Carrier - Internal Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your internal shipping carrier name</comment>
+						</shipping_int_carrier3>
+						<shipping_carrier3 translate="label">
+							<label>3rd Carrier - Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier name</comment>
+						</shipping_carrier3>
+						<shipping_service3 translate="label">
+							<label>3rd Carrier - Service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier service</comment>
+						</shipping_service3>
+						<delivery_exp_days3>
+							<label>3rd Carrier - Expected Delivery</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Number of days expected for delivery</comment>
+						</delivery_exp_days3>
+						<delivery_cutoff_time3>
+							<label>3rd Carrier - Delivery Cutoff Time</label>
+							<frontend_type>time</frontend_type>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Time a customer has to order by to start
+							processing that day. If ordered after this time, processing
+							will start next day.
+							</comment>
+						</delivery_cutoff_time3>
+						<delivery_days3>
+							<label>3rd Carrier - Delivery Days</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>star_dpkprodintegration/system_config_source_dropdown_daysofweek</source_model>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Days available for delivery</comment>
+						</delivery_days3>
+						<shipping_int_carrier4 translate="label">
+							<label>4th Carrier - Internal Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>19</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your internal shipping carrier name</comment>
+						</shipping_int_carrier4>
+						<shipping_carrier4 translate="label">
+							<label>4th Carrier - Name</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier name</comment>
+						</shipping_carrier4>
+						<shipping_service4 translate="label">
+							<label>4th Carrier - Service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>21</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Enter your shipping carrier service</comment>
+						</shipping_service4>
+						<delivery_exp_days4>
+							<label>4th Carrier - Expected Delivery</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>22</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Number of days expected for delivery</comment>
+						</delivery_exp_days4>
+						<delivery_cutoff_time4>
+							<label>4th Carrier - Delivery Cutoff Time</label>
+							<frontend_type>time</frontend_type>
+							<sort_order>23</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Time a customer has to order by to start
+							processing that day. If ordered after this time, processing
+							will start next day.
+							</comment>
+						</delivery_cutoff_time4>
+						<delivery_days4>
+							<label>4th Carrier - Delivery Days</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>star_dpkprodintegration/system_config_source_dropdown_daysofweek</source_model>
+							<sort_order>24</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Days available for delivery</comment>
+						</delivery_days4>		
+					</fields>
+				</shipping_details>
+				<local_server_details translate="label">
+					<label>PSV Local Server Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<local_psv_outbox_dir translate="label">
+							<label>Local PSV Order Outbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV order files on the local server</comment>
+						</local_psv_outbox_dir>
+						<local_ack_inbox_dir translate="label">
+							<label>Local PSV Order Acknowledgement Inbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV order acknowledgement files received on the local server</comment>
+						</local_ack_inbox_dir>
+						<no_ack_hour_limit translate="label">
+							<label>PSV Order Acknowledgement Time Limit</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<validate>validate-digits</validate>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Number of hours to allow for acknowledgement of a sent PSV order</comment>
+						</no_ack_hour_limit>
+						<no_ack_email translate="label">
+							<label>No PSV Order Acknowledgement Reporting Email Address(es)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Who to report the non acknowledgement of a PSV Order, after the time limit has expired. Comma separated</comment>
+						</no_ack_email>
+						<local_dsp_inbox_dir translate="label">
+							<label>Local PSV Despatch Inbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV despatch files received on the local server</comment>
+						</local_dsp_inbox_dir>
+						<local_stk_inbox_dir translate="label">
+							<label>Local PSV Stock Updates Inbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV stock update files received on the local server</comment>
+						</local_stk_inbox_dir>
+					</fields>		
+				</local_server_details>
+				<remote_server_details translate="label"> 
+					<label>PSV Remote Server Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<psv_server_ip translate="label">
+							<label>Server IP</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Server IP for Psv transfer</comment>
+						</psv_server_ip>
+						<psv_server_user translate="label">
+							<label>Server Username</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Server Username for Psv transfer</comment>
+						</psv_server_user>
+						<psv_server_pword translate="label">
+							<label>Server Password</label>
+							<frontend_type>password</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Server Password for Psv transfer</comment>
+						</psv_server_pword>
+						<remote_psv_inbox_dir translate="label">
+							<label>Remote PSV Order Inbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location to place order PSV files on the remote server</comment>
+						</remote_psv_inbox_dir>
+						<remote_ack_outbox_dir translate="label">
+							<label>Remote PSV Acknowledgement Outbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV Acknowledgement files to pickup from the remote server</comment>
+						</remote_ack_outbox_dir>
+						<remote_ack_proc_dir translate="label">
+							<label>Remote PSV Acknowledgement Processed Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location to move processed PSV Acknowledgement files on the remote server</comment>
+						</remote_ack_proc_dir>
+						<remote_dsp_outbox_dir translate="label">
+							<label>Remote PSV Despatched Outbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV Despatch files to pickup from the remote server</comment>
+						</remote_dsp_outbox_dir>
+						<remote_dsp_proc_dir translate="label">
+							<label>Remote PSV Despatched Processed Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location to move processed PSV Despatch files on the remote server</comment>
+						</remote_dsp_proc_dir>
+						<remote_stk_outbox_dir translate="label">
+							<label>Remote PSV Stock Updates Outbox Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location of PSV Stock Update files to pickup from the remote server</comment>
+						</remote_stk_outbox_dir>
+						<remote_stk_proc_dir translate="label">
+							<label>Remote PSV Stock Updates Processed Folder</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Location to move processed PSV Stock Update files on the remote server</comment>
+						</remote_stk_proc_dir>
+					</fields>
+				</remote_server_details>
+				<import_details translate="label"> 
+					<label>Product Import Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<image_prefix translate="label">
+							<label>Image Prefix</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment> i.e RKW_</comment>
+						</image_prefix>
+						<magento_dir translate="label">
+							<label>Path to Magento Directory</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e. /var/www/html/</comment>
+						</magento_dir>
+						<scripts_dir translate="label">
+							<label>Path to Scripts Directory</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e. /var/www/scripts/</comment>
+						</scripts_dir>
+						<min_qty translate="label">
+							<label>Minimum Product Qty Required</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e 10</comment>
+						</min_qty>
+					</fields>
+				</import_details>
+				<magento_details translate="label"> 
+					<label>Magento Details</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<mysql_user translate="label">
+							<label>MySQL Username</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						<comment>i.e username</comment>
+						</mysql_user>
+						<mysql_pword translate="label">
+							<label>MySQL Password</label>
+							<frontend_type>password</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e pa55word</comment>
+						</mysql_pword>
+						<mysql_host translate="label">:1
+							<label>MySQL Host</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e localhost</comment>
+						</mysql_host>
+						<mysql_db translate="label">
+							<label>MySQL Database</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>i.e databasename</comment>
+						</mysql_db>
+					</fields>
+				</magento_details>
+			</groups>
+		</dpk_product_import_tab>
+	</sections>
+</config>

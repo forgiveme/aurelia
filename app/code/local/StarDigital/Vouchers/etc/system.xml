@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <silverpop translate="label" module="vouchers">
+            <label>Silverpop</label>
+            <tab>service</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>102</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <vouchers translate="label">
+                    <label>Silverpop (Vouchers)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Whether to enable or disable silverpop functionality.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <spop_host translate="label comment">
+                            <label>Silverpop Host</label>
+                            <comment><![CDATA[Enter the silverpop host value. <br />Example: <span class="notice">api5.silverpop.com</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spop_host>
+                        <spop_username translate="label comment">
+                            <label>Silverpop Username</label>
+                            <comment><![CDATA[Enter the silverpop username. <br />Example: <span class="notice">example@example.com</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spop_username>
+                        <spop_password translate="label comment">
+                            <label>Silverpop Password</label>
+                            <comment><![CDATA[Enter the silverpop password. <br />Example: <span class="notice">123456</span>]]></comment>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spop_password>
+                        <order_table_id translate="label comment">
+                            <label>Silverpop Order Table ID</label>
+                            <comment><![CDATA[Enter the silverpop order table ID. <br />Example: <span class="notice">1146545</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_table_id>
+                        <order_relation_table_id translate="label comment">
+                            <label>Silverpop Order Relation Table ID</label>
+                            <comment><![CDATA[Enter the silverpop order relation table ID. <br />Example: <span class="notice">1146545</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_relation_table_id>
+                        <order_items_table_id translate="label comment">
+                            <label>Silverpop Order Items Table ID</label>
+                            <comment><![CDATA[Enter the silverpop order items table ID. <br />Example: <span class="notice">1170170</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_items_table_id>
+                        <gift_cards_table_id translate="label comment">
+                            <label>Silverpop Gift Card Table ID</label>
+                            <comment><![CDATA[Enter the silverpop gift card table ID. <br />Example: <span class="notice">1170170</span>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gift_cards_table_id>
+                    </fields>
+                </vouchers>
+                <transact>
+                    <label>Silverpop (Transact)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Whether to enable or disable silverpop functionality.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <transact_url translate="label comment">
+                            <label>Transact URL</label>
+                            <comment><![CDATA[Enter the transact URL]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </transact_url>
+                        <gift_card_id translate="label comment">
+                            <label>Transact Gift Card Order Campaign ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gift_card_id>
+                    </fields>
+                </transact>
+                <deals>
+                    <label>Silverpop (Deals)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Whether to enable or disable silverpop functionality.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <column_name>
+                            <label>Column Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </column_name>
+                        <rule_id>
+                            <label>Shopping Cart Rule</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vouchers/rules_source</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rule_id>
+                        <generate_codes translate="label comment">
+                            <label>Generate Voucher Codes</label>
+                            <comment><![CDATA[Whether to to generate the voucher codes or not.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </generate_codes>
+                    </fields>
+                </deals>
+            </groups>
+        </silverpop>
+        <vouchers>
+            <label>Monthly Deal Vouchers</label>
+            <tab>service</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>103</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <monthly_deals>
+                    <label>Monthly Deals</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Whether to enable or disable monthly deal voucher functionality.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <from_date translate="label comment">
+                            <label>From Date</label>
+                            <comment><![CDATA[When the deal starts? Format shoud be YYYY-MM-DD]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>vouchers/adminhtml_system_config_date</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </from_date>
+                        <to_date translate="label comment">
+                            <label>To Date</label>
+                            <comment><![CDATA[When the deal ends? Format shoud be YYYY-MM-DD]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>vouchers/adminhtml_system_config_date</frontend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </to_date>
+                        <rule_id>
+                            <label>Shopping Cart Rule</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vouchers/rules_source</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rule_id>
+                        <order_total translate="label comment">
+                            <label>Minimum order total</label>
+                            <comment><![CDATA[What the minimum order total should be?]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_total>
+                        <spop_table_id translate="label comment">
+                            <label>Silverpop Relational Table ID</label>
+                            <comment><![CDATA[The silverpop relational table ID, which will be used to store the details]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spop_table_id>
+                        <campaign_id translate="label comment">
+                            <label>Transact Campaign ID</label>
+                            <comment><![CDATA[The Transact Campaign ID, which will be used to send the email]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </campaign_id>
+                    </fields>
+                </monthly_deals>
+            </groups>
+        </vouchers>
+    </sections>
+</config>

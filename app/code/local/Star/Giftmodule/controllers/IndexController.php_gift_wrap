@@ -1,0 +1,45 @@
+<?php
+
+class Star_Giftmodule_IndexController extends Mage_Core_Controller_Front_Action
+{
+    public function indexAction()
+    {
+    	if (Mage::app()->getRequest()->getPost()) {
+    		$cart = Mage::getSingleton('checkout/cart');
+    		$quote = $cart->getQuote();
+    		$_productId = Mage::getStoreConfig('onestepcheckout/extra_products/product_ids');
+
+    		// Let's remove the any old giftwrap item.
+    		foreach($quote->getAllVisibleItems() AS $_item) {
+    			if ($_item->getProduct()->getId() == $_productId) {
+    				Mage::getSingleton('checkout/cart')->removeItem($_item->getId())->save();
+    				$quote->collectTotals()->save();
+    				Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+    			}
+    		}
+
+    		$giftWrap = Mage::app()->getRequest()->getParam('gift_wrap_check');
+
+    		if ($giftWrap) {
+    			
+
+    			$_product = Mage::getModel('catalog/product')->load($_productId);
+
+    			if ($_product->getId()) {
+    				$cart->addProduct($_product, array('qty' => '1'));
+    				$quote->collectTotals()->save();
+    				Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+    			}
+    		}
+
+            
+    	}
+    	else {
+    		$this->_redirect('/');
+    		return;
+    	}
+
+    	Mage::app()->getResponse()->setRedirect(Mage::getUrl('checkout/cart/'));
+    	return;
+    }
+}

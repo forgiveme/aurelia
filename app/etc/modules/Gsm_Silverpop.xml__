@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Gsm_Silverpop>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Gsm_Silverpop>
+	</modules>
+</config>

@@ -1,0 +1,29 @@
+<?php echo $this->getChildHtml(); ?>
+<?php $videos = $this->getVideos(); ?>
+
+<div class="videos">
+<ul id="tv-grid">
+
+<?php
+
+foreach ($videos as $video){
+
+?>
+
+<li class="boxgrid-tv captionfull-tv">
+
+<a class="fancyYoutube" href="http://www.youtube.com/v/<?php echo $video->getVideoLink(); ?>?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0" title="<?php echo $video->getVideoName(); ?>">
+	<img src="<?php if (strlen($video->getThumbnail()) > 1){ echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $video->getThumbnail(); } else { echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>wysiwyg/video-placeholder.jpg<?php } ?>" alt="Play Video" />
+</a>
+<span class="cover-tv boxcaption-tv">
+	<p><?php echo $video->getVideoName(); ?></p>
+	<h3>watch now - aurelia tv</h3>
+</span>
+</li>
+<?php
+
+}
+
+?>
+</ul><!-- /.tv-grid -->
+</div><!-- /.videoss -->

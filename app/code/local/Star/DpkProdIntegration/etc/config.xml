@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Star_DpkProdIntegration>
+      <version>0.1.0</version>
+    </Star_DpkProdIntegration>
+  </modules>
+  <global>
+        <models>
+            <star_dpkprodintegration>
+                <class>Star_DpkProdIntegration_Model</class>
+            </star_dpkprodintegration>
+        </models>
+  </global>
+  <global>
+    <helpers>
+      <DpkProdIntegration>
+        <class>Star_DpkProdIntegration_Helper</class>
+      </DpkProdIntegration>
+    </helpers>
+  </global>
+</config> 

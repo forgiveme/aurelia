@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ChilliApple_Preferences>
+            <version>0.1.0</version>
+        </ChilliApple_Preferences>
+    </modules>
+    <frontend>
+        <routers>
+            <preferences>
+                <use>standard</use>
+                <args>
+                    <module>ChilliApple_Preferences</module>
+                    <frontName>preferences</frontName>
+                </args>
+            </preferences>
+        </routers>
+        <layout>
+            <updates>
+                <preferences>
+                    <file>preferences.xml</file>
+                </preferences>
+            </updates>
+        </layout>
+        <events>
+         <sales_order_place_after>
+            <observers>
+               <preferences_has_glasses>
+                        <type>singleton</type>
+                        <class>preferences/observer</class>
+                        <method>updateGlasses</method>
+               </preferences_has_glasses>
+            </observers>
+         </sales_order_place_after>
+         
+         <controller_action_postdispatch_customer_account_loginPost>
+            <observers>
+               <preferences_has_glasses>
+                        <type>singleton</type>
+                        <class>preferences/observer</class>
+                        <method>setAfterLoginSuccessUrl</method>
+               </preferences_has_glasses>
+            </observers>
+         </controller_action_postdispatch_customer_account_loginPost>
+		 
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+			<preferences>
+				<use>admin</use>
+				<args>
+					<module>ChilliApple_Preferences</module>
+					<frontName>preferences</frontName>
+				</args>
+			</preferences>
+        </routers>        
+    </admin>
+    <adminhtml>
+		<menu>
+			<preferences module="preferences">
+				<title>Preferences</title>
+				<sort_order>72</sort_order>               
+				<children>
+					
+					<!--preferences module="preferences">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>preferences/adminhtml_preferences</action>
+					</preferences-->
+					
+					<primaryconcern module="preferences">
+						<title>Manage Primary concerns</title>
+						<sort_order>10</sort_order>
+						<action>preferences/adminhtml_primaryconcern</action>
+					</primaryconcern>
+					
+					<secondaryconcern module="preferences">
+						<title>Manage Secondary concerns</title>
+						<sort_order>20</sort_order>
+						<action>preferences/adminhtml_secondaryconcern</action>
+					</secondaryconcern>
+					
+					
+					<skincare module="preferences">
+						<title>Manage Skincare</title>
+						<sort_order>30</sort_order>
+						<action>preferences/adminhtml_skincare</action>
+					</skincare>
+					
+				</children>
+			</preferences>
+		</menu>		
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<!--ChilliApple_Preferences>
+							<title>Preferences Module</title>
+							<sort_order>10</sort_order>
+						</ChilliApple_Preferences>-->
+						<preferences module="preferences">
+							<children>
+								<preferences module="preferences">
+									<title>Manage Preferences</title>
+									<sort_order>11</sort_order>
+								</preferences>
+								<primaryconcern module="preferences">
+								<title>Manage Primary concerns</title>
+								<sort_order>20</sort_order>
+								</primaryconcern>
+								<secondaryconcern module="preferences">
+								<title>Manage Secondary concerns</title>
+								<sort_order>20</sort_order>
+								</secondaryconcern>
+								<skincare module="preferences">
+								<title>Manage Skincare</title>
+								<sort_order>20</sort_order>
+								</skincare>
+							</children>
+						</preferences>
+						  <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <preferences>
+                                            <title>Preferences Module</title>
+                                        </preferences>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<preferences>
+					<file>preferences.xml</file>
+				</preferences>
+			</updates>
+		</layout>
+		<events>
+			<adminhtml_block_html_before>
+				<observers>
+				   <preferences_get_skintool_csv>
+						<type>singleton</type>
+						<class>preferences/observer</class>
+						<method>add_skintool_mass_action</method>
+				   </preferences_get_skintool_csv>
+				</observers>
+			 </adminhtml_block_html_before>
+		</events>
+    </adminhtml>   
+    <global>
+        <models>
+            <preferences>
+                <class>ChilliApple_Preferences_Model</class>
+                <resourceModel>preferences_resource</resourceModel>
+            </preferences>
+            <preferences_resource>
+                <class>ChilliApple_Preferences_Model_Resource</class>
+                <deprecatedNode>preferences_mysql4</deprecatedNode>
+                <entities>
+                    <preferences>
+                        <table>preferences</table>
+                    </preferences>
+                    <primary_concern>
+                        <table>primary_concern</table>
+                    </primary_concern>
+                    <secondary_concern>
+                        <table>secondary_concern</table>
+                    </secondary_concern>
+                    <skin_care>
+                        <table>skincare</table>
+                    </skin_care>
+                </entities>
+            </preferences_resource>
+        </models>
+        <resources>
+            <preferences_setup>
+                <setup>
+                    <module>ChilliApple_Preferences</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </preferences_setup>
+            <preferences_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </preferences_write>
+            <preferences_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </preferences_read>
+        </resources>
+        <blocks>
+            <preferences>
+                <class>ChilliApple_Preferences_Block</class>
+            </preferences>
+        </blocks>
+        <helpers>
+            <preferences>
+                <class>ChilliApple_Preferences_Helper</class>
+            </preferences>
+        </helpers>
+    </global>
+</config>

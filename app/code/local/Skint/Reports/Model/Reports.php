@@ -1,0 +1,304 @@
+<?php
+class Skint_Reports_Model_Reports extends Mage_Core_Model_Abstract
+{
+	
+	protected $_request = 'connectship';
+	
+    public function _construct()
+    {
+        parent::_construct();
+        $this->_init('skintreports/reports');
+    }
+	
+	public function getskintoolsData($data) {
+		
+		$fromDate = date('Y-m-d H:i:s', strtotime($data['skintools_start_date']['value']));
+		$toDate = date('Y-m-d H:i:s', strtotime($data['skintools_end_date']['value']));
+		
+		$collection = Mage::getModel('customer/customer')->getCollection()->addAttributeToFilter('created_at', array('from'=>$fromDate, 'to'=>$toDate));
+		
+		$collection->addAttributeToSelect('firstname');
+		$collection->addAttributeToSelect('lastname');
+		$collection->addAttributeToSelect('dob');
+		
+		$collection->getSelect()->join(array('skintools_emails' => 'skintools_emails'), 'skintools_emails.address = e.email', array('*'));
+		
+		$collection->getSelect()->join(array('skintools_questionsdata' => 'skintools_questionsdata'), 'skintools_questionsdata.id = skintools_emails.questiondata_id', array('*'));
+				
+		if(count($collection)>0) {
+			return $collection;
+		}
+	}
+	public function getskintoolsorderData($data) {
+		
+		$fromDate = date('Y-m-d H:i:s', strtotime($data['skintools_start_date']['value']));
+		$toDate = date('Y-m-d H:i:s', strtotime($data['skintools_end_date']['value']));
+		
+		$collection = Mage::getModel('customer/customer')->getCollection()->addAttributeToFilter('created_at', array('from'=>$fromDate, 'to'=>$toDate));
+		
+		$collection->addAttributeToSelect('firstname');
+		$collection->addAttributeToSelect('lastname');
+		$collection->addAttributeToSelect('dob');
+		
+		$collection->getSelect()->join(array('sales_flat_order' => 'sales_flat_order'), 'sales_flat_order.customer_email = e.email AND sales_flat_order.customfee_amount != 0', array('entity_id AS orderId', 'customfee_amount'));
+				
+		$collection->getSelect()->join(array('skintools_emails' => 'skintools_emails'), 'skintools_emails.address = e.email', array('*'));
+		
+		$collection->getSelect()->join(array('skintools_questionsdata' => 'skintools_questionsdata'), 'skintools_questionsdata.id = skintools_emails.questiondata_id', array('*'));
+		
+		$collection->getSelect()->group('e.entity_id');
+		
+		//echo $collection->getSelect();
+				
+		if($collection->count()>0) {
+			return $collection;
+		}
+	}
+	
+	public function getcustomerProductData($data) {
+		
+		$this->_request = $data;
+		
+		$customersId = $data['select_customers']['value'];
+		$productsId = $data['select_products']['value'];
+		
+		if(count($customersId)>0) {
+			
+			return $this->getproductsbyCustomers();
+			
+		} elseif(count($productsId)>0) {
+			
+			return $this->getcustomersbyProducts();			
+		
+		}
+		exit;
+	}
+	
+	private function getproductsbyCustomers() {
+		
+		$dataReturn = array();
+		$maxOrdersCount = 0;
+		$fromDate = date('Y-m-d H:i:s', strtotime($this->_request['customer_group_start_date']['value']));
+		$toDate = date('Y-m-d H:i:s', strtotime($this->_request['customer_group_end_date']['value']));
+		
+		if($this->_request['select_customers']['value'][0] == 'all') {
+			
+			$collection = Mage::getResourceModel('customer/customer_collection');
+			foreach($collection as $customer) {
+				$customerData = $customer->getData();
+				$customersId[] = $customerData['entity_id'];
+			}
+				
+		} else {
+		
+			$customersId = $this->_request['select_customers']['value'];
+		}
+		foreach($customersId as $customerId) {
+			
+			$orderamountTotal = 0;
+			$tempArray = array();
+			$totalOrders = 0;
+			$orderitemArray = array();
+			
+			if ($customerId) {
+				
+				$tempArray['customer_id'] = $customerId;
+				
+				$customerData = Mage::getModel('customer/customer')->load($customerId)->getData();
+							
+				$tempArray['customer_name'] = $customerData['firstname']. " " . $customerData['lastname']. " (" . $customerData['email'].")";
+				
+				$tempArray['dob'] = $customerData['dob'];
+				
+				$orders = Mage::getResourceModel('sales/order_collection')
+					->addFieldToSelect('*')
+					->addFieldToFilter('customer_id', $customerId)
+					->setOrder('created_at', 'ASC')
+					->addAttributeToFilter('created_at', array('from'=>$fromDate, 'to'=>$toDate));
+					
+				$i = 1;
+				$totalOrders = count($orders);
+				foreach ($orders as $order) {
+					$productsOrdered = '';
+					if($i==1) {
+						$tempArray['date_first_order'] = $order->getcreatedAt();
+					}
+					if($i==$totalOrders) {
+						$tempArray['date_most_recent_order'] = $order->getcreatedAt();
+					}
+					$orderamountTotal += $order->getGrandTotal();
+					
+					$orderItems = $order->getItemsCollection();
+					foreach ($orderItems as $item){
+						$product_name = $item->getName();
+						$productsOrdered .= $product_name.",";
+					}
+					$orderitemArray[$i] = trim($productsOrdered,',');
+					$i++;
+				}
+				if($totalOrders > $maxOrdersCount) {
+					$maxOrdersCount = $totalOrders;
+				}
+				$tempArray['total_orders'] = $totalOrders;
+				$tempArray['total_amount'] = $orderamountTotal;
+				$tempArray['products_ordered'] = $orderitemArray;
+			}
+			$dataReturn[] = $tempArray;
+		}
+		$dataReturn['max_order_count'] = $maxOrdersCount;
+
+		return $dataReturn;
+		exit;
+	}
+	
+	private function getcustomersbyProducts() {
+		
+		$dataReturn = array();
+		
+		$fromDate = date('Y-m-d H:i:s', strtotime($this->_request['customer_group_start_date']['value']));
+		$toDate = date('Y-m-d H:i:s', strtotime($this->_request['customer_group_end_date']['value']));
+		
+		if($this->_request['select_products']['value'][0] == 'all') {
+			
+			$collection = Mage::getModel('catalog/product')->getCollection();
+			foreach($collection as $product) {
+				$productData = $product->getData();
+				$productsId[] = $productData['entity_id'];
+			}
+				
+		} else {
+		
+			$productsId = $this->_request['select_products']['value'];
+		}		
+		foreach($productsId as $productId) {
+			
+			$tempArray = array();
+			$customersOrdered = '';
+			
+			if ($productId) {
+				
+				$customersOrdered = "";
+				
+				$tempArray['product_id'] = $productId;
+				
+				$productData = Mage::getModel('catalog/product')->load($productId)->getData();
+
+				$tempArray['product_name'] = $productData['name'];
+				
+				$resource = Mage::getSingleton('core/resource');
+				$readConnection = $resource->getConnection('core_read');
+				$tableName = $resource->getTableName('sales_flat_order');
+				$tableNameItem = $resource->getTableName('sales_flat_order_item');
+				
+				$query = "SELECT DISTINCT o.customer_id FROM ".$tableNameItem." i INNER JOIN ".$tableName." o ON o.entity_id = i.order_id WHERE o.customer_id IS NOT NULL AND i.product_id = '".$productId."' AND (o.`created_at` >= '".$fromDate."' AND o.`created_at` <= '".$toDate."')";
+				$results = $readConnection->fetchAll($query);			
+				
+				$i = 0;
+				foreach ($results as $resultData) {
+					$customerData = Mage::getModel('customer/customer')->load($resultData['customer_id'])->getData();
+					//$customersOrdered .= $customerData['firstname']. " " . $customerData['lastname']." "."(".$customerData['email']."),";
+					if($i>0) {
+						$tempArray['product_id'] = "";
+						$tempArray['product_name'] = "";
+					}
+					$tempArray['customers_who_buys'] = $customerData['firstname']. " " . $customerData['lastname']." "."(".$customerData['email'].")";
+					$dataReturn[] = $tempArray;
+					$i=1;
+				}
+				//$tempArray['customers_who_buys'] = trim($customersOrdered,',');
+			}
+			//$dataReturn[] = $tempArray;
+		}
+		return $dataReturn;
+		exit;
+	}
+	
+	public function getguestcustomerProductData($data) {
+
+		$dataReturn = array();
+		
+		//customer_is_guest	
+		$fromDate = date('Y-m-d H:i:s', strtotime($data['customer_group_start_date']['value']));
+		$toDate = date('Y-m-d H:i:s', strtotime($data['customer_group_end_date']['value']));
+		if($data['select_products']['value'][0] == 'all') {
+			
+			$collection = Mage::getModel('catalog/product')->getCollection();
+			foreach($collection as $product) {
+				$productData = $product->getData();
+				$productsId[] = $productData['entity_id'];
+			}
+				
+		} else {
+		
+			$productsId = $data['select_products']['value'];
+		}
+		foreach($productsId as $productId) {
+			
+			$tempArray = array();
+			$customersOrdered = '';
+			
+			if ($productId) {
+				
+				$customersOrdered = "";
+				
+				$tempArray['product_id'] = $productId;
+				
+				$productData = Mage::getModel('catalog/product')->load($productId)->getData();
+
+				$tempArray['product_name'] = $productData['name'];
+				
+				$resource = Mage::getSingleton('core/resource');
+				$readConnection = $resource->getConnection('core_read');
+				$tableName = $resource->getTableName('sales_flat_order');
+				$tableNameItem = $resource->getTableName('sales_flat_order_item');
+				
+				$query = "SELECT o.customer_email, o.customer_firstname, o.customer_lastname FROM ".$tableNameItem." i INNER JOIN ".$tableName." o ON o.entity_id = i.order_id WHERE o.customer_id IS NULL AND o.customer_is_guest = '1' AND i.product_id = '".$productId."' AND (o.`created_at` >= '".$fromDate."' AND o.`created_at` <= '".$toDate."')";
+				$results = $readConnection->fetchAll($query);			
+
+				$i = 0;
+				foreach ($results as $resultData) {
+					if($i>0) {
+						$tempArray['product_id'] = "";
+						$tempArray['product_name'] = "";
+					}
+					//$customersOrdered .= $resultData['customer_firstname']. " " . $resultData['customer_lastname']." "."(".$resultData['customer_email']."),";
+					$tempArray['customers_who_buys'] = $resultData['customer_firstname']. " " . $resultData['customer_lastname']." "."(".$resultData['customer_email']."),";
+					$dataReturn[] = $tempArray;
+					$i=1;
+				}
+				//$tempArray['customers_who_buys'] = trim($customersOrdered,',');
+			}
+			//$dataReturn[] = $tempArray;
+		}
+		return $dataReturn;
+		exit;
+		
+	}
+	
+	public function getcustomerDumpData() {
+				
+		$collection = Mage::getModel('customer/customer')->getCollection()/*->addAttributeToFilter('email', 'sanford@123789.org')*/;
+		//jess.palmertomkinson@gmail.com
+		$collection->addAttributeToSelect(array('firstname', 'lastname', 'used_first_order_discount', 'dob', 'gender'));
+		//$collection->addAttributeToSelect('lastname');
+		//$collection->addAttributeToSelect('used_first_order_discount');
+		//$collection->addAttributeToSelect('dob');
+		//$collection->addAttributeToSelect('gender');
+		
+		$collection->getSelect()->joinLeft(array('skintools_emails' => 'skintools_emails'), 'skintools_emails.address = e.email', array('*'));
+		
+		$collection->getSelect()->joinLeft(array('skintools_questionsdata' => 'skintools_questionsdata'), 'skintools_questionsdata.id = skintools_emails.questiondata_id', array('*'));
+		
+		$collection->getSelect()->joinLeft(array('preferences' => 'preferences'), 'preferences.customer_id = e.entity_id', array('aurelia_feedback', 'other_brands', 'has_glasses'));
+		
+		$collection->getSelect()->group('e.entity_id');
+		//echo $collection->getSelect();
+		//exit;
+		
+		if(count($collection)>0) {
+			return $collection;
+		}
+		
+	}
+	
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aurelia_Loyality>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Aurelia_Loyality>
+    </modules>
+</config> 

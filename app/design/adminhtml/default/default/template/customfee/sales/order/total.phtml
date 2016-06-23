@@ -1,0 +1,10 @@
+<?php $this->setPriceDataObject($this->getSource()) ?>
+
+<?php if ((float) $this->getSource()->getCustomfeeAmount()): ?>
+    <tr>
+        <td class="label"><?php echo Mage::helper('customfee')->__('First Order Discount') ?></td>
+        <td>
+            <?php echo $this->displayPrices($this->getSource()->getBaseCustomfeeAmount(), $this->getSource()->getCustomfeeAmount()); ?>
+        </td>
+    </tr>
+<?php endif; ?>

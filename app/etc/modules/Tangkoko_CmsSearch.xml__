@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tangkoko_CmsSearch>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_CatalogSearch />
+            </depends>
+        </Tangkoko_CmsSearch>
+    </modules>
+</config>

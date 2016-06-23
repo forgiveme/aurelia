@@ -1,0 +1,350 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	/*background: #000;*/
+}
+.popbox {
+	width: 505px;
+	margin: 20px auto
+}
+.popupinner {
+	width: 385px;
+	float: left;
+	background: #fff;
+	padding: 12px 55px 20px 55px;
+	text-align: center;
+	position: relative;
+	margin-top: 20px;
+	color: #868280;
+	font-size: 14px;
+	font-family: 'Vollkorn', serif;
+}
+.popupinner1 {
+	width: 455px;
+	padding: 10px 20px;
+}
+.popupinner a.close {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+.popupinner h2 {
+	color: #bab6b2;
+	font-size: 18px;
+	letter-spacing: 1.5px;
+	margin: 20px 0 8px 0px;
+	padding: 0px;
+	text-transform: uppercase;
+	font-weight: normal;
+	line-height:normal;
+}
+.popupform {
+	width: 300px;
+	float: left;
+	margin-left: 43px;
+	margin-top: 18px;
+}
+.popupinner1 .popupform {
+	display: inline-block;
+	margin: 0px;
+	float: none;
+	margin-top: 25px;
+}
+.dotbox {
+	text-align: center;
+	width: 400px;
+	margin-top: 0px;
+}
+.popupinner dotbox h2.h2 {
+	margin-top: 20px;
+}
+.popupform label {
+	width: 100%;
+	float: left;
+	text-align: left;
+	font-size: 12px;
+}
+
+.popupform input[type="text"] {
+	width: 100%;
+	float: left;
+	text-align: left;
+	border: #b6b6b6 solid 1px;
+	color:#868280;
+	margin-bottom: 7px;
+	padding: 3px;
+}
+.popupform input[type="submit"] {
+	width: 250px;
+	display: inline-block;
+	text-align: left;
+	border: #95918E solid 1px;
+	background: #95918E;
+	text-align: center;
+	height: 28px;
+	cursor: pointer;
+	color: #fff;
+	padding-top: 3px;
+	font-size: 14px;
+	font-family: 'Vollkorn', serif;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	margin-top: 15px;
+}
+.return-link {
+	width: 100%;
+	float: left;
+	color: #868280;
+	font-size: 12px;
+	text-align: center;
+	text-decoration: none;
+	margin-top: 8px;
+}
+.return-link:hover {
+	color: #868280;
+	font-size: 12px;
+	text-decoration: underline;
+}
+.popupform .join-btn {
+	width: 253px;
+	display: inline-block;
+	text-align: left;
+	border: #95918E solid 1px;
+	background: #95918E;
+	text-align: center;
+	height: 29px;
+	cursor: pointer;
+	color: #fff;
+	line-height:31px;
+	font-size: 14px;
+	font-family: 'Vollkorn', serif;
+	margin-bottom: 10px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-top: 15px;
+}
+
+.popupbtn{width:100%; float:left; text-align:center;}
+.popupbtn a {
+
+	display: inline-block;
+	text-align: center;
+	border: #95918E solid 1px;
+	background: #95918E;
+	text-align: center;
+	height: 28px;
+	cursor: pointer;
+	width:145px;  
+	color: #fff;
+	line-height: 30px;
+	font-size: 14px;
+	font-family: 'Vollkorn', serif;
+	
+	letter-spacing: 1.5px;
+
+	text-transform: uppercase;
+	text-decoration: none;
+	margin:16px 8px 0 8px;
+	
+}
+.main .col-main .cart.desktop table#shopping-cart-table tbody tr td.a-center.last a.btn-pop-remove
+{
+ margin-top:35px;
+ vertical-align:middle;
+}
+
+
+.btn-pop-remove {
+    background: rgba(0, 0, 0, 0) url("../images/delete_icons-cart.png") no-repeat scroll 0 0;
+    display: block;
+    font-size: 0;
+    height: 16px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 16px;
+}
+#onestepcheckout-coupon-alert {
+    background: none;
+    border: 2px dotted #E6E6E6;
+    box-shadow: none;
+    color: #666;
+    cursor: pointer;
+    font-family: 'Vollkorn',serif;
+    letter-spacing: 0.1em;
+    padding: 3px 2px;
+    text-transform: uppercase;
+    width: auto;
+	float:right;
+}
+
+.onestepcheckout-index-index .popupinner.popupinner1 {padding:12px 0px 20px; width:100%;}
+
+.popupinner.popupinner1 p { font-size:14px; font-weight:normal; font-family: 'Vollkorn',serif; letter-spacing:0px; }
+.popupinner.popupinner1 p a { letter-spacing:0px; }
+.popupinner p { font-size:14px; font-weight:normal; font-family: 'Vollkorn',serif; }
+.onestepcheckout-popup-wrapper { background:none; padding:12px 55px 20px; display:inline; }
+
+.onestepcheckout-index-index .onestepcheckout-popup-wrapper { padding:0px !important;}
+
+.onestepcheckout-index-index #onestepcheckout-login-popup {padding: 0 !important; width: 505px !important;}
+
+.onestepcheckout-index-index .popbox{width:100%; float:left; margin:0px;}
+.onestepcheckout-index-index .onestepcheckout-popup-contents{margin:0px; margin:0px;}
+
+.onestepcheckout-index-index .popupinner.popupinner1 h1 { font-size:18px; margin-bottom:5px; 
+letter-spacing:1.5px;}
+.onestepcheckout-index-index .popupinner h1 { font-size:18px; margin-bottom:5px; letter-spacing:1.5px;} 
+
+.onestepcheckout-index-index .popupinner h2 {	letter-spacing: 1.5px;}
+
+.onestepcheckout-index-index .popupform input[type="text"] { width:100%; padding:1px;}
+.onestepcheckout-index-index .onestepcheckout-index-index  {width:100%; padding:1px;}
+
+.onestepcheckout-index-index #id_onestepcheckout_password {width:100%; padding:1px; border:1px solid #b6b6b6 !important;}
+
+.onestepcheckout-index-index .popupinner1 .popupform { margin-top:15px;}
+
+.onestepcheckout-index-index .onestepcheckout-popup-wrapper .input-text { width:100% !important; }
+
+.onestepcheckout-index-index #onestepcheckout-login-popup button { width:85%; padding:5px 0 4px; box-shadow:none; margin-top:25px; border:none !important}
+
+
+.onestepcheckout-index-index .return-link { margin-top:15px; letter-spacing:normal;}
+.onestepcheckout-index-index .return-link:hover { text-decoration:none;}
+
+.onestepcheckout-index-index p.close { bottom:0px; top:20px; right:20px !important;} 
+
+.onestepcheckout-index-index #onestepcheckout-return-login-link { letter-spacing:normal; font-size:12px;}
+
+.onestepcheckout-index-index #onestepcheckout-forgot-form { margin-top:-10px; }
+.onestepcheckout-index-index #onestepcheckout-forgot-form input#id_onestepcheckout_email { margin-bottom:0px; }
+.onestepcheckout-index-index .popupform p { margin-bottom:0px;}
+.onestepcheckout-index-index #onestepcheckout-register-link { width:100% !important;}
+
+.onestepcheckout-index-index #onestepcheckout-register-link h2 { margin-top:0px;}
+.shopping-bag{width:100%; float:left;}
+.shopping-bag button{border:none !important; width:100%;  padding-top:7px !important; padding-bottom:4px !important; box-shadow:none !important; text-shadow:none !important }
+
+@media (max-width: 767px) {
+.shopping-bag{width:auto; float:none; padding:0 20px;}
+html { overflow-x:hidden;}
+.checkout-cart-index .popbox { width:90%; left:5% !important;}
+.checkout-cart-index .popupinner { width:90% !important; padding-left:5%; padding-right:5%;}
+iframe { width:420px !important; height:auto;}
+
+.onestepcheckout-index-index #onestepcheckout-login-popup { width:90% !important; left:5% !important; top:50px !important;}
+
+.onestepcheckout-index-index .popupinner h1 { line-height:normal; letter-spacing:0px;}
+
+.popupinner.popupinner1 { padding-left:5% !important; padding-right:5% !important; left:5%; width:80% !important; position:fixed; top:0px; }
+
+
+.popupform { float: none; margin: 0 21px; width: auto;}
+
+.popupform input[type="submit"]{width:80%;}
+
+.popupform { width:100%; margin:0px !important;}
+#onestepcheckout-login-popup .onestepcheckout-popup-wrapper .input-text { width:100% !important;}
+.onestepcheckout-index-index .popupinner.popupinner1 h1 { line-height:normal; letter-spacing:0px;}
+
+.popupinner .close img { position:absolute; right:0px; top:0px;}
+.popupinner.popupinner1 .close img { position:absolute; right:-20px; top:-10px;}
+
+.onestepcheckout-index-index .popupinner h1 { line-height:normal; letter-spacing:0px;}
+
+.popupform .join-btn { width:100% !important; letter-spacing:normal !important;}
+
+.onestepcheckout-index-index #onestepcheckout-login-popup button { width:100% !important;}
+
+.onestepcheckout-index-index p.close { position:relative !important; bottom: 0; right: 20px !important; top: 20px;}
+
+#onestepcheckout-login-popup p.close, #onestepcheckout-toc-popup p.close { position:relative !important;}
+
+
+.popupinner.popupinner1 { height:240px; top:10px; overflow:auto;}
+.onestepcheckout-index-index .return-link { margin-bottom:15px;}
+
+.onestepcheckout-index-index .popupinner { width:80% !important; padding-left:5%; padding-right:5%; position:fixed; top:0px;}
+
+#onestepcheckout-login-popup-contents-forgot #onestepcheckout-forgot-table label { margin-top:5px;}
+
+#onestepcheckout-login-popup-contents-login .popupinner.popupinner1 { width:80% !important;}
+
+#onestepcheckout-login-popup-contents-forgot .close { margin-right:-20px; margin-top:-10px;}
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+/*iframe { width:100%; height:auto;}
+.checkout-cart-index .popupinner { width:100% !important;}*/
+/*.onestepcheckout-index-index .popbox { width:90%; left:5%;}
+.onestepcheckout-index-index #onestepcheckout-login-popup { width:90% !important; left:5%;}*/
+	
+}
+
+
+
+@media only screen and (max-width: 479px) {
+iframe { width:290px !important; height:auto;}
+.popupinner.popupinner1 { height:350px; top:20px; overflow:auto;}
+
+}
+
+
+
+
+/*.popbox {
+	width: auto;
+	margin:20px;
+}
+.popupinner {
+    background: #ffffff none repeat scroll 0 0;
+    color: #868280;
+    float: left;
+    font-family: "Vollkorn",serif;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 20px 20px;
+    position: relative;
+    text-align: center;
+    width: auto !important;
+	margin:0px 20px;
+}
+
+.popupinner.popupinner1 { padding-left:20px !important; padding-right:20px !important; position:fixed; height:300px; overflow:auto; left:0px; top:50px; }
+
+.popupform { float: none; margin: 0 21px; width: auto;}
+
+.popupform input[type="submit"]{width:80%;}
+
+.onestepcheckout-index-index #onestepcheckout-login-popup { width:auto !important; margin:0px 20px;}
+
+.popupform { width:100%; margin:0px !important;}
+#onestepcheckout-login-popup .onestepcheckout-popup-wrapper .input-text { width:100% !important;}
+.onestepcheckout-index-index .popupinner.popupinner1 h1 { line-height:normal; letter-spacing:0px;}
+
+.popupinner .close img { position:absolute; right:0px; top:0px;}
+.popupinner.popupinner1 .close img { position:absolute; right:-20px; top:-10px;}
+
+.onestepcheckout-index-index .popupinner h1 { line-height:normal; letter-spacing:0px;}
+
+.popupform .join-btn { width:100% !important; letter-spacing:normal !important;}
+
+.onestepcheckout-index-index #onestepcheckout-login-popup button { width:100% !important;}
+
+.onestepcheckout-index-index p.close { position:relative !important; bottom: 0; right: 20px !important; top: 20px;}
+
+#onestepcheckout-login-popup p.close, #onestepcheckout-toc-popup p.close { position:relative !important;}*/
+
+#control_overlay { opacity:0.7;}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+

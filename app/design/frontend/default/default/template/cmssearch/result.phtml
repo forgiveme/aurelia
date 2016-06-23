@@ -1,0 +1,74 @@
+<?php
+/**
+ * Tangkoko-Fidesio Cms Search Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@tangkoko.com or info@fidesio.com and you will be sent
+ * a copy immediately.
+ *
+ * @category   Tangkoko & Fidesio
+ * @package    CmsSearch
+ * @author     Vincent Decrombecque
+ * @copyright  Copyright (c) 2009 Tangkoko sarl (http://www.tangkoko.com) & Fidesio sarl (http://www.fidesio.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<div class="page-head">
+    <h3><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogSearch')->getEscapedQueryText()) ?></h3>
+</div>
+<?php if($this->getResultCount()): ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+<div class="page-head">
+    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
+        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-feed"><?php echo $this->__('Subscribe to Feed') ?></a>
+    <?php endif; ?>
+    <h4><?php echo $this->__("Products"); ?></h4>
+</div>
+    <?php if ($messages = $this->getNoteMessages()):?>
+    <div class="note-msg">
+        <?php foreach ($messages as $message):?>
+        <?php echo $message?><br />
+        <?php endforeach;?>
+    </div>
+    <?php endif; ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php else: ?>
+<div class="page-head">
+    <h4><?php echo $this->__("Products"); ?></h4>
+</div>
+<div class="note-msg">
+	<?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
+	<?php if ($messages = $this->getNoteMessages()):?>
+		<?php foreach ($messages as $message):?>
+			<br /><?php echo $message?>
+		<?php endforeach;?>
+	<?php endif; ?>
+</div>
+<?php endif; ?>
+<div class="clear"><p></p></div>
+<div class="page-head">
+    <h4><?php echo $this->__("Others"); ?></h4>
+</div>
+<?php echo get_class($this)?>
+<?php if($this->getOtherResultCount()): ?>
+	<?php $pageCollection = $this->_getOtherCollection(); ?>
+	<ul>
+	<?php foreach ($pageCollection as $page) : ?>
+		<?php
+		
+		?>
+		<li><a href="<?php echo Mage::getBaseUrl().$page->identifier ?>"><?php echo $page->title; ?></a><p><?php echo $this->_toAbstract($page->contents); ?></p></li>
+	<?php endforeach; ?>
+	</ul>
+<?php else: ?>
+    <div class="note-msg">
+        <?php echo $this->__('Your search returns no results.') ?>
+    </div>
+<?php endif; ?>

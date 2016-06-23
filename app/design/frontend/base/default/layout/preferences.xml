@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <preferences_index_index>
+        <!--reference name="content">
+            <block type="preferences/preferences" name="preferences" template="preferences/preferences.phtml" />
+        </reference-->
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>Preferences</title></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="preferences/preferences" name="preferences" template="preferences/preferences.phtml" />
+        </reference>
+
+        <reference name="left">
+          <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+    </preferences_index_index>
+    
+    <preferences_index_edit>
+        <!--reference name="content">
+            <block type="preferences/preferences" name="preferences" template="preferences/preferences.phtml" />
+        </reference-->
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>Preferences</title></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="preferences/preferences" name="preferences" template="preferences/edit.phtml" />
+        </reference>
+
+        <reference name="left">
+          <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+    </preferences_index_edit>
+    
+</layout> 

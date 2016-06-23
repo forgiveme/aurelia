@@ -1,0 +1,81 @@
+<?php
+class ChilliApple_Preferences_IndexController extends Mage_Core_Controller_Front_Action
+{
+    public function indexAction()
+    {
+		if(!Mage::getSingleton('customer/session')->isLoggedIn()) 
+    		{
+    	  	  $this->_redirect('customer/account/login');
+    		  return;
+		}
+    	
+		$this->_initLayoutMessages('customer/session');
+		$customer=Mage::getSingleton('customer/session')->getCustomer();
+		$customerId=$customer->getId();
+		$preferences=Mage::getModel('preferences/preferences')->getCustomerPreferences($customerId);
+		Mage::register('current_preferences',$preferences);
+		$this->_initLayoutMessages('customer/session');
+		$this->loadLayout();     
+		$this->renderLayout();
+    }
+	
+	public function editAction()
+	{
+		if(!Mage::getSingleton('customer/session')->isLoggedIn()) 
+	    	{
+	    	  $this->_redirect('customer/account/login');
+	    		  return;
+	    	}
+	    	
+	    	
+		$this->_initLayoutMessages('customer/session');
+		$customer=Mage::getSingleton('customer/session')->getCustomer();
+		$customerId=$customer->getId();
+		$preferences=Mage::getModel('preferences/preferences')->load($customerId,'customer_id');
+		Mage::register('current_preferences',$preferences);
+		$this->loadLayout();  
+		$navigationBlock = $this->getLayout()->getBlock('customer_account_navigation');
+        	if ($navigationBlock) {
+            	   $navigationBlock->setActive('preferences/index');
+        	}   
+		$this->renderLayout();
+	}
+	
+	public function postAction()
+	{
+		if(!Mage::getSingleton('customer/session')->isLoggedIn()) 
+	    	{
+	    	  $this->_redirect('customer/account/login');
+	    		  return;
+	    	}
+		$this->_initLayoutMessages('customer/session');
+		$request=$this->getRequest();
+		
+		if($request->isPost())
+		{
+			$customer=Mage::getSingleton('customer/session')->getCustomer();
+			$customerId=$customer->getId();
+			$preferences=Mage::getModel('preferences/preferences')->getCustomerPreferences($customerId);//->load($customerId,'customer_id');
+			$primary=$request->getParam('primary_concern');
+			$secondary=$request->getParam('secondary_concern');
+			$skinCares=$request->getParam('skin_care');
+			$otherBrands=$request->getParam('other_brands');
+			$aureliaFeedback=$request->getParam('aurelia_feedback');
+			$hasGlasses=(int)$request->getParam('has_glasses');
+			$preferences->setCustomerId($customerId);
+			$preferences->setPrimaryConcern($primary);
+			$preferences->setSecondaryConcern($secondary);
+			$preferences->setSkinCares($skinCares);
+			$preferences->setotherBrands($otherBrands);
+			$preferences->setAureliaFeedback($aureliaFeedback);
+			$preferences->setHasGlasses($hasGlasses);
+			$preferences->save();
+			Mage::getSingleton('customer/session')->addSuccess(Mage::helper('promotion')->__('Preferences saved successfully.'));
+			$this->_redirect('*/*/index');
+			return;
+			
+			
+		}
+		$this->_redirect('*/*/edit');
+	}
+}

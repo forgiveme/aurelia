@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    //<![CDATA[
+    function submit_skintools_export() {
+		if(configForm.validator && configForm.validator.validate()) {
+			if($('downloadlink')) {
+				$('downloadlink').remove();
+			}
+			new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+				method: 'POST',
+				onSuccess: function(transport){
+					if (transport.responseText==1){
+						$('skintreports_button').up().insert("&nbsp;<a id='downloadlink' href='<?php echo $this->getFileUrl("downloadable/skintoolcomplete.csv") ?>'>Download File</a>");
+						alert("Data exported successfully, please click on appeared link to download the file.");
+					} else {
+						alert(transport.responseText);
+					}
+				},
+                parameters: $('config_edit_form').serialize(true),
+			});
+			return true;
+		} else {
+			return false;
+		}
+    }
+    //]]>
+</script>
+<?php echo $this->getButtonHtml() ?>

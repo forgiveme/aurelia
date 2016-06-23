@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <skint translate="label" module="skintreports">
+            <label>Data Reports</label>
+            <sort_order>10</sort_order>
+        </skint>
+    </tabs>
+    <sections>
+        <skintreports translate="label" module="skintreports">
+            <label>Skintools/Customers Reports</label>
+            <tab>skint</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <skintool_group translate="label">
+                    <label>Skintool Reports</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<skintools_start_date translate="label">
+							<label>Start Date</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>skintreports/adminhtml_system_config_form_date</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</skintools_start_date>
+						<skintools_end_date translate="label">
+							<label>End Date</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>skintreports/adminhtml_system_config_form_date</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</skintools_end_date>
+						<skintools_export translate="label">
+                            <label>Skintools Data</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>skintreports/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skintools_export>
+						<skintools_export_ordered translate="label">
+                            <label>Export customers who completed skintools and ordered</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>skintreports/adminhtml_system_config_form_buttonorder</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skintools_export_ordered>
+                    </fields>
+                </skintool_group>
+            </groups>
+        </skintreports>
+		<skintreports translate="label" module="skintreports">
+            <label>Skintool/Customer Reports</label>
+            <tab>skint</tab>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <customer_groups translate="label">
+                    <label>Customer Reports</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <select_customers translate="label">
+                            <label>Select Customers</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>skintreports/system_config_source_dropdown_customers</source_model>
+							<sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </select_customers>
+						<select_products translate="label">
+                            <label>Select Products</label>
+							<comment>Select either customers or products only.</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>skintreports/system_config_source_dropdown_products</source_model>
+							<sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </select_products>
+						<customer_group_start_date translate="label">
+							<label>Start Date</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>skintreports/adminhtml_system_config_form_date</frontend_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</customer_group_start_date>
+						<customer_group_end_date translate="label">
+							<label>End Date</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>skintreports/adminhtml_system_config_form_date</frontend_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</customer_group_end_date>
+						<skintools_export_ordered translate="label">
+                            <label>Export by customers or products</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>skintreports/adminhtml_system_config_form_buttoncustomer</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skintools_export_ordered>
+						<skintools_export_guest_ordered translate="label">
+                            <label>Export by guest customers</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>skintreports/adminhtml_system_config_form_buttonguest</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skintools_export_guest_ordered>
+						<skintools_export_customer_dump translate="label">
+                            <label>Export customers dump</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>skintreports/adminhtml_system_config_form_buttondump</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skintools_export_customer_dump>
+                    </fields>
+                </customer_groups>
+            </groups>
+        </skintreports>
+    </sections>
+</config>

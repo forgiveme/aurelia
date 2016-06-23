@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <promotion translate="label" module="promotion">
+            <label>Promotion</label>
+            <sort_order>300</sort_order>
+        </promotion>
+    </tabs>
+    <sections>
+        <promotion translate="label" module="promotion">
+            <label>Promotion</label>
+            <tab>promotion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <loyalty>
+                    <label>Loyalty</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<threshold translate="label">
+                             <label>Threshold</label>
+                               <comment></comment>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>10</sort_order>
+			        <validate>validate-number</validate>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</threshold>
+                    	<coupon_amount translate="label">
+                             <label>Coupon Amount</label>
+                               <comment></comment>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>20</sort_order>
+			        <validate>validate-number</validate>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</coupon_amount>
+              <cc_emails translate="label">
+                    <label>CC Emails</label>
+                    <comment>Please enter comma separated emails like abc@gmail.com,xyz@gmail.com</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>21</sort_order>
+                   <show_in_default>1</show_in_default>
+                   <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </cc_emails>
+
+                 </fields>
+                </loyalty>
+                
+                <referafriend>
+                    
+                    <label>Refer A Friend</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                    	<friend_coupon_amount translate="label">
+                             <label>Friend Coupon Percentage</label>
+                               <comment></comment>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>10</sort_order>
+			        <validate>validate-number</validate>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</friend_coupon_amount>
+                    	<referee_coupon_amount translate="label">
+                             <label>Referee Coupon Amount</label>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>20</sort_order>
+			        <validate>validate-number</validate>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</referee_coupon_amount>
+                    </fields>
+                </referafriend>
+                
+                <birthday>
+                    
+                    <label>Birthday Coupon</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                    	<coupon_amount translate="label">
+                             <label>Birthday Coupon Percentage</label>
+                               <comment></comment>
+                               <frontend_type>text</frontend_type>
+			        <sort_order>10</sort_order>
+			        <validate>validate-number</validate>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                    	</coupon_amount>
+                
+                <test_mode translate="label">
+                    <label>Test Mode</label>
+                    <comment></comment>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>20</sort_order>
+                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                    <validate>validate-number</validate>
+                   <show_in_default>1</show_in_default>
+                   <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </test_mode>
+                <cc_emails translate="label">
+                    <label>CC Emails</label>
+                    <comment>Please enter comma separated emails like abc@gmail.com,xyz@gmail.com</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>21</sort_order>
+                   <show_in_default>1</show_in_default>
+                   <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </cc_emails>
+                <test_emails translate="label">
+                    <label>Test Emails</label>
+                    <comment>Please enter comma separated emails like abc@gmail.com,xyz@gmail.com</comment>
+                    <frontend_type>textarea</frontend_type>
+                    <sort_order>30</sort_order>
+                   <show_in_default>1</show_in_default>
+                   <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </test_emails>
+
+                </fields>
+                </birthday>
+                
+            </groups>
+        </promotion>
+    </sections>
+</config>

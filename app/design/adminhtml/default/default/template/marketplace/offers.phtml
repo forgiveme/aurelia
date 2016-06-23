@@ -1,0 +1,491 @@
+<?php
+    $offersList = $this->getData('offersList');
+    $limitstart = $this->getData('limitstart');
+    $offerMessages = $this->getData('offerMessages');
+    $totalintable = $this->getData('totalintable');
+    $field_attributes = $this->getData('field_attributes');
+    $mapped_fields_data = $this->getData('mapped_fields_data');
+
+    $offer_import_ids = $this->getData('offer_import_ids');
+    $total_import_pages =  $this->getData('offer_import_total_pages');
+    $offer_imports_page_nr = $this->getData('offer_imports_page_nr');
+    $imports_navigated = $this->getData('imports_navigated');
+?>
+<div class="offer-page">
+    <div class = "offers_list_block">
+        <div class="plain-headers" onclick = "Cn_Cmi_accordianToggle('offer_lister','acc_arr_lister')">
+            <h4>Offers List</h4><span id = "acc_arr_lister"  class = "accordian_arrow cnc_marketplace_sprite_icons"></span>
+        </div>
+        <div id="offer_lister" class="entry-edit container-blocks export_filter_container">
+            <div id="export_filter_grid_container">
+                <div id="export_filter_grid">
+                     <div class="cnc_float_right">
+                        <form action = "" method="post" id = "RefreshOffers" name = "RefreshOffers">
+                            <button class = "bulk_action_button" type = "submit">Refresh offers</button>
+                            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                        </form>
+                        <form action = "<?php echo $this->getofferSingleAction(); ?>" method="post" id = "offerSingle" name = "offerSingle">
+                            <input type="hidden" name="offer_id_ajax" id = "offer_id_ajax" value="" />
+                            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                        </form>
+                        <form action = "<?php echo $this->getofferEditSaveAction(); ?>" method="post" id = "offerEditSave" name = "offerEditSave">
+                            <button class = "bulk_action_button" type = "submit" onclick = "return Cn_Cmi_deleteBulkOffers()">Delete selected offers</button>
+                            <input name = "bulk" type = "hidden" value = "true" />
+                            <input name = "offer_ids" id = "offer_ids" type = "hidden" value = "" />
+                            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                        </form>
+                     </div>
+                    <div class="grid blocks offerImports clear">
+                        <div class="hor-scroll">
+                            <table cellspacing="0" id="export_filter_grid_table" class="data">
+                                <colgroup>
+                                    <col width="55">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr class="headings block-headings">
+                                        <th><span class="nobr table-label">Select</span></th>
+                                        <th><span class="nobr table-label">Offer Sku</span></th>
+                                        <th><span class="nobr table-label">Product</span></th>
+                                        <th><span class="nobr table-label">Actions</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <?php
+                                    foreach($offersList as $key=>$offerList)
+                                    {
+                                    ?>
+                                        <tr class = "<?php echo $key ; ?>">
+                                            <td>
+                                                <input type = "checkbox" value = "<?php echo $offerList->shop_sku; ?>" name = "offer_list_check" id="<?php echo $offerList->shop_sku; ?>" class="cnc_hide cnc_checkbox" />
+                                                <label class = "cnc_marketplace_sprite_icons" for="<?php echo $offerList->shop_sku; ?>"></label>
+                                            </td>
+                                            <td><?php echo $offerList->shop_sku; ?></td>
+                                            <td><?php echo '<b>'.$offerList->product_title.'</b>('.$offerList->product_sku.')'; ?></td>
+                                            <td>
+                                                <?php
+                                                    $msg = array();
+                                                    $msg_count = array();
+                                                    foreach($offerMessages as $offerMessage)
+                                                    {
+                                                        if(in_array($offerList->offer_id, $offerMessage)) {
+                                                            if($offerMessage['read_msg'] == 0)
+                                                                $msg_count[] = $offerMessage['id'];
+                                                            $msg[] = $offerMessage['id'];
+                                                        }
+                                                    }
+                                                    if(count($msg) > 0)
+                                                    {
+                                                        ?>
+                                                            <span class = "modal_open" onclick = "Cn_Cmi_openOfferMsg(<?php echo $offerList->offer_id; ?>)">
+                                                                <span class="messages_offer cnc_marketplace_sprite_icons">
+                                                                    <span class="number_msgs" id = "make_zero_<?php echo $offerList->offer_id; ?>"><?php echo count($msg_count); ?></span>
+                                                                </span>
+                                                            </span>
+                                                        <?php
+                                                    }
+                                                    else {
+                                                        ?>
+                                                            <span>
+                                                                <span class="messages_offer background_none">
+                                                                    <span class="number_msgs cnc_hide" id = "make_zero_<?php echo $offerList->offer_id; ?>"><?php echo count($msg_count); ?></span>
+                                                                </span>
+                                                            </span>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                <span class = "edit_box_offrs modal_open cnc_marketplace_sprite_icons" onclick = "Cn_Cmi_openOfferEdit('<?php echo $offerList->shop_sku; ?>')">&nbsp;</span>
+                                                <form class="form-horizontal" action = "<?php echo $this->getofferEditSaveAction(); ?>" name = "offerEditSave" id="offerEditSave" method = "post">
+                                                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                                    <input type="hidden" class="available_ended" id="available_ended_del" name="available_ended" value = "<?php echo $offerList->available_end_date; ?>" />
+                                                    <input type="hidden" class="available_started" id="available_started_del" name="available_started" value = "<?php echo $offerList->available_start_date; ?>" />
+                                                    <input type="hidden" class="end_date" id="end_date_del" name="end_date" value = "<?php echo $offerList->discount->end_date; ?>" />
+                                                    <input type="hidden" class="start_date" id="start_date_del" name="start_date" value = "<?php echo $offerList->discount->start_date; ?>" />
+                                                    <input type="hidden" class="origin_price" id="origin_price_del" name="origin_price" value = "<?php echo $offerList->discount->origin_price; ?>" />
+                                                    <input type="hidden" class="min_quantity_alert" id="min_quantity_alert_del" name="min_quantity_alert" value = "<?php echo $offerList->min_quantity_alert; ?>" />
+                                                    <input type="hidden" class="code" id="code_del" name="code">
+                                                    <input type="hidden" class="value" id="value_del" name="value">
+                                                    <input type="hidden" class="price_offer_cmi" id="price_offer_cmi_del" name="price_offer_cmi" value = "<?php echo $offerList->price ?>" />
+                                                    <input type="hidden" class="price_additional_info" id="price_additional_info_del" name="price_additional_info" value = "<?php echo $offerList->price_additional_info; ?>" />
+                                                    <input type="hidden" class="product_id" id="product_id_del" name="product_id" value = "<?php echo $offerList->product_sku; ?>" />
+                                                    <input type="hidden" class="product_id" id="product_id_type_del" name="product_id_type" value = "SKU">
+                                                    <?php foreach($offerList->offer_additional_fields as $offer_additional_fields)
+                                                    {
+                                                        ?>
+                                                        <input type="hidden" class="value" id="value" name="offer_additional_field_value[]" value = "<?php echo $offer_additional_fields->value; ?>" />
+                                                        <input type="hidden" class="code" id="code" name="offer_additional_field_code[]"  value = "<?php echo $offer_additional_fields->code; ?>">
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <input type="hidden" class="shop_sku" id="shop_sku" name="shop_sku" value = "<?php echo $offerList->shop_sku; ?>" />
+                                                    <input type="hidden" class="state_code" id="state_code" name="state_code" value = "<?php echo $offerList->state_code; ?>" />
+                                                    <input type = "hidden" name = 'update_delete' value="delete" />
+                                                    <input type = "submit" name = 'submit' class = "delete_offer cnc_marketplace_sprite_icons" onclick = "return Cn_Cmi_deleteOffer()" value = "" />
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <!-- Pagination start -->
+                                <div class="navigation">
+                                    <form action = "" name = "previous" method = "post">
+                                        <input type = "hidden" name = "limitstart" value = "<?php echo $limitstart-1; ?>">
+                                        <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
+                                        <input type = "submit" id="prev" <?php if($limitstart-1 <= 0) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled'; } else { echo 'class = "cnc_marketplace_sprite_icons"'; } ?>  value = "" />
+                                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                    </form>
+                                    <?php
+                                        $total_pages = ceil($totalintable/10);
+                                        for($pages=1;$pages<$total_pages+1;$pages++)
+                                        {
+                                            if($pages == $limitstart) {
+                                            ?>
+                                                <div class="content">
+                                                    <span>Page</span>
+                                                    <span id="count"><?php echo $pages; ?></span>
+                                                    <span>of</span>
+                                                    <span id="total"><?php echo $total_pages; ?></span>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+                                    ?>
+                                    <form action = "" name = "previous" method = "post">
+                                        <input type = "hidden" name = "limitstart" value = "<?php echo $limitstart+1; ?>">
+                                        <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
+                                        <input type = "submit" id="next" <?php if($totalintable <= 10*$limitstart) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled';  } else { echo 'class = "cnc_marketplace_sprite_icons"'; }?> value = "" />
+                                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                    </form>
+                                </div>
+                            <!-- Pagination end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Offer list block Ends -->
+    <?php
+    if($mapped_fields_data)
+        $mapped_fields_datas = json_decode($mapped_fields_data);
+
+    if(count($offer_import_ids) > 0)
+    {
+    ?>
+    <div id="offer_imports_messages"></div>
+    <div class = "offers_imports_block">
+        <div class="plain-headers" onclick = "Cn_Cmi_accordianToggle('offer_importer','acc_arr_importer')">
+            <h4 class="fieldset-legend">Previous imports</h4><span id = "acc_arr_importer" class = "accordian_arrow cnc_marketplace_sprite_icons closed"></span>
+        </div>
+        <div id="offer_importer" class="cnc_hide entry-edit container-blocks">
+
+            <div id="export_filter_container" class = "export_filter_container">
+                <div id="export_filter_grid">
+                     <div class="cnc_float_right">
+                                    <form action = "<?php echo $this->getListAction(); ?>" method="post" id = "importList" name = "getlist">
+                                        <button class = "bulk_action_button" type = "button" onclick = "Cn_Cmi_getImportList_Offers(false)">Refresh Status</button>
+                                        <input name = "type" type = "hidden" value = "offer" />
+                                        <input name = "imports" id = "offer_imports_id" type = "hidden" value = "" />
+                                        <input type="hidden" name="offer_imports_page_nr" value="<?php echo $offer_imports_page_nr; ?>" />
+                                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                    </form>
+                     </div>
+                    <div class="grid blocks offerImports clear">
+                        <div class="hor-scroll">
+                            <table name = "offer_imports_table" cellspacing="0" id="export_filter_grid_table" class="data">
+                                <colgroup>
+                                    <col width="55">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr class="headings block-headings">
+                                        <th><span class="nobr table-label">Select</span></th>
+                                        <th><span class="nobr table-label">Import ID</span></th>
+                                        <th><span class="nobr table-label">Date</span></th>
+                                        <th><span class="nobr table-label">Status</span></th>
+                                        <th><span class="nobr table-label">Mapping status</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody name="offer_imports_body">
+                                </tbody>
+                            </table>
+                            <!-- Pagination start -->
+                            <div class="navigation">
+                                <form action = "" name = "previous" method = "post">
+                                    <input type = "hidden" name = "offer_imports_page_nr" value = "<?php echo $offer_imports_page_nr-1; ?>">
+                                    <input type = "submit" id="prev" <?php if($offer_imports_page_nr-1 <= 0) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled'; } else { echo 'class = "cnc_marketplace_sprite_icons"'; } ?>  value = "" />
+                                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                </form>
+                                <div class="content">
+                                    <span>Page</span>
+                                    <span id="page_nr"><?php echo $offer_imports_page_nr; ?></span>
+                                    <span>of</span>
+                                    <span id="total"><?php echo $total_import_pages; ?></span>
+                                </div>
+                                <form action = "" name = "next" method = "post">
+                                    <input type = "hidden" name = "offer_imports_page_nr" value = "<?php echo $offer_imports_page_nr+1; ?>">
+                                    <input type = "submit" id="next" <?php if($offer_imports_page_nr+1 > $total_import_pages) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled';  } else { echo 'class = "cnc_marketplace_sprite_icons"'; }?> value = "" />
+                                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                                </form>
+                            </div>
+                            <!-- Pagination end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    <div class = "offer_export_mapping">
+        <div class="plain-headers" onclick = "Cn_Cmi_accordianToggle('offer_mapper','acc_arr_mapper')">
+            <h4 class="fieldset-legend">Offer Mapping</h4><span id = "acc_arr_mapper" class = "accordian_arrow cnc_marketplace_sprite_icons closed"></span>
+        </div>
+        <div id = "offer_mapper" class = "cnc_hide export_filter_container">
+            <ul class="messages cnc_hide error_msg_none"><li class="error-msg"><ul><li><span class= "error_msg_block"></span></li></ul></li></ul>
+            <form action = "<?php echo $this->getFormAction(); ?>" method = "post" name = "mapper">
+                <div id="product_info_tabs_group_10_content" class="entry-edit container-blocks">
+                    <div id="group_fields7" class="fieldset-wide">
+                        <div class="offer-action">
+                            <div class="label_floater full_float">
+                                <h4 class="fieldset-legend">Offer Mapping</h4>
+                            </div>
+                            <div class="full_float floater">
+                                <button type = "submit" onclick="return Cn_Cmi_FormManValidation('formManField');" class = "cnc_upload_button cnc_marketplace_sprite_icons">Upload Offer data to MarketPlace</button>
+                            </div>
+                        </div>
+                        <div class = "clear"></div>
+                        <div class="grid blocks">
+                            <div class="hor-scroll">
+                                <label>All fields marked with <span class="req">*</span> are mandatory.</label>
+                                <table cellspacing="0"  id="OfferMappingTable">
+                                    <tbody>
+                                        <?php foreach($mapped_fields_datas as $mapped_fields_data) { ?>
+                                            <tr class="offerMappingRows">
+                                                <td class="label">
+                                                    <label><?php
+                                                    if(
+                                                               ($mapped_fields_data->name == 'sku') ||
+                                                               ($mapped_fields_data->name == 'price') ||
+                                                               ($mapped_fields_data->name == 'state'))
+                                                            {
+                                                                echo $mapped_fields_data->name.'&nbsp;<span class="req">*</span>';
+                                                                $classname='formManField';
+                                                            }else{
+                                                                echo $mapped_fields_data->name;
+                                                                $classname='formNotManField';
+                                                            }
+
+                                                    ?>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                     <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                                                       <select
+                                                         class="cnc_marketplace_select_box <?php echo $classname; ?>" data-attribute="select" name = "map_value[]">
+                                                            <option value = "">-Select-</option>
+                                                            <?php
+                                                                foreach($field_attributes as $field_attribute) {
+                                                                ?>
+                                                                    <option <?php if($mapped_fields_data->value == $field_attribute['field_code']) { echo 'selected'; } ?> value = "<?php echo $field_attribute['field_code']; ?>">
+                                                                        <?php echo $field_attribute['field_code']; ?>
+                                                                    </option>
+                                                                <?php } ?>
+                                                        </select>
+                                                     </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="offer_mapping_go" value="true" />
+                <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+            </form>
+        </div>
+    </div>
+    <div class="modal fade offer_dialog" id="msg_offer_dialog">
+        <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h3>Offer Messages</h3>
+                <form class="form-horizontal" action = "<?php echo $this->getmessageOfferGetAction(); ?>" name = "messageOfferGet" id="messageOfferGet" method = "post">
+                    <input type = "hidden" name="offer_id_msg" id = "offer_id_msg" value = "" />
+                    <input type = "hidden" name="type" id = "type" value = "offers" />
+                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                </form>
+                <form class="form-horizontal" action = "<?php echo $this->getmessageOfferAnswerAction(); ?>" name = "messageOfferAnswer" id="messageOfferAnswer" method = "post">
+                    <div class = "scroll_holder entry-edit" id = "scroll_holder">
+                        <fieldset id = "offer_msg_fieldset_add" class = "offer_msg_fieldset fieldset_pad">
+
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <label for="id" class="col-sm-4 control-label">Reply</label>
+                        <div class="col-sm-5 offer_dialog_inputs">
+                          <textarea class="message_answer" id="message_answer" name="message_answer"></textarea>
+                        </div>
+                    </div>
+                    <input type = "hidden" name="offer_sku_msg" id = "offer_sku_msg" value = "" />
+                    <input type = "hidden" name="msg_id_msg" value = "" />
+                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                    <button type="button" onclick = "return Cn_Cmi_answerMessage()" class = "cnc_button" name = 'submit'>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade offer_dialog" id="offer_dialog">
+        <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h3>Edit Offer</h3>
+                <form class="form-horizontal" action = "<?php echo $this->getofferEditSaveAction(); ?>" name = "offerEditSave" id="offerEditSave" method = "post">
+                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                    <fieldset class = "top_level">
+                        <div class = "legend">Product</div>
+                        <div class="fieldset_pad">
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label"><?php echo $offerList->product_sku; ?></label> Product SKU
+                                <input type="hidden" class="product_id" id="product_id" name="product_id" value = "<?php echo $offerList->product_sku; ?>" />
+                                <input type="hidden" class="product_id_type" id="product_id_type" name="product_id_type" value = "SKU">
+                                <input type="hidden" class="shop_sku" id="shop_sku" name="shop_sku" value = "<?php echo $offerList->shop_sku; ?>" />
+                                <input type="hidden" class="logistic_class" id="logistic_class" name="logistic_class" value = "<?php echo $offerList->logistic_class->code; ?>" />
+                                <?php foreach($offerList->offer_additional_fields as $offer_additional_fields)
+                                {
+                                    ?>
+                                    <input type="hidden" class="value" id="value" name="offer_additional_field_value[]" value = "<?php echo $offer_additional_fields->value; ?>" />
+                                    <input type="hidden" class="code" id="code" name="offer_additional_field_code[]"  value = "<?php echo $offer_additional_fields->code; ?>">
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label"><?php echo $offerList->product_title; ?></label> Product title
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class = "top_level">
+                        <div class = "legend">Offer Settings</div>
+                        <div class="fieldset_pad">
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Condition</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                    <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                                        <select class="cnc_marketplace_select_box" id="state_code" name="state_code">
+                                            <option value = "11">New</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Quantity</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                  <input type="text" class="cnc_marketplace_text_box" id="quantity" name="quantity" value = "" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Min quantity alert</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                  <input type="text" class="cnc_marketplace_text_box" id="min_quantity_alert" name="min_quantity_alert" value = "" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Price</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                  <input type="text" class="cnc_marketplace_text_box" id="price_offer_cmi" name="price_offer_cmi" value = "" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Price additional info</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                  <input type="text" class="cnc_marketplace_text_box" id="price_additional_info" name="price_additional_info" value = "" />
+                                </div>
+                            </div>
+                            <div class="form-group date_together first">
+                                <label for="id" class="col-sm-4 control-label">Available start date</label>
+                                <div class="col-sm-5 offer_dialog_inputs cnc_date_div" id = "cnc_avstart_date">
+                                  <input type="text" class="cnc_marketplace_text_box date_cmi" id="available_started" name="available_started" onclick = "Cn_Cmi_dateOpen('cnc_avstart_date')" value = "" />
+                                    <span class="add-on input-group-addon-date" onclick = "Cn_Cmi_dateOpen('cnc_avstart_date')">
+                                        <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group date_together">
+                                <label for="id" class="col-sm-4 control-label">Available End date</label>
+                                <div class="col-sm-5 offer_dialog_inputs cnc_date_div" id = "cnc_avend_date">
+                                    <input type="text" class="cnc_marketplace_text_box date_cmi" id="available_ended" name="available_ended" onclick = "Cn_Cmi_dateOpen('cnc_avend_date')" value = "" />
+                                    <span class="add-on input-group-addon-date" onclick = "Cn_Cmi_dateOpen('cnc_avend_date')">
+                                        <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class = "clear"></div>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Description</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                    <textarea class="description cnc_marketplace_text_box" id="description" name="description"></textarea>
+                                </div>
+                            </div>
+                            <fieldset class = "mid_level">
+                                <div class = "legend">Discount</div>
+                                <div class="fieldset_pad">
+                                    <div class="form-group date_together first">
+                                        <label for="id" class="col-sm-4 control-label">Start date</label>
+                                        <div class="col-sm-5 offer_dialog_inputs cnc_date_div" id = "cnc_start_date">
+                                          <input type="text" class="cnc_marketplace_text_box date_cmi" id="start_date" name="start_date" onclick = "Cn_Cmi_dateOpen('cnc_start_date')" value = "" />
+                                          <span class="add-on input-group-addon-date" onclick = "Cn_Cmi_dateOpen('cnc_start_date')">
+                                            <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group date_together">
+                                        <label for="id" class="col-sm-4 control-label">End date</label>
+                                        <div class="col-sm-5 offer_dialog_inputs cnc_date_div" id = "cnc_end_date">
+                                          <input type="text" class="cnc_marketplace_text_box date_cmi" id="end_date" name="end_date" onclick = "Cn_Cmi_dateOpen('cnc_end_date')" value = "" />
+                                          <span class="add-on input-group-addon-date" onclick = "Cn_Cmi_dateOpen('cnc_end_date')">
+                                            <span class="calendar-icon cnc_marketplace_sprite_icons"></span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class = "clear"></div>
+                                    <div class="form-group">
+                                        <label for="id" class="col-sm-4 control-label">Price</label>
+                                        <div class="col-sm-5 offer_dialog_inputs">
+                                          <input type="text" class="cnc_marketplace_text_box" id="origin_price" name="origin_price" value = "" />
+                                        </div>
+                                </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Internal Description</label>
+                                <div class="col-sm-5 offer_dialog_inputs">
+                                  <textarea class="internal_description cnc_marketplace_text_box" id="internal_description" name="internal_description">
+
+                                  </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <input type = "hidden" name = 'update_delete' value="update" />
+                    <button type = "submit" onclick = "Cn_Cmi_showWaitNoReason();" class = "cnc_button" name = 'submit'>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            Cn_Cmi_getImportList_Offers(true);
+            <?php if ($imports_navigated) { ?>
+            Cn_Cmi_accordianCollapse('offer_lister');
+            Cn_Cmi_accordianExpand('offer_importer');
+            Cn_Cmi_accordianCollapse('offer_mapper');
+            <?php } ?>
+        }
+    </script>
+</div>

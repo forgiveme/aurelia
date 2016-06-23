@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Star_ThirteenTenCarrier>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Shipping/>
+            </depends>
+        </Star_ThirteenTenCarrier>
+    </modules>
+</config>

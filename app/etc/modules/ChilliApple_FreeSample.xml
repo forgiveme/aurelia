@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ChilliApple_FreeSample>
+            <active>true</active>
+            <codePool>community</codePool>
+        </ChilliApple_FreeSample>
+    </modules>
+</config> 

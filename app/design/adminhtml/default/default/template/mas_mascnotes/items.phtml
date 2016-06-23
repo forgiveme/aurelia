@@ -1,0 +1,52 @@
+<?php 
+    $notes = $this->getCollection();
+    $hlp = Mage::helper('mascnotes');
+?>
+<div class="create-order-sidebar-block">
+    <div class="head">
+        <h5><?php echo $this->getHeaderText() ?></h5>      
+        <a href="<?php echo $this->getAddUrl()?>" target="_blank"><?php echo $hlp->__('Add')?></a>
+    </div>
+    <div class="content" style="max-height: 300px; overflow-y: scroll;">
+    
+<div class="notes-holder">
+<div class="notes-message">
+<?php if (count($notes) > 0):?>
+
+<?php
+	$helper = Mage::helper('cms');
+	
+	$processor = $helper->getPageTemplateProcessor();
+?>
+
+
+<?php foreach ($notes as $note):?>
+							
+								<div class="notes-body clearfix">
+									<div class="post-header">
+										<strong class="primary-font"><?php echo $note->getFirstname()?></strong>
+										<small class="text-muted">
+										<a target="_blank" href="<?php echo $this->getAddUrl()?>#note-<?php echo $note->getId()?>">
+										<?php echo $hlp->__('Added: %s', $note->getCreatedAt())?></a></small>
+										
+										<?php if ($note->getUpdatedAt() != ''):?>
+                                            &nbsp;
+                                            <small class="text-muted"><?php echo $hlp->__('Updated: %s',$note->getUpdatedAt())?></small>
+										<?php endif;?>
+									</div>
+									<p>
+										<?php echo $processor->filter($note->getNote());?>										
+									</p>									
+								</div>
+						
+<?php endforeach;?>
+
+<?php else:?>
+<?php echo $hlp->__('Notes List is empty');?>
+<?php endif;?>
+</div>
+</div>
+
+
+	</div>
+</div>

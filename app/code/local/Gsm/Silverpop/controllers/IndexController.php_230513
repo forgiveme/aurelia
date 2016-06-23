@@ -1,0 +1,31 @@
+<?php
+
+class Gsm_Silverpop_IndexController extends Mage_Core_Controller_Front_Action {
+	public function indexAction() {
+
+	}
+
+	public function subscribeAction() {
+		// Let's check whether the user exists or not.
+		$email = $_GET['email'];
+
+		$silverpop = Mage::getModel('silverpop/silverpop');
+
+		if ($silverpop->checkUserExists($email)) {
+			$silverpop->setSubscribed(true, $email);
+		}
+		else {
+			$cust_data['Email'] = $email;
+			$cust_data['First Name'] = '';
+			$cust_data['Guest'] = 'Yes';
+			$cust_data["Registered"] = 'No';
+			$cust_data["Surname"] = '';
+			$cust_data["Phone"] = '';
+			$cust_data['Newsletter'] = 'Yes';
+
+			$silverpop->createUser($cust_data);
+		}
+
+		echo "1";
+	}
+}

@@ -1,0 +1,185 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for block Mage_Adminhtml_Block_Customer_Edit_Tab_View
+ */
+?>
+
+<?php $preference=$this->getPreferences(); ?>
+<?php
+$skintoolData = $preference->getData('skintools_data');
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('customer')->__('Preferences') ?></h4></div>
+    <?php if($preference->getId() || $skintoolData) { ?>
+    <fieldset>
+        <table cellspacing="2" class="box-left">
+            <!-- <tr>
+                <td><strong><?php echo $this->__('Primary skin concern Is:') ?></strong></td>
+                <td><?php echo $preference->getData('primary_concern_text'); ?></td>
+            </tr>
+ 
+            <tr>
+                <td><strong><?php echo $this->__('Secondary skin concern is:') ?></strong></td>
+                <td> <?php echo $preference->getData('secondary_concern_text'); ?></td>
+            </tr> -->
+            <tr>
+                <td><strong><?php echo $this->__('Other skincare brands & products:') ?></strong></td>
+                <td><?php echo nl2br($preference->getOtherBrands())?></td>
+            </tr>
+            
+            <tr>
+                <td><strong><?php echo $this->__('Find labels hard to read') ?></strong></td>
+                <td><?php echo   $preference->getData('has_glasses_text') ?></td>
+            </tr>
+        </table>
+        <address class="box-right">
+            <!-- <strong><?php echo $this->__('What is important while chosing skincare:') ?></strong><br/>
+             <?php $options=$preference->getData('skincare_options');
+                    $options=is_array($options)?$options:array();
+                    foreach($options as $option)
+                    {
+					?>
+                    <?php echo $option['label']?><br/>
+                    <?php } ?>
+             <br/> -->
+            <strong><?php echo $this->__('Feedback and suggestions:') ?></strong><br/>
+            <?php echo nl2br($preference->getAureliaFeedback())?>
+        </address>
+		<?php if($skintoolData) { ?>
+			<table cellspacing="2" class="form-list">
+				<tr>
+					<td width="100%" colspan="2" align="center">
+						<hr />
+						<div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('customer')->__('Skintools Result') ?></h4></div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%">
+						<strong><?php echo Mage::helper('customer')->__('Skintools Query String : '); ?></strong>
+					</td>
+					<td>
+						<strong><?php echo $skintoolData[0]['request_uri']; ?></strong>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a href="<?php echo str_replace("https", "http", Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)); ?>skintools/response.html<?php echo $skintoolData[0]['request_uri']; ?>&preview=only" target="_blank" alt="<?php echo Mage::helper('customer')->__('View Result:'); ?>"><strong><?php echo Mage::helper('customer')->__('View Result'); ?></strong></a>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<!-- <tr><td colspan="2" align="center"><b><?php echo Mage::helper('customer')->__('Complete Result'); ?></b></td></tr> -->
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('How does it all begin?'); ?></b></td>
+					<td><b><?php echo ucwords($skintoolData[0]['question2']); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('Most mornings I\'m feeling...'); ?></b></td>
+					<td><b><?php echo ($skintoolData[0]['question3']=='1'?'Ready for bed!':($skintoolData[0]['question3']=='2'?'Balanced':($skintoolData[0]['question3']=='3'?'Ready for life!':''))); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('What is your morning skincare regime?'); ?></b></td>
+					<td><b><?php echo ($skintoolData[0]['question4']=='regime1'?'I am yet to start one':($skintoolData[0]['question4']=='regime2'?'Simple and quick':($skintoolData[0]['question4']=='regime3'?'My tried and tested - cleanse, tone, moisturise':($skintoolData[0]['question4']=='regime4'?'The complete routine':'')))); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('I\'m usually happy with the results'); ?></b></td>
+					<td><b><?php echo ucwords($skintoolData[0]['question5']); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('Show us what you don\'t love'); ?></b></td>
+					<td><b><?php echo ucfirst($skintoolData[0]['question6']); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('I\'d love to look'); ?></b></td>
+					<td><b><?php echo ucwords($skintoolData[0]['question7']); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('How old I think I look on a good day?'); ?></b></td>
+					<td><b><?php echo ($skintoolData[0]['question8']=='0'?'Twenties':($skintoolData[0]['question8']=='1'?'Thirties':($skintoolData[0]['question8']=='2'?'Forties':($skintoolData[0]['question8']=='3'?'Older & Wiser':($skintoolData[0]['question8']=='4'?'Teens':''))))); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('How hydrated are you?'); ?></b></td>
+					<td><b><?php echo $skintoolData[0]['question9']; ?>%</b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('At 5:00pm where are you most likely to be?'); ?></b></td>
+					<td><b><?php echo ucwords($skintoolData[0]['question10']); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('My stress level are...'); ?></b></td>
+					<td><b><?php echo $skintoolData[0]['question11']; ?>%</b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('If we took a peek in your beauty bag, what skincare would we find?'); ?></b></td>'
+					<?php
+					$answer12 = str_Replace("bag1", "All the basics", $skintoolData[0]['question12']);
+					$answer12 = str_Replace("bag2", "Ethical & fair trade", $answer12);
+					$answer12 = str_Replace("bag3", "Organic / Biorganic", $answer12);
+					$answer12 = str_Replace("bag4", "Anti-Ageing/New Science", $answer12);
+					$answer12 = str_Replace("bag5", "The latest beauty recommendations", $answer12);
+					$answer12 = str_Replace("bag6", "My go to classics", $answer12);
+					$answer12 = str_Replace("bag7", "Mostly one brand, but all the products", $answer12);
+					?>
+					<td><b><?php echo trim($answer12, ","); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('What matters most?'); ?></b></td>
+					<td><b><?php echo ($skintoolData[0]['question13']=='trust'?'I trust the brand to make the right choices about ingredients.':($skintoolData[0]['question13']=='beauty'?'I choose my beauty products on the basis of their ingredients.':($skintoolData[0]['question13']=='ingredients'?'There are some ingredients i avoid, but not all the time.':''))); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('...and how does your day end'); ?></b></td>
+					<td><b><?php echo ($skintoolData[0]['question14']=='awake'?'Wide awake at night.':($skintoolData[0]['question14']=='sleep'?'Fast asleep at night.':($skintoolData[0]['question14']=='wine'?'Wine and moonlight.':''))); ?></b></td>
+				</tr>
+				<tr>
+					<td><b><?php echo Mage::helper('customer')->__('How do you feel at the end of the day?'); ?></b></td>
+					<td><b><?php echo $skintoolData[0]['question15']; ?>%</b></td>
+				</tr>
+			</table>
+		<?php } ?>
+    </fieldset>
+    <?php } else { ?>
+    <div class="grid">
+    <div class="hor-scroll">
+    <table cellspacing="0" id="customer_view_wishlist_grid_table" class="data">
+                <colgroup><col width="100">
+                <col>
+                <col width="140">
+                <col width="140">
+                        
+        </colgroup><tbody>
+                    <tr class="even">
+                <td colspan="4" class="empty-text a-center">There are no customer's preferences at the moment</td>
+            </tr>
+                </tbody>
+
+    </table>
+    </div>
+</div>
+    <?php } ?>
+</div>
+<?php echo $this->getChildHtml('', true, true); ?>

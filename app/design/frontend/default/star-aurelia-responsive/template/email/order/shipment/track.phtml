@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+/*
+function getTrackingInfo($carrierCode, $trackingNum, $postCode) {
+	$trackingURL = Mage::getStoreConfig("carriers/$carrierCode/tracking_url");
+	
+	if ($trackingURL != '' && $trackingNum != '') {
+		$postCode = str_replace(' ', '+', $postCode);
+		$trackingInfo = '<a href="' . str_replace(array('#TRACKINGREF#', '#POSTCODE#'), array($trackingNum, $postCode), $trackingURL) . '">' . $trackingNum . '</a>';
+	} else {
+		$trackingInfo = $trackingNum;
+	}
+
+	return $trackingInfo;
+}
+*/
+?>
+
+<?php $_shipment=$this->getShipment() ?>
+<?php $_order=$this->getOrder() ?>
+<?php if ($_shipment && $_order && $_shipment->getAllTracks()): ?>
+<table cellspacing="0" cellpadding="10" border="0" width="510" style="border:0px solid #EAEAEA; color:#666; font-family:Georgia, 'Times New Roman', Times, serif;">
+    <thead>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px;"><?php echo $this->__('Shipped By') ?></th>
+            <th align="center" bgcolor="#EAEAEA" style="font-size:13px;"><?php echo $this->__('Tracking Number') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+	$shippingAddress = $_order->getShippingAddress();
+	?>
+    <?php $i=0; foreach ($_shipment->getAllTracks() as $_item): $i++ ?>
+        <tr <?php //echo $i%2?'bgcolor="#F6F6F6"':'' ?>>
+            <td align="left" valign="top" style="padding:9px 10px"><?php echo $_item->getTitle() ?></td>
+            <td align="center" valign="top" style="padding:9px 10px">
+			<?php
+			$carrierCode = $_item->getCarrierCode();
+			$trackingURL = Mage::getStoreConfig("carriers/$carrierCode/tracking_url");
+			$trackingNum = $_item->getNumber();
+			$postCode = $shippingAddress['postcode'];
+			
+			if ($trackingURL != '' && $trackingNum != '') {
+				$postCode = str_replace(' ', '+', $postCode);
+				$trackingInfo = '<a href="' . str_replace(array('#TRACKINGREF#', '#POSTCODE#'), array($trackingNum, $postCode), $trackingURL) . '">' . $trackingNum . '</a>';
+			} else {
+				$trackingInfo = $trackingNum;
+			}
+			
+			echo $trackingInfo;
+			//echo getTrackingInfo($_item->getCarrierCode(), $_item->getNumber(), $shippingAddress['postcode']); 
+			?></td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>
+<?php endif; ?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+         <Pagenorth_Fishcode>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Pagenorth_Fishcode>
+    </modules>
+</config>

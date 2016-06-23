@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Cnc_MarketPlace>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Cnc_MarketPlace>
+  </modules>
+</config>
