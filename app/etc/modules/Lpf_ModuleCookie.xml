@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Lpf_ModuleCookie>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Lpf_ModuleCookie>
+    </modules>
+</config> 

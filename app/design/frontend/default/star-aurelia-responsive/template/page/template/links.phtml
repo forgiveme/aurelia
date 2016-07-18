@@ -25,7 +25,14 @@
  */
 ?>
 <?php $catalogSearchHelper =  $this->helper('catalogsearch');?>
-<?php $count=Mage::helper('checkout/cart')->getSummaryCount(); //Mage::helper('checkout/cart')->getItemsCount(); ?>
+<?php 
+ $cart =  Mage::getSingleton('checkout/cart');
+ 
+                if($cart->getQuote()->getItemsCount()) {
+                        $cart->init();
+                        $cart->save();      
+                }
+$count=Mage::helper('checkout/cart')->getSummaryCount(); //Mage::helper('checkout/cart')->getItemsCount(); ?>
 <?php
 /**
  * @see Mage_Page_Block_Template_Links
@@ -75,8 +82,7 @@ if ($loggedin=Mage::getSingleton('customer/session')->isLoggedIn()) {
            <a href="<?php echo $_link->getUrl() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
         <?php endif;?>
     <?php endforeach; ?>
-	
-    <a class="shopping-bag-link" href="<?php echo $this->getUrl('checkout/cart')?>">SHOPPING BAG <?php if($count>0) { echo $count;} ?></a>
+	<a class="shopping-bag-link" href="<?php echo $this->getUrl('checkout/cart')?>">SHOPPING BAG <?php if($count>0) { echo $count;} ?> </a>
 </div>
 
 </div>
@@ -128,6 +134,8 @@ if ($loggedin=Mage::getSingleton('customer/session')->isLoggedIn()) {
 </div>
 <?php endif; ?>
 
+<?php $customHelper=Mage::helper('custom'); ?>
+
 <?php $_links = $this->getLinks(); ?>
 <?php if(count($_links)>0): ?>
 <div class="mobile" id="nav-floater">
@@ -147,54 +155,106 @@ if ($loggedin=Mage::getSingleton('customer/session')->isLoggedIn()) {
 </div>
 <?php $catalogSearchHelper =  $this->helper('catalogsearch');?>
 
+
+
+
+
 <!--------------moblie -------------------------->
 <div class="shoppingbag">
-<a class="shopping-bag-link" href="<?php echo $this->getUrl('checkout/cart')?>">SHOPPING BAG <?php if($count>0) { echo $count;} ?> </a>
-<span class="toggle-btn"></span>
+<?php 
+	 if($customHelper->isMobileOrTablet())   { ?>
+    <a class="shopping-bag-link" href="<?php echo $this->getUrl('checkout/cart')?>">SHOPPING BAG :<span class="grand-total"> <?php echo $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal()); ?></span></a>
+<?php 	} ?>
+<?php  if(!$customHelper->isMobileOrTablet())   {  ?>
+ 
+    <a class="shopping-bag-link" href="<?php echo $this->getUrl('checkout/cart')?>">SHOPPING BAG <?php if($count>0) { echo $count;} ?></a>
+
+
+<?php  } ?>
+<?php 
+	 if($customHelper->isMobileOrTablet())   { ?>
+<span class="toggle-btn toggle-class tgl2" id="smooth">
+<span></span>
+<span></span>
+<span></span>
+
+</span>
+<?php } ?>
 </div>
-<div class="mobile-link">
-<ul>
-<?php if($loggedin) { ?> <li><a href="<?php echo $this->getUrl('customer/account')?>">My Account</a></li><?php } else { ?>
- <li><a href="<?php echo $this->getUrl('customer/account/login')?>">Sign In</a></li> <?php } ?>
-<li><a href="<?php echo $this->getUrl('customer/account/create')?>">Join Aurelia Loyalty</a></li>
-<li><a href="<?php echo $this->getUrl('checkout/cart')?>">View Shopping bag</a></li>
-<li><a href="<?php echo $this->getUrl('onestepcheckout')?>">Checkout</a></li>
-<li><a href="<?php echo $this->getUrl('price-delivery')?>">Delivery Information</a></li>
-<li class="no-display">
+
+
+
+
+<div class="hometagline"><a href="http://skinaurelia.newsoftdemo.info/price-delivery"> COMPLIMENTARY UK DELIVERY ON ORDERS OVER £50</a></div>
+<div class="mobilesearchbox" > 
+
+
+<div class="mobilesearch">
+
+<div class="mar-right">
 <div class="search-box">
 <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
-<input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" placeholder="Search Aurelia Probiotic Skincare"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+<input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" placeholder="Search"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
 <input type="submit"  />
 </form>
 </div>
-</li>
-<li style="color:#868280 !important">
+</div>
+<span class="toggle-btn" id="close-it"></span>
+
+<div class="signbtn-box">
+
+<div class="inner-box">
+<ul>
+<?php if($loggedin) { ?> <li><a href="<?php echo $this->getUrl('customer/account')?>">My Account</a></li><?php } else { ?>
+ <li><a href="<?php echo $this->getUrl('customer/account/login')?>">Sign In</a></li> <?php } ?>
+<li><a href="<?php echo $this->getUrl('customer/account/create')?>">Join Aurelia </a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="mobile-link">
+<!--ul class="cat">
+ <li><a href="<?php echo $this->getUrl('/')?>">Home</a></li>
+
+  <li><a href="<?php echo $this->getUrl('products')?>">View All Products</a></li>
+   <li class="no-display"></li>
+ </ul-->
+ <?php  //echo $this->getLayout()->createBlock('cms/block')->setBlockId('mega_menu')->toHtml(); ?> 
+ <?php  echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_menu_main_site_mobile')->toHtml(); ?> 
+<?php //echo $this->getChildHtml('mobile_menu_main_site'); ?>
+
+
+
+<!--ul class="cat">
+ <li><a href="<?php echo $this->getUrl('/')?>">Home</a></li>
+ <li><a href="#">View All Products</a></li>
+ <li><a href="#">New</a></li>
+ <li><a href="#">Face</a></li>
+ <li><a href="#">Body</a></li>
+ <li><a href="#">Discover Set & gift</a></li>
+ </ul>
+
+ <ul class="cms">
+	
+ <!--li><a href="#">Facials</a></li>
+ <li><a href="#">About</a></li>
+ <li><a href="#">Aurelia TV</a></li>
+ <li><a href="#">Press</a></li>
+ <li><a href="#">News</a></li>
+ <li><a href="#">Contact &amp; More Information</a></li-->
+<!--li style="color:#868280 !important">
 <div class="mobile-email" style="color:#868280 !important">
 <span style=" color:#868280 !important"> +44 (0)207 7510022 </span> | <a href="mailto:info@aureliaskincare.com" title="info@aureliaskincare.com">info@aureliaskincare.com</a>
 </div>
-</li>
+</li-->
 </ul>
 </div>
-<script language="javascript">
-jQuery(function(){
-	
-jQuery('span.toggle-btn' ).toggle(function() {
-  jQuery('.mobile-link').css("display", "block");
-  jQuery( this ).addClass("active");
-}, function() {
-   jQuery('.mobile-link').css("display", "none");
-   jQuery( this ).removeClass("active");
-});
+</div>
 
-
-jQuery('#complimentary-aurelia-btn' ).hover(function() {
-  jQuery('.complimentary-box').css("display", "block");
-}, function() {
-   jQuery('.complimentary-box').css("display", "none");
-});
-	
-});
-</script>
 
 
 

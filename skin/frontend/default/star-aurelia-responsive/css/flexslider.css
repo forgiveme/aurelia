@@ -128,10 +128,10 @@ html[xmlns] .slides {display: block;}
 
 .flex-direction-nav {
   position: relative;
-  top: -60px;
+  top: -60px; 
 }
 
-.flex-direction-nav a  { display: block; width: 40px; height: 40px; margin: -20px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 0 rgba(255,255,255,0.3); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.flex-direction-nav a  { display: block; width: 40px; height: 40px; margin: -25px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 0 rgba(255,255,255,0.3); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
 
 .flex-direction-nav .flex-prev { left: 0px; }
 
@@ -194,3 +194,11 @@ html[xmlns] .slides {display: block;}
   .flex-direction-nav .flex-next { opacity: 1; right: 10px;}
 
 }*/
+
+@media (max-width: 767px) {
+
+.flex-direction-nav a{width: 20px;height: 20px; margin:-15px 0 0 0} 
+.flex-direction-nav a:before {background: url(../images/left-arrow-product1.png) center center no-repeat; width: 100%; content: ' '; display: block; height: 100%; width:10px; background-size:100%}
+.flex-direction-nav a.flex-next:before  { background:url(../images/right-arrow-product1.png) center center no-repeat; width:10px; background-size:100%}
+
+}

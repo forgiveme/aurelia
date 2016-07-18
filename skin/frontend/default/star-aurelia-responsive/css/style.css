@@ -275,6 +275,7 @@ iframe { width:420px !important; height:auto;}
 
 #onestepcheckout-login-popup-contents-forgot .close { margin-right:-20px; margin-top:-10px;}
 
+	.yotpo-bottomline-2-boxes .questions{display:block;}
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -283,7 +284,7 @@ iframe { width:420px !important; height:auto;}
 .checkout-cart-index .popupinner { width:100% !important;}*/
 /*.onestepcheckout-index-index .popbox { width:90%; left:5%;}
 .onestepcheckout-index-index #onestepcheckout-login-popup { width:90% !important; left:5%;}*/
-	
+
 }
 
 
@@ -292,6 +293,7 @@ iframe { width:420px !important; height:auto;}
 iframe { width:290px !important; height:auto;}
 .popupinner.popupinner1 { height:350px; top:20px; overflow:auto;}
 
+.yotpo-bottomline-2-boxes .questions{display:block;}
 }
 
 

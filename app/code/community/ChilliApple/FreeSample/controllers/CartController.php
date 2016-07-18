@@ -69,8 +69,7 @@ class ChilliApple_FreeSample_CartController extends Mage_Checkout_CartController
         $this->_getSession()->setCartWasUpdated(true);
 
         Varien_Profiler::start(__METHOD__ . 'cart_display');
-        $this
-            ->loadLayout()
+        $this->loadLayout()
             ->_initLayoutMessages('checkout/session')
             ->_initLayoutMessages('catalog/session')
             ->getLayout()->getBlock('head')->setTitle($this->__('Shopping Cart'));
@@ -85,6 +84,7 @@ class ChilliApple_FreeSample_CartController extends Mage_Checkout_CartController
      * @throws Exception
      */
     public function addAction() {
+			
 			
 		try {  $product=$this->_initProduct();
     	   
@@ -163,9 +163,129 @@ class ChilliApple_FreeSample_CartController extends Mage_Checkout_CartController
 	   parent::addAction();
     }
 
+	
+	  public function addmultipleAction() {
+				 $params = $this->getRequest()->getParams();
+		 
+		 $cartHelper = Mage::helper('checkout/cart');
+		$items = $cartHelper->getCart()->getItems();
+		
+		foreach($items as $itemss){
+		$categoryId = $itemss->getProduct()->getCategoryIds();
+			if($categoryId[0]==16){
+			$itemId = $itemss->getItemId();
+			$cartHelper->getCart()->removeItem($itemId)->save();
+			}
+			$this->_getSession()->setCartWasUpdated(true);
+		}
+		 $this->_getSession()->setCartWasUpdated(true);
+		 
+		 $cart =  Mage::getSingleton('checkout/cart');
+ 
+                if($cart->getQuote()->getItemsCount()) {
+                        $cart->init();
+                        $cart->save();      
+                }
+		
+		foreach ($items as $item) {
+		
+		 
+		$allproducts[]= $item->getProduct()->getId();
+		
+		}	
+		
+		// echo "<pre>";
+		// print_r($allproducts);
+		
+		// exit();
+		
+		
+		 foreach ($params['sample_products'] as $samplePro ):
+			// if( in_array($samplePro, $allproducts))
+		 // {
+		
+		 
+		 // }else{
+		 
+		 $paramPro[]=$samplePro;
+		 
+		// }
+		 
+		 endforeach;
+		
+		
+		
+		 foreach ($paramPro as $samplePro ):
 
+		 $stockStatus = Mage::getModel('cataloginventory/stock_item') 
+								 ->loadByProduct($samplePro)
+								 ->getIsInStock();
+								 
+			if ($stockStatus==0):
+			  $this->_goBack();
+				return ;
+				
+			else:
 
+				$helper=Mage::helper('freesample');
+				$sample=$helper->hasSample();
+				$samplesInCart=$helper->getSampleProducts();
+				//$isAlloweMultiple=Mage::getStoreConfig('promotion/sample/allow_multiple_sample');
+				$noOfProducts=(int)Mage::getStoreConfig('promotion/sample/no_of_samples');
+				if($noOfProducts==0)
+				{
+					$noOfProducts=1;
+				}
+				// not more than one product is allowed
+				/*if($sample && !$isAlloweMultiple && $sample->getId()!=$product->getId())
+				{
+				   $this->_getSession()->addError($this->__('Only one sample type is permitted for each order.'));
+				   $this->_goBack();
+				   return ;
+				}*/
+				
+				 // not more than X product(s) is/are allowed		
 
+				$params = $this->getRequest()->getParams();
+				if (isset($params['qty'])) {
+					$filter = new Zend_Filter_LocalizedToNormalized(
+						array('locale' => Mage::app()->getLocale()->getLocaleCode())
+					);
+					$params['qty'] = $filter->filter($params['qty']);
+				}
+				//first time product sample added with more than allowed quantity
+			   // $isAlloweMultipleUnits=Mage::getStoreConfig('promotion/sample/allow_multiple_units');
+				//if(!$sample && !$isAlloweMultipleUnits && $params['qty']>1)
+				if(!$sample && $params['qty']>1)
+				{
+				$this->_getSession()->addError($this->__('You have already selected this sample, please discover something new!'));
+				$this->_goBack();
+				return ;
+				}
+				
+				
+				$cart = Mage::getSingleton('checkout/cart');
+				$product = Mage::getModel('catalog/product');
+			   $product->load($samplePro);
+			   $cart->addProduct($product);
+			   $cart->save();	
+			   
+			 $this->_getSession()->setCartWasUpdated(true);
+			
+				
+			endif;
+		endforeach;
+		 
+		   if (!$this->_getSession()->getNoCartRedirect(true)) {
+                if (!$cart->getQuote()->getHasError()){
+                    $message = $this->__('sample products was just added to your shopping cart.');
+                    $this->_getSession()->addSuccess($message);
+                }
+                $this->_goBack();
+			}
+		
+		
+	}
     /**
      * Update shopping cart data action
      */

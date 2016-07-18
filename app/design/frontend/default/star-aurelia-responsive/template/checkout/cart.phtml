@@ -29,7 +29,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl('skin')?>frontend/default/star-aurelia-responsive/css/style.css" media="all" />  
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl('skin')?>frontend/default/star-aurelia-responsive/onestepcheckout/js/window.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl('skin')?>frontend/default/star-aurelia-responsive/onestepcheckout/js/onestepcheckout.js"></script>
-
+<?php $customHelper=Mage::helper('custom'); ?>
+<?php if(!$customHelper->isMobileOrTablet())   { ?>
 <div id="coupon-alert-popup" class="popbox" style="display:none;position:absolute">
   <div class="popupinner"> <a href="javascript:void(0);" class="close closebutton"><img src="<?php echo $this->getSkinUrl('images/close-img-p.png',array(‘_secure’=>true)) ?>" width="20" height="20" alt=""/></a> <img src="<?php echo $this->getSkinUrl('images/flower-img.jpg',array(‘_secure’=>true)) ?>" width="118" height="44" alt=""/>
     <h2><?php echo $this->__('Are you sure you would like to remove this product from your shopping basket?')?></h2>
@@ -41,6 +42,26 @@
 
   </div>
 </div>
+<?php } ?>
+
+<?php if($customHelper->isMobileOrTablet())   { 
+// for mobile only
+?>
+<div id="coupon-alert-popup" class="popbox" style="display:none;position:absolute">
+  <div class="popupinner"> <a href="javascript:void(0);" id ="close_popup" class="close closebutton"> </a> <img src="<?php echo $this->getSkinUrl('images/flower-img.jpg',array(‘_secure’=>true)) ?>" width="118" height="44" alt=""/>
+    <h2><?php echo $this->__('Are you sure you would like to remove this product from your shopping basket?')?></h2>
+   
+
+<div class="popupbtn">
+<a href="" class="button-btn" id="popup-delete-button"><?php echo $this->__('Yes Please')?></a><a href="javascript:void(0);" class="button-btn closebutton"><?php echo $this->__('No ThanKs')?></a>
+</div>
+
+  </div>
+</div>
+<?php } ?>
+
+
+
 <script type="text/javascript">
     var alert_popup;
     var popup_contaner;
@@ -112,8 +133,9 @@ $customHelper=Mage::helper('custom');
 	
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
-    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+    <form id="hit-update" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
     <?php echo $this->getBlockHtml('formkey'); ?>
+	<p class="loader" id="loading_mask_load2" style=" display:none; position: absolute; right: 691px;"><img src="https://www.aureliaskincare.com/skin/adminhtml/default/default/images/ajax-loader-tr.gif" alt="Loading..."></p>
         <fieldset>
             <table id="shopping-cart-table" class="data-table cart-table">
                 <col width="1" />
@@ -286,6 +308,129 @@ $customHelper=Mage::helper('custom');
         
          <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('may-also-like')->toHtml() ?>
     </div>
+	
+	 <script>
+
+		function plus(inc){
+    var currentVal = parseInt(jQuery("#quantity"+inc+"").val());
+    if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
+    jQuery("#quantity"+inc+"").val(currentVal + 1);
+	//jQuery("#hit-update").submit();
+	
+	// update cart items using ajex 
+	
+	jQuery('#loading_mask_load2').show();
+
+jQuery.ajax({
+url:jQuery('#hit-update').attr('action'),
+  method: jQuery('#hit-update').attr('method'),
+ data: jQuery('#hit-update').serializeArray(),
+ dataType: "html",
+  success: function(data){
+    result=jQuery(data).find('#shopping-cart-table tbody').html();
+    if(result!=""){
+	jQuery('#shopping-cart-table tbody').html(result);
+	
+	}
+	var cartdata;
+	    cartdata=jQuery(data).find('.shopping-bag-link').html();
+	if(cartdata!=""){
+	jQuery('.shopping-bag-link').html(cartdata);
+	
+	}
+	
+	
+	var cartTotal;
+	 cartTotal=jQuery(data).find('#shopping-cart-totals-table').html();
+	 if(cartTotal!=""){
+	 jQuery('#shopping-cart-totals-table').html(cartTotal);
+	 
+	 
+	 }
+	jQuery('#loading_mask_load2').hide();
+
+    
+  }
+	
+	
+});
+	
+	
+}
+
+	function minus(inc) {
+    var currentVal = parseInt(jQuery("#quantity"+inc+"").val());
+    if (currentVal == "NaN") currentVal = 1;
+    if (currentVal > 1) {
+        jQuery("#quantity"+inc+"").val(currentVal - 1);
+    }
+	//jQuery("#hit-update").submit();
+	
+	// update cart items using ajex 
+	
+	jQuery('#loading_mask_load2').show();
+
+jQuery.ajax({
+url:jQuery('#hit-update').attr('action'),
+  method: jQuery('#hit-update').attr('method'),
+ data: jQuery('#hit-update').serializeArray(),
+ dataType: "html",
+  success: function(data){
+    result=jQuery(data).find('#shopping-cart-table tbody').html();
+    if(result!=""){
+	jQuery('#shopping-cart-table tbody').html(result);
+	
+	}
+	var cartdata;
+	    cartdata=jQuery(data).find('.shopping-bag-link').html();
+	if(cartdata!=""){
+	jQuery('.shopping-bag-link').html(cartdata);
+	
+	}
+	
+	
+	var cartTotal;
+	 cartTotal=jQuery(data).find('#shopping-cart-totals-table').html();
+	 if(cartTotal!=""){
+	 jQuery('#shopping-cart-totals-table').html(cartTotal);
+	 
+	 
+	 }
+	jQuery('#loading_mask_load2').hide();
+
+    
+  }
+	
+	
+});
+	
+}
+
+</script>
+	 
+	 <?php 
+	 $cart = Mage::getModel('checkout/cart')->getQuote();
+				foreach ($cart->getAllItems() as $item) :
+				$data[] = $item->toArray();
+				
+					$categoryId = $item->getProduct()->getCategoryIds();
+						if($categoryId[0]==16):
+						
+						else:
+						$baseAmount = $item->getBasePrice();
+						if($baseAmount==0){
+						echo 	$item->getBasePrice()."<br>";
+						echo 	$item->getItemId()."<br>";
+						echo 	$item->getName()."<br>";
+							
+						}
+						endif;
+			
+				
+			endforeach;
+		//	echo "<pre>";
+			//print_r($data);
+	?>
 </div>
 <?php }
  if($customHelper->isMobileOrTablet())   { ?>
@@ -312,8 +457,37 @@ $customHelper=Mage::helper('custom');
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
-    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
-    <?php echo $this->getBlockHtml('formkey'); ?>
+	<?php //echo $this->getUrl('checkout/cart/updatePost') ?>
+	<?php 
+	
+			$i=0;
+				$cart = Mage::getModel('checkout/cart')->getQuote();
+				foreach ($cart->getAllItems() as $item) :
+					if($i < 3):
+					$categoryId = $item->getProduct()->getCategoryIds();
+						if($categoryId[0]==16):
+						
+					$i++;
+						
+						endif;
+					endif;
+				endforeach;
+				$editSample="";
+				
+				$editSample=$_POST['smpl'];
+	
+	 	if($i < 3 || $editSample==1){ 
+	
+		$url = $this->getUrl('freesample/cart/addmultiple');
+		
+		}else{
+	$url="";
+	}
+	?>
+	
+	<?php //echo $url2; ?>
+	
+    
         <fieldset>
             <div id="shopping-cart-table" class="data-table cart-table">
 			
@@ -333,13 +507,28 @@ $customHelper=Mage::helper('custom');
             <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
                
                 
-            
-                <?php foreach($this->getItems() as $_item): ?>
-                <div class="cart-item">
-                   <?php echo $this->getItemHtml($_item) ?>
+			 <form  id="update_it" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+    <?php echo $this->getBlockHtml('formkey'); ?>		
+		<p class="loader" id="loading_mask_load4" style=" display:none; position: absolute; right:168px; top:160px;"><img src="https://www.aureliaskincare.com/skin/adminhtml/default/default/images/ajax-loader-tr.gif" alt="Loading..."></p>
+		
+                <?php
+				$count= count($this->getItems());
+				$ii=0;
+				foreach($this->getItems() as $_item): ?>
+				<?php
+				//echo "<pre>";
+				//echo $_item->getproductId(); 
+				// simplebox class add below
+				?>
+			
+                <div class="cart-item  <?php if($ii==$count-1){ ?> <?php } ?>">
+				
+                   <?php echo $this->getItemHtml($_item,$i) ?>
                </div>
-                <?php endforeach ?>
-				 
+                <?php 
+				$ii++;
+				endforeach; ?>
+				 </form>
 				 <?php
                
                 $sampleCategory=Mage::getStoreConfig('promotion/sample/sample_category');
@@ -357,6 +546,13 @@ $customHelper=Mage::helper('custom');
                  'left')
                  ->addAttributeToFilter('qty', array("gt" => 0)); ?>
 				
+<form id="order_sample" action="<?php echo $url; ?>" method="post">
+    <?php echo $this->getBlockHtml('formkey'); ?>				
+				<?php 
+
+				if($i < 3 || $editSample==1){
+				?>
+				
 				<table>
 			 <tr class="row-free-txt">
                <td colspan="6"><div class="free-samples"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('free-sample-text')->toHtml() ?></div></td>
@@ -372,30 +568,58 @@ $customHelper=Mage::helper('custom');
                    $html=$_outputHelper->productAttribute($_product, $_img, 'image');
 				   $productUrl=$_product->getProductUrl();
                 ?>
+				
                 <tr>
                <td><a href="<?php echo $productUrl?>"><?php echo $html ?></a></td>
                <td colspan="2"><h2 class="product-name"><?php echo $_product->getName() ?></h2></td>
                <?php $_url = Mage::helper('checkout/cart')->getAddUrl($_product); ?>
-               <td colspan="3" class="free-sample-link"><a href="<?php echo $_url?>"><?php echo $this->__('SELECT SAMPLE') ?></a></td>
+               <td colspan="3" class="free-sample-link">
+			  <span class="<?php foreach ($cart->getAllItems() as $cItem) {
+					 $cartProId=$cItem->getProduct()->getId();  
+				  if($cartProId==$_product->getId()) { ?> checked <?php }else{  }  } ?>" >
+			   <input type="checkbox" title="sample products" id="sm_product<?php echo $_product->getId(); ?>" value="<?php echo $_product->getId();  ?>" class="checkbox" name="sample_products[]"  <?php foreach ($cart->getAllItems() as $cItem) {
+					 $cartProId=$cItem->getProduct()->getId();  
+				  if($cartProId==$_product->getId()) { ?> checked="checked" <?php }else{  }  } ?> >
+			   </span>
+			   <!--a href="<?php echo $_url?>"><?php echo $this->__('SELECT SAMPLE') ?></a-->
+				
+			   </td>
 
                </tr>
-               <?php 
+			   <?php   
+								   
                 }
                } 
                ?>
 				</table>
-            <div class="footer">
-                  
-                            <?php if($this->getContinueShoppingUrl()): ?>
-                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                            <?php endif; ?>
-                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag') ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Bag') ?></span></span></button>
-                        
-                </div>
-     
+			
+				
+				<div class="sample-to-order">
+				  <button type="submit" name="update_sample_pro" onclick="submitdata();"  value="add_samples" title="<?php echo $this->__('sample products ') ?>" class="button btn-sample"><span><span><?php echo $this->__('ADD SAMPLES TO ORDER') ?></span></span></button>
+				
+				</div>
+				
+				<?php }else{  ?> 
+         <div class="sample-to-edit">
+			<form action="" id= "editsample" name="edit-pro"  method="post">
+			<input type="hidden" name="smpl" value="1" />
+				  <button type="submit"  name="edit_sample_pro" onclick="window.location.reload()"  value="edit_samples" title="<?php echo $this->__('edit samples ') ?>" class="button btn-sample"><span><span><?php echo $this->__('EDIT SAMPLES') ?></span></span></button>
+			</form>
+				</div>
+			
+			<script>
+			jQuery( ".sample-to-edit" ).click(function() {
+				  $( "#editsample" ).submit();
+				});
+			
+			</script>
+			
+			<?php } ?>
+			
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+			    </form>
         </fieldset>
-    </form>
+
     <div class="cart-collaterals">
         <div class="col2-set">
        <?php //    if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'Android')|| strstr($_SERVER['HTTP_USER_AGENT'],'BlackBerry'))
@@ -432,12 +656,162 @@ $customHelper=Mage::helper('custom');
             <?php endif; ?>
         </div>
 		
+		
+		   <div class="footer">
+                  
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                            <?php endif; ?>
+                          <!--  <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Bag') ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Bag') ?></span></span></button>-->
+                         
+						
+						
+						 
+                </div>
+		
+		
         </div>
         
          <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('may-also-like')->toHtml() ?>
     </div>
 </div>
+	
+
+
+	 <script>
+	jQuery( document ).ready(function() {	
+		var totalsize;
+		 var collection=[];
+		var count=0;
+		jQuery('#shopping-cart-table span input:checked').each(function() {
+				collection[count++] = jQuery(this).attr('id');
+			});
+		 
+		
+		jQuery( ".free-sample-link span input" ).click(function() {
+		 
+		 if(jQuery(this).prop('checked')) {
+				// something when checked
+				totallen = collection.length;
+				if(totallen==3){
+				
+				jQuery("#"+collection[0]).parent('span').removeClass('checked');
+				jQuery("#"+collection[0]).attr('checked', false);
+				
+				collection.splice(0, 1)
+				
+				count--;
+				
+				
+				}
+				 collection[count++] = jQuery(this).attr('id');
+				
+			} else {
+				// something else when not
+				count--;
+				ids = jQuery(this).attr('id');
+				collection = jQuery.grep(collection, function(value) {
+					  return value != ids;
+					});
+			}
+			
+		
+		  
+		  
+
+		});
+	
+	
+			
+				function submitdata(){
+				
+				 jQuery( "#order_sample" ).attr('action');
+				 jQuery( "#order_sample" ).submit();
+				
+				}
+				
+	
+});	 
+	 
+
+		function plus(inc){
+    var currentVal = parseInt(jQuery("#quantity"+inc+"").val());
+    if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
+    jQuery("#quantity"+inc+"").val(currentVal + 1);
+	//jQuery('#update_it').submit();
+	
+	jQuery('#loading_mask_load4').show();
+
+jQuery.ajax({
+url:jQuery('#update_it').attr('action'),
+  method: jQuery('#update_it').attr('method'),
+ data: jQuery('#update_it').serializeArray(),
+ dataType: "html",
+  success: function(data){
+    
+	var cartdata;
+	    cartdata=jQuery(data).find('.shopping-bag-link .grand-total').html();
+	if(cartdata!=""){
+	jQuery('.shopping-bag-link .grand-total').html(cartdata);
+	
+	}
+	
+	jQuery('#loading_mask_load4').hide();
+
+    
+  }
+	
+	
+});
+	
+	
+	
+	
+}
+
+	function minus(inc) {
+    var currentVal = parseInt(jQuery("#quantity"+inc+"").val());
+    if (currentVal == "NaN") currentVal = 1;
+    if (currentVal > 1) {
+        jQuery("#quantity"+inc+"").val(currentVal - 1);
+    }
+	//jQuery('#update_it').submit();
+	
+	// update cart using ajex
+	
+	jQuery('#loading_mask_load4').show();
+
+jQuery.ajax({
+url:jQuery('#update_it').attr('action'),
+  method: jQuery('#update_it').attr('method'),
+ data: jQuery('#update_it').serializeArray(),
+ dataType: "html",
+  success: function(data){
+    
+	var cartdata;
+	    cartdata=jQuery(data).find('.shopping-bag-link .grand-total').html();
+	if(cartdata!=""){
+	jQuery('.shopping-bag-link .grand-total').html(cartdata);
+	
+	}
+	
+	jQuery('#loading_mask_load4').hide();
+
+    
+  }
+	
+	
+});
+	
+	
+	
+}
+
+</script>
+
+
 <?php } ?>
+
 <!-- Google Code for Order Conversion Page -->
 <script type="text/javascript">
 /* <![CDATA[ */

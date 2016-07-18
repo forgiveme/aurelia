@@ -66,7 +66,7 @@ class Review_Reminder_IndexController extends Mage_Core_Controller_Front_Action 
 						  <td height="10"></td>
 						</tr>
 						<tr>
-						  <td style="text-align:center; font-family:Times New Roman;"> <span style="text-transform:uppercase; letter-spacing:0.5px; color:#4d4d4d; font-size:16px;">'.$productName.' </span> <br/> <a href="'.$productUrl.'?openreview"  style="color:#4d4d4d; text-decoration:underline; font-size:16px; padding-top:4px">Please click here to write your review</a></td>
+						  <td style="text-align:center; font-family:Times New Roman;"> <span style="text-transform:uppercase; letter-spacing:0.5px; color:#4d4d4d; font-size:16px;">'.$productName.' </span> <br/> <a href="'.$productUrl.'?openreview=1"  style="color:#4d4d4d; text-decoration:underline; font-size:16px; padding-top:4px">Please click here to write your review</a></td>
 						</tr>
 						<tr>
 						  <td height="50"></td>
@@ -88,7 +88,7 @@ class Review_Reminder_IndexController extends Mage_Core_Controller_Front_Action 
 					$mailTemplate->sendTransactional(
 						$template,
 						$mailSender,
-						'sanford@123789.org',
+						'gerard@123789.org',
 						$firstName,
 						array(
 							'firstName' => $firstName,

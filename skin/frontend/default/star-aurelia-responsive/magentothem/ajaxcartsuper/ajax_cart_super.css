@@ -179,7 +179,6 @@
 .related-container p {
   color: #868280;
   font-size: 11px;
-  font-style: italic;
   letter-spacing:0.05em;
 }
 
@@ -213,13 +212,16 @@ a.addtobag:hover {
 
 
  @media (min-width: 320px) and (max-width: 767px) {
+ 
+ .related-container {font-style:normal;}
+ 
  .wrapper_box {
 width:auto;
-margin:0 10px;
+margin:0 20px 0 20px;
 height:auto;
 float:left;
-overflow:scroll; height:350px;
-
+overflow:scroll; 
+height:86%;
 left:0; position: fixed; 
 top:20px;
 }
@@ -245,7 +247,42 @@ margin-top:0px;
 }
 
 .wrapper_box #shopping_cart, .wrapper_box #continue_shopping {width:100%;  padding:11px 0px;}
+
+a.addtobag{ width:100%; text-align:center; padding:6px 0px 3px}
+
+
+.p_image{ float:left; width:45%; text-align:center}
+.p_image img{ Xfloat:left; max-width:100px}
+#product_cart_info{ float:left; width:55%; text-align:left; clear:none;}
+.product-cart-detail{ text-align:left;}
+.left-panel{ border-color:#000; padding-bottom:10px;}
+.wrapper_box{  padding-top:15px;}
+.product-cart-detail p{ line-height:17px;}
+.p_name a{ line-height:17px;}
+.product__img{ padding-top:0px; margin-top:-5px; width:45%;}
+.related-container{ padding-top:10px; margin-top:0px; width:55%}
 }
+
+@media only screen and (max-width: 767px) {
+
+.wrapper_box { overflow:inherit}
+ .wrapper_box .wrapper_box_inner  { overflow:scroll; height:100%;} 
+ 
+ .popup-product-price{border-left:0px !important;}
+ 
+}
+
+
+
+ @media (min-width: 361px) and (max-width: 479px) {
+ .wrapper_box {
+ height:460px;
+
+
+}
+ .wrapper_box .wrapper_box_inner  { overflow:scroll; height:100%;} 
+
+ }
 
 
  @media (min-width: 480px) and (max-width: 480px) {
@@ -254,5 +291,14 @@ margin-top:0px;
 
 
 }
+ .wrapper_box .wrapper_box_inner  { overflow:scroll; height:250px;}
 
-}
+ }
+ 
+ 
+ @media (min-width: 0px) and (max-width: 360px) {
+ 
+ .wrapper_box h2{ font-size:13px;}
+ 
+ 
+ }

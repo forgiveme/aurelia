@@ -45,8 +45,17 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sidebar-product-links ')->toHtml() ?>
  
 <div id="content-center-text" class="product-view" itemscope itemtype="http://schema.org/Product">
-    <div class="product-essential">
+    <div class="product-essential <?php if($_product->getSku() == "APS018"){ echo "no-scroll-form"; } ?>">
+		<?php if($_product->getSku() == "APS018"){ ?>
+		
+		<?php  $url = $this->getUrl('campaignmonitor/notify/new/'); ?>
+		<form action="<?php echo $url; ?>" method="post" id="subscribed_newproduct">
+		 <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+		<?php }else{ ?>
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+	<?php } ?>
+	
+	
         <div class="no-display">
             <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
             <input type="hidden" name="related_product" id="related-products-field" value="" />
@@ -54,15 +63,16 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
         
           <div class="mobile mob-product-content">
                 <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
-                <?php $formattedPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false); ?>
+               </h1>
+			    <?php $formattedPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false); ?>
                 <span class="produut-price"><?php echo $formattedPrice; ?></span>
-                 <?php if(strlen($productVolume) > 0) : ?><span class="prodcut-volume"><?php echo $productVolume; ?></span><?php endif; ?></h1>
+                 <?php if(strlen($productVolume) > 0) : ?><span class="prodcut-volume"><?php echo $productVolume; ?></span><?php endif; ?>
           
- <?php if ($_product->getShortDescription()):?>
+				<?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
                     <div class="std" itemprop="description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                 </div>
-            <?php endif;?>
+              <?php endif;?>
             
           <!--div class="price-product-details">
             	<?php //echo $this->getTierPriceHtml() ?> 
@@ -71,11 +81,18 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
                 <?php if($_product->isSaleable()): ?>
             	<?php if(!$_product->isGrouped()): ?>
 				
-        <div class="add-to-cart add-to-cart1 ">                
+        <!--div class="add-to-cart add-to-cart1 ">                
         <label class="desktop" for="qty"><?php echo $this->__('Quantity:') ?></label>
 		<?php echo $this->getChildHtml('addtocart') ?>
-        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-        </div>
+		<?php 	$customHelper=Mage::helper('custom');
+					if($customHelper->isMobileOrTablet())   {  ?>
+					 <div class="plus-box">
+	   <div class="minus" onclick="minus();">-</div>
+        <input type="text" name="qty"  id="qty-cc"  maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+		   <div class="plus" onclick="plus();">+</div>
+	   </div>
+       <?php  } ?>
+        </div-->
 		<?php endif; ?>
         <?php endif; ?>
 		<?php if($_product->getId()=="16") {?>
@@ -87,10 +104,18 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
                 
                     <?php if($_product->isSaleable()): ?>
                     	<?php if(!$_product->isGrouped()): ?>
-        <div class="add-to-cart mobile">                
+			<?php 	$customHelper=Mage::helper('custom');
+					if($customHelper->isMobileOrTablet())   {  ?>
+	   <div class="add-to-cart mobile">                
         <label for="qty"><?php echo $this->__('Quantity:') ?></label>
-        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+		 <div class="plus-box">
+	   <div class="minus" onclick="minus2();">-</div>
+        <input type="text" name="qty"  id="qty-cc2"  maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+		   <div class="plus" onclick="plus2();">+</div>
+	   </div>
+		
         </div>
+		<?php  } ?>
 		<?php endif; ?>
                       <div class="mobile">  <?php echo $this->getChildHtml('addtocart') ?></div>
                         <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
@@ -129,7 +154,11 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
           
           
  <?php if ($_product->getShortDescription()):?>
-                <div class="short-description desktop">
+	
+				 <div class="short-description desktop ">
+				
+			
+				
                     <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                 </div>
             <?php endif;?>
@@ -140,22 +169,73 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 			
             	<?php echo $this->getTierPriceHtml() ?> <?php echo $this->getChildHtml('product_type_data') ?>
             </div>    
-			
-		
+			<?php if($_product->getSku() == "APS018"){ 
+		 echo $this->getLayout()->createBlock("cms/block")->setBlockId("new-launch")->toHtml();
+		 }
+		 ?>
+		 
 			<?php echo $this->getChildHtml('alert_urls') ?>
             <?php echo $this->getChildHtml('extrahint') ?>
            
             <?php if (!$this->hasOptions()):?>
-                <div class="add-to-box">
-                
+               <?php if($_product->getSku() == "APS018"){ ?>
+				 <div class="add-to-box new-launch">
+                <?php } else{?>
+				 <div class="add-to-box">
+				<?php } ?>
                     <?php if($_product->isSaleable()): ?>
                     	<?php if(!$_product->isGrouped()): ?>
-        <div class="add-to-cart desktop">                
-        <label for="qty"><?php echo $this->__('Quantity:') ?></label>
-        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-        </div>
-		<?php endif; ?>
-                      <div class="desktop">  <?php echo $this->getChildHtml('addtocart') ?></div>
+					<?php 	$customHelper=Mage::helper('custom');
+					if(!$customHelper->isMobileOrTablet())   {  ?>
+						<?php if($_product->getSku() == "APS018"){ ?>
+				
+						<div class="latest-pro-info">
+						
+							<div class="field">
+							<label class="required" for="name"> Name*</label>
+							<div class="input-box">
+							<input type="text" class="input-text required-entry" value="" title="Name" id="name" name="name">
+							</div>
+							</div>
+							<div class="field">
+							<label class="required" for="email"> Email Address*</label>
+						<div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" value="" title="Email" id="email" name="c_email">
+						</div>
+						</div>
+						
+						<div class="addto-campain">
+				<button type="button" title="subscribed first" class="button btn-cart" id="submit-camp" >
+				<span><span>Tell Me First!</span></span></button>
+				</div>
+						
+						
+						
+						</div>
+							<script>
+							jQuery("#submit-camp").click(function(){
+								
+							jQuery('#subscribed_newproduct').submit();
+								
+							});
+														
+							</script>
+				
+						
+							<?php	}else{?>
+								   <div class="add-to-cart desktop">                
+									<label for="qty"><?php echo $this->__('Quantity:') ?></label>
+									 
+								   
+									<input type="text" name="qty"  id="qty"  maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+									   
+								
+									</div>
+							<?php }
+					}?>
+				<?php endif; ?>
+				<?php if($_product->getSku() != "APS018"){ ?>
+				<div class="desktop">  <?php echo $this->getChildHtml('addtocart') ?></div><?php }?>
                         <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
                            
                         <?php endif; ?>
@@ -173,11 +253,66 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
          
 
             <?php echo $this->getChildHtml('other');?>
-
+			
             <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                 <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
             <?php endif;?>
+			<?php 	$customHelper=Mage::helper('custom');
+			 if($customHelper->isMobileOrTablet())   {  ?>
+			<div class="skintype">
+			 <span>
+			<?php if ($_product->getShortDescription()):?>
+                <div class="short-description">
+                    <div class="std" itemprop="description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                </div>
+              <?php endif;?>
+			 </span>
+			
+			</div>
+				<?php if($_product->getSku() == "APS018"){ 
+		 echo $this->getLayout()->createBlock("cms/block")->setBlockId("new-launch")->toHtml();
+		 }
+		 ?>
+			
+				<?php if($_product->getSku() == "APS018"){ ?>
+				
+						<div class="latest-pro-info new-launch">
+						
+							<div class="field">
+							<label class="required" for="name"> Name*</label>
+							<div class="input-box">
+							<input type="text" class="input-text required-entry" value="" title="Name" id="name" name="name">
+							</div>
+							</div>
+							<div class="field">
+							<label class="required" for="email"> Email Address*</label>
+						<div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" value="" title="Email" id="email" name="c_email">
+						</div>
+						</div>
+						
+						<div class="addto-campain">
+				<button type="button" title="subscribed first" class="button btn-cart" id="submit-camp" >
+				<span><span>Tell Me First!</span></span></button>
+				</div>
+						
+						
+						
+						</div>
+							<script>
+							jQuery("#submit-camp").click(function(){
+								
+							jQuery('#subscribed_newproduct').submit();
+								
+							});
+														
+							</script>
+			
+			
+			
+  <?php }
 
+  } ?>
 			<div id ="accordion1" class="productInfo">
             
               <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
@@ -259,10 +394,20 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
             
              </div> <?php endif;?>  
 			 
-			<h3 class="accordion-header double-height customer_reviews">Customer Reviews</h3>
-            <div class="productDesc">
+		<?php 	 if($_product->getSku() != "APS018"){  ?>
+			<h3 class="accordion-header double-height" id="customer-review" >Customer Reviews  <?php 	$customHelper=Mage::helper('custom');
+			 if(!$customHelper->isMobileOrTablet())   {  ?>
+			 <span class="short-review">
+			<?php  $this->helper('yotpo')->showBottomline($this, $_product); ?>
+		</span>
+		<?php 	 }
+			 ?>
+		</h3>
+          
+		   <div class="productDesc">
 				<?php $this->helper('yotpo')->showWidget($this, $_product); ?>
              </div>
+			 <?php } ?>
 			 
 			<?php if ($_product->gettheEveAppeal()):?>
 				<h3 class="accordion-header double-height">THE EVE APPEAL</h3>
@@ -288,7 +433,16 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 			 
 </div>
 
-<?php 
+<?php 	$customHelper=Mage::helper('custom');
+			 if($customHelper->isMobileOrTablet())   {  ?>
+			<div class="product-collateral">
+		
+        <div class="box-collateral box-up-sell box-up-sell-new">
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('over_award')->toHtml(); ?>
+ </div>
+ </div>
+ <?php  } ?>
+<?php
  $productBrands=$_product->getBrand();
  $brandIds=explode(',', $productBrands);
  if(count($brandIds))
@@ -301,6 +455,43 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 ?>
 
 </div>
+
+
+	 <script>
+
+		// function plus(){
+    // var currentVal = parseInt(jQuery("#qty-cc").val());
+    // if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
+    // jQuery("#qty-cc").val(currentVal + 1);
+// }
+
+	// function minus() {
+    // var currentVal = parseInt(jQuery("#qty-cc").val());
+    // if (currentVal == "NaN") currentVal = 1;
+    // if (currentVal > 1) {
+        // jQuery("#qty-cc").val(currentVal - 1);
+    // }
+// }
+
+	function plus2(){
+    var currentVal = parseInt(jQuery("#qty-cc2").val());
+    if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
+    jQuery("#qty-cc2").val(currentVal + 1);
+}
+
+	function minus2() {
+    var currentVal = parseInt(jQuery("#qty-cc2").val());
+    if (currentVal == "NaN") currentVal = 1;
+    if (currentVal > 1) {
+        jQuery("#qty-cc2").val(currentVal - 1);
+    }
+}
+
+
+
+</script>
+
+
 
 <script>
  // $j(function(){
@@ -380,22 +571,7 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
         <script>
           jQuery(document).ready(function($) {
 			$('.yotpo-label.yotpo-small-box').css('display','block !important');
-			$('.yotpo-menu-mobile-collapse').show(300);
-			
-			function getParameterByName(name, url) {
-				if (!url) url = window.location.href;
-				name = name.replace(/[\[\]]/g, "\\$&");
-				var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-				results = regex.exec(url);
-				if (!results) return null;
-				if (!results[2]) return 1;
-				return decodeURIComponent(results[2].replace(/\+/g, " "));
-			}
-			var checkreview = getParameterByName('openreview');
-			if(checkreview && checkreview!=null) {
-				jQuery(".customer_reviews").click();
-				jQuery(".yotpo-icon-write").click();
-			}
+			$('.yotpo-menu-mobile-collapse').show(300); 
           });
         </script>   
 			 
@@ -409,10 +585,10 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 
 if(count($brandIds))
  {
-    echo $this->getLayout()->createBlock('core/template')
-      ->setTemplate('brand/product/brand_mobile.phtml')->setBrandIds($brandIds)
-      ->setProductId($_product->getId())
-      ->setBlockId('product_brand_mobile_slides')->toHtml();
+    // echo $this->getLayout()->createBlock('core/template')
+      // ->setTemplate('brand/product/brand_mobile.phtml')->setBrandIds($brandIds)
+      // ->setProductId($_product->getId())
+      // ->setBlockId('product_brand_mobile_slides')->toHtml();
  }
 
 ?>
@@ -446,3 +622,24 @@ jQuery('body').addClass('sample');
 		
     </div>
 
+<?php 	if($_REQUEST['openreview']){
+	$responce2=$_REQUEST['openreview']; 
+	}
+	if($responce2=="1" ){
+	
+	?>
+		 
+<script>
+	jQuery( window ).load(function() {
+	
+jQuery('html, body').animate({
+        scrollTop: jQuery("#customer-review").offset().top
+    }, 1000);
+	
+	jQuery('#customer-review').trigger( "click" );
+		
+});
+</script>
+
+<?php
+	}

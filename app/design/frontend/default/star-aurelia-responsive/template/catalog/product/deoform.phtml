@@ -1,0 +1,91 @@
+<?php  $url = $this->getUrl('campaignmonitor/notify/deodorant/'); ?>
+		<form action="<?php echo $url; ?>" method="post" id="subscribed_newproduct2">
+		 <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+
+<div class="add-to-box new-launch newlaunch2">
+                                                        																
+						<div class="latest-pro-info">
+						
+							<div class="field">
+							<label for="name" class="required"> Name*</label>
+							<div class="input-box">
+							<input type="text" name="name" id="name" title="Name" value="" class="input-text required-entry">
+							</div>
+							</div>
+							<div class="field">
+							<label for="email" class="required"> Email Address*</label>
+						<div class="input-box">
+                        <input type="text" name="c_email" id="email" title="Email" value="" class="input-text required-entry validate-email">
+						</div>
+						</div>
+						
+						<div class="addto-campain">
+				<button id="submit-camp" class="button btn-cart" title="subscribed first" type="button">
+				<span><span>Tell Me First!</span></span></button>
+				</div>
+						<p id="loading_mask_load2" style=" display:none;"><img src="https://www.aureliaskincare.com/skin/adminhtml/default/default/images/ajax-loader-tr.gif" alt="Loading..."></p>
+						<div class="success-result"></div>
+						<div class="error-result"></div>
+						
+						</div>
+							<script>
+							jQuery("#submit-camp").click(function(){
+								
+							//jQuery('#subscribed_newproduct2').submit();
+								jQuery('.error-result').css('display','none');
+							jQuery('.success-result').css('display','none');
+								
+							jQuery('#loading_mask_load2').show();
+							
+							jQuery.ajax({
+								url:jQuery('#subscribed_newproduct2').attr('action'),
+								  method: jQuery('#subscribed_newproduct2').attr('method'),
+								 data: jQuery('#subscribed_newproduct2').serializeArray(),
+								 dataType: "html",
+								  success: function(data){
+									if(jQuery(data).find('.messages .success-msg').length!=0){
+									jQuery('.error-result').empty();
+									result=jQuery(data).find('.messages .success-msg').html();
+										jQuery('.error-result').css('display','none');
+									jQuery('.success-result').css('display','block');
+										if(result!=""){
+										jQuery('.success-result').html(result);
+										}
+										
+									jQuery('.popup-exit-sub').addClass('subscibed');
+									
+									jQuery('#loading_mask_load2').hide();
+									}
+									
+									if(jQuery(data).find('.messages .error-msg').length!=0){
+									jQuery('.success-result').empty();
+									var cartdata;
+										cartdata=jQuery(data).find('.messages .error-msg').html();
+											jQuery('.success-result').css('display','none');
+									jQuery('.error-result').css('display','block');
+									if(cartdata!=""){
+									jQuery('.error-result').html(cartdata);
+									
+									}
+									
+									jQuery('#loading_mask_load2').hide();
+									
+									}
+									
+									
+									
+							
+
+									
+								  }
+									
+									
+								});
+							
+							});
+														
+							</script>
+				
+						
+</div>
+</form>

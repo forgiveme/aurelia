@@ -111,7 +111,8 @@ $("#accordion, #accordion1, #accordion2").accordion({
 	    header: "> h3",
 	    collapsible: true,
 	    autoHeight: false,
-	    navigation: true 
+	    navigation: true ,
+		animation: 900
 	});
 }
 

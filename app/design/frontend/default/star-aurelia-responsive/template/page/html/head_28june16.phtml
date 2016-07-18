@@ -1,0 +1,311 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+
+ <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery.tools.min.js"></script>
+
+    <!-- Jquery UI Required for bxSlider, accordions -->
+     <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery-ui.min.js"></script>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/js-cookie.js"></script>
+<!-- preloading images-->
+    <script language="JavaScript">
+
+        function preloader()
+        {
+
+         // counter
+        var i = 0;
+
+        // create object
+        imageObj = new Image();
+
+        // set image list
+        images = new Array();
+        images[0]="media/slide1.jpg"
+        images[1]="media/slide2.jpg"
+        images[2]="media/slide3.jpg"
+
+        // start preloading
+        for(i=0; i<=2; i++)
+        {
+              imageObj.src=images[i];
+        }
+ 
+        }
+
+
+        var $j = jQuery.noConflict();
+
+        $j(document).ready(function() {  
+ 
+        
+  //Read More text
+    $j("#read-more").click(function () {
+    $j("#more-biog").slideDown("slow");
+    $j("#read-more").css('display', 'none');
+    });
+    //Open external links in new tab or window
+    $j("a[rel='external']").each(function(i){$j(this).attr("target","_blank");});
+    //Fade transparency of video-thumb images on Hover
+    $j(".video-thumb").hover(function() {
+          $j(".fade", this).stop().animate({opacity: "0.75"}, 'fast');
+        },
+        function() {
+          $j(".fade", this).stop().animate({opacity: "1"}, 'fast');
+        });
+    
+	
+	<?php 
+	
+		//Detect Mobile or Tablet device
+	//	include 'Mobile_Detect.php';
+		//$detect = new Mobile_Detect;
+		
+		//if ($detect->isMobile() || $detect->isTablet()) {
+if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'Android')|| strstr($_SERVER['HTTP_USER_AGENT'],'BlackBerry')|| strstr($_SERVER['HTTP_USER_AGENT'],'iPad'))
+ {   
+		?>
+            
+			//Initiate Fancybox YouTube links with fixed width and height
+			$j(".fancyYoutube").fancybox({
+			'padding' : 0,
+			type: "iframe",
+    		iframe : {
+      		preload: false
+   			 }
+  			});
+			
+	<?php } else { ?>
+	
+	//Initiate Fancybox YouTube links with fixed width and height
+			$j(".fancyYoutube").fancybox({
+			'transitionIn' : 'fade',
+			'overlayShow': true,
+			'overlayOpacity' : 0.85,
+			'padding' : 0,
+			'autoScale' : false,
+			'transitionOut' : 'fade',
+			'width' : 680,
+			'height' : 495,
+			type: "iframe"
+			});
+			
+	<?php } ?>	 
+
+
+
+    //Initiate Fancybox Image links
+    $j(".fancyImage").fancybox({
+    'transitionIn' : 'fade',
+    'overlayShow': true,
+    'overlayOpacity' : 0.85,
+    'padding' : 0,
+    'autoScale' : true,
+    'transitionOut' : 'fade',
+    });
+
+
+    });// end document.ready */
+
+    </script>
+<script type="text/javascript">
+
+        var $j = jQuery.noConflict();
+
+        $j(document).ready(function() {
+			
+		/*$j(function()
+		{
+			$j('.scroll-pane').jScrollPane();
+		}); */
+		
+		//GET SESSION DATA
+
+	//$j.cookie("page", "logged-out", {path: '/', domain: '.aureliaskincare.com' });
+
+		
+				
+			
+			$j("a.wishlist-text").click(function() {
+			 	$j.cookie("page", "wishlist", {path: '/' });
+			});	
+			
+			$j('.stockists #sidebar-nav a').click(function(){
+				$j(this).addClass('option-selected');
+			});
+		
+					
+             var $customInputs = $j('input[type="checkbox"], input[type="radio"]');
+            if($customInputs.length > 0 && $customInputs.uniform){
+                $customInputs.uniform();    
+            }
+            
+
+        		
+		
+
+
+        $j('#gift_wrap_check').click(function() {
+            $j.ajax({
+                url: "<?php echo $this->getUrl('giftmodule/index/giftwrap')?>",
+                dataType: "json",
+                data:{
+                    gift_wrap_check:'gift_wrap1',
+                }
+            }).done(function (data){
+                if (data.success === true) {
+                    window.location = '<?php echo $this->getUrl('checkout/cart')?>';
+                }
+            });
+        });
+
+        $j('#gift_wrap_check_checked').click(function() {
+            $j.ajax({
+                url: "<?php echo $this->getUrl('giftmodule/index/giftwrap')?>",
+                dataType: "json",
+                data:{
+                    gift_wrap_check:'gift_wrap2',
+                }
+            }).done(function (data){
+                if (data.success === true) {
+                    window.location = '<?php echo $this->getUrl('checkout/cart')?>';
+                }
+            });
+        });
+		
+	$j('.newsletter-not-checked').click(function() {
+            $j.ajax({
+                url: "<?php echo $this->getUrl('silverpop/index/save')?>",
+                dataType: "json",
+                data:{
+                   newsletter:'add',
+                }
+            }).done(function (data){
+                if (data.success === true) {
+                    window.location = '<?php echo $this->getUrl('checkout/cart')?>';
+                }
+            });
+        });
+		
+		
+	$j('.newsletter-checked').click(function() {
+            $j.ajax({
+                url: "<?php echo $this->getUrl('silverpop/index/save')?>",
+                dataType: "json",
+                data:{
+                   newsletter:'remove',
+                }
+            }).done(function (data){
+                if (data.success === true) {
+                    window.location = '<?php echo $this->getUrl('checkout/cart')?>';
+                }
+            });
+        });
+		
+		$j('#gift_message_check').click(function(){
+			//$j('.gift-message-fields').toggle();
+			//$j('.gift-message-fields input, .gift-message-fields textarea').toggleClass('required-entry');
+			//alert('show');
+			
+	    });
+		
+		$j('#gift_wrap_check').click(function(){
+			$j('.gift-wrap-submit').toggle();
+			//alert('show');	
+	   	 });
+	    
+	 });
+</script>
+
+<script type="text/javascript">
+$j(document).ready(function() {
+
+$j('#slider2').tinycarousel({ display: 1 });
+
+    $j('.accordion-header-desc-down').toggle(function() {
+        $j(this).parent().next().hide(200);
+        $j(this).addClass('accordion-header');
+
+        }, function() {
+        $j(this).parent().next().show(200);
+        $j(this).removeClass('accordion-header');
+    });
+
+    $j('.product-att-header').toggle(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $j(this).parent().next().show(200);
+        $j(this).addClass('accordion-header-down');
+        }, function(e) {
+            e.preventDefault();
+        e.stopPropagation();
+        $j(this).parent().next().hide(200);
+        $j(this).removeClass('accordion-header-down');
+    });
+    
+    $j('.mobile .nav-dropdown a.general-nav').toggle(function() {
+        $j(this).parent().siblings().children('div').hide(200);
+        $j(this).next('div').show(200);
+        
+        
+    }, function() { 
+        $j(this).next('div').hide(200);
+    });
+    
+    $j('.backtotop').click(function(){
+
+        var body = $j("html, body");
+        body.stop().animate({scrollTop:0}, '500', 'swing', function() { 
+  // alert("Finished animating");
+        });
+
+
+    });
+    
+    
+});
+
+</script>

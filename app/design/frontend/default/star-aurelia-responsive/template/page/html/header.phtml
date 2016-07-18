@@ -27,7 +27,11 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
+
 <div class="header-container">
+
+<?php $customHelper=Mage::helper('custom'); ?>
+<?php  if(!$customHelper->isMobileOrTablet())   { ?>
     <div class="desktop header">
      
         <div class="quick-access">
@@ -44,6 +48,7 @@
         </div>
         <?php echo $this->getChildHtml('topContainer'); ?>
     </div>
+<?php  }	?>
     
       <div class="mobile header">
      
@@ -52,12 +57,235 @@
             
 			<?php echo $this->getChildHtml('topLinks') ?>
 
-			<?php echo $this->getChildHtml('mobile_menu_main_site'); ?>
+			
 			
             <?php echo $this->getChildHtml('topSearch') ?>
             <?php echo $this->getChildHtml('store_language') ?>
         </div>
         <?php echo $this->getChildHtml('topContainer'); ?>
     </div>
+	<?php 	$customHelper=Mage::helper('custom');
+			 if($customHelper->isMobileOrTablet())   {  ?>
+	<script language="javascript">
+	
+	jQuery('.tgl2').click(function(){
+
+
+    var hidden = jQuery('.mobilesearchbox');
+    if (hidden.hasClass('visible')){
+        hidden.animate({"right":"-1000px"}, "slow").removeClass('visible');
+    } else {
+        hidden.animate({"right":"0px"}, "slow").addClass('visible');
+    }
+    });
+
+	jQuery('#close-it').click(function(){
+		jQuery('.tgl2').click();
+  });
+
+jQuery(function(){
+
+
+// jQuery('span.toggle-btn' ).toggle(function() {
+  // jQuery('.mobilesearchbox').css("display", "block");
+  // jQuery('.mobilesearchbox .toggle-btn').addClass("active");
+  
+// }, function() {
+   // jQuery('.mobilesearchbox').css("display", "none");
+   // jQuery('.mobilesearchbox .toggle-btn').removeClass("active");
+
+// });
+
+
+
+jQuery('#complimentary-aurelia-btn' ).hover(function() {
+  jQuery('.complimentary-box').css("display", "block");
+}, function() {
+   jQuery('.complimentary-box').css("display", "none");
+});
+	
+
+	
+	
+});
+
+// update navigation to toggle on onclick sub-menu
+
+jQuery(".blockeasing .parent-menu").click(function(){
+
+  if( jQuery(this).hasClass('active')){
+    
+   jQuery(this).removeClass('active');
+    
+  }else{
+    
+    jQuery(".blockeasing .parent-menu").removeClass('active'); 
+    jQuery(this).addClass('active');
+    
+  }
+    
+
+});
+
+// 3rd level 
+jQuery(".blockeasing .child-menu").click(function(){
+
+  if( jQuery(this).hasClass('active')){
+    
+   jQuery(this).removeClass('active');
+    
+  }else{
+    
+    jQuery(".blockeasing .child-menu").removeClass('active'); 
+    jQuery(this).addClass('active');
+    
+  }
+});
+</script>		 
+		 
+<?php 
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+ if(strpos($currentUrl, 'products') !== false) {
+
+
+
+	if($_REQUEST['open']){
+	$responce=$_REQUEST['open']; 
+	}
+	//echo $responce;
+if($responce=="new" || $responce=="new/"){
+
+?>
+<script>
+
+jQuery( window ).load(function() {
+
+ jQuery('.main').find( "div.category-products" ).eq(2).css( "display", "block" );
+jQuery('.main').find( "div.category-products" ).eq(2).addClass('highlite');
+  
+  jQuery('.new_pro').addClass('shown');
+
+
+});
+</script>
+
+
+<?php  } else{
+
+		if($responce=="face" || $responce=="face/"){ ?>
+			<script>
+
+	jQuery( window ).load(function() {
+
+	 jQuery('.main').find( "div.category-products" ).eq(0).css( "display", "block" );
+	jQuery('.main').find( "div.category-products" ).eq(0).addClass('highlite');
+	  
+	  jQuery('.new_pro').addClass('shown');
+
+
+	});
+	</script>
+		
+	<?php 	}else{
+	
+						if($responce=="body" || $responce=="body/"){ ?>
+											<script>
+
+										jQuery( window ).load(function() {
+
+										 jQuery('.main').find( "div.category-products" ).eq(1).css( "display", "block" );
+										jQuery('.main').find( "div.category-products" ).eq(1).addClass('highlite');
+										  
+										  jQuery('.new_pro').addClass('shown');
+
+
+										});
+										</script>
+															
+
+						<?php } else{
+						
+						if($responce=="discover" || $responce=="discover/"){ ?>
+											<script>
+
+										jQuery( window ).load(function() {
+
+										 jQuery('.main').find( "div.category-products" ).eq(3).css( "display", "block" );
+										jQuery('.main').find( "div.category-products" ).eq(3).addClass('highlite');
+										  
+										  jQuery('.new_pro').addClass('shown');
+
+
+										});
+										</script>
+															
+
+						<?php } else{
+						
+						
+												
+													 ?>
+
+														<script>
+													jQuery( window ).load(function() {
+
+													 jQuery( "div.category-products:first" ).css( "display", "block" );
+													  jQuery( "div.category-products:first" ).addClass('highlite');
+													  
+													  jQuery('#body-aurelia-products .face1').addClass('shown');
+
+
+													});
+													</script>
+														
+														
+														<?php
+														
+												}
+									}
+			}
+				}	
+	}
+	
+	}
+	?>
+	
+	
+<?php
+ 
+ if($_REQUEST['review']){
+	$responce2=$_REQUEST['review']; 
+	}
+	if($responce2=="open" || $responce2=="open/" ){
+	
+	?>
+		 
+<script>
+	jQuery( window ).load(function() {
+	
+jQuery('html, body').animate({
+        scrollTop: jQuery("#customer-review").offset().top
+    }, 1000);
+	
+	jQuery('#customer-review').trigger( "click" );
+		
+});
+</script>
+
+<?php
+	} 
+	
+	?>
+
+
+	<script>
+	jQuery("#complimentary-aurelia-btn").hover(function(){
+    jQuery('.complimentary-box').show();
+},function(){
+    jQuery('.complimentary-box').hide();
+});
+	</script>
+	
 </div>
 <?php echo $this->getChildHtml('topMenu') ?>

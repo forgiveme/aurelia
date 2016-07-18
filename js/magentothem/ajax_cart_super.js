@@ -315,14 +315,15 @@ function showBoxInfo(product_info,related_pro) {
     var isOk=$jq('body').hasClass('category-products') && !$jq('body').hasClass('catalog-product-view');
 	var anchor=isOk?'javascript:void(0)':'/index.php/products';
     var  str = "<div class ='wrapper_box'>";
+	str+="<div class='wrapper_box_inner'>"
     str += product_info;
 	str+="<div id='pro_related'>"+related_pro+"</div>";
     str += "<div class='bottom-btn'><div class='continue-btn'><a href='"+cart_url+"'  id ='shopping_cart'>PROCEED TO CHECKOUT</a></div>";
-	  str += "<div class='continue-btn1'><a href= '"+anchor+"'  id ='continue_shopping'>"+title_shopping_continue+"</a></div></div></div>";
+	  str += "<div class='continue-btn1'><a href= '"+anchor+"'  id ='continue_shopping'>"+title_shopping_continue+"</a></div></div></div></div>";
     //$jq('.loadding_ajaxcart').html(str);
     $jq(str).insertAfter('#wraper_ajax');
     $jq('#wraper_ajax').css('opacity',0.8);
-    
+ 
 }
 
 function showBoxInfoWishlist(product_info) {

@@ -47,6 +47,9 @@
                 <!--a class="upsell-more-link" href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>"><span>More Info</span></a-->
 			<a class="view24"  title="<?php echo $this->htmlEscape($_link->getName()) ?>" href="<?php echo $_link->getProductUrl() ?>">View Product info</a>
                 <?php echo $this->getReviewsSummaryHtml($_link) ?>
+				
+				<?php $this->helper('yotpo')->showBottomline($this, $_link); ?>
+
             </td>
             <?php else: ?>
             <td class="empty">&nbsp;</td>
@@ -57,10 +60,10 @@
     </table>
     
      <div class="products-grid mobile upsell-mob" id="upsell-product-table">
-    <?php  $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
+    <?php  // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
     <?php $this->resetItemsIterator() ?>
     <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
-      	<ul>
+      	<ul class="pro-slider-upsell">
         <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
             <?php if($_link=$this->getIterableItem()): ?>
             <?php if($_j > 4) { break; } ?>
@@ -74,7 +77,9 @@
                 <button onclick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Shopping Bag" type="button"><span><span>Add to Bag</span></span></button>
                 <!--a class="upsell-more-link" href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>"><span>More Info</span></a-->
 				<a  class="view24" title="<?php echo $this->htmlEscape($_link->getName()) ?>" href="<?php echo $_link->getProductUrl() ?>">View Product info</a>
-                <?php echo $this->getReviewsSummaryHtml($_link) ?></div>
+                <?php echo $this->getReviewsSummaryHtml($_link) ?>
+						<?php $this->helper('yotpo')->showBottomline($this, $_link); ?>
+				</div>
             </li>
             <?php else: ?>
             <li class="empty">&nbsp;</li>
@@ -84,6 +89,20 @@
     <?php endfor; ?>
     </div>
     
+	
+	
+	<script>
+// bxSlider for brand slider
+jQuery('.pro-slider-upsell').bxSlider({
+   minSlides: 2,
+  maxSlides: 2,
+  slideWidth: 250,
+  pager: false,
+  slideMargin: 10
+});
+</script>
+	
     <script type="text/javascript">decorateTable('upsell-product-table')</script>
 </div>
+
 <?php endif ?>

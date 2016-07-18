@@ -1,0 +1,97 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/cloud-zoom.1.0.2.js"></script>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$videoLink = $_product->getVideolink();
+?>
+
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+    <?php if (count($this->getGalleryImages()) > 0): ?>
+    <div class="js-product-img__main flexslider">
+        <ul class="slides">
+            <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <li>
+                <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(550); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           
+            </li>
+    <?php endforeach; ?>
+        </ul>
+    </div><!-- /.hero-slider -->
+    <?php endif; ?>
+<?php endif; ?>
+
+<style>
+.flexslider .slides img{width:auto; height:inherit;}
+
+</style>
+
+<?php if(!empty($videoLink)) :?>
+    <?php $videoLink=str_replace("www.youtube.com/v","www.youtube.com/embed",$videoLink)?>
+    <a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>">PLAY VIDEO</a><?php endif; ?>
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+    <h2><?php echo $this->__('More Views ww') ?></h2>
+    <div class="flexslider-wrapper">
+        <div class="flexslider js-product-img__thumbs">
+            <ul class="slides overview">
+            <?php foreach ($this->getGalleryImages() as $_image): ?>
+                <li>
+                    <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(160); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                </li>
+            <?php endforeach; ?>
+            </ul><!-- /.slides -->
+       </div><!-- /.flexslider --> 
+    </div><!-- /.flexslider-wrapper -->
+</div>
+<?php endif; ?>
+<p class="zoom-notice desktop" id="track_hint"><?php echo $this->__('HOVER TO ZOOM') ?></p>
+<?php if(!empty($videoLink)) :?><a class="fancyYoutube desktop  play-video-link" href="<?php echo $videoLink; ?>">PLAY VIDEO</a><?php endif; ?>
+<div class="social-product-page">
+	<ul class="social-buttons">
+<li><a id="social-fb" title="Facebook" href="http://www.facebook.com/AureliaProbioticSkincare" rel="external">Facebook</a></li>
+<li><a id="social-tw" title="Twitter" href="https://twitter.com/AureliaSkincare" rel="external">Twitter</a></li>
+<li><a id="social-yt" title="YouTube" href="http://www.youtube.com/user/AureliaSkincare" rel="external">YouTube</a></li>
+<li><a id="social-pin" title="Pinterest" href="http://www.pinterest.com/aureliaskincare>" rel="external">Pinterest</a></li>
+<li><a id="social-ins" title="Instagram" href="http://instagram.com/aureliaskincare" rel="external">Instagram</a></li>
+<li class="last"><a id="social-eml" title="Google+" href="https://plus.google.com/+Aureliaskincareorganic" rel="external"</a></li>
+</ul>
+    
+</div>
+<div id="pinterestpin">
+<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_28.png" /></a>
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+</div>
+<!--<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>-->

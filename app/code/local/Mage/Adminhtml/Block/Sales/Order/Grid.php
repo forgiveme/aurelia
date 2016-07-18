@@ -34,6 +34,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 								)
 						);
 		$collection->getSelect()->group('entity_id');
+		$collection->getSelect()->where("`sales/order_item`.price > '1'");
 		//echo $collection->getSelect(); exit;
         $this->setCollection($collection);
         return parent::_prepareCollection();

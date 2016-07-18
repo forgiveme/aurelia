@@ -72,7 +72,76 @@ foreach($quote->getAllVisibleItems() AS $_item) {
     <div class="giftwrap_header">
         <h2><?php echo $this->__('COMPLIMENTARY GIFT WRAP') ?></h2>
     </div>
+  <?php if($customHelper->isMobileOrTablet()) {
+		// mobile or tablet 
+  ?>
+    <div class="gift-holder">
 
+        <p>Products are packaged as one gift in a luxurious black box, lined with crisp black tissue. The box is then wrapped with silk Aurelia ribbon and lovingly delivered to yourdoor.</p> 
+          <!--p class="watch-video-text">Watch us wrapping...</p-->
+          <?php $videoUrl='//www.youtube.com/v/mJY8N-jw2-g?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0';
+                if($customHelper->isMobileOrTablet())
+                {
+                    $videoUrl='//www.youtube.com/embed/mJY8N-jw2-g?autoplay=1&amp;hl=en&amp;fs=1&amp;rel=0'; 
+                }
+          ?>
+		<!--<a id="gift-wrap-video-cart-btn" class="fancyYoutube" title="Aurelia Skincare's Gift Wrap " href="<?php echo $videoUrl; ?>">Watch our Gift Wrap video here.</a>-->
+
+        <div class="gift-wrap-holder">
+        <form action="<?php echo Mage::getUrl('giftmodule/index/giftwrap'); ?>" method="post">
+            <p>
+            	<!--<span class="giftbox<?php echo ($isGiftWrap) ? " checked" : ''; ?>">
+                	<input type="checkbox" name="gift_wrap_check" id="gift_wrap_check<?php echo ($isGiftWrap) ? "_checked" : ''; ?>" <?php echo ($isGiftWrap) ? 'checked="checked"' : ''; ?> />
+                </span>-->
+                <label> Is this a gift? Would you like to add a handwritten note?<?php //echo $_giftProductPrice; ?></label>
+            </p>
+
+           <!-- <p><input type="submit" style="display:none" class="gift-wrap-submit gift-submit" value="Apply Gift Wrap" name="submit_gifwrap" /></p>-->
+
+        </form>
+       </div>
+
+	<div class="gift-message-holder">
+        <form name="giftmessageform" id="giftmessageform" action="<?php echo Mage::getUrl('giftmodule/index'); ?>" method="post">
+
+
+            <div class="gift-message-wrapper">
+           		 <p>
+                    <span class="giftbox <?php if ($status){ echo "checked";} ?>">
+
+                   
+                     <!--label>Would you like a handwritten note to be sent with this ? </label-->
+                    </span>
+             	</p>
+                <div  class="gift-message-fields">
+                    
+                    <p>
+                      <textarea cols="40" rows="5" title="Message" name="gift_message" id="gift_message"><?php echo $giftMessage; ?></textarea>
+                    </p>
+                    <p>
+                        <!--input type="submit" class="gift-submit" value="Apply Message" name="submit_gifwrap" /-->
+						<button  class="button btn-proceed-checkout btn-checkout" title="Proceed to Checkout" onclick = 'this.form.submit();' type="button"><span><span>Apply Message</span></span></button>
+                    </p>
+					<?php if($giftMessage!='') { ?>
+					<p>
+                       <label class="thansk-msg"><?php echo $this->__('Thank you. We will add your message as a handwritten note with your gift.'); ?></label>
+					</p>
+					<?php } ?>
+                </div>
+            </div>
+            
+        </form>
+       </div>
+       <!-- <div class="giftwrap-video-holder">
+       		<?php // echo $this->getChildHtml('giftwrap.video') ?>
+		</div> -->
+
+    </div>
+	<?php } ?>
+	
+<?php if(!$customHelper->isMobileOrTablet()) {
+		// for desktop view 
+  ?>
     <div class="gift-holder">
 
         <p>Products are packaged as one gift in a luxurious black box, lined with crisp black tissue. The box is then wrapped with silk Aurelia ribbon and lovingly delivered to yourdoor.</p> 
@@ -135,6 +204,9 @@ foreach($quote->getAllVisibleItems() AS $_item) {
 		</div> -->
 
     </div>
+	<?php } ?>	
+	
+	
 </div>
 
 

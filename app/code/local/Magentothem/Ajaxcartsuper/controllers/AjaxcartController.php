@@ -124,13 +124,19 @@ class Magentothem_Ajaxcartsuper_AjaxcartController extends Mage_Checkout_CartCon
                             //$ajaxData['product_info'] = Mage::helper('ajaxcartsuper/data')->productHtml($product->getName(), $product->getProductUrl(), $pimage);
                         $volume=$product->getVolume();
                         $namevolume='';
+						$customHelper=Mage::helper('custom');
                         $formattedPrice = Mage::helper('core')->currency($product->getFinalPrice(), true, false);
                         if($volume) { $volume=$volume;} else { $volume='';}
                         if($volume) { $namevolume='<span class="popup-product-volume">'.$volume.'</span>';}
 						$ajaxData['product_info']	=	 "<div class='left-panel'>";
 						$ajaxData['product_info']	.=	"<div id='product_info_box'>  <h2>ADDED TO YOUR SHOPPING BAG</h2>";
-						$ajaxData['product_info']	.=	 "<div class='p_image'><img src='" .$pimage." '></div>";
-						if( $product->getTypeId() == 'grouped' ){
+						
+					
+					if(!$customHelper->isMobileOrTablet())   {
+					
+					$ajaxData['product_info']	.=	 "<div class='p_image'><img src='" .$pimage." '></div>";
+
+					if( $product->getTypeId() == 'grouped' ){
 						$ajaxData['product_info']	.= "<div class='p_name'><a href=' ".$product->getProductUrl()."'>".$product->getName()."<span class='popup-product-price'>".$price."</span></a></div>";
 						}else{
 							$ajaxData['product_info']	.= "<div class='p_name'><a href=' ".$product->getProductUrl()."'>".$product->getName()."<span class='popup-product-price'>".$formattedPrice."</span>".$namevolume."</a></div>";
@@ -143,16 +149,53 @@ class Magentothem_Ajaxcartsuper_AjaxcartController extends Mage_Checkout_CartCon
 																				  </div>
 																				</div>
 																			  </div>";
-							$ajaxData['shopping_bag_link']='SHOPPING BAG '.$count ;
+																			  
+							}
+						
+						
+						if($customHelper->isMobileOrTablet())   {
+
+					
+						
+						
+						$ajaxData['product_info']	.= "</div>";
+						
+						$ajaxData['product_info']	.=	 "<div class='p_image'><img src='" .$pimage." '></div>";
+						$ajaxData['product_info']	.="<div id='product_cart_info'>";
+						
+						if( $product->getTypeId() == 'grouped' ){
+						$ajaxData['product_info']	.= "<div class='p_name'><a href=' ".$product->getProductUrl()."'>".$product->getName()."<span class='popup-product-price'>".$price."</span></a></div>";
+						}else{
+							$ajaxData['product_info']	.= "<div class='p_name'><a href=' ".$product->getProductUrl()."'>".$product->getName()."<span class='popup-product-price'>".$formattedPrice."</span>".$namevolume."</a></div>";
+						
+						}
+						
+							$ajaxData['product_info']	.= "<div class='product-cart-detail'><p> Quantity Added ".$qt."</p>
+																			<p> Items In Bag ".$count." &nbsp;  <br> Bag Total  &pound;".$total."</p>
+																				  </div>
+																				</div>
+																			  </div>";
+																			  
+							}
+						
+
+
+							$ajaxData['shopping_bag_link']='SHOPPING BAG &pound;'.$total ;
                         }
 						
 						 $RelProduct = Mage::getModel('catalog/product')->load($product->getId())->getRelatedProductIds();
 						 
-						  
-				$ajaxData['related_pro']= "<h2>WE RECOMMEND TO USE WITH</h2>";
+					if($customHelper->isMobileOrTablet())   {	  
+				$ajaxData['related_pro']= "<h2>WE RECOMMEND YOU USE WITH</h2>";
+				}
+				if(!$customHelper->isMobileOrTablet())   {	  
+					$ajaxData['related_pro']= "<h2>WE RECOMMEND TO USE WITH</h2>";
+				}
 				$ajaxData['related_pro'].= "<a id='close_popup'>close</a>";
 				$ajaxData['related_pro'].= "<div class='product clearfix'>";
 							
+						
+						if(!$customHelper->isMobileOrTablet())   {
 							$limit=1;
 							foreach ($RelProduct as $id) {
 							$recDesc="";
@@ -189,6 +232,58 @@ class Magentothem_Ajaxcartsuper_AjaxcartController extends Mage_Checkout_CartCon
 							 }
 							 $limit=$limit+1;
 								}
+								
+						}
+
+				// mobile view 
+					if($customHelper->isMobileOrTablet())   {
+							$limit=1;
+							foreach ($RelProduct as $id) {
+							$recDesc="";
+							$recHeading="";
+							if($limit<2){
+							$relatedProduct = Mage::getModel('catalog/product')->load($id);
+							$relImage=Mage::helper('catalog/image')->init($relatedProduct, 'small_image')->resize(100,120);
+							
+							if($relatedProduct->getRecommendedDesciption()) {
+								$recDesc=$relatedProduct->getRecommendedDesciption();
+							}
+							
+							if($relatedProduct->getRecommendedHeading()) {
+								$recHeading=$relatedProduct->getRecommendedHeading();
+							}
+							
+							 $formatPrice = Mage::helper('core')->currency($relatedProduct->getFinalPrice(), true, false);
+							  $volumeRelated=$relatedProduct->getVolume();
+                        $namevolume2='';
+                       
+                        if($volumeRelated) { $volumeRelated=$volumeRelated;} else { $volumeRelated='';}
+                        if($volumeRelated) { $namevolume2='<span class="popup-product-volume">'.$volumeRelated.'</span>';}
+							 
+								$proUrl=$relatedProduct->getProductUrl();
+								if($limit!=1){
+							  $ajaxData['related_pro'].=  "<div class='product__item last'>";
+							 }else{
+							 $ajaxData['related_pro'].=  "<div class='product__item'>";
+							 }
+							 $ajaxData['related_pro'].= " <div class='product__img'><a href='".$proUrl."'><img src='".$relImage."'></a></div>";
+							 $ajaxData['related_pro'].=   "<div class='related-container'><a href='".$proUrl."'><span>".$recHeading."</span><span class='popup-product-price'>".$formatPrice."</span>".$namevolume2."</a>";
+							 
+							 //$desc=$relatedProduct->getDescription();
+							//$desc2=strip_tags($desc);
+							//$shortDesc=substr($desc,0,100); 
+							 $ajaxData['related_pro'].=   " <div class='related-desc'><p>".$recDesc."</p>";
+							 $ajaxData['related_pro'].=    "</div> <div class='qty-detail'><input type='hidden' value='1' id='qty' name='qty'></div>";
+							 
+							 $ajaxData['related_pro'].= " <a class='addtobag' href='".Mage::helper('checkout/cart')->getAddUrl($relatedProduct)."'>Add to Bag</a> </div> </div> ";
+							 
+					
+							 }
+							 $limit=$limit+1;
+								}
+								
+						}
+
 						$ajaxData['related_pro'].=	"</div>"; 
 						
 						

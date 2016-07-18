@@ -72,6 +72,12 @@ class Amasty_Promo_Model_Observer
                     $sku =  $item->getProduct()->getSku();   
                 }
                 
+			//	echo "<pre>";
+			//	if($product['price']==00.0000){
+			//	echo $product['price'];
+			//	exit();
+			//	}
+				
                 // we support only simple, configurable, virtual
                 if ($product['type_id']=='bundle' || $product['type_id'] =='downloadable') {  
                     return false;       
@@ -96,12 +102,14 @@ class Amasty_Promo_Model_Observer
                 ));
 
                 $quote = $observer->getEvent()->getQuote();
-                if ($this->_addProductToQuote($quote, $product, $request, $rule)){
-                    $msg = $rule->getStoreLabel(Mage::app()->getStore());
-                    if ($msg){
-                        $this->_showMessage($msg, false);
-                    }
-                }
+				if($product['price']!=00.0000){   // condition to check free sample not to add again & again 
+					if ($this->_addProductToQuote($quote, $product, $request, $rule)){
+						$msg = $rule->getStoreLabel(Mage::app()->getStore());
+						if ($msg){
+							$this->_showMessage($msg, false);
+						}
+					}
+				}
                 
             }
             catch (Exception $e){

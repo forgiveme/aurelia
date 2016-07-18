@@ -56,7 +56,7 @@
 
 .bx-wrapper .bx-loading {
 	min-height: 50px;
-	background: url(images/bx_loader.gif) center center no-repeat #fff;
+	/* background: url(images/bx_loader.gif) center center no-repeat #fff; */
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -209,3 +209,17 @@
 .pro img {width:75px !important; height:75px  !important}
 
 .customer-account-create .join-btn-btn{display:none}
+
+@media (max-width: 767px) {
+.bx-wrapper .bx-prev {
+	left: -15px;
+	background: url(../images/left-arrow-product1.png) no-repeat 0 0px; background-size:100%;
+}
+
+.bx-wrapper .bx-next {
+	right: -13px;
+	background: url(../images/right-arrow-product1.png) no-repeat 0px 0px; background-size:100%;
+}
+
+
+}

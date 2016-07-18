@@ -1,6 +1,12 @@
 <div class="home-view-button">
 <button class="button btn-cart" onclick="setLocation('<?php echo $this->getUrl('products')?>')">
 <span><span>
-<?php echo $this->__('View all products') ?></span></span>
+<?php echo $this->__('shop all skincare') ?></span></span>
 </button>
+
+<button class="button btn-cart" onclick="setLocation('<?php echo $this->getUrl('products/?open=new')?>')">
+<span><span>
+<?php echo $this->__('What’s New?') ?></span></span>
+</button>
+
 </div>

@@ -73,6 +73,7 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><script>js/global.js</script></action>
 				<action method="addCss"><stylesheet>css/responsive.css</stylesheet></action>
 				 <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
+				 <action method="addCss"><stylesheet>css/mobile.css</stylesheet></action>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
@@ -82,9 +83,10 @@ Default layout, loads most of the pages
             <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml" />
 
             <block type="page/html_header" name="header" as="header">
-                <block type="page/template_links" name="top.links" as="topLinks"/>
+                <block type="page/template_links" name="top.links" as="topLinks">
 				<block type="cms/block" name="mobile_menu_main_site" as="mobile_menu_main_site">
 					<action method="setBlockId"><block_id>mobile_menu_main_site</block_id></action>
+				</block>
 				</block>
                 <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
                 <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
@@ -150,7 +152,7 @@ Default layout, loads most of the pages
 
                 <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
                 <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
-
+				
             </block>
 
             <block type="core/text_list" name="content" as="content" translate="label">

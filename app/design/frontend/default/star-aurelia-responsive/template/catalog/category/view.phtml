@@ -40,7 +40,7 @@
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
 ?>
-
+<?php $catId= $_category->getId(); ?>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('sidebar-product-links')->toHtml() ?>
 
 <div id="content-center-text">             
@@ -83,3 +83,57 @@
 
 </div>
 </div>
+
+<?php $customHelper=Mage::helper('custom');
+ if($customHelper->isMobileOrTablet())   { 
+	if($catId!=4){ ?>
+
+<script>
+
+jQuery( window ).load(function() {
+
+ jQuery( "div.category-products:first" ).css( "display", "block" );
+  jQuery( "div.category-products:first" ).addClass('highlite');
+  
+  jQuery('.category-title h1').addClass('shown');
+
+
+});
+
+
+jQuery(".category-title h1").click(function () {
+  
+  if( jQuery(this).hasClass("shown") ){
+   
+     jQuery(this).removeClass('shown');
+  
+    jQuery( "div.category-products").removeClass('highlite');
+    
+    jQuery( "div.category-products").hide("slow");
+    
+  }else{
+  
+
+jQuery(this).addClass('shown');
+  
+jQuery( "div.category-products").addClass('highlite');
+
+ jQuery( "div.category-products").show("slow");
+		
+
+    
+  }
+  
+});
+
+
+</script>
+
+
+
+<?php 
+
+	}
+
+}
+?>

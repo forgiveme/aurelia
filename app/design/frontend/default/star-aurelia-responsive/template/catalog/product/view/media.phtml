@@ -56,22 +56,71 @@
 .flexslider .slides img{width:auto; height:inherit;}
 
 </style>
+<?php $customHelper=Mage::helper('custom'); ?>
 
-<?php if(!empty($videoLink)) :?>
+    <?php if(!$customHelper->isMobileOrTablet())   {   ?>
+	<?php if(!empty($videoLink)) :?>
     <?php $videoLink=str_replace("www.youtube.com/v","www.youtube.com/embed",$videoLink)?>
-    <a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>">PLAY VIDEO</a><?php endif; ?>
-
+	<a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>">PLAY VIDEO</a><?php endif; ?>
+<?php } ?>
 <?php if (count($this->getGalleryImages()) > 0): ?>
+
+	<?php 	
+					if($customHelper->isMobileOrTablet())   {  ?>
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+		 <?php if($_product->getSku() != "APS018"){ ?>
+ <div class="add-to-cart add-to-cart1 ">                
+        
+<div class="add-to-cart">
+        <button onclick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Shopping Bag" type="button"><span><span>Add to Shopping Bag</span></span></button>
+            </div>
+		<div class="plus-box">
+	   <div class="minus" onclick="minus();">-</div>
+        <input type="text" name="qty"  id="qty-cc"  maxlength="12" value="1" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+		   <div class="plus" onclick="plus();">+</div>
+	   </div>
+
+        </div>
+		<?php } ?>
+</form>
+       
+	   
+	    <?php if($_product->getSku() != "APS018"){ ?>
+	   <div class="all-review"> <?php $this->helper('yotpo')->showBottomline($this, $_link); ?>  <a id = "reviewlink" href="#">Read Customer Reviews <span></span> </a> </div>
+	   <?php } ?>
+	   
+	   <?php  } ?>
 <div class="more-views">
     <h2><?php echo $this->__('More Views ww') ?></h2>
     <div class="flexslider-wrapper">
         <div class="flexslider js-product-img__thumbs">
             <ul class="slides overview">
+	
             <?php foreach ($this->getGalleryImages() as $_image): ?>
                 <li>
                     <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(160); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
                 </li>
             <?php endforeach; ?>
+					<?php 	if($customHelper->isMobileOrTablet())   {  ?>
+			<?php if(!empty($videoLink)){?>
+			<li> 
+				
+    <?php
+	$path = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$mediaPath=  $path.'videos/video.png';
+	$videoLink=str_replace("www.youtube.com/v","www.youtube.com/embed",$videoLink)?>
+	<a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>"  style="background:none; padding:10px 0 10px 0px; margin:0px;">
+	<img  height="48" width="68" src="<?php echo $mediaPath; ?>"/ >
+	</a>
+<?php 
+?>
+			</li> <?php
+			}
+			} ?>
             </ul><!-- /.slides -->
        </div><!-- /.flexslider --> 
     </div><!-- /.flexslider-wrapper -->
@@ -95,3 +144,52 @@
 <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 </div>
 <!--<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>-->
+<script>
+ jQuery("#reviewlink").click(function() {
+ 
+ jQuery('html, body').animate({
+        scrollTop: jQuery("#customer-review").offset().top
+    }, 1000);
+	
+	if(jQuery('#customer-review').hasClass('ui-state-active'))
+	{
+	
+	}else{
+	jQuery('#customer-review').trigger( "click" );
+		}
+});
+
+ jQuery( ".col-main" ).on( "click", ".write-review-btn-hidden", function() {
+ // jQuery(".write-review-btn-hidden").click(function() {
+ 
+  jQuery('html, body').animate({
+        scrollTop: jQuery("#customer-review").offset().top
+    }, 1000);
+	
+		if(jQuery('#customer-review').hasClass('ui-state-active'))
+	{
+	
+	}else{
+	
+	jQuery('#customer-review').trigger( "click" );
+	jQuery('.write-review-button').trigger( "click" );
+	}
+
+});
+
+</script>
+
+<script>
+	
+jQuery(".play-video-link").on('click', function(){
+setTimeout( function(){ 
+    // Do something after 2 second 
+	jQuery(".flex-viewport .slides li").eq(0).trigger('click');
+  }  , 1200 );
+
+});
+
+
+
+</script>
+				

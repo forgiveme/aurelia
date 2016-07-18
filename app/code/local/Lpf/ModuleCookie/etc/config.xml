@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Lpf_ModuleCookie>
+            <version>0.1</version>
+        </Lpf_ModuleCookie>
+    </modules>
+    <global>
+        <models>
+            <lpf_modulecookie>
+                <class>Lpf_ModuleCookie_Model</class>
+            </lpf_modulecookie>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <customer_login>
+                <observers>
+                    <lpf_modulecookie_customer_login>
+                        <type>model</type>
+                        <class>lpf_modulecookie/observer</class>
+                        <method>customerLogin</method>
+                    </lpf_modulecookie_customer_login>
+                </observers>
+            </customer_login>
+        </events>
+    </frontend>
+</config>

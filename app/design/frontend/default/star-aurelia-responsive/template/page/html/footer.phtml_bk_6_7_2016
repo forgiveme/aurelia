@@ -1,0 +1,273 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('carousel-wrapper')->toHtml() ?> 
+<div class="footer-container">
+<h2 class="mobile info-dropdown">Information</h2>
+    <div class="footer">
+     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bottom_footer')->toHtml() ?>
+     <div class="desktop"> 
+     <div class="divider-full"></div>
+    	<address><?php echo $this->getCopyright() ?></address>
+        <ul id="footer-links">
+        	<li><a href="<?php echo $this->getUrl('privacy-policy');?>">Privacy & Legal Policy</a></li>
+			
+        	<!--li><a href="<?php echo $this->getUrl('cookie-policy');?>">Cookie Policy</a></li-->
+            <li><a href="<?php echo $this->getUrl('terms');?>">Sales Terms &amp; Conditions</a></li>
+            <li><a href="<?php echo $this->getUrl('price-delivery');?>">Delivery &amp; Returns</a></li>
+        </ul>
+      
+        
+    </div>
+    </div>
+	<script type = "text/javascript">
+jQuery(function ($) {
+$(document).ready(function(){
+$('.yotpo-small-box').css("display","none");
+});
+});
+
+/////////////////
+var nVer = navigator.appVersion;
+var nAgt = navigator.userAgent;
+var browserName  = navigator.appName;
+var fullVersion  = ''+parseFloat(navigator.appVersion); 
+var majorVersion = parseInt(navigator.appVersion,10);
+var nameOffset,verOffset,ix;
+
+// In Opera, the true version is after "Opera" or after "Version"
+if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
+ browserName = "opera";
+ fullVersion = nAgt.substring(verOffset+6);
+ if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+   fullVersion = nAgt.substring(verOffset+8);
+}
+// In MSIE, the true version is after "MSIE" in userAgent
+else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
+ browserName = "ie";
+ fullVersion = nAgt.substring(verOffset+5);
+}
+// In Chrome, the true version is after "Chrome" 
+else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
+ browserName = "chrome";
+ fullVersion = nAgt.substring(verOffset+7);
+}
+// In Safari, the true version is after "Safari" or after "Version" 
+else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
+ browserName = "safari";
+ fullVersion = nAgt.substring(verOffset+7);
+ if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+   fullVersion = nAgt.substring(verOffset+8);
+}
+// In Firefox, the true version is after "Firefox" 
+else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
+ browserName = "firefox";
+ fullVersion = nAgt.substring(verOffset+8);
+}
+// In most other browsers, "name/version" is at the end of userAgent 
+else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < 
+          (verOffset=nAgt.lastIndexOf('/')) ) 
+{
+ browserName = nAgt.substring(nameOffset,verOffset);
+ fullVersion = nAgt.substring(verOffset+1);
+ if (browserName.toLowerCase()==browserName.toUpperCase()) {
+  browserName = navigator.appName;
+ }
+}
+// trim the fullVersion string at semicolon/space if present
+if ((ix=fullVersion.indexOf(";"))!=-1)
+   fullVersion=fullVersion.substring(0,ix);
+if ((ix=fullVersion.indexOf(" "))!=-1)
+   fullVersion=fullVersion.substring(0,ix);
+
+majorVersion = parseInt(''+fullVersion,10);
+if (isNaN(majorVersion)) {
+ fullVersion  = ''+parseFloat(navigator.appVersion); 
+ majorVersion = parseInt(navigator.appVersion,10);
+}
+
+var OSName="unknown-os";
+if (navigator.appVersion.indexOf("Win")!=-1) OSName="windows";
+if (navigator.appVersion.indexOf("Mac")!=-1) OSName="mac";
+if (navigator.appVersion.indexOf("X11")!=-1) OSName="unix";
+if (navigator.appVersion.indexOf("Linux")!=-1) OSName="linux";
+
+jQuery('body').addClass(browserName).addClass(OSName);
+///////////////////
+function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1);
+		if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+function clearPopup(elem) {
+	jQuery('.'+elem+'.visible').addClass('transitioning').removeClass('visible');
+	jQuery('html').removeClass('overlay');
+
+	setTimeout(function () {
+		jQuery('.'+elem).removeClass('transitioning');
+	}, 200);
+	jQuery('.cms-index-index .header-container .desktop').css('z-index','10000');
+}
+</script>
+<!--script>
+  window.intercomSettings = {
+    app_id: "xmqb9yuo",
+	name: "Leanne", // Full name
+    email: "Leanne@reactivegraphics.co.uk",
+	created_at:16930,
+    user_hash:  "<?php echo hash_hmac('sha256', 'Leanne@reactivegraphics.co.uk', 'HBDe7g5Qniu3I7ft-Sgu58Wv_EUMLEsdtea9qClj');?>"
+  };
+</script-->
+<!--script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/xmqb9yuo';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script-->
+
+ 
+<?php
+if(Mage::getBlockSingleton('page/html_header')->getIsHomePage()) {
+	$enable_popup= Mage::getStoreConfig('aurelia/aurelia_group/aurelia_select',Mage::app()->getStore());
+	if($enable_popup==1){
+?>
+		<div id="example-popup" class="popup">
+			<div class="popup-body">
+			<span class="popup-exit"></span>
+				<div class="popup-content">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('loyality_homepage')->toHtml() ;?>
+				</div>
+			</div>
+		</div>
+		<div class="popup-overlay"></div>
+		<?php $wait_time=Mage::getStoreConfig('aurelia/aurelia_group/aurelia_input',Mage::app()->getStore()); ?>
+		<script type='text/javascript'>//<![CDATA[ 
+		jQuery(window).load(function(){
+			jQuery(document).ready(function () {
+				
+				var waittime=<?php echo $wait_time ?>;
+				var seconds=1000;
+				finalwait=waittime*seconds;
+				if(getCookie('shown')==''){  // check if cookie is not set then show popup
+					setTimeout(function() {
+						clearPopup('popup-st');
+						//alert("11");
+						jQuery('html').addClass('overlay');
+						jQuery('.cms-index-index .header-container .desktop').css('z-index','0');
+						var activePopup = jQuery('#example-popup');
+						jQuery(activePopup).addClass('visible');
+					}, finalwait);     
+				}
+				jQuery(document).keyup(function (e) {
+					if (e.keyCode == 27 && jQuery('html').hasClass('overlay')) {
+						clearPopup('popup');
+					}
+				});
+
+				jQuery('.popup-exit').click(function () {
+					clearPopup('popup');
+					document.cookie="shown=1";
+				});
+
+				jQuery('.popup-overlay').click(function () {
+					clearPopup('popup');
+					document.cookie="shown=1";
+				});
+
+				jQuery('.popup-content .inner_block a').click(function (){
+					document.cookie="shown=1";
+					clearPopup('popup');
+				});
+			});
+		});//]]>  
+		</script>
+<?php
+	}
+	$enable_popup_st = Mage::getStoreConfig('aurelia/aurelia_group/aurelia_select_skintool', Mage::app()->getStore());
+	if($enable_popup_st==1){
+?>
+	<div id="example-popup-st" class="popup-st">
+		<div class="popup-body-st">
+		<span class="popup-exit-st"></span>
+			<div class="popup-content-st">
+				<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('skincaretool_homepagepopup')->toHtml() ;?>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('celebrating_homepagepopup')->toHtml() ;?>
+			</div>
+		</div>
+	</div>
+	<div class="popup-overlay-st"></div>
+	<?php $wait_time_st = Mage::getStoreConfig('aurelia/aurelia_group/aurelia_input_skintool', Mage::app()->getStore()); ?>
+	<script type='text/javascript'>//<![CDATA[ 
+	jQuery(window).load(function(){
+		jQuery(document).ready(function () {
+			
+			var waittime_st = <?php echo $wait_time_st ?>;
+			var seconds_st = 1000;
+			finalwait_st = waittime_st*seconds_st;
+			if(getCookie('shown_st')==''){  // check if cookie is not set then show popup
+				setTimeout(function() {
+					clearPopup('popup');
+					//alert("22");
+					jQuery('html').addClass('overlay');
+					jQuery('.cms-index-index .header-container .desktop').css('z-index','0');
+					var activePopup = jQuery('#example-popup-st');
+					jQuery(activePopup).addClass('visible');
+				}, finalwait_st);     
+			}
+			jQuery(document).keyup(function (e) {
+				if (e.keyCode == 27 && jQuery('html').hasClass('overlay')) {
+					clearPopup('popup-st');
+				}
+			});
+			jQuery('.popup-exit-st').click(function () {
+				clearPopup('popup-st');
+				document.cookie="shown_st=1";
+			});
+			jQuery('.popup-overlay').click(function () {
+				clearPopup('popup-st');
+				document.cookie="shown_st=1";
+			});
+			jQuery('.popup-content-st .inner_block a').click(function (){
+				document.cookie="shown_st=1";
+				clearPopup('popup-st');
+			});
+		});
+	});//]]>  
+	</script>
+	
+	<script>
+jQuery(".mengamenu h2").click(function(){
+    jQuery(".mengamenu ul").slideToggle();
+});
+	
+	</script>
+	
+<?php
+	}
+}
+?>
+</div>
