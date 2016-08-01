@@ -17,6 +17,9 @@ var/
 *.rar
 *.tar
 *.zip
+*.bkp
+*.old
+*.bk
 
 # Logs and databases #
 ######################
@@ -35,3 +38,4 @@ var/
 ehthumbs.db
 Thumbs.db
 nbproject
+
