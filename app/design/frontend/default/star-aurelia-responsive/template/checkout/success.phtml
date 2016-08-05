@@ -24,6 +24,53 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<!-- fo start -->
+<?php
+/*
+* FEED OPTIMISE
+*/
+$order_id           = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$order              = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+$order_subtotal     = $order->subtotal;
+$order_total        = $order->getGrandTotal();
+$order_shipping     = $order->getShippingAmount();
+$voucher_code       = $order->getCouponCode();
+$order_currency     = isset($order['order_currency_code']) ? $order['order_currency_code'] : 'notset';
+
+$order_items        = $order->getAllVisibleItems();
+$items              = array();
+
+foreach ($order_items as $item)
+{
+	$items[$item->getSku()] = array(
+			$item->getPrice(),
+			$item->getQtyOrdered(),
+			$item->getName()
+	);
+}
+
+?>
+
+<script type="text/javascript">
+	var _fo = _fo || [];
+
+	_fo.push(["orderTotal","<?php echo $order_total; ?>"]);
+	_fo.push(["orderSubtotal","<?php echo $order_subtotal; ?>"]);
+	_fo.push(["orderId","<?php echo $order_id; ?>"]);
+	_fo.push(["orderShippingCost","<?php echo $order_shipping; ?>"]);
+	_fo.push(["orderItems",<?php echo json_encode($items); ?>]);
+	_fo.push(["orderCoupon","<?php echo $voucher_code; ?>"]);
+	_fo.push(["orderCurrency","<?php echo $order_currency; ?>"]);
+
+	_fo.push(["buyerFirstname","<?php echo $order->getCustomerFirstname();?>"]);
+	_fo.push(["buyerLastname","<?php echo $order->getCustomerLastname();?>"]);
+	_fo.push(["buyerEmail","<?php echo $order->getCustomerEmail();?>"]);
+	_fo.push(["buyerId","<?php echo $order->getCustomerId(); ?>"]);
+</script>
+<script async="async" type="text/javascript" src="//cdn.feedoptimise.com/fo.js#691"></script>
+<!-- fo end -->
+
 <div class="succes-page">
 	<div class="new-changes">
 

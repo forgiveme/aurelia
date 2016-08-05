@@ -4847,7 +4847,7 @@ div.selector, div.selector span, div.checker span, div.radio span, div.uploader,
 div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {    margin: 0;    padding: 0;}
 div.radio * {width: 23px; height: 23px;}
 div.radio span {display: block;}
-div.radio span.checked { background-position: -5px 0px; }
+div.radio span.checked { background-position:-4px 0px; }
 div.radio input[type="radio"] { opacity: 0; }
 div.checker input {    background: none repeat scroll 0 0 transparent;    border: medium none;    display: inline-block;    opacity: 0;}
 div.checker input, input[type="search"], input[type="search"]:active {  -moz-appearance: none;}
@@ -5295,7 +5295,10 @@ ul.social-buttons li {width:16.66666%;margin-right:0px!important;}
  @media (max-width:767px) {
 /* .cart-item .pro-item-dtls, #shopping-cart-table .product-image{float:left; margin:0; padding:0; width:50%; display:none} */
 
-
+div.radio span {
+    background-position: 0px 0;
+}
+div.radio span.checked {background-position: 0px -23px;}
 
 
 

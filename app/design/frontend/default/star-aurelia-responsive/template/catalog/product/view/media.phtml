@@ -41,11 +41,26 @@
     <?php if (count($this->getGalleryImages()) > 0): ?>
     <div class="js-product-img__main flexslider">
         <ul class="slides">
+		<?php $i = 1; ?>
             <?php foreach ($this->getGalleryImages() as $_image): ?>
+			<?php if($i == 1) : ?>
+				<li>
+					<img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(550); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+			   
+				</li>
+				<li>
+					<img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(550); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+			   
+				</li>
+			<?php else: ?>
+			
+			
             <li>
                 <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(550); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
            
             </li>
+			<?php endif; ?>
+			<?php $i++; ?>
     <?php endforeach; ?>
         </ul>
     </div><!-- /.hero-slider -->
@@ -99,28 +114,31 @@
     <div class="flexslider-wrapper">
         <div class="flexslider js-product-img__thumbs">
             <ul class="slides overview">
-	
-            <?php foreach ($this->getGalleryImages() as $_image): ?>
-                <li>
-                    <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(160); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
-                </li>
-            <?php endforeach; ?>
-					<?php 	if($customHelper->isMobileOrTablet())   {  ?>
+			
+			<?php 	if($customHelper->isMobileOrTablet())   {  ?>
 			<?php if(!empty($videoLink)){?>
 			<li> 
 				
     <?php
 	$path = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-$mediaPath=  $path.'videos/video.png';
+$mediaPath=  $path.'videos/video-new.jpg';
 	$videoLink=str_replace("www.youtube.com/v","www.youtube.com/embed",$videoLink)?>
-	<a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>"  style="background:none; padding:10px 0 10px 0px; margin:0px;">
-	<img  height="48" width="68" src="<?php echo $mediaPath; ?>"/ >
+	<a class="fancyYoutube mobile  play-video-link" href="<?php echo $videoLink; ?>"  style="background:none; padding:0px; margin:0px;">
+	<!--img src="<?php // echo $mediaPath; ?>"/ -->
+	<?php  echo $this->getLayout()->createBlock('cms/block')->setBlockId('vedio-thumb')->toHtml(); ?>
 	</a>
 <?php 
 ?>
 			</li> <?php
 			}
 			} ?>
+				
+            <?php foreach ($this->getGalleryImages() as $_image): ?>
+                <li>
+                    <img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(160); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                </li>
+            <?php endforeach; ?>
+			
             </ul><!-- /.slides -->
        </div><!-- /.flexslider --> 
     </div><!-- /.flexslider-wrapper -->

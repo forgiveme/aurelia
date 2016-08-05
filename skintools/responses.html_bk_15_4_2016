@@ -1,0 +1,1693 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=720,maximum-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+    <meta name="description" content="A set of horizontal menus that switch to vertical
+         and which hide at small window widths.">
+    <title>Aurelia Skincare Tool</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+      <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/response.css">
+    <link rel="stylesheet" type="text/css" href="css/response_mobile.css">
+    <style>
+    strong {
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    </style>
+	<link rel="icon" href="https://www.aureliaskincare.com/media/favicon/default/product-daymoisturiser.jpg" type="image/x-icon" />
+     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39210698-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body class="animated fadeIn">
+    <!-- <div class="content"> -->
+    <!-- ******* -->
+    <!-- Page 20 -->
+    <!-- ******* -->
+    <div class="" id="main_20" style="display:;">
+        <div class="pure-g" id="finalpage_2" style="">
+            <div style="background: url(img/mobile/bg_20.png); background-size: cover;">
+                <img class="title_img" src="img/mobile/page20/title.png" alt="img">
+                <div class="pure-u-5-5" id="thankyou" style="color: #706f6f;">
+                    <p>Thank you so much for taking time out to tell us a bit more about you, your skin and lifestyle. Based on some of the things you told us, we have combined our suggestions and top tips alongside £10.00* off our tailored recommended products to get you started with the Aurelia products we think your skin will love.</p>
+                    <!-- <p style="color: #706f6f;font-family: AvenirNextCondensed;font-size:23px;">*Select your 'Must Have' or 'Recommended' Aurelia product above for £10.00 to be deducted from your next order. You must be signed in to redeem this offer.</p> -->
+                </div>
+                <div class="pure-u-5-5">
+                    <img src="img/mobile/page5/flower.png" style="height: 90px;">
+                </div>
+                <div class="pure-u-5-5" id="learntabout" style="color: #706f6f;">
+                    <p>What we’ve learned about you...</p>
+                    <!-- <p><span id="finalpagename">(Name) you</span> are lorem ipsum dolor sit omet, consectetur odipisicing elit, sed do eiusmod tempor incididunt ut lobore et dolore mogno oliquo. Ut oenliiqum ip od ex mieo nim vencommodoiom, quis consequot. nostrud exercitotion ullomco loboris. lorem ipsum dolor sit omet, consectetur odipisicing elit, sed do eiusmod tempor incididunt ut lobore et dolore mogno oliquo. Ut oenliiqum ip od ex mieo nim vencommodoiom, quis consequot.</p>-->
+                    <p class="statement statement-a">We’re delighted to hear that you’re ready for anything in the morning and that there are no major concerns when it comes to your skin. Your aim is to keep your skin looking as natural and healthy as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-b">We’re delighted to hear that you’re ready for anything in the morning and that there are no major concerns when it comes to your skin. Your aim is to keep your skin looking as young as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-c">We’re delighted to hear that you’re ready for anything in the morning and that there are no major concerns when it comes to your skin. Your aim is to keep your skin looking the best you can for your age so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-d">We’re delighted to hear that you’re ready for anything in the morning and that there are no major concerns when it comes to your skin. Your aim is to keep your skin looking fresh-faced and glowing so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-e">We’re delighted to hear that you’re ready for anything in the morning. You’ve highlighted a couple of things you don’t love about your skin, and your aim is to keep your skin looking as natural and healthy as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-f">We’re delighted to hear that you’re ready for anything in the morning. You’ve highlighted a couple of things you don’t love about your skin, and your aim is to keep your skin looking as young as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-g">We’re delighted to hear that you’re ready for anything in the morning. You’ve highlighted a couple of things you don’t love about your skin, and your aim is to keep your skin looking the best you can for your age so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-h">We’re delighted to hear that you’re ready for anything in the morning. You’ve highlighted a couple of things you don’t love about your skin, and your aim is to keep your skin looking fresh-faced and glowing so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-i">You often have a balance of good and bad days. It’s great to hear though that you haven’t got any major concerns when it comes to your skin. Your aim is to keep your skin looking as natural and healthy as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-j">You often have a balance of good and bad days. It’s great to hear though that you haven’t got any major concerns when it comes to your skin. Your aim is to keep your skin looking as young as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-k">You often have a balance of good and bad days. It’s great to hear though that you haven’t got any major concerns when it comes to your skin. Your aim is to keep your skin looking the best you can for your age so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-l">You often have a balance of good and bad days. It’s great to hear though that you haven’t got any major concerns when it comes to your skin. Your aim is to keep your skin looking fresh-faced and glowing so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-m">We think an excellent skincare routine will help to make you feel ready for anything every day, and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking as natural and healthy as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-n">We think an excellent skincare routine will help to make you feel ready for anything every day, and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking as young as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-o">We think an excellent skincare routine will help to make you feel ready for anything every day, and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking the best you can for your age so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-p">We think an excellent skincare routine will help to make you feel ready for anything every day, and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking fresh-faced and glowing so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-q">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around. It’s great that you don’t have any major skin concerns but our suggestions should help your aim of keeping your skin looking as natural and healthy as possible. Read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-r">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around. It’s great that you don’t have any major skin concerns but our suggestions should help your aim of keeping your skin looking as young as possible. Read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-s">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around. It’s great that you don’t have any major skin concerns but our suggestions should help your aim of keeping your skin looking the best you can for your age. Read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-t">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around. It’s great that you don’t have any major skin concerns but our suggestions should help your aim of keeping your skin looking fresh-faced and glowing. Read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-u">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around with an excellent skincare routine to give you morning motivation and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking as natural and healthy as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-v">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around with an excellent skincare routine to give you morning motivation and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking as young as possible so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-w">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around with an excellent skincare routine to give you morning motivation and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking the best you can for your age so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                    <p class="statement statement-x">It’s hard when you don’t feel ready to face the day but we’d love to help turn that around with an excellent skincare routine to give you morning motivation and at the same time help to address the things you don’t like about your skin. Your aim is to keep your skin looking fresh-faced and glowing so read on for your personalised plan and make every day start with a little bit of luxury!</p>
+                </div>
+                <div id="email_submit_sent_message" class="pure-u-5-5" style="display:none;">
+                    <p style="  font-size:30px;  color: #706f6f;">Thank you. A copy of these results has been sent to your email address.</p>
+                </div>
+                <form id="email_submit_form" target="invisible_post" method="POST" action="email/post.php" style="width: 100%;">
+                    <div class="pure-u-5-5">
+                        <input type="musthave_post" name="musthave_post" id="musthave_post" style="width:0; height:0; display:none;">
+                        <input type="reccommended_post" name="reccommended_post" id="reccommended_post" style="width:0; height:0; display:none;">
+                        <input type="insid" name="insid" id="insid" style="width:0; height:0; display:none;">
+						<!-- questions post -->
+                        <input type="post_0" name="post_0" id="post_0" style="width:0; height:0; display:none;">
+                        <!-- q2 -->
+                        <input type="post_q2" name="post_q2" id="post_q2" style="width:0; height:0; display:none;">
+                        <!-- q3 -->
+                        <input type="post_q3_t" name="post_q3_t" id="post_q3_t" style="width:0; height:0; display:none;">
+                        <input type="post_q3_p" name="post_q3_p" id="post_q3_p" style="width:0; height:0; display:none;">
+                        <!-- q4 -->
+                        <input type="post_q4_t" name="post_q4_t" id="post_q4_t" style="width:0; height:0; display:none;">
+                        <input type="post_q4_p" name="post_q4_p" id="post_q4_p" style="width:0; height:0; display:none;">
+                        <!-- q4 -->
+                        <!-- <input type="post_q4_t" name="post_q4_t" id="post_q4_t" style="width:0; height:0; display:none;"> -->
+                        <!-- <input type="post_q4_p" name="post_q4_p" id="post_q4_p" style="width:0; height:0; display:none;"> -->
+                        <!-- q6 -->
+                        <input type="post_q6" name="post_q6" id="post_q6" style="width:0; height:0; display:none;">
+                        <!-- <input type="post_q6_p" name="post_q6_p" id="post_q6_p" style="width:0; height:0; display:none;"> -->
+                        <!-- q7 -->
+                        <input type="post_q7_t" name="post_q7_t" id="post_q7_t" style="width:0; height:0; display:none;">
+                        <input type="post_q7_p" name="post_q7_p" id="post_q7_p" style="width:0; height:0; display:none;">
+                        <!-- q8 -->
+                        <input type="post_q8" name="post_q8" id="post_q8" style="width:0; height:0; display:none;">
+                        <!-- <input type="post_q8_p" name="post_q8_p" id="post_q8_p" style="width:0; height:0; display:none;"> -->
+                        <!-- q9 -->
+                        <input type="post_q9_t" name="post_q9_t" id="post_q9_t" style="width:0; height:0; display:none;">
+                        <input type="post_q9_p" name="post_q9_p" id="post_q9_p" style="width:0; height:0; display:none;">
+                        <!-- q10 -->
+                        <!-- <input type="post_q10_t" name="post_q10_t" id="post_q10_t" style="width:0; height:0; display:none;"> -->
+                        <!-- <input type="post_q10_p" name="post_q10_p" id="post_q10_p" style="width:0; height:0; display:none;"> -->
+                        <!-- q11 -->
+                        <input type="post_q11_t" name="post_q11_t" id="post_q11_t" style="width:0; height:0; display:none;">
+                        <input type="post_q11_p" name="post_q11_p" id="post_q11_p" style="width:0; height:0; display:none;">
+                        <!-- q12 -->
+                        <input type="post_q12" name="post_q12" id="post_q12" style="width:0; height:0; display:none;">
+                        <!-- q13 -->
+                        <input type="post_q13_t" name="post_q13_t" id="post_q13_t" style="width:0; height:0; display:none;">
+                        <input type="post_q13_p" name="post_q13_p" id="post_q13_p" style="width:0; height:0; display:none;">
+                        <!-- q14 -->
+                        <input type="post_q14_t" name="post_q14_t" id="post_q14_t" style="width:0; height:0; display:none;">
+                        <input type="post_q14_p" name="post_q14_p" id="post_q14_p" style="width:0; height:0; display:none;">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address for a copy of your results" autocomplete="no">
+                    </div>
+                    <div class="pure-u-5-5">
+                        <input id="submitemail" value="" type="submit" style="background-image: url(img/pages/page20/submitemail.png);width: 97%;height: 103px;border: none;background-repeat: no-repeat;background-position-x: 50%;background-color: #95918E">
+                    </div>
+                </form>
+                <iframe style="display:none" name="invisible_post" id="invisible_post"></iframe>
+            </div>
+            <div style="background-color:white;">
+                <div class="pure-u-5-5 recommendation">
+                    <!-- <img style="min-height: 80px;" src="img/mobile/mobile_rec.png"> -->
+                    <img style="min-height: 180px;" src="img/pages/_all/musthave_2.png">
+                    <p id="musthave_1" class="hide_me">This intelligent, aromatic, creamy infusion glides on to the skin and lifts off all impurities and make-up. Fusing our signature technologies with BioOrganic ingredients, this cleanser, along with its antibacterial bamboo muslin cloth, soothes, hydrates and brightens all skin types.</p>
+                    <p id="musthave_2" class="hide_me">A lightweight, easily absorbed potent fluid fusing our signature technologies with BioOrganic plant and flower essences. Depositing probiotics, peptides and antioxidants where they are most needed, boosting skin’s radiance and glow.</p>
+                    <p id="musthave_3" class="hide_me">A sumptuous fragrance blend of Neroli, Lavender, Rose and Mandarin adds to the luxury of this nourishing, clinically advanced cream. Signature technologies and BioOrganic ingredients hydrate and soothe dull and dehydrated skin, promoting a radiant glow while helping to prevent skin ageing.</p>
+                    <p id="musthave_4" class="hide_me">Our eye complex has been scientifically proven to result in an age correction improvement of 5 years in just 28 days of daily use. Benefitting from our signature technologies, these two luxurious products work in synergy to revolutionise the eye area.</p>
+                    <p id="musthave_5" class="hide_me">A nourishing multi-use dry body oil that firms and deeply hydrates parched and lackluster skin. Our sumptuous essential oil blend of Neroli, Lavender, Rose and Mandarin, combined with antioxidant-rich BioOrganic botanicals works to revitalise the skin, soothe the senses and combat stress.</p>
+                    <p id="musthave_6" class="hide_me">This revolutionary double-action enzyme polish works to transform and brighten dull, rough, congested and lacklustre complexions. Containing natural rice bran refining beads to gently dislodge dry skin cells, boosting circulation through manual massage to reveal bright, clear and beautiful skin.</p>
+                    <p id="musthave_7" class="hide_me">This lightly whipped, clinically advanced cream fuses probiotic and peptide technologies with BioOrganic ingredients to hydrate and soothe dull and dehydrated skin. It creates the perfect smooth base for make-up while helping to boost radiance and glow.</p>
+                    <p id="musthave_8" class="hide_me">An intensive overnight boosting treatment which works in tandem with the skin’s nightly repair mode. BioOrganic 100% pure botanicals ensure this exquisite oil instantly absorbs to work on all fronts.</p>
+                    <p id="musthave_9" class="hide_me">This indulgent, soothing ‘red carpet’ Rose Mask delivers botanicals and probiotics to the skin, firming, hydrating and restoring balance. Damask Rose Absolute produces an exquisitely scented floral note and adds a warm serenity to the blend.</p>
+                    <img id="musthave_poduct" style="min-height: 500px;" src="">
+                    <h1 id="musthave_poduct_title" style="font-size: 58px; margin-top:10px;">Title</h1>
+                    <div class="pure-u-5-5 recommendation_data">
+                        <!-- <p id="musthave_data">£49.00 <span>|</span> 50ml</p> -->
+                        <p id="musthave_data">
+                            <span id="price">£</span>
+                            <span>|</span>
+                            <span id="size">ml</span>
+                        </p>
+                    </div>
+                    <a href="" id="musthave_buylink">
+                        <img src="img/product/10off.png" style="height: 160px">
+                    </a>
+                    <p><a href="">View product info</a></p>
+                </div>
+                <div class="pure-u-5-5 recommendation" style="margin-bottom: 129px;">
+                    <img style="min-height: 180px;" src="img/pages/_all/recommended_2.png">
+                    <p id="recommended_1" class="hide_me">This revolutionary double-action enzyme polish works to transform and brighten dull, rough, congested and lacklustre complexions. Containing natural rice bran refining beads to gently dislodge dry skin cells, boosting circulation through manual massage to reveal bright, clear and beautiful skin.</p>
+                    <p id="recommended_2" class="hide_me">This lightly whipped, clinically advanced cream fuses probiotic and peptide technologies with BioOrganic ingredients to hydrate and soothe dull and dehydrated skin. It creates the perfect smooth base for make-up while helping to boost radiance and glow.</p>
+                    <p id="recommended_3" class="hide_me">An intensive overnight boosting treatment which works in tandem with the skin’s nightly repair mode. BioOrganic 100% pure botanicals ensure this exquisite oil instantly absorbs to work on all fronts.</p>
+                    <p id="recommended_4" class="hide_me">This indulgent, soothing ‘red carpet’ Rose Mask delivers botanicals and probiotics to the skin, firming, hydrating and restoring balance. Damask Rose Absolute produces an exquisitely scented floral note and adds a warm serenity to the blend.</p>
+                    <p id="recommended_5" class="hide_me">This intelligent, aromatic, creamy infusion glides on to the skin and lifts off all impurities and make-up. Fusing our signature technologies with BioOrganic ingredients, this cleanser, along with its antibacterial bamboo muslin cloth, soothes, hydrates and brightens all skin types.</p>
+                    <p id="recommended_6" class="hide_me">A lightweight, easily absorbed potent fluid fusing our signature technologies with BioOrganic plant and flower essences. Depositing probiotics, peptides and antioxidants where they are most needed, boosting skin’s radiance and glow.</p>
+                    <p id="recommended_7" class="hide_me">A sumptuous fragrance blend of Neroli, Lavender, Rose and Mandarin adds to the luxury of this nourishing, clinically advanced cream. Signature technologies and BioOrganic ingredients hydrate and soothe dull and dehydrated skin, promoting a radiant glow while helping to prevent skin ageing.</p>
+                    <p id="recommended_8" class="hide_me">Our eye complex has been scientifically proven to result in an age correction improvement of 5 years in just 28 days of daily use. Benefitting from our signature technologies, these two luxurious products work in synergy to revolutionise the eye area.</p>
+                    <p id="recommended_9" class="hide_me">A nourishing multi-use dry body oil that firms and deeply hydrates parched and lackluster skin. Our sumptuous essential oil blend of Neroli, Lavender, Rose and Mandarin, combined with antioxidant-rich BioOrganic botanicals works to revitalise the skin, soothe the senses and combat stress.</p>
+                    <img id="recommended_poduct" style="min-height: 500px;" src="">
+                    <h1 id="recommended_poduct_title" style="font-size: 58px; margin-top:10px">Title</h1>
+                    <div class="pure-u-5-5 recommendation_data">
+                        <!-- <p id="recommendation_data">£49.00 <span>|</span> 50ml</p> -->
+                        <p id="recommendation_data">
+                            <span id="price">£</span>
+                            <span>|</span>
+                            <span id="size">ml</span>
+                        </p>
+                    </div>
+                    <a href="" id="recommended_buylink">
+                        <img src="img/product/10off.png" style="height: 160px">
+                    </a>
+                    <p><a href="">View product info</a></p>
+                    <div class="pure-u-5-5" style="">
+                        <p style="color: #706f6f; font-family: AvenirNextCondensed; font-size: 27px;">*Select your 'Must Have' or 'Recommended' Aurelia product above for £10.00 to be deducted from your next order.</p>
+                        <br>
+                        <p style="color: #706f6f;font-family: AvenirNextCondensed;font-size: 27px;">You must be signed in to redeem this offer.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="tips-bg">
+                <div class="pure-u-5-5">
+                    <img src="img/mobile/page20/big_flower.png" style="height: 243px;margin-top: -120px;">
+                </div>
+                <div class="pure-u-5-5">
+                    <img src="img/mobile/page20/title_0.png" style="height: 100px; margin-bottom: -123px;">
+                </div>
+                <div class="tips_outter">
+                    <div id="tips-container">
+                        <!-- How does it all begin? -->
+                        <div id="q2-tip">
+                            <!-- excercising -->
+                            <div class="tip-header" id="how_does_it_bring">How does your day begin?</div>
+                            <div id="q2-answer1" class="tip-answer">
+                                <div class="tip-blurb"><span>Exercising first thing is a great way to start the day as it boosts your circulation giving you a natural glow.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q2-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>It also increases your body’s metabolism and raises energy levels to get the endorphins going which help make us happy so keep it up!</p>
+                                </div>
+                            </div>
+                            <!-- end q2-answer1 -->
+                            <!-- Shower  -->
+                            <div id="q2-answer2" class="tip-answer">
+                                <!-- <div class="tip-header">How does your day begin?</div> -->
+                                <div class="tip-blurb"><span>An energising morning shower can make you feel awake and refreshed but don’t forget to think about how the products you use can affect your skin.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q2-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Try to avoid shower gels and shampoos containing sulfates which can severely dry your skin and scalp. Before showering don’t skip your morning cleanse! It’s important to keep your face and body care separate. You might like to try applying the Refine &amp; Polish Miracle Balm three times a week to clean skin and leaving on while you rush around before hopping in the shower to remove!</p>
+                                </div>
+                            </div>
+                            <!-- end q2-answer2 -->
+                            <!-- Check social media -->
+                            <div id="q2-answer3" class="tip-answer">
+                                <!-- <div class="tip-header">How does your day begin?</div> -->
+                                <div class="tip-blurb"><span>A massive 80% of us check our smart phones first thing and that does not include switching off the alarm!</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q2-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>The most common sentiment regarding a smartphone is one of ‘connectedness‘ and this surpasses ‘overwhelmed’ ‘stressed out’ and ‘anxious’ for many but the line is a thin one and you may need to make a change. Remember stress can affect your skin! Try to have detox mornings when you wake naturally and resist checking your smartphone.</p>
+                                </div>
+                            </div>
+                            <!-- end q2-answer3 -->
+                            <!-- Coffee on the run  -->
+                            <div id="q2-answer4" class="tip-answer">
+                                <!-- <div class="tip-header">How does your day begin?</div> -->
+                                <div class="tip-blurb"><span>A caffeine hit on the go gives you that quick pick up but can be dehydrating for your skin. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q2-answer4"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Keep a watch on how much coffee you drink throughout the day. Dehydration can cause fine lines and a lacklustre complexion so make like the Italians and have a glass of water with your espresso!</p>
+                                </div>
+                            </div>
+                            <!-- end q2-answer4 -->
+                            <!-- breakfast  -->
+                            <div id="q2-answer5" class="tip-answer">
+                                <!-- <div class="tip-header">How does your day begin?</div> -->
+                                <div class="tip-blurb"><span>Skipping breakfast can trigger cravings for quick, unhealthy food fixes.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q2-answer5"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Having breakfast will boost your metabolism and increase your energy throughout the day. What you’re eating can really help your skin too, and breakfast is such a good place to start; try sprinkling over omega-rich nuts and seeds to help keep skin healthy and supple. Green superfood smoothies are great for a vitamin hit and make skin glow.</p>
+                                </div>
+                            </div>
+                            <!-- end q2-answer5 -->
+                        </div>
+                        <!-- q2-tip -->
+                        <!-- How old do you feel? -->
+                        <div id="q3-tip">
+                            <!-- Ready to crawl under the duvet?  -->
+                            <div id="q3-answer1" class="tip-answer">
+                                <div class="tip-header">How do you feel?</div>
+                                <div class="tip-blurb"><span>You feel like crawling under the duvet -we know this feeling all too well. The aim is not to feel like this every day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q3-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>If you do, it might be time to make some changes. We are going to start by trying to help you with your skincare to get you feeling extra radiant and glowing! Skincare can often be the first step to feeling better and when you’ve got great products to look forward to you’ll find getting out of bed that bit easier.</p>
+                                </div>
+                            </div>
+                            <!-- end q3-answer1 -->
+                            <!-- Middle  -->
+                            <div id="q3-answer2" class="tip-answer">
+                                <div class="tip-header">How do you feel?</div>
+                                <div class="tip-blurb"><span>You may have good days and bad, but a lovely way to keep your mind-set balanced and optimistic is to enjoy a consistent, luxury and indulgent skincare routine on a daily basis. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q3-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>When you’ve got great products to look forward to you’ll find getting out of bed that bit easier! We think that following a skincare routine you feel excited to use will help get you motivated and you’ll regain confidence with glowing, radiant skin.</p>
+                                </div>
+                            </div>
+                            <!-- end q3-answer2 -->
+                            <!-- Ready for anything  -->
+                            <div id="q3-answer3" class="tip-answer">
+                                <div class="tip-header">How do you feel?</div>
+                                <div class="tip-blurb"><span>What a fantastic feeling to be ready for anything! </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q3-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Feeling ready when starting your day will help tackle the day’s challenges with a positive mind-set. Make sure your skin matches your glowing optimism and start your day with a great skincare routine.</p>
+                                </div>
+                            </div>
+                            <!-- end q3-answer3 -->
+                        </div>
+                        <!-- q3-tip -->
+                        <!-- What’s your morning skincare routine? -->
+                        <div id="q4-tip">
+                            <!-- I’m yet to start one -->
+                            <div id="q4-answer1" class="tip-answer">
+                                <div class="tip-header">What’s your morning skincare routine?</div>
+                                <div class="tip-blurb"><span>Time may not be on your side in the mornings and evenings, but the simplest of skincare routines will work wonders.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q4-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>A decent cleanse is the cornerstone of a skincare routine and the Miracle Cleanser is surprisingly quick to use, offering visible results from the first go. Looking after your skin is so important – it’s our largest organ and responsible for many different functions. We only get one so treat it well - give your skin a boost and moisturise before you leave the house to protect and nourish on a daily basis.</p>
+                                </div>
+                            </div>
+                            <!-- end q4-answer1 -->
+                            <!-- Simple and quick  -->
+                            <div id="q4-answer2" class="tip-answer">
+                                <div class="tip-header">What’s your morning skincare routine?</div>
+                                <div class="tip-blurb"><span>We get that you are all about a simple and quick routine.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q4-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Lots of Aurelia Probiotic Skincare products are multi-tasking helping you get the most out of the swiftest of routines. Our Miracle Cleanser removes all make-up (including eyes) so you can skip a step as well as prepping the skin for the next steps without feeling dry or tight. Our Cell Revitalise Day Moisturiser primes the skin perfectly too.</p>
+                                </div>
+                            </div>
+                            <!-- end q4-answer2 -->
+                            <!-- My tried and tested - cleanse, tone, moisturise  -->
+                            <div id="q4-answer3" class="tip-answer">
+                                <div class="tip-header">What’s your morning skincare routine?</div>
+                                <div class="tip-blurb"><span>It is great news to hear you have a consistent routine in place! </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q4-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>We’re going to encourage you to skip the toner and treat your skin instead using a serum or facial oil. We often get asked about toners and we believe it is not an essential part to the routine as long your cleanser is rinsing cleanly away. The Miracle Cleanser along with its bamboo muslin gently buffs away daily dirt and make-up without the foaming agents which stripthe skin, and mineral oils that leave a greasy residue. You want your skin to feel soft and hydrated not tight or oily. Look at the ingredients in your products and avoid mineral oils and sulfates which can affect the skin and never use an alcohol-based toner, it will strip the oil barrier to your skin.</p>
+                                </div>
+                            </div>
+                            <!-- end q4-answer3 -->
+                            <!-- The complete routine  -->
+                            <div id="q4-answer4" class="tip-answer">
+                                <div class="tip-header">What’s your morning skincare routine?</div>
+                                <div class="tip-blurb"><span>Sounds like you are a skincare junkie – join the club! </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q4-answer4"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>You’re probably a fan of layering products and you might even have a bespoke routine in place for morning and evening. Now’s the time to add products to treat your skin. Try an eye treatment that targets all major concerns for use morning and evening. Add an effective exfoliator to your routine three times a week to reveal bright, radiant skin and improve the efficacy of all of your products.</p>
+                                </div>
+                            </div>
+                            <!-- end q4-answer4 -->
+                        </div>
+                        <!-- q4-tip -->
+                        <!-- Show us what you don't love -->
+                        <div id="q6-tip">
+                            <div id="q6-answer1" class="tip-answer tip-answer-show">
+                                <div class="tip-header">The things you don’t love about your skin</div>
+
+                                <div class="tip-blurb tip-blurb-q6-2" style="margin-bottom: 225px;"><p>Hooray! It’s wonderful to hear that you don’t have any major concerns when it comes to your skin. Try the Miracle Cleanser and Cell Revitalise Day Moisturiser for a simple, effective routine. </p> </div>
+                                
+                                <div class="tip-blurb tip-blurb-q6-1"><span>Our expert advice and effective skincare will help tackle the top concerns you have highlighted.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q6-answer1"></a>
+                                </div>
+                                <div id="q6-answer-container">
+                                    <!-- fine lines -->
+                                    <div class="tip-content q6-answer1-content1"><strong>Fine lines</strong>
+                                        <br />
+                                        <p style="line-height: 45px;">Fine lines can be the first signs of skin ageing and usually appear around the eyes, brow or mouth. They can be intensified by dehydration in the skin so targeted skincare is your friend here! Use products that treat the skin, enhancing hyaluronic acid production and rich in antioxidants. The Revitalise &amp; Glow Serum is ideal as a concentrated base layer morning and evening, and can be followed with the Cell Repair Night Oil for deeper hydration.</p>
+                                    </div>
+                                    <!-- deeper wrinkles -->
+                                    <div class="tip-content q6-answer1-content2"><strong>Deeper wrinkles</strong>
+                                        <br />
+                                        <p>As we age, our collagen strands weaken and cause a wrinkle to form. To help smooth out deeper wrinkles opt for products that will boost your skin’s natural collagen production and hyaluronic acid (responsible for the skin’s hydration). The Revitalise &amp; Glow Serum is perfect as it contains high levels of our peptide complex which boosts collagen by 140%. Don’t forget to focus also on the overall health of your skin, a few wrinkles are normal and characterful and as long as your skin is glowing, you’ll exude youth! Maintain your glow with the Cell Revitalise Night Moisturiser; packed with essential fatty acids, soothing probiotics and nourishing shea butter.</p>
+                                    </div>
+                                    <!-- Dry or flaky patches   -->
+                                    <div class="tip-content q6-answer1-content3"><strong>Dry or flaky patches  </strong>
+                                        <br />
+                                        <p>Cleanse - Dry or flaky skin is crying out for deeply nourishing skincare. You want to be adding as much moisture as possible, and definitely avoiding foaming agents like sulfates which strip the skin of its natural oils and are often the root cause of dryness. Avoid any cleansers containing Sodium Laurel Sulfate or Sodium Laureth Sulfate and opt instead for a creamy cleanser like our Miracle Cleanser.</p>
+                                        <p>Treat - Banish flaky patches overnight with our nourishing Cell Repair Night Oil which is rich in essential fatty acids. At Aurelia we have shea-based Cell Revitalise Day &amp; Night Moisturisers which will melt in to the skin rather than sit on the surface and will keep skin hydrated all day.</p>
+                                    </div>
+                                    <!-- Large pores    -->
+                                    <div class="tip-content q6-answer1-content4"><strong>Large pores </strong>
+                                        <br />
+                                        <p>Don’t worry, there are steps you can take to reduce the visibility of large pores and ensure your skin looks smoother. But be aware that they will never completely disappear as they are part of the natural structure of your skin. Make sure you are exfoliating regularly to buff away dead skin with the Refine &amp; Polish Miracle Balm and follow with firming, balancing skincare products like the Revitalise &amp; Glow Serum to strengthen your skin and pore walls. Avoid mineral oil (paraffinum liquidum) which can clog pores causing blackheads or breakouts.</p>
+                                    </div>
+                                    <!-- Shine -->
+                                    <div class="tip-content q6-answer1-content5"><strong>Shine</strong>
+                                        <br />
+                                        <p>Caused by oily skin, shine is normally something that increases throughout the day. Your skincare should be all about rebalancing natural oils but not by stripping the skin. Continuously washing your face and removing all oils will cause an imbalance in your sebum production, and can actually increase shine and oiliness. Switch your cleanser to a gentle, rebalancing cream like the Miracle Cleanser and hydrate using the lightweight Revitalise &amp; Glow Serum. You might also want to try using blotting sheets which help mattify your skin without adding powder or makeup!</p>
+                                    </div>
+                                    <!-- Mild to moderate break outs of spots  -->
+                                    <div class="tip-content q6-answer1-content6"><strong>Mild to moderate break outs of spots</strong>
+                                        <br />
+                                        <p>Don’t panic! There are ways of treating your skin to reduce breakouts. The opposite of what you might believe, products containing natural oils are actually beneficial. Don’t be tied down to ‘oil-free’ as your body needs essential fatty acids to heal itself and reduce scarring. Our lightweight and silicone-free Revitalise &amp; Glow Serum or Cell Revitalise Day Moisturiser are perfect for hydrating every day without blocking pores. Try exfoliating regularly with our Refine &amp; Polish Miracle Balm to avoid dead skin build-up which can clog pores and avoid alcohol-based toners or astringents which dry your skin. </p>
+                                    </div>
+                                    <!-- Sun damage/brown spots   -->
+                                    <div class="tip-content q6-answer1-content7"><strong>Sun damage/brown spots </strong>
+                                        <br />
+                                        <p>Your melanin production has become patchy – causing sporadic brown spots. This can happen as we age, during pregnancy or due to hormone imbalances. Make sure to protect your skin from harsh sunlight during peak hours using broad spectrum SPF and a hat! Help even your skin tone with products rich in vitamin E and botanicals containing high levels of essential fatty acids like the Cell Repair Night Oil and Cell Revitalise Day &amp; Night Moisturisers.</p>
+                                    </div>
+                                    <!-- Sensitive   -->
+                                    <div class="tip-content q6-answer1-content8"><strong>Sensitivity</strong>
+                                        <br />
+                                        <p>Try to pinpoint what you’re sensitive to so you know what to avoid in your skincare. Here is our list of top ingredients to avoid to help you on your way!</p>
+                                        <ul>
+                                            <li style="font-size: 40px;">MI or MIT – listed as Methylisothiazolinone - is a harsh preservative known to cause skin irritation.</li>
+                                            <li style="font-size: 40px;">Sulfates or SLS – visible as sodium laurel sulfate or sodium laureth sulfate – are synthetic foaming agents found in thousands of products which strip the skin of its natural oils and upset the acid mantel, causing sensitivity and dryness.</li>
+                                            <li style="font-size: 40px;">Synthetic Fragrance – sometimes listed as parfum – can be made up of hundreds of ingredients which aren’t all visible and could cause sensitivity. Look instead for natural fragrances like essential oils or flower waters </li>
+                                        </ul>
+                                        <p>Patch-testing is great if you are unsure whether your skin will react. Your skin’s natural cycle takes 28 days to complete so give IT time to see improvements. We recommend trying our Miracle Cleanser first; so often it is your cleanser which is upsetting the skin most so try switching to our gentle cream. All Aurelia Probiotic Skincare products are dermatologically tested and suitable for all skin types including sensitive.</p>
+                                    </div>
+                                    <!-- Redness and broken capillaries    -->
+                                    <div class="tip-content q6-answer1-content9"><strong>Redness and broken capillaries </strong>
+                                        <br />
+                                        <p>Red or inflamed skin with broken capillaries can be sensitive to the elements and caused by a number of different factors including genes. Avoid the following ingredients to keep your skin balanced:</p>
+                                        <ul>
+                                            <li style="font-size: 40px;">MI or MIT – listed as Methylisothiazolinone - is a harsh preservative known to cause skin irritation.</li>
+                                            <li style="font-size: 40px;">Sulfates or SLS – visible as sodium laurel sulfate or sodium laureth sulfate – are synthetic foaming agents found in thousands of products which strip the skin of its natural oils and upset the acid mantel, causing sensitivity and dryness.</li>
+                                            <li style="font-size: 40px;">Synthetic Fragrance – sometimes listed as parfum – can be made up of hundreds of ingredients which aren’t all visible and could cause sensitivity. Look instead for natural fragrances like essential oils or flower waters which will be listed in full.</li>
+                                        </ul>
+                                        <p>Look for soothing, gentle products containing lots of botanicals like shea butter and aloe vera which naturally calm the skin and try less frequent exfoliation, avoiding harsh retinols, astringents or alcohol. For immediate cooling and calming try the Cell Revitalise Rose Mask which helps reduce redness in just 10 minutes. You might find redness gets worse in winter so ensure you are protecting skin before you brave the elements with plenty of Cell Revitalise Day or Night Moisturiser or Cell Repair Night Oil. All Aurelia Probiotic Skincare products are dermatologically tested and suitable for all skin types including sensitive. </p>
+                                    </div>
+                                </div>
+                                <!-- end q6-answer-container -->
+                            </div>
+                            <!-- end q6-answer1 -->
+                        </div>
+                        <!-- end q6-tip -->
+                        <!-- How old on a good day?  -->
+                        <div id="q8-tip">
+                            <!-- teens -->
+                            <div id="q8-answer1" class="tip-answer">
+                                <div class="tip-header">We don’t often get asked how old we think we look...</div>
+                                <div class="tip-blurb"><span>Studies show that 50% of women worry about their skin and how they look which is closely linked to ageing and skin health. We wanted to share what’s actually happening to your skin as it ages. Don’t forget that with great skincare you’ll be taking steps to stem the worry and enjoy glowing, healthy skin making every day a good day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q8-answer1"></a>
+                                </div>
+                                <br />
+                                <div class="tip-content">
+                                    <strong>Teens</strong>
+                                    <br />
+                                    <p>During teenage years, cells are being produced at an optimum rate and renewing themselves every 28 days so your skin will be very toned and resistant. Hormones can be a challenge causing sebum production to vary which can lead to problematic and acne-prone skin.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Twenties</strong>
+                                    <br />
+                                    <p>Skin in your twenties may still be going through lots of changes. With slightly higher oil production you may still experience breakouts although your overall complexion will be smooth and naturally radiant. Skin tends to settle down throughout your late twenties and establishing a gentle but effective routine here will help skin look fantastic in later life.</p>
+                                </div>
+                            </div>
+                            <!-- end q8-answer1 -->
+                            <!-- Twenties -->
+                            <div id="q8-answer2" class="tip-answer">
+                                <div class="tip-header">We don’t often get asked how old we think we look...</div>
+                                <div class="tip-blurb"><span>Studies show that 50% of women worry about how they look which is closely linked to ageing and skin health. We wanted to share what’s actually happening to your skin as it ages. Don’t forget that with great skincare you’ll be taking steps to stem the worry and enjoy glowing, healthy skin making every day a good day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q8-answer2"></a>
+                                </div>
+                                <br />
+                                <div class="tip-content">
+                                    <strong>Teens</strong>
+                                    <br />
+                                    <p>During teenage years, cells are being produced at an optimum rate and renewing themselves every 28 days so your skin will be very toned and resistant. Hormones can be a challenge causing sebum production to vary which can lead to problematic and acne-prone skin.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Twenties</strong>
+                                    <br />
+                                    <p>Skin in your twenties may still be going through lots of changes. With slightly higher oil production you may still experience breakouts although your overall complexion will be smooth and naturally radiant. Skin tends to settle down throughout your late twenties and establishing a gentle but effective routine here will help skin look fantastic in later life.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Thirties</strong>
+                                    <br />
+                                    <p>Skin in your thirties is when free radicals are on the loose, expression lines start to make themselves visible and sun worshippers may start to see some light sun-spots so make sure you use a minimum of SPF 30 on your face. Some women suffer adult acne at this age, just when they think things are improving. You might notice skin is not as radiant, as cell turnover decreases and collagen production slows down, causing less plumpness and the beginning of fine lines and early wrinkles. It’s not all bad though! Studies show we are at our most beautiful throughout our thirties so make the most of it.</p>
+                                </div>
+                            </div>
+                            <!-- end q8-answer2 -->
+                            <!-- Thirties -->
+                            <div id="q8-answer3" class="tip-answer">
+                                <div class="tip-header">We don’t often get asked how old we think we look...</div>
+                                <div class="tip-blurb"><span>Studies show that 50% of women worry about how they look which is closely linked to ageing and skin health. We wanted to share what’s actually happening to your skin as it ages. Don’t forget that with great skincare you’ll be taking steps to stem the worry and enjoy glowing, healthy skin making every day a good day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q8-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Twenties</strong>
+                                    <br />
+                                    <p>Skin in your twenties may still be going through lots of changes. With slightly higher oil production you may still experience breakouts although your overall complexion will be smooth and naturally radiant. Skin tends to settle down throughout your late twenties and establishing a gentle but effective routine here will help skin look fantastic in later life.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Thirties</strong>
+                                    <br />
+                                    <p>Skin in your thirties is when free radicals are on the loose, expression lines start to make themselves visible and sun worshippers may start to see some light sun-spots so make sure you use a minimum of SPF 30 on your face. Some women suffer adult acne at this age, just when they think things are improving. You might notice skin is not as radiant, as cell turnover decreases and collagen production slows down, causing less plumpness and the beginning of fine lines and early wrinkles. It’s not all bad though! Studies show we are at our most beautiful throughout our thirties so make the most of it.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Forties</strong>
+                                    <br />
+                                    <p>Skin has all the potential to look lovely in your forties. You may still have the to-do list from your thirties but perhaps a bit more time to spend on yourself. At this stage you’re looking to keep a youthful glow about your skin, staying hydrated and increasing collagen production. You may have deeper expression lines, a lack of radiance and drier or more dehydrated skin as your natural sebum production decreases.</p>
+                                </div>
+                            </div>
+                            <!-- end q8-answer3 -->
+                            <!-- Forties -->
+                            <div id="q8-answer4" class="tip-answer">
+                                <div class="tip-header">We don’t often get asked how old we think we look...</div>
+                                <div class="tip-blurb"><span>Studies show that 50% of women worry about how they look which is closely linked to ageing and skin health. We wanted to share what’s actually happening to your skin as it ages. Don’t forget that with great skincare you’ll be taking steps to stem the worry and enjoy glowing, healthy skin making every day a good day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q8-answer4"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Thirties</strong>
+                                    <br />
+                                    <p>Skin in your thirties is when free radicals are on the loose, expression lines start to make themselves visible and sun worshippers may start to see some light sun-spots so make sure you use a minimum of SPF 30 on your face. Some women suffer adult acne at this age, just when they think things are improving. You might notice skin is not as radiant, as cell turnover decreases and collagen production slows down, causing less plumpness and the beginning of fine lines and early wrinkles. It’s not all bad though! Studies show we are at our most beautiful throughout our thirties so make the most of it.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Forties</strong>
+                                    <br />
+                                    <p>Skin has all the potential to look lovely in your forties. You may still have the to-do list from your thirties but perhaps a bit more time to spend on yourself. At this stage you’re looking to keep a youthful glow about your skin, staying hydrated and increasing collagen production. You may have deeper expression lines, a lack of radiance and drier or more dehydrated skin as your natural sebum production decreases.</p>
+                                </div>
+                                <div class="tip-content"><strong>Old &amp; Wiser</strong>
+                                    <br />
+                                    <p>Skin in your fifties can start to change again so it’s definitely the time to start taking extra care. Skin will continue to get drier, and hot flushes caused by the menopause will affect your skin throughout these years. Those with oilier skin will benefit here! As collagen and elastin decline further the structure of the skin becomes looser around the face and neck.</p>
+                                </div>
+                            </div>
+                            <!-- end q8-answer4 -->
+                            <!-- Older & Wiser -->
+                            <div id="q8-answer5" class="tip-answer">
+                                <div class="tip-header">We don’t often get asked how old we think we look...</div>
+                                <div class="tip-blurb"><span>Studies show that 50% of women worry about how they look which is closely linked to ageing and skin health. We wanted to share what’s actually happening to your skin as it ages. Don’t forget that with great skincare you’ll be taking steps to stem the worry and enjoy glowing, healthy skin making every day a good day.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q8-answer5"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Forties</strong>
+                                    <br />
+                                    <p>Skin has all the potential to look lovely in your forties. You may still have the to-do list from your thirties but perhaps a bit more time to spend on yourself. At this stage you’re looking to keep a youthful glow about your skin, staying hydrated and increasing collagen production. You may have deeper expression lines, a lack of radiance and drier or more dehydrated skin as your natural sebum production decreases.</p>
+                                </div>
+                                <div class="tip-content">
+                                    <strong>Old &amp; Wiser</strong>
+                                    <br />
+                                    <p>Skin in your fifties can start to change again so it’s definitely the time to start taking extra care. Skin will continue to get drier, and hot flushes caused by the menopause will affect your skin throughout these years. Those with oilier skin will benefit here! As collagen and elastin decline further the structure of the skin becomes looser around the face and neck.</p>
+                                </div>
+                            </div>
+                            <!-- end q8-answer4 -->
+                        </div>
+                        <!-- q8-tip -->
+                        <!-- I’d love to look  -->
+                        <div id="q7-tip">
+                            <!-- Natural and healthy -->
+                            <div id="q7-answer1" class="tip-answer">
+                                <div class="tip-header">How you’d love to look</div>
+                                <div class="tip-blurb"><span>Looking natural and healthy is all about hydrated, plump, firm skin that exudes radiance.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q7-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>The best way to maintain this look is to cleanse thoroughly both morning and evening, hydrate skin with nourishing products and to use products rich in probiotics on a daily basis. You’ll also benefit from regular exfoliation to keep skin looking bright and clear. You won’t need to use heavy foundation anymore!</p>
+                                </div>
+                            </div>
+                            <!-- end q7-answer1 -->
+                            <!-- As young as possible -->
+                            <div id="q7-answer2" class="tip-answer">
+                                <div class="tip-header">How you’d love to look</div>
+                                <div class="tip-blurb"><span>To stay looking as young as possible the defining factor is always radiance. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q7-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>As long as your complexion is bright and skin is supple, you’ll be looking as young as possible for a long time to come. You’ll really benefit from concentrated products like the Revitalise &amp; Glow Serum which actively boost your collagen by 140% and hyaluronic acid by 19 times natural levels. This helps to firm and plump your skin while keeping it hydrated, along with maintaining that gorgeous glow. Don’t forget to treat your eyes with bespoke products for the delicate orbital area. Our Eye Revitalising Duo contains two products to target every major concern including crow’s feet and wrinkles. It gets to work straight away with visible results after four weeks.</p>
+                                </div>
+                            </div>
+                            <!-- end q7-answer2 -->
+                            <!-- The best I can for my age -->
+                            <div id="q7-answer3" class="tip-answer">
+                                <div class="tip-header">How you’d love to look</div>
+                                <div class="tip-blurb"><span>Looking your best is often based on how you feel. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q7-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>If you are taking the time to treat your skin with a complete skincare routine both morning and evening and also protecting against harsh sunlight, you will be well on your way to maintaining your glow. Youthful skin glows, and doesn’t necessarily have to be completely line-free! Ensure you are nourishing your skin at every stage rather than stripping skin of natural oils.</p>
+                                </div>
+                            </div>
+                            <!-- end q7-answer3 -->
+                            <!-- Fresh-faced and glowing -->
+                            <div id="q7-answer4" class="tip-answer">
+                                <div class="tip-header">How you’d love to look</div>
+                                <div class="tip-blurb"><span>Achieving a gorgeous glow is simple when you’ve got the right skincare at your fingertips!</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q7-answer4"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Try cleansing with the Miracle Cleanser both morning and evening. Along with the antibacterial bamboo muslin cloth it will buff away all dirt, grime and makeup for fresh, clear and balanced skin. Exfoliate three times a week with the Refine &amp; Polish Miracle Balm and hydrate the skin with our clinically advanced Cell Revitalise Day &amp; Night Moisturisers.</p>
+                                </div>
+                            </div>
+                            <!-- end q7-answer4 -->
+                        </div>
+                        <!-- q7-tip -->
+                        <!-- How hydrated are you?  -->
+                        <div id="q9-tip">
+                            <!-- Wilted plant – very dehydrated  -->
+                            <div id="q9-answer1" class="tip-answer">
+                                <div class="tip-header">How hydrated are you?</div>
+                                <div class="tip-blurb"><span>When your body is hydrated properly your cells communicate better, helping to maintain optimum production of collagen and elastin in your skin. Test to see if your skin is dehydrated by pinching your cheek lightly and seeing how quickly your skin springs back. A delay means dehydration.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q9-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>It will of course seem obvious but dehydration is best resolved by drinking at least 1.5 litres of water a day. This can seem like a daunting task, especially if you are not used to it, but the benefits are amazing and can be seen almost immediately. You’ll find that your skin will look less fragile, dry and dull and will appear much more plumped. On a daily basis try drinking from a large refillable bottle so that you can measure the amount of water you are drinking and look for skincare which will improve hyaluronic acid levels like our peptide-rich Revitalise &amp; Glow Serum.</p>
+                                </div>
+                            </div>
+                            <!-- end q9-answer1 -->
+                            <!-- Between Wilted & Upright – medium dehydration   -->
+                            <div id="q9-answer2" class="tip-answer">
+                                <div class="tip-header">How hydrated are you?</div>
+                                <div class="tip-blurb"><span>When your body is hydrated properly your cells communicate better, helping to maintain optimum production of collagen and elastin in your skin. Test to see if your skin is dehydrated by pinching your cheek lightly and seeing how quickly your skin springs back. A delay means dehydration.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q9-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>It’s great that you are on your way to feeling hydrated, but we know how hard it can be to drink enough water. Always make sure you have water with you on long journeys or when you’re out and about. It’s all too easy to forget to stay hydrated when you’re on the go so make a point of stopping to have a long drink of water! On a daily basis try drinking from a large refillable bottle so that you can measure the amount of water you are drinking and look for skincare which will improve hyaluronic acid levels like our peptide-rich Revitalise &amp; Glow Serum.</p>
+                                </div>
+                            </div>
+                            <!-- end q9-answer2 -->
+                            <!-- Upright Plant – Hydrated   -->
+                            <div id="q9-answer3" class="tip-answer">
+                                <div class="tip-header">How hydrated are you?</div>
+                                <div class="tip-blurb"><span>When your body is hydrated properly your cells communicate better, helping to maintain optimum production of collagen and elastin in your skin. Test to see if your skin is dehydrated by pinching your cheek lightly and seeing how quickly your skin springs back. A delay means dehydration.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q9-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>It’s wonderful that you feel like you’re staying hydrated throughout the day, keep it up! If you’re getting tired of plain water you could try drinking herbal tea. Avoid fruity teas as they contain a lot of acid which is bad for your teeth and opt instead for plant-based infusions such as fennel, liquorice, peppermint or chamomile. These teas are also great for cleansing the body, and help to rid the skin of toxins. Keep hydrated from the outside too by applying products that boost hyaluronic acid production like our Revitalise &amp; Glow Serum.</p>
+                                </div>
+                            </div>
+                            <!-- end q9-answer3 -->
+                        </div>
+                        <!-- q9-tip -->
+                        <br clear="all" />
+                        <br clear="all" />
+                        <!-- My Stress Levels Are   -->
+                        <div id="q11-tip">
+                            <!-- Not feeling stressed  -->
+                            <div id="q11-answer1" class="tip-answer">
+                                <div class="tip-header">How stressed are you feeling?</div>
+                                <div class="tip-blurb"><span>When we are happy and relaxed our skin tends to look better too.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q11-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Keeping your stress level low keeps the hormone cortisol at bay which can damage collagen so it is great you are not feeling stressed! To keep it that way we love mindfulness at Aurelia and use ‘Take 10’ at <a target="_blank" href="http://www.headspace.com">www.headspace.com</a> which is a great way to start if you haven’t already.</p>
+                                </div>
+                            </div>
+                            <!-- end q11-answer1 -->
+                            <!-- Medium Stress Levels -->
+                            <div id="q11-answer2" class="tip-answer">
+                                <div class="tip-header">How stressed are you feeling?</div>
+                                <div class="tip-blurb"><span>One of the easiest ways to manage stress levels is to treat yourself. Whether it be through shopping, catching up with friends or by using some luxury skincare.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q11-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Spending a little bit of time doing something for yourself every morning and evening is a great way to build confidence but also to help ground you for the day ahead. You don’t have to use 1001 different products to feel good and see a difference, but focus on good quality, natural products to suit your skin type. You can try a simple routine of Miracle Cleanser, Revitalise & Glow Serum and both Cell Revitalise Moisturisers with the addition of an exfoliating or hydrating mask once or twice a week. The probiotic technology you will find in Aurelia Probiotic Skincare is perfect for helping to balance and protect your skin, reducing cellular inflammation which is caused by a wide variety of factors, with stress a major contributing influence. At Aurelia we Love mindfulness; ‘Take 10’ at <a target="_blank" href="http://www.headspace.com">www.headspace.com</a> to help control the stress you feel!</p>
+                                </div>
+                            </div>
+                            <!-- end q11-answer2 -->
+                            <!-- Feeling stressed -->
+                            <div id="q11-answer3" class="tip-answer">
+                                <div class="tip-header">How stressed are you feeling?</div>
+                                <div class="tip-blurb"><span>It is believed that psychological stress damages skin in a similar way to external stressors such as environmental pollutants. When stressed, our bodies produce cortisol, a hormone which blocks the formation of collagen, one of the main proteins that provides structural support to your skin. High levels of cortisol can also affect the way our skin can defend itself as it impacts the immune response. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q11-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>So what can you do? At Aurelia we Love mindfulness; ‘Take 10’ at <a target="_blank" href="http://www.headspace.com">www.headspace.com</a> to get you on your way. Skincare can play a strong role too. You don’t have to use 1001 different products to feel good and see a difference, but focus on good quality, natural products to suit your skin type. You can try a simple routine of cleanser, serum and moisturiser with the addition of an exfoliating or hydrating mask once or twice a week. The probiotic technology you will find in Aurelia Probiotic Skincare is perfect for helping to balance and protect your skin, reducing cellular inflammation which is caused by a wide variety of factors, with stress a major contributing influence. Taking time out for yourself by adding three large cups of magnesium salts in your bath is an absolute must to reenergise and relax the body. Lastly, and most importantly, make the most of the time off you have. It’s at times like these when you can spoil yourself with an at-home facial treat like a mask or facial massage. Use a deeply nourishing and calming Cell Revitalise Rose Mask while you’re in in the bath 2-3 times a week to give time back to you. Lastly diet can have a huge impact on stress levels. Balance is everything. We love The Body Balance Plan written by Eminé Ali Rushton and Deliciously Ella’s recipes to keep us going!</p>
+                                </div>
+                            </div>
+                            <!-- end q11-answer3 -->
+                        </div>
+                        <!-- q11-tip -->
+                        <br clear="all" />
+                        <br clear="all" />
+                        <!-- If we took a peak in your beauty bag what would we find?    -->
+                        <div id="q12-tip">
+                            <div id="q12-answer1" class="tip-answer tip-answer-show">
+                                <div class="tip-header">What would we find in your beauty bag?</div>
+                                <div class="tip-blurb"><span>We would love to be in your beauty bag so do make use of the special gift we’ve given you and start your journey with Aurelia Probiotic Skincare.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q12-answer1"></a>
+                                </div>
+                                <div id="q12-answer-container">
+                                    <!-- What matters most  -->
+                                    <div class="tip-content q12-answer1-content1">
+                                        <p>We hope that before long what matters most to you will be our natural, effective and rebalancing skincare. There are plenty of options to choose from within the Aurelia Probiotic Skincare range which we hope will soon have a home in your beauty bag!</p>
+                                    </div>
+                                    <!-- All the basics  -->
+                                    <div class="tip-content q12-answer1-content2">
+                                        <strong>All the basics</strong>
+                                        <p>You’re clear on your skincare routine and you know what works best for you. We’d love you to try the core routine from Aurelia Probiotic Skincare which will hydrate and repair your skin with balancing probiotics, powerful peptides and nourishing botanicals. Why not start with the Miracle Cleanser as a great way to introduce Aurelia into your range?</p>
+                                    </div>
+                                    <!-- The latest beauty recommendations -->
+                                    <div class="tip-content q12-answer1-content3">
+                                        <strong>The latest beauty recommendations</strong>
+                                        <p>Check out our Press page to see what beauty editors and bloggers are saying about our gorgeous products! We won 28 beauty awards in 28 months including Best New Brand so we definitely have the seal of approval. Try our Cell Repair Night Oil, a multi award-winning treat for your skin and a favourite among journalists.</p>
+                                    </div>
+                                    <!-- Ethical and fair trade -->
+                                    <div class="tip-content q12-answer1-content4">
+                                        <strong>Ethical and fair trade</strong>
+                                        <p>Make sure the brands you choose are accredited with Cruelty Free International and PETA. You should be able to see the Jumping Bunny logo on the beauty products you buy. We partner with Phytotrade Africa to ensure there is a fair trade for the communities harvesting the beautiful botanicals. Our nourishing, clinically-advanced Cell Revitalise Moisturisers are the perfect way to experience the stunning botanical ingredients we use.</p>
+                                    </div>
+                                    <!-- Mostly one brand, but all the products -->
+                                    <div class="tip-content q12-answer1-content5">
+                                        <strong>Mostly one brand, but all the products</strong>
+                                        <p>We love brand loyalty and know the more Aurelia products you use the better your skin will become. The full routine of stunning products starting with the cult Miracle Cleanser, Refine &amp; Polish Miracle Balm, Revitalise &amp; Glow Serum and Cell Revitalise Day Moisturiser will have your skin glowing on a daily basis. Change it up in the evening for nourished, dewy skin when you wake by adding the Cell Repair Night Oil, and Cell Revitalise Night Moisturisers. For all-over treatment try our Firm &amp; Revitalise Dry Body Oil – a scent you’ll love if you’ve fallen for Aurelia before!</p>
+                                    </div>
+                                    <!-- Organic/BioOrganic -->
+                                    <div class="tip-content q12-answer1-content6">
+                                        <strong>Organic/BioOrganic</strong>
+                                        <p>Organic certification is great but wild-harvested botanicals are just as pure. We use ‘BioOrganic’ to encompass all of the organic and wild botanicals we use and only ever use the highest quality ingredients in our products. It’s not just certification you should look into, these are some of the ingredients to avoid:</p>
+                                        <ul>
+                                            <li style="font-size: 40px;">Mineral Oil – listed as paraffinum liquidum - which is a by-product of petroleum and often found in cleansers. Mineral oil leaves a greasy residue which sits on the skin and can cause breakouts.</li>
+                                            <li style="font-size: 40px;">Sulfates or SLS – listed as sodium laurel sulfate or sodium laureth sulfate – are synthetic foaming agents found in thousands of products which strip the skin of its natural oils and upset the acid mantel, causing sensitivity and dryness.</li>
+                                            <li style="font-size: 40px;">MI or MIT – listed as Methylisothiazolinone - is a harsh preservative known to cause skin irritation.</li>
+                                            <li style="font-size: 40px;">Synthetic Fragrance – sometimes listed as parfum – can be made up of hundreds of ingredients which aren’t all visible and could cause sensitivity. Look instead for natural fragrances like essential oils or flower waters which will be listed in full.</li>
+                                        </ul>
+                                        <p>The Miracle Cleanser and Refine &amp; Polish Miracle Balm are a great way to experience the power of free-from cleansing and exfoliating products – you’ll never look back!</p>
+                                    </div>
+                                    <!-- Anti-Ageing/New Science -->
+                                    <div class="tip-content q12-answer1-content7">
+                                        <strong>Anti-Ageing/New Science</strong>
+                                        <p>Check out the science page of our website – you’ll see detailed data and results from trials which prove our age-preventative results. Experience the power of probiotics to calm inflammation and peptides to boost natural collagen production. We pride ourselves on a fusion of advanced scientifically proven technology and natural luxury and think you’ll love our Revitalise &amp; Glow Serum for its concentrated levels of probiotics, peptides and antioxidants which firm, nourish and repair the skin.</p>
+                                    </div>
+                                    <!-- Textures/scent -->
+                                    <div class="tip-content q12-answer1-content8">We fuse next-generation probiotic technology with ethically sourced 100% BioOrganic botanicals for visible results and stunning blends and textures. Each product has been designed to absorb beautifully into the skin, depositing the purest ingredients where they are most needed. If you love skincare that smells incredible then Aurelia is definitely the range for you. Try the Cell Repair Night Oil and you’ll be hooked instantly on the blend of neroli, lavender, rose and mandarin.</div>
+                                    <!-- My Go-To Classics -->
+                                    <div class="tip-content q12-answer1-content9">
+                                        <strong>My Go-To Classics</strong>
+                                        <p>We know how important it is to find skincare you can rely on time and time again. That’s why we only use the finest botanicals, balancing probiotics and powerful peptides which are proven to help repair, rebalance and make your skin glow. There are certain products that are a staple in your beauty bag and we’d love to be a part of yours. We think our Miracle Cleanser will soon be a classic in your eyes and with 30 awards for the range in 30 months we do dream of cult classic status!</p>
+                                    </div>
+                                </div>
+                                <!-- end q12-answer-container -->
+                            </div>
+                            <!-- end q12-answer1 -->
+                        </div>
+                        <!-- q12-tip -->
+                        <!-- THE INGREDIENTS QUESTION Do ingredients matter to you?    -->
+                        <div id="q13-tip">
+                            <!-- I choose my beauty products on the basis of their ingredients -->
+                            <div id="q13-answer1" class="tip-answer">
+                                <div class="tip-header">Do ingredients matter to you?</div>
+                                <div class="tip-blurb"><span>You are one of a small but growing number of people concerned with ingredients and we are delighted (and so shall your skin be) that you pay close attention to the ingredients in your products. You will love our ingredients philosophy! </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q13-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>You’ll love our clearly defined ‘Free From’ ingredients policy which is printed on all our packaging and available to view online. Our range is free from a number of harmful and unethical ingredients which include: synthetic fragrances, colorants, parabens, mineral oils, silicones, sulphates, propylene glycol, phthalates, GMO, PEGs, TEA, DEA, MI, formaldehyde, urea, mercury, lead and bee venom.</p>
+                                </div>
+                            </div>
+                            <!-- q13-answer1 -->
+                            <!-- There are some ingredients I look for or avoid, but not all the time -->
+                            <div id="q13-answer2" class="tip-answer">
+                                <div class="tip-header">Do ingredients matter to you?</div>
+                                <div class="tip-blurb"><span>This is a great start! We love customers to be informed and are so pleased you are thinking about some of the ingredients in your products. You will love our ingredients philosophy!</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q13-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>At Aurelia Probiotic Skincare we pride ourselves on only using the best ingredients that benefit your skin. We also believe in letting you know exactly what ingredients we use in our skincare and have a full list of the reasons why you want to avoid certain ingredients on our website. Our range is free from a number of harmful and unethical ingredients which include: synthetic fragrances, colorants, parabens, mineral oils, silicones, sulphates, propylene glycol, phthalates, GMO, PEGs, TEA, DEA, MI, formaldehyde, urea, mercury, lead and bee venom.</p>
+                                </div>
+                            </div>
+                            <!-- q13-answer2 -->
+                            <!-- I trust the brand to make the right choices about ingredients -->
+                            <div id="q13-answer3" class="tip-answer">
+                                <div class="tip-header">Do ingredients matter to you?</div>
+                                <div class="tip-blurb"><span>There are a lot of ingredients that big brands, and even some ‘natural’ brands use which don’t benefit the skin and in some cases can be harmful. Awareness is growing around these but it is best to check the label!</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q13-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>At Aurelia we are all about an honest and clear ingredients policy so you can be safe in the knowledge that the ingredients we use are the highest quality and most beneficial for you. Our range is free from a number of harmful and unethical ingredients which include: synthetic fragrances, colorants, parabens, mineral oils, silicones, sulphates, propylene glycol, phthalates, GMO, PEGs, TEA, DEA, MI, formaldehyde, urea, mercury, lead and bee venom. Some of the ingredients we are most passionate about avoiding include:</p>
+                                    <ul>
+                                        <li style="font-size: 40px;">MI or MIT – listed as Methylisothiazolinone - is a harsh preservative known to cause skin irritation</li>
+                                        <li style="font-size: 40px;">Sulfates or SLS – visible as sodium laurel sulfate or sodium laureth sulfate – are synthetic foaming agents found in thousands of products which strip the skin of its natural oils and upset the acid mantel, causing sensitivity and dryness.</li>
+                                        <li style="font-size: 40px;">Synthetic Fragrance – sometimes listed as parfum – can be made up of hundreds of ingredients which aren’t all visible and could cause sensitivity. Look instead for natural fragrances like essential oils or flower waters which will often be listed in full.</li>
+                                    </ul>
+                                    <p>For a lot more detail on these ingredients please visit our website.</p>
+                                </div>
+                            </div>
+                            <!-- q13-answer3 -->
+                        </div>
+                        <!-- q13-tip -->
+                        <!-- How does your day end?    -->
+                        <div id="q14-tip">
+                            <!-- Wide awake at night sleepless -->
+                            <div id="q14-answer1" class="tip-answer">
+                                <div class="tip-header">How does your day end?</div>
+                                <div class="tip-blurb"><span>Skincare is amazing for establishing a routine – especially when the products you use instil a sense of calm when they are applied. </span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q14-answer1"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Try the Cell Revitalise Night Moisturiser and Cell Repair Night Oil; two products fragranced with calming neroli, lavender, rose and mandarin. When applying the night oil add two or three drops to your palms, warm the oil gently and deeply inhale the fragrance. Then apply with a massaging routine to stimulate circulation, ease tension on pressure points and aid relaxation.</p>
+                                    <p>When you’re in bed try not to use a brightly lit smart phone, tablet or laptop. The brightness of the screen and heavy concentration can undo all of the relaxation exercises you have done, and will actually wake you up further. If you can’t sleep straight away try to read a book instead; you’ll feel tired more quickly and be able to settle down much faster. You might like to read while sipping on chamomile tea, as a soothing, calming hot drink can do wonders for a good night’s sleep and for relaxing both mind and body.</p>
+                                </div>
+                            </div>
+                            <!-- q14-answer1 -->
+                            <!-- Fast asleep at night  -->
+                            <div id="q14-answer2" class="tip-answer">
+                                <div class="tip-header">How does your day end?</div>
+                                <div class="tip-blurb"><span>Getting to sleep before 10:00pm is the ideal! For bright, clear eyes and skin aim for eight hours sleep a night.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q14-answer2"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Overnight is when the skin repairs itself and so this is the time to treat your skin. Your temperature is slightly higher and the skin absorbs moisture and nutrients, so ensure you are cleansing thoroughly with the Miracle Cleanser to remove all make-up. Then follow with the Cell Revitalise Night Moisturiser and Cell Repair Night Oil; two products fragranced with calming neroli, lavender, rose and mandarin. You’ll wake up refreshed, glowing and with luminous skin!</p>
+                                </div>
+                            </div>
+                            <!-- q14-answer2 -->
+                            <!-- Wine glasses and moonlight   -->
+                            <div id="q14-answer3" class="tip-answer">
+                                <div class="tip-header">How does your day end?</div>
+                                <div class="tip-blurb"><span>Night owls struggle to switch off at night but sleep is hugely important to our wellbeing. A good night’s sleep can make all the difference when it comes to productivity, mood, stress and even skin health.</span>
+                                    <a href="javascript:void(0);" class="tip-blurb-more tip-blurb-more-q14-answer3"></a>
+                                </div>
+                                <div class="tip-content">
+                                    <p>Night time is when the skin begins to repair itself, so a refreshing deep sleep is exactly what your skin needs to stay looking youthful. Even if you’re tired it is so important to properly cleanse your skin and moisturise. Try the Cell Revitalise Night Moisturiser and Cell Repair Night Oil; two products fragranced with calming neroli, lavender, rose and mandarin. When applying the night oil add two or three drops to your palms, warm the oil gently and deeply inhale the fragrance. Then apply with a massaging routine to stimulate circulation, ease tension on pressure points and aid relaxation.</p>
+                                </div>
+                            </div>
+                            <!-- q14-answer3 -->
+                        </div>
+                        <!-- q14-tip -->
+                        <br clear="all" />
+                    </div>
+                    <!-- end tips-container -->
+                    <br clear="all" />
+                </div>
+                <!-- end tips-bg -->
+                <div id="morehelp">
+                    <div class="pure-u-5-5">
+                        <img src="img/mobile/page20/more_help.png" style="height: 117px; margin-top: 48px;">
+                    </div>
+                    <p>If you have any more questions or would like further skincare advice, please contact the Aurelia office by emailing
+                        <br><a href="mailto:customerservices@aureliaskincare.com" style="color: #706f6f;">customerservices@aureliaskincare.com</a>
+                        <br> or call 0207 751 0022.
+                    </p>
+                    <p>Office hours are from Monday - Friday 9am-5:30pm GMT</p>
+                    <img class="begin_dots_img" src="img/mobile/page3/dots.png" alt="img">
+                    <a href="http://www.aureliaskincare.com/skintools/redirect.php">
+                        <img id="backtoaurelia" src="img/pages/_all/back-to-aurelia.png" style="border-radius:50%; height: 200px; margin-top: 120px;">
+                    </a>
+                    <div class="pure-u-5-5">
+                        <img src="img/mobile/_all/flower.png" style="height: 243px;margin-top: -120px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="scripts/transitions.js"></script>
+    <script src="scripts/deselect.js"></script>
+    <script src="scripts/jquery.easing.compatibility.js"></script>
+    <script src="scripts/jquery.foggy.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script>
+    // onload event
+    $(function() {
+
+        // $("#main_0").slideDown(1000).fadeOut(1000).fadeIn(1000).delay(3000).slideUp(1000);
+
+        $("#sortable1, #sortable2").sortable({
+
+            connectWith: ".connectedSortable",
+            receive: function(event, ui) {
+
+                if ($('#sortable2').children().length > 5) {
+
+                    $(ui.sender).sortable('cancel');
+                }
+            }
+        }).disableSelection();
+    });
+
+
+
+    var urlParams;
+    (window.onpopstate = function() {
+        var match,
+            pl = /\+/g, // Regex for replacing addition symbol with a space
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function(s) {
+                return decodeURIComponent(s.replace(pl, " "));
+            },
+            query = window.location.search.substring(1);
+
+        urlParams = {};
+        while (match = search.exec(query))
+            urlParams[decode(match[1])] = decode(match[2]);
+    })();
+	
+	if(urlParams["preview"] == 'only') {
+		$('#email_submit_form').hide();
+	}
+
+    console.log((urlParams["q3"]));
+    console.log((urlParams["q6"]));
+    console.log((urlParams["q7"]));
+
+	if ((urlParams["insid"]) != "") {
+        $('#insid').val(urlParams["insid"]);
+    }
+    // if statement for statement section
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "natural") {
+        $(".statement-a").show();
+        $('#post_0').val($(".statement-a").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "asyoung") {
+        $(".statement-b").show();
+        $('#post_0').val($(".statement-b").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "thebest") {
+        $(".statement-c").show();
+        $('#post_0').val($(".statement-c").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "fresh") {
+        $(".statement-d").show();
+        $('#post_0').val($(".statement-d").text());
+
+    } else
+
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "natural") {
+        $(".statement-e").show();
+        $('#post_0').val($(".statement-e").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "asyoung") {
+        $(".statement-f").show();
+        $('#post_0').val($(".statement-f").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "thebest") {
+        $(".statement-g").show();
+        $('#post_0').val($(".statement-g").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "3" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "fresh") {
+        $(".statement-h").show();
+        $('#post_0').val($(".statement-h").text());
+
+    } else
+
+
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "natural") {
+        $(".statement-i").show();
+        $('#post_0').val($(".statement-i").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "asyoung") {
+        $(".statement-j").show();
+        $('#post_0').val($(".statement-j").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "thebest") {
+        $(".statement-k").show();
+        $('#post_0').val($(".statement-k").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "fresh") {
+        $(".statement-l").show();
+        $('#post_0').val($(".statement-l").text());
+
+    } else
+
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "natural") {
+        $(".statement-m").show();
+        $('#post_0').val($(".statement-m").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "asyoung") {
+        $(".statement-n").show();
+        $('#post_0').val($(".statement-n").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "thebest") {
+        $(".statement-o").show();
+        $('#post_0').val($(".statement-o").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "fresh") {
+        $(".statement-p").show();
+        $('#post_0').val($(".statement-p").text());
+
+    } else
+
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "natural") {
+        $(".statement-q").show();
+        $('#post_0').val($(".statement-q").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "asyoung") {
+        $(".statement-r").show();
+        $('#post_0').val($(".statement-r").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "thebest") {
+        $(".statement-s").show();
+        $('#post_0').val($(".statement-s").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) == ",," && (urlParams["q7"]) == "fresh") {
+        $(".statement-t").show();
+        $('#post_0').val($(".statement-t").text());
+
+    } else
+
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "natural") {
+        $(".statement-u").show();
+        $('#post_0').val($(".statement-u").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "asyoung") {
+        $(".statement-v").show();
+        $('#post_0').val($(".statement-v").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "thebest") {
+        $(".statement-w").show();
+        $('#post_0').val($(".statement-w").text());
+
+    } else
+
+    if ((urlParams["q3"]) == "1" && (urlParams["q6"]) >= "1" && (urlParams["q7"]) == "fresh") {
+        $(".statement-x").show();
+        $('#post_0').val($(".statement-x").text());
+
+    }
+    // -> "front"
+
+    // Question 2
+
+    var q2_data = urlParams["q2"].split(",");
+    var q2_data_length = q2_data.length;
+
+    $('#post_q2').val(q2_data);
+    $('#how_does_it_bring').hide();
+
+    for (var i = 0; i < q2_data_length; i++) {
+
+
+        if (q2_data.indexOf("breakfast") > -1) {
+
+            $("#q2-answer5").hide();
+
+        } else {
+
+            $("#q2-answer5").show();
+            $('#how_does_it_bring').show();
+        }
+
+        if (q2_data[i] == "house_work") {
+            // $("#q2-answer5").show();
+
+        }
+
+        if (q2_data[i] == "excercise") {
+            $("#q2-answer1").show();
+            $('#how_does_it_bring').show();
+
+        } else
+
+        if (q2_data[i] == "shower") {
+            $("#q2-answer2").show();
+            $('#how_does_it_bring').show();
+
+        } else
+
+        if (q2_data[i] == "social_media") {
+            $("#q2-answer3").show();
+            $('#how_does_it_bring').show();
+
+        } else
+
+        if (q2_data[i] == "coffee") {
+            $("#q2-answer4").show();
+            $('#how_does_it_bring').show();
+        }
+
+    }
+
+
+
+    // if ((urlParams["q2"]) != "breakfast") {
+    //     $("#q2-answer5").show();
+
+    // }
+
+    // if ((urlParams["q2"]) == "house_work") {
+    //     $("#q2-answer5").show();
+
+    // }
+
+    // if ((urlParams["q2"]) == "excercise") {
+    //     $("#q2-answer1").show();
+
+    // } else
+
+    // if ((urlParams["q2"]) == "shower") {
+    //     $("#q2-answer2").show();
+
+    // } else
+
+    // if ((urlParams["q2"]) == "social_media") {
+    //     $("#q2-answer3").show();
+
+    // } else
+
+    // if ((urlParams["q2"]) == "coffee") {
+    //     $("#q2-answer4").show();
+
+    // }
+
+    // Question 3
+
+
+    if ((urlParams["q3"]) == "1") {
+        $("#q3-answer1").show();
+        $('#post_q3_t').val($('#q3-answer1 .tip-blurb span').text());
+        $('#post_q3_p').val($('#q3-answer1 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q3"]) == "2") {
+        $("#q3-answer2").show();
+        $('#post_q3_t').val($('#q3-answer2 .tip-blurb span').text());
+        $('#post_q3_p').val($('#q3-answer2 .tip-content p').text());
+
+
+    } else
+
+    if ((urlParams["q3"]) == "3") {
+        $("#q3-answer3").show();
+        $('#post_q3_t').val($('#q3-answer3 .tip-blurb span').text());
+        $('#post_q3_p').val($('#q3-answer3 .tip-content p').text());
+    }
+
+    // Question 4
+
+    if ((urlParams["q4"]) == "regime1") {
+        $("#q4-answer1").show();
+        $('#post_q4_t').val($('#q4-answer1 .tip-blurb span').text());
+        $('#post_q4_p').val($('#q4-answer1 .tip-content p').text());
+    } else
+
+    if ((urlParams["q4"]) == "regime2") {
+        $("#q4-answer2").show();
+        $('#post_q4_t').val($('#q4-answer2 .tip-blurb span').text());
+        $('#post_q4_p').val($('#q4-answer2 .tip-content p').text());
+    } else
+
+    if ((urlParams["q4"]) == "regime3") {
+        $("#q4-answer3").show();
+        $('#post_q4_t').val($('#q4-answer3 .tip-blurb span').text());
+        $('#post_q4_p').val($('#q4-answer3 .tip-content p').text());
+    } else
+
+    if ((urlParams["q4"]) == "regime4") {
+        $("#q4-answer4").show();
+        $('#post_q4_t').val($('#q4-answer4 .tip-blurb span').text());
+        $('#post_q4_p').val($('#q4-answer4 .tip-content p').text());
+    }
+
+    // Question 6
+
+    var post_6_vars = "";
+
+    if ((urlParams["q6"]).indexOf("Fine lines") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content1").show();
+        post_6_vars += "1,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Deeper wrinkles") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content2").show();
+        post_6_vars += "2,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Dry or flaky patches") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content3").show();
+        post_6_vars += "3,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Large pores") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content4").show();
+        post_6_vars += "4,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Shine") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content5").show();
+        post_6_vars += "5,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Mild to moderate breakouts or spots") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content6").show();
+        post_6_vars += "6,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Sun damage / brown spots") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content7").show();
+        post_6_vars += "7,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Sensitivity") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content8").show();
+        post_6_vars += "8,";
+    }
+
+    if ((urlParams["q6"]).indexOf("Redness and broken capillaries") >= 0) {
+        $(".tip-blurb-q6-1").show();
+        $(".tip-blurb-q6-2").hide();
+        $(".q6-answer1-content9").show();
+        post_6_vars += "9,";
+    }
+
+    if ((urlParams["q6"]) == "0,,") {
+        $(".tip-blurb-q6-1").hide();
+        $(".tip-blurb-q6-2").show();
+        post_6_vars += "10,";
+    }
+
+     if ((urlParams["q6"]) == ",,") {
+        $(".tip-blurb-q6-1").hide();
+        $(".tip-blurb-q6-2").show();
+        post_6_vars += "10,";
+    }
+
+
+
+    $('#post_q6').val(post_6_vars);
+
+
+    // Question 7
+
+    if ((urlParams["q7"]) == "natural") {
+        $("#q7-answer1").show();
+        $('#post_q7_t').val($('#q7-answer1 .tip-blurb span').text());
+        $('#post_q7_p').val($('#q7-answer1 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q7"]) == "asyoung") {
+        $("#q7-answer2").show();
+        $('#post_q7_t').val($('#q7-answer2 .tip-blurb span').text());
+        $('#post_q7_p').val($('#q7-answer2 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q7"]) == "thebest") {
+        $("#q7-answer3").show();
+        $('#post_q7_t').val($('#q7-answer3 .tip-blurb span').text());
+        $('#post_q7_p').val($('#q7-answer3 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q7"]) == "fresh") {
+        $("#q7-answer4").show();
+        $('#post_q7_t').val($('#q7-answer4 .tip-blurb span').text());
+        $('#post_q7_p').val($('#q7-answer4 .tip-content p').text());
+    }
+
+    // Question 8
+
+    if ((urlParams["q8"]) == "4") {
+        $("#q8-answer1").show();
+        $('#post_q8').val(4);
+
+    } else
+
+    if ((urlParams["q8"]) == "0") {
+        $("#q8-answer2").show();
+        $('#post_q8').val(0);
+
+    } else
+
+    if ((urlParams["q8"]) == "1") {
+        $("#q8-answer3").show();
+        $('#post_q8').val(1);
+    } else
+
+    if ((urlParams["q8"]) == "2") {
+        $("#q8-answer4").show();
+        $('#post_q8').val(2);
+    } else
+
+    if ((urlParams["q8"]) == "3") {
+        $("#q8-answer5").show();
+        $('#post_q8').val(3);
+    }
+
+    // Question 9
+
+    if ((urlParams["q9"]) <= "10") {
+        $("#q9-answer1").show();
+        $('#post_q9_t').val($('#q9-answer1 .tip-blurb span').text());
+        $('#post_q9_p').val($('#q9-answer1 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q9"]) >= "10" && (urlParams["q9"]) <= "20") {
+        $("#q9-answer2").show();
+        $('#post_q9_t').val($('#q9-answer2 .tip-blurb span').text());
+        $('#post_q9_p').val($('#q9-answer2 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q9"]) >= "21") {
+        $("#q9-answer3").show();
+        $('#post_q9_t').val($('#q9-answer3 .tip-blurb span').text());
+        $('#post_q9_p').val($('#q9-answer3 .tip-content p').text());
+    }
+
+
+    // Question 11
+
+    var q11_int = parseFloat(urlParams["q11"]);
+
+    if (q11_int <= 40) {
+
+        $("#q11-answer1").show();
+        $('#post_q11_t').val($('#q11-answer1 .tip-blurb span').text());
+        $('#post_q11_p').val($('#q11-answer1 .tip-content p').text());
+
+    } else
+
+    if (q11_int >= 41 && q11_int <= 60) {
+
+        $("#q11-answer2").show();
+        $('#post_q11_t').val($('#q11-answer2 .tip-blurb span').text());
+        $('#post_q11_p').val($('#q11-answer2 .tip-content p').text());
+
+    } else
+
+    if (q11_int >= 61) {
+
+        $("#q11-answer3").show();
+        $('#post_q11_t').val($('#q11-answer3 .tip-blurb span').text());
+        $('#post_q11_p').val($('#q11-answer3 .tip-content p').text());
+    }
+
+    // Question 12
+
+    var post_12_vars = "";
+
+    if ((urlParams["q12"]).indexOf("bag1") >= 0) {
+        $(".q12-answer1-content2").show();
+        post_12_vars += "2,";
+    }
+
+    if ((urlParams["q12"]).indexOf("bag2") >= 0) {
+        $(".q12-answer1-content4").show();
+        post_12_vars += "4,";
+    }
+
+
+    if ((urlParams["q12"]).indexOf("bag3") >= 0) {
+        $(".q12-answer1-content6").show();
+        post_12_vars += "6,";
+    }
+
+    if ((urlParams["q12"]).indexOf("bag4") >= 0) {
+        $(".q12-answer1-content7").show();
+        post_12_vars += "7,";
+    }
+
+    if ((urlParams["q12"]).indexOf("bag5") >= 0) {
+        $(".q12-answer1-content3").show();
+        post_12_vars += "3,";
+    }
+
+    if ((urlParams["q12"]).indexOf("bag6") >= 0) {
+        $(".q12-answer1-content9").show();
+        post_12_vars += "9,";
+    }
+
+    if ((urlParams["q12"]).indexOf("bag7") >= 0) {
+        $(".q12-answer1-content5").show();
+        post_12_vars += "5,";
+    }
+
+    $('#post_q12').val(post_12_vars);
+
+    // Question 13
+
+    if ((urlParams["q13"]) == "beauty") {
+        $("#q13-answer1").show();
+        $('#post_q13_t').val($('#q13-answer1 .tip-blurb span').text());
+        $('#post_q13_p').val($('#q13-answer1 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q13"]) == "ingredients") {
+        $("#q13-answer2").show();
+        $('#post_q13_t').val($('#q13-answer2 .tip-blurb span').text());
+        $('#post_q13_p').val($('#q13-answer2 .tip-content p').text());
+
+    } else
+
+    if ((urlParams["q13"]) == "trust") {
+        $("#q13-answer3").show();
+        $('#post_q13_t').val($('#q13-answer3 .tip-blurb span').text());
+        $('#post_q13_p').val('p-with-li-tags');
+    }
+
+    // Question 14
+
+    if ((urlParams["q14"]) == "awake") {
+        $("#q14-answer1").show();
+        $('#post_q14_t').val($('#q14-answer1 .tip-blurb span').text());
+        $('#post_q14_p').val($('#q14-answer1 .tip-content p').text());
+    } else
+
+    if ((urlParams["q14"]) == "sleep") {
+        $("#q14-answer2").show();
+        $('#post_q14_t').val($('#q14-answer2 .tip-blurb span').text());
+        $('#post_q14_p').val($('#q14-answer2 .tip-content p').text());
+    } else
+
+    if ((urlParams["q14"]) == "wine") {
+        $("#q14-answer3").show();
+        $('#post_q14_t').val($('#q14-answer3 .tip-blurb span').text());
+        $('#post_q14_p').val($('#q14-answer3 .tip-content p').text());
+    }
+
+
+    // results and reccomendation 
+
+    var data = urlParams["q6"];
+    data = data.split(",");
+
+    //SETTER STATMENTS
+
+
+    if (data[0] == 0 || data[0] == "" || data[0] == "0") {
+
+        $('#musthave_1').show();
+        $('#recommended_2').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_cleanser.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_day.jpg');
+        $('#musthave_poduct_title').text('Miracle Cleanser');
+        $('#recommended_poduct_title').text('Cell Revitalise Day Moisturiser');
+        $('#musthave_data #price').text("£34");
+        $('#musthave_data #size').text("120ml");
+        $('#recommendation_data #price').text("£42");
+        $('#recommendation_data #size').text("60ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=1&r=4&price1=34&size1=120&price2=42&size2=60');
+
+    } else if (data[0] == "Fine lines") {
+
+        $('#musthave_2').show();
+        $('#recommended_3').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_serum.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_nightoil.jpg');
+        $('#musthave_poduct_title').text('Revitalise & Glow Serum');
+        $('#recommended_poduct_title').text('Cell Repair Night Oil');
+        $('#musthave_data #price').text("£47");
+        $('#musthave_data #size').text("30ml");
+        $('#recommendation_data #price').text("£45");
+        $('#recommendation_data #size').text("50ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=3&r=6&price1=47&size1=30&price2=45&size2=50');
+
+    } else if (data[0] == "Deeper wrinkles") {
+
+        $('#musthave_2').show();
+        $('#recommended_7').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_serum.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_night.jpg');
+        $('#musthave_poduct_title').text('Revitalise & Glow Serum');
+        $('#recommended_poduct_title').text('Cell Revitalise Night Moisturiser');
+        $('#musthave_data #price').text("£47");
+        $('#musthave_data #size').text("30ml");
+        $('#recommendation_data #price').text("£42");
+        $('#recommendation_data #size').text("60ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=3&r=5&price1=47&size1=30&price2=42&size2=60');
+
+    } else if (data[0] == "Dry or flaky patches") {
+
+        $('#musthave_1').show();
+        $('#recommended_3').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_cleanser.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_nightoil.jpg');
+        $('#musthave_poduct_title').text('Miracle Cleanser');
+        $('#recommended_poduct_title').text('Cell Repair Night Oil');
+        $('#musthave_data #price').text("£34");
+        $('#musthave_data #size').text("120ml");
+        $('#recommendation_data #price').text("£45");
+        $('#recommendation_data #size').text("50ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=1&r=6&price1=34&size1=120&price2=45&size2=50');
+
+    } else if (data[0] == "Large pores") {
+
+        $('#musthave_6').show();
+        $('#recommended_6').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_exfoliator.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_serum.jpg');
+        $('#musthave_poduct_title').text('Refine & Polish Miracle Balm');
+        $('#recommended_poduct_title').text('Revitalise & Glow Serum');
+        $('#musthave_data #price').text("£57");
+        $('#musthave_data #size').text("75ml");
+        $('#recommendation_data #price').text("£47");
+        $('#recommendation_data #size').text("30ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/refine-and-polish-miracle-balm');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/refine-and-polish-miracle-balm');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=2&r=3&price1=57&size1=75&price2=47&size2=30');
+
+    } else if (data[0] == "Shine") {
+
+        $('#musthave_1').show();
+        $('#recommended_6').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_cleanser.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_serum.jpg');
+        $('#musthave_poduct_title').text('Miracle Cleanser');
+        $('#recommended_poduct_title').text('Revitalise & Glow Serum');
+        $('#musthave_data #price').text("£34");
+        $('#musthave_data #size').text("120ml");
+        $('#recommendation_data #price').text("£47");
+        $('#recommendation_data #size').text("30ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/revitalise-and-glow-serum');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=1&r=3&price1=34&size1=120&price2=47&size2=30');
+
+    } else if (data[0] == "Mild to moderate breakouts or spots") {
+
+        $('#musthave_7').show();
+        $('#recommended_1').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_day.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_exfoliator.jpg');
+        $('#musthave_poduct_title').text('Cell Revitalise Day Moisturiser');
+        $('#recommended_poduct_title').text('Refine & Polish Miracle Balm');
+        $('#musthave_data #price').text("£42");
+        $('#musthave_data #size').text("60ml");
+        $('#recommendation_data #price').text("£57");
+        $('#recommendation_data #size').text("75ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/refine-and-polish-miracle-balm');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/refine-and-polish-miracle-balm');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=4&r=2&price1=42&size1=60&price2=57&size2=75');
+
+    } else if (data[0] == "Sun damage / brown spots") {
+
+        $('#musthave_8').show();
+        $('#recommended_7').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_nightoil.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_night.jpg');
+        $('#musthave_poduct_title').text('Cell Repair Night Oil');
+        $('#recommended_poduct_title').text('Cell Revitalise Night Moisturiser');
+        $('#musthave_data #price').text("£45");
+        $('#musthave_data #size').text("50ml");
+        $('#recommendation_data #price').text("£42");
+        $('#recommendation_data #size').text("60ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-night-moisturiser');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-repair-night-oil');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-night-moisturiser');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=6&r=4&price1=45&size1=50&price2=42&size2=60');
+
+
+    } else if (data[0] == "Sensitivity") {
+
+        $('#musthave_1').show();
+        $('#recommended_2').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_cleanser.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_day.jpg');
+        $('#musthave_poduct_title').text('Miracle Cleanser');
+        $('#recommended_poduct_title').text('Cell Revitalise Day Moisturiser');
+        $('#musthave_data #price').text("£34");
+        $('#musthave_data #size').text("120ml");
+        $('#recommendation_data #price').text("£42");
+        $('#recommendation_data #size').text("60ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=1&r=4&price1=34&size1=120&price2=42&size2=60');
+
+    } else if (data[0] == "Redness and broken capillaries") {
+
+        $('#musthave_1').show();
+        $('#recommended_2').show();
+        $('#musthave_poduct').attr('src', 'img/product/productimages_200x250_cleanser.jpg');
+        $('#recommended_poduct').attr('src', 'img/product/productimages_200x250_day.jpg');
+        $('#musthave_poduct_title').text('Miracle Cleanser');
+        $('#recommended_poduct_title').text('Cell Revitalise Day Moisturiser');
+        $('#musthave_data #price').text("£34");
+        $('#musthave_data #size').text("120ml");
+        $('#recommendation_data #price').text("£42");
+        $('#recommendation_data #size').text("60ml");
+		$('#musthave_buylink').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+		$('#musthave_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/aurelia-miracle-cleanser');
+		$('#recommended_buylink_info').attr('href','https://www.aureliaskincare.com/index.php/cell-revitalise-day-moisturiser');
+
+        // set form value
+        $('form').get(0).setAttribute('action', 'email/post.php?m=1&r=4&price1=34&size1=120&price2=42&size2=60');
+    }
+    </script>
+	<script>
+    $('#submitemail').click(function(e) {
+		if($('#email').val()!='') {
+			$('#email_submit_form').hide();
+			$('#email_submit_sent_message').show();
+		} else {
+			e.preventDefault();
+			$('#email').css('border', 'solid 3px #a2668a');
+			$('#email').addClass('email_placeholder');
+			$('#email').attr('placeholder', 'Please enter your email address to redeem your offer…');
+			$('html,body').animate({scrollTop: $("#learntabout p").offset().top},'slow');
+			return false;
+		}
+    });
+	$('#musthave_buylink, #recommended_buylink, #backtoaurelia').click(function(e) {
+		if($('#email_submit_form').is(":visible") && $('#email').val()=='') {
+			e.preventDefault();
+			$('#email').css('border', 'solid 3px #a2668a');
+			$('#email').addClass('email_placeholder');
+			$('#email').attr('placeholder', 'Please enter your email address to redeem your offer…');
+			$('html,body').animate({scrollTop: $("#learntabout p").offset().top},'slow');
+			return false;
+		}
+		return true;
+	});
+    </script>
+</body>
+
+</html>

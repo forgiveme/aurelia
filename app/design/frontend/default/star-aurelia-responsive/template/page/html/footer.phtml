@@ -281,6 +281,17 @@ jQuery(".mengamenu h2").click(function(){
 		</div>
 	</div>
 	<div class="popup-overlay-sub"></div>
+	
+	<?php 	
+	$iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+	$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+
+	$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+	$webOS   = stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+	$windows = stripos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone os');
+	if( $iPod || $iPhone || $Android || $webOS || $windows ){
+}else{
+	?>
 		<script type='text/javascript'>//<![CDATA[ 
 	jQuery(window).load(function(){
 		jQuery(document).ready(function () {
@@ -320,7 +331,7 @@ jQuery(".mengamenu h2").click(function(){
 		});
 	});//]]>  
 	</script>
-		
+		<?php } ?>
 	
 	
 	<?php 

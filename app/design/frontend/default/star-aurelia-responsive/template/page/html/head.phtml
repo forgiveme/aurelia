@@ -54,6 +54,170 @@
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/js-cookie.js"></script>
+<!-- Truedash -->
+
+	<?php
+		if(Mage::getSingleton('customer/session')->isLoggedIn()){
+			$customerData=Mage::getSingleton('customer/session')->getCustomer();
+			//echo "<pre>";
+			$UserEmail= $customerData->getEmail();
+
+		}else{
+		$UserEmail = "";
+		
+		}?>
+
+<script type="text/javascript">
+
+	(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+
+	p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+
+	};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+
+	n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//dh48fr8sp13gg.cloudfront.net/sp.js","truedash"));
+
+	window.truedash('newTracker', 'mycljcoll', 'truetag.truedash.com', { // Initialise a tracker
+
+	  appId: 'Aurelia',
+
+	  cookieDomain: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>',
+
+	   cookieName: 'truedash'
+
+	});
+
+	truedash('setUserId', '<?php echo $UserEmail; ?>');
+
+	truedash('enableActivityTracking', 30, 30);
+
+
+	truedash('trackPageView');
+
+	 <?php $pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
+	if ($pageIdentifier == 'catalogsearch_result_index'){ 
+	$term = $_REQUEST['q'];
+
+	if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
+		$productCollection = $listBlock->getLoadedProductCollection();
+		$prosize= $productCollection->getSize();
+	 }
+	?>
+
+	truedash('trackSiteSearch',  
+
+	['<?php echo $term; ?>'],  // search terms comma separated - example dresses, casual, boots
+
+	[''],          // filters - example books
+
+	<?php echo $prosize;?>,                 // results found - example 10
+
+	<?php echo $prosize;?>,                  // results displayed on first page - 10
+	);
+
+	<?php 
+	} 
+	?>
+
+	var config = {
+	   forms: {
+		 blacklist: []
+	   },
+	   fields: {
+		 blacklist: ['password']
+	   }
+	};
+
+	truedash('enableLinkClickTracking');
+	truedash('enableFormTracking', config);
+	<?php
+	 $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+        $max = 0;
+        $lastItem = null;
+        foreach ($items as $item){
+            if ($item->getId() > $max) {
+                $max = $item->getId();
+                $lastItem = $item;
+            }
+        }
+        if ($lastItem){
+            $_product = $lastItem->getProduct();
+            $xproductsku = $_product->getSku();
+           $xproductname = $_product->getName();               
+           $xproductqty = $_product->getQty();  
+           $xproductprice = $_product->getPrice();   
+           $xproducturl = $_product->getUrl();
+        }
+   
+		?>
+	truedash('trackAddToCart', <?php echo $xproductsku; ?>, <?php echo $xproductname; ?>, 'category',<?php echo $xproductprice; ?>, <?php echo $xproductqty; ?>, '£');
+
+truedash('trackRemoveFromCart', 'sku', 'name', 'category', 'unit price', 'quantity', 'currency');
+	<?php 
+	$fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
+	if($fullActionName=="checkout_onepage_success") {
+	
+	
+	$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+	$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+	$grandtotal = $order->getGrandTotal();
+	$shippingAmount= $order->getShippingAmount();
+
+	$grandtotal= number_format($grandtotal, 2, '.', '');
+	?>
+		truedash('addTrans',
+
+		'<?php echo $orderId; ?>',           // order ID - 
+
+		'Aurelia',  // affiliation or store name
+
+		'<?php echo $grandtotal; ?>',          // total - 
+
+
+		'<?php echo $shippingAmount; ?>',              // shipping
+
+	
+
+	  );
+	
+	<?php 
+	// echo $orderId;
+	// echo "<br>".$grandtotal;
+	// echo "<br>".$shippingAmount;
+	// echo "---------------------------------------------<br>";
+	$orderItems = $order->getAllItems();
+
+	foreach($orderItems as $orderItem) { ?>
+	// prints out _addItem for each
+
+	  truedash('addItem',
+
+		'<?php echo $orderId; ?>',           // order ID 
+		'<?php echo $orderItem->getSku(); ?>',     // SKU/code
+
+		'<?php echo $orderItem->getName(); ?>',     // product name
+
+		'<?php echo   $orderItem->getPrice(); ?>',          // unit price - required
+
+		'<?php  echo $orderItem->getQtyOrdered(); ?>'               // quantity - required
+
+	  );
+	
+	
+	<?php }?>
+	
+	 truedash('trackTrans');
+	 
+	<?php }	
+	
+	
+	?>
+	
+</script>
+
+<!-- Truedash —>
+
+
 <!-- preloading images-->
     <script language="JavaScript">
 
