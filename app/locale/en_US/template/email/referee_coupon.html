@@ -1,0 +1,17 @@
+<!--@subject Aurelia Probiotic Skincare Reference Voucher @-->
+ 
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h1>Hi {{var name}}</h1>
+            <p>Congratulation, you won reference reward. </p>
+            <p>Use code <strong>{{var code}}</strong> to get discount of worth {{var amount}}.</p>
+            <p>Coupon is valid till {{var expiry_date}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

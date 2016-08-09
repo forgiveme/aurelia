@@ -1,0 +1,361 @@
+./adminer.php:as$Zc=>$W)$K.="<tr>".($X!=array_values($X)?"<th>".h($Zc):"")."<td>".select_value($W,$B,$m,$cg);return"<table cellspacing='0'>$K</table>";}if(!$B)$B=$c->selectLink($X,$m);if($B===null){if(is_mail($X))$B="mailto:$X";if($Re=is_url($X))$B=(($Re=="http"&&$ba)||preg_match('~WebKit~i',$_SERVER["HTTP_USER_AGENT"])?$X:"$Re://www.adminer.org/redirect/?url=".urlencode($X));}$K=$c->editVal($X,$m);if($K!==null){if($K==="")$K="&nbsp;";elseif($cg!=""&&is_shortable($m)&&is_utf8($K))$K=shorten_utf8($K,max(0,+$cg));else$K=h($K);}return$c->selectVal($K,$B,$m,$X);}function
+./adminer.php:is_mail($Ob){$va='[-a-z0-9!#$%&\'*+/=?^_`{|}~]';$Cb='[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])';$Ae="$va+(\\.$va+)*@($Cb?\\.)+$Cb";return
+./adminer.php:as$_=>$X){list(,$Pa)=explode(":",$X);list($Lg,$O,$V,$j)=array_map('base64_decode',explode("-",$_));set_password($Lg,$O,$V,decrypt_string(base64_decode($Pa),$Me));$_SESSION["db"][$Lg][$O][$V][$j]=true;}}function
+./adminer.php:send(){fseek($this->handler,0);fpassthru($this->handler);fclose($this->handler);}}$Ub="'(?:''|[^'\\\\]|\\\\.)*'";$Oc="IN|OUT|INOUT";if(isset($_GET["select"])&&($_POST["edit"]||$_POST["clone"])&&!$_POST["save"])$_GET["edit"]=$_GET["select"];if(isset($_GET["callf"]))$_GET["call"]=$_GET["callf"];if(isset($_GET["function"]))$_GET["procedure"]=$_GET["function"];if(isset($_GET["download"])){$b=$_GET["download"];$n=fields($b);header("Content-Type: application/octet-stream");header("Content-Disposition: attachment; filename=".friendly_url("$b-".implode("_",$_GET["where"])).".".friendly_url($_GET["field"]));$N=array(idf_escape($_GET["field"]));$J=$k->select($b,$N,array(where($_GET,$n)),$N);$L=($J?$J->fetch_row():array());echo$L[0];exit;}elseif(isset($_GET["table"])){$b=$_GET["table"];$n=fields($b);if(!$n)$l=error();$R=table_status1($b,true);page_header(($n&&is_view($R)?lang(110):lang(111)).": ".h($b),$l);$c->selectLinks($R);$ab=$R["Comment"];if($ab!="")echo"<p>".lang(89).": ".h($ab)."\n";if($n){echo"<table cellspacing='0'>\n","<thead><tr><th>".lang(112)."<td>".lang(85).(support("comment")?"<td>".lang(89):"")."</thead>\n";foreach($n
+./adminer.php:as$_=>$X){if(isset($Jd[$_])){$m=$n[$_];if($X!=""&&(!isset($Qb[$_])||$Qb[$_]!=""))$Qb[$_]=(is_mail($X)?$Jd[$_]:"");$B="";if(preg_match('~blob|bytea|raw|file~',$m["type"])&&$X!="")$B=ME.'download='.urlencode($b).'&field='.urlencode($_).$zg;if(!$B&&$X!==null){foreach((array)$p[$_]as$o){if(count($p[$_])==1||end($o["source"])==$_){$B="";foreach($o["source"]as$u=>$Bf)$B.=where_link($u,$o["target"][$u],$M[$Id][$Bf]);$B=($o["db"]!=""?preg_replace('~([?&]db=)[^&]+~','\\1'.urlencode($o["db"]),ME):ME).'select='.urlencode($o["table"]).$B;if(count($o["source"])==1)break;}}}if($_=="COUNT(*)"){$B=ME."select=".urlencode($b);$u=0;foreach((array)$_GET["where"]as$W){if(!array_key_exists($W["col"],$yg))$B.=where_link($u++,$W["col"],$W["val"],$W["op"]);}foreach($yg
+./wp-login.php:	if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
+./wp-login.php:		wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
+./wp-comments-post.php:	} elseif ( ! is_email( $comment_author_email ) ) {
+./phpadmin.php:as$Ad=>$W)$J.="<tr>".($X!=array_values($X)?"<th>".h($Ad):"")."<td>".select_value($W,$z,$m,$Vg);return"<table cellspacing='0'>$J</table>";}if(!$z)$z=$b->selectLink($X,$m);if($z===null){if(is_mail($X))$z="mailto:$X";if($_f=is_url($X))$z=($_f=="http"&&$ba?$X:"$_f://www.adminer.org/redirect/?url=".urlencode($X));}$J=$b->editVal($X,$m);if($J!==null){if($J==="")$J="&nbsp;";elseif($Vg!=""&&is_shortable($m)&&is_utf8($J))$J=shorten_utf8($J,max(0,+$Vg));else$J=h($J);}return$b->selectVal($J,$z,$m,$X);}function
+./phpadmin.php:is_mail($ec){$Fa='[-a-z0-9!#$%&\'*+/=?^_`{|}~]';$Rb='[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])';$if="$Fa+(\\.$Fa+)*@($Rb?\\.)+$Rb";return
+./phpadmin.php:_processValue($dc){return(is_object($dc)&&$dc['encoding']=='base64'?base64_decode($dc):(string)$dc);}function
+./phpadmin.php:as$w=>$X){list(,$cb)=explode(":",$X);list($Jh,$N,$V,$k)=array_map('base64_decode',explode("-",$w));set_password($Jh,$N,$V,decrypt_string(base64_decode($cb),$vf));$_SESSION["db"][$Jh][$N][$V][$k]=true;}}function
+./phpadmin.php:send(){fseek($this->handler,0);fpassthru($this->handler);fclose($this->handler);}}$lc="'(?:''|[^'\\\\]|\\\\.)*+'";$rd="IN|OUT|INOUT";if(isset($_GET["select"])&&($_POST["edit"]||$_POST["clone"])&&!$_POST["save"])$_GET["edit"]=$_GET["select"];if(isset($_GET["callf"]))$_GET["call"]=$_GET["callf"];if(isset($_GET["function"]))$_GET["procedure"]=$_GET["function"];if(isset($_GET["download"])){$a=$_GET["download"];$n=fields($a);header("Content-Type: application/octet-stream");header("Content-Disposition: attachment; filename=".friendly_url("$a-".implode("_",$_GET["where"])).".".friendly_url($_GET["field"]));echo$g->result("SELECT".limit(idf_escape($_GET["field"])." FROM ".table($a)," WHERE ".where($_GET,$n),1));exit;}elseif(isset($_GET["table"])){$a=$_GET["table"];$n=fields($a);if(!$n)$l=error();$R=table_status1($a,true);page_header(($n&&is_view($R)?'View':'Table').": ".h($a),$l);$b->selectLinks($R);$mb=$R["Comment"];if($mb!="")echo"<p>".'Comment'.": ".h($mb)."\n";if($n){echo"<table cellspacing='0'>\n","<thead><tr><th>".'Column'."<td>".'Type'.(support("comment")?"<td>".'Comment':"")."</thead>\n";foreach($n
+./phpadmin.php:as$w=>$X){if(isset($qe[$w])){$m=$n[$w];if($X!=""&&(!isset($gc[$w])||$gc[$w]!=""))$gc[$w]=(is_mail($X)?$qe[$w]:"");$z="";if(preg_match('~blob|bytea|raw|file~',$m["type"])&&$X!="")$z=ME.'download='.urlencode($a).'&field='.urlencode($w).$vh;if(!$z&&$X!==null){foreach((array)$Lc[$w]as$o){if(count($Lc[$w])==1||end($o["source"])==$w){$z="";foreach($o["source"]as$q=>$sg)$z.=where_link($q,$o["target"][$q],$L[$pe][$sg]);$z=($o["db"]!=""?preg_replace('~([?&]db=)[^&]+~','\\1'.urlencode($o["db"]),ME):ME).'select='.urlencode($o["table"]).$z;if(count($o["source"])==1)break;}}}if($w=="COUNT(*)"){$z=ME."select=".urlencode($a);$q=0;foreach((array)$_GET["where"]as$W){if(!array_key_exists($W["col"],$uh))$z.=where_link($q++,$W["col"],$W["val"],$W["op"]);}foreach($uh
+./wp-admin/includes/class-ftp-sockets.php:	function _exec($cmd, $fnction="_exec") {
+./wp-admin/includes/class-ftp-sockets.php:			if(!$this->_exec("PASV", "pasv")) {
+./wp-admin/includes/class-ftp-sockets.php:			if(!$this->_exec('PORT '.str_replace('.',',',$this->_datahost.'.'.($this->_dataport>>8).'.'.($this->_dataport&0x00FF)), "_port")) {
+./wp-admin/includes/ms.php:function update_option_new_admin_email( $old_value, $value ) {
+./wp-admin/includes/ms.php:	if ( $value == get_option( 'admin_email' ) || !is_email( $value ) )
+./wp-admin/includes/ms.php:	wp_mail( $value, sprintf( __( '[%s] New Admin Email Address' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $content );
+./wp-admin/includes/ms.php:function send_confirmation_on_profile_email() {
+./wp-admin/includes/ms.php:		if ( !is_email( $_POST['email'] ) ) {
+./wp-admin/includes/ms.php:		wp_mail( $_POST['email'], sprintf( __( '[%s] New Email Address' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $content );
+./wp-admin/includes/class-wp-filesystem-ssh2.php:		if ( ! ($stream = ssh2_exec($this->link, $command)) ) {
+./wp-admin/includes/class-wp-ms-users-list-table.php:	public function column_email( $user ) {
+./wp-admin/includes/update-core.php: * Assumes that WP_Filesystem() has already been called and setup.
+./wp-admin/includes/user.php:	} elseif ( !is_email( $user->user_email ) ) {
+./wp-admin/includes/class-ftp.php:					if(!$this->_exec("TYPE I", "SetType")) return FALSE;
+./wp-admin/includes/class-ftp.php:				if(!$this->_exec("TYPE A", "SetType")) return FALSE;
+./wp-admin/includes/class-ftp.php:			if(!$this->_exec("QUIT") and !$force) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("USER ".$this->_login, "login")) return FALSE;
+./wp-admin/includes/class-ftp.php:			if(!$this->_exec((($this->_code==331)?"PASS ":"ACCT ").$this->_password, "login")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("PWD", "pwd")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("CDUP", "cdup")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("CWD ".$pathname, "chdir")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("RMD ".$pathname, "rmdir")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("MKD ".$pathname, "mkdir")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("RNFR ".$from, "rename")) return FALSE;
+./wp-admin/includes/class-ftp.php:			if(!$this->_exec("RNTO ".$to, "rename")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("SIZE ".$pathname, "filesize")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("ABOR", "abort")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("MDTM ".$pathname, "mdtm")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("SYST", "systype")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("DELE ".$pathname, "delete")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("SITE ".$command, $fnction)) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("REST ".$from, "resore")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("FEAT", "features")) return FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("RNFR ".$pathname, "rename")) $exists=FALSE;
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("RETR ".$remotefile, "get")) {
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("RETR ".$remotefile, "get")) {
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("STOR ".$remotefile, "put")) {
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec("STOR ".$remotefile, "put")) {
+./wp-admin/includes/class-ftp.php:		if(!$this->_exec($cmd.$arg, $fnction)) {
+./wp-admin/includes/class-pclzip.php:  //                           extracted in the filesystem (extract).
+./wp-admin/includes/class-pclzip.php://      eval('$v_result = '.$p_options[PCLZIP_CB_PRE_EXTRACT].'(PCLZIP_CB_PRE_EXTRACT, $v_local_header);');
+./wp-admin/includes/class-ftp-pure.php:		$sock = @fsockopen($host, $port, $errno, $errstr, $this->_timeout);
+./wp-admin/includes/class-ftp-pure.php:	function _exec($cmd, $fnction="_exec") {
+./wp-admin/includes/class-ftp-pure.php:			if(!$this->_exec("PASV", "pasv")) {
+./wp-admin/includes/class-ftp-pure.php:			$this->_ftp_data_sock=@fsockopen($this->_datahost, $this->_dataport, $errno, $errstr, $this->_timeout);
+./wp-admin/includes/image.php: * If the attached file is not present on the local filesystem (usually due to replication plugins),
+./wp-admin/includes/plugin.php:	if ( ! WP_Filesystem($credentials) ) {
+./wp-admin/includes/theme.php:	if ( ! WP_Filesystem($credentials) ) {
+./wp-admin/includes/class-wp-upgrader.php:		if ( ! WP_Filesystem( $credentials, $directories[0], $allow_relaxed_file_ownership ) ) {
+./wp-admin/includes/class-wp-upgrader.php:				$this->send_core_update_notification_email( $item );
+./wp-admin/includes/class-wp-upgrader.php:				$this->send_core_update_notification_email( $item );
+./wp-admin/includes/class-wp-upgrader.php:	protected function send_core_update_notification_email( $item ) {
+./wp-admin/includes/class-wp-upgrader.php:		$this->send_email( 'manual', $item );
+./wp-admin/includes/class-wp-upgrader.php:				$this->send_debug_email();
+./wp-admin/includes/class-wp-upgrader.php:			$this->send_email( 'success', $core_update );
+./wp-admin/includes/class-wp-upgrader.php:			$this->send_email( 'critical', $core_update, $result );
+./wp-admin/includes/class-wp-upgrader.php:			$this->send_email( 'fail', $core_update, $result );
+./wp-admin/includes/class-wp-upgrader.php:	protected function send_email( $type, $core_update, $result = null ) {
+./wp-admin/includes/class-wp-upgrader.php:		 *     Array of email arguments that will be passed to wp_mail().
+./wp-admin/includes/class-wp-upgrader.php:		 *                            can be returned, as handled by wp_mail().
+./wp-admin/includes/class-wp-upgrader.php:		wp_mail( $email['to'], wp_specialchars_decode( $email['subject'] ), $email['body'], $email['headers'] );
+./wp-admin/includes/class-wp-upgrader.php:	protected function send_debug_email() {
+./wp-admin/includes/class-wp-upgrader.php:		 *     Array of email arguments that will be passed to wp_mail().
+./wp-admin/includes/class-wp-upgrader.php:		 *                           can be returned, as handled by wp_mail().
+./wp-admin/includes/class-wp-upgrader.php:		wp_mail( $email['to'], wp_specialchars_decode( $email['subject'] ), $email['body'], $email['headers'] );
+./wp-admin/includes/file.php:		$expected_raw_md5 = base64_decode( $expected_md5 );
+./wp-admin/includes/file.php: * Assumes that WP_Filesystem() has already been called and set up. Does not extract a root-level __MACOSX directory, if present.
+./wp-admin/includes/file.php: * Assumes that WP_Filesystem() has already been called and set up.
+./wp-admin/includes/file.php: * Assumes that WP_Filesystem() has already been called and set up.
+./wp-admin/includes/file.php: * Assumes that WP_Filesystem() has already been called and setup.
+./wp-admin/includes/file.php:function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_ownership = false ) {
+./wp-admin/includes/file.php: * (Via Sockets class, or `fsockopen()`). Valid values for these are: 'direct', 'ssh2',
+./wp-admin/includes/file.php: * Plugins may define a custom transport handler, See WP_Filesystem().
+./wp-admin/includes/upgrade.php:	@wp_mail($email, __('New WordPress Site'), $message);
+./wp-admin/includes/schema.php:  KEY comment_author_email (comment_author_email(10))
+./wp-admin/includes/schema.php:  KEY user_email (user_email),
+./wp-admin/includes/schema.php:  KEY user_login_email (user_login,user_email),
+./wp-admin/includes/schema.php:	if ( ! is_email( $email ) )
+./wp-admin/network.php:		$result = populate_network( 1, get_clean_basedomain(), sanitize_email( $_POST['email'] ), wp_unslash( $_POST['sitename'] ), $base, $subdomain_install );
+./wp-admin/user-edit.php:// Execute confirmed email change. See send_confirmation_on_profile_email().
+./wp-admin/user-edit.php:	if ( $user->user_login && isset( $_POST[ 'email' ] ) && is_email( $_POST[ 'email' ] ) && $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM {$wpdb->signups} WHERE user_login = %s", $user->user_login ) ) ) {
+./wp-admin/update-core.php:	if ( ! WP_Filesystem( $credentials, ABSPATH, $allow_relaxed_file_ownership ) ) {
+./wp-admin/ms-delete-site.php:	wp_mail( get_option( 'admin_email' ), "[ " . wp_specialchars_decode( get_option( 'blogname' ) ) . " ] ".__( 'Delete My Site' ), $content );
+./wp-admin/user-new.php:	function admin_created_user_email( $text ) {
+./wp-admin/user-new.php:			wp_mail( $new_user_email, sprintf( __( '[%s] Joining confirmation' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), sprintf( $message, get_option( 'blogname' ), home_url(), wp_specialchars_decode( translate_user_role( $role['name'] ) ), home_url( "/newbloguser/$newuser_key/" ) ) );
+./wp-admin/install.php:		} elseif ( ! is_email( $admin_email ) ) {
+./wp-admin/network/user-new.php:		$user_id = wpmu_create_user( esc_html( strtolower( $user['username'] ) ), $password, sanitize_email( $user['email'] ) );
+./wp-admin/network/site-new.php:	$email = sanitize_email( $blog['email'] );
+./wp-admin/network/site-new.php:	if ( ! is_email( $email ) ) {
+./wp-admin/network/site-new.php:		wp_mail( get_site_option('admin_email'), sprintf( __( '[%s] New Site Created' ), $current_site->site_name ), $content_mail, 'From: "Site Admin" <' . get_site_option( 'admin_email' ) . '>' );
+./wp-includes/functions.php:		if ( doubleval( $bytes ) >= $mag ) {
+./wp-includes/class-phpmailer.php:     * The Sender email (Return-Path) of the message.
+./wp-includes/class-phpmailer.php:     * Whether mail() uses a fully sendmail-compatible MTA.
+./wp-includes/class-phpmailer.php:     * Call mail() in a safe_mode-aware fashion.
+./wp-includes/class-phpmailer.php:     * Also, unless sendmail_path points to sendmail (or something that
+./wp-includes/class-phpmailer.php:    private function mailPassthru($to, $subject, $body, $header, $params)
+./wp-includes/class-phpmailer.php:            $result = @mail($to, $subject, $body, $header);
+./wp-includes/class-phpmailer.php:            $result = @mail($to, $subject, $body, $header, $params);
+./wp-includes/class-phpmailer.php:     * Send messages using PHP's mail() function.
+./wp-includes/class-phpmailer.php:    public function isMail()
+./wp-includes/class-phpmailer.php:    public function isSendmail()
+./wp-includes/class-phpmailer.php:    public function isQmail()
+./wp-includes/class-phpmailer.php:            // To capture the complete message when using mail(), create
+./wp-includes/class-phpmailer.php:     * Send mail using the PHP mail() function.
+./wp-includes/class-phpmailer.php:                $result = $this->mailPassthru($toAddr, $this->Subject, $body, $header, $params);
+./wp-includes/class-phpmailer.php:            $result = $this->mailPassthru($to, $this->Subject, $body, $header, $params);
+./wp-includes/class-phpmailer.php:        if (!$this->smtp->mail($smtp_from)) {
+./wp-includes/class-phpmailer.php:        // To be created automatically by mail()
+./wp-includes/class-phpmailer.php:        // sendmail and mail() extract Cc from the header before sending
+./wp-includes/class-phpmailer.php:        // sendmail and mail() extract Bcc from the header before sending
+./wp-includes/class-phpmailer.php:        // mail() sets the subject itself
+./wp-includes/class-phpmailer.php:                        $data = base64_decode($data);
+./wp-includes/deprecated.php:function get_the_author_email() {
+./wp-includes/deprecated.php:function the_author_email() {
+./wp-includes/ID3/module.audio-video.riff.php:			LSVM	Vianet Lighting Strike Vmail (Streaming) (www.vianet.com)
+./wp-includes/ID3/module.audio.ogg.php:					$flac->setStringMode(base64_decode($ThisFileInfo_ogg_comments_raw[$i]['value']));
+./wp-includes/ID3/module.audio.ogg.php:					$data = base64_decode($ThisFileInfo_ogg_comments_raw[$i]['value']);
+./wp-includes/class-snoopy.php:		// I didn't use preg eval (//e) since that is only available in PHP 4.0.
+./wp-includes/class-snoopy.php:		exec($this->curl_path." -k -D \"$headerfile\"".$cmdline_params." \"".escapeshellcmd($URI)."\"",$results,$return);
+./wp-includes/class-snoopy.php:		if($fp = fsockopen(
+./wp-includes/class-wp-customize-widgets.php:		$decoded = base64_decode( $value['encoded_serialized_instance'], true );
+./wp-includes/class-feed.php:			$data = base64_decode( $data );
+./wp-includes/class-simplepie.php: * fsockopen() file source
+./wp-includes/class-simplepie.php:	 * @var bool Forces fsockopen() to be used for remote files instead
+./wp-includes/class-simplepie.php:	 * @see SimplePie::force_fsockopen()
+./wp-includes/class-simplepie.php:	 * Force SimplePie to use fsockopen() instead of cURL
+./wp-includes/class-simplepie.php:	 * @param bool $enable Force fsockopen() to be used
+./wp-includes/class-simplepie.php:	public function force_fsockopen($enable = false)
+./wp-includes/user.php:			 *            Used to build wp_mail().
+./wp-includes/user.php:			wp_mail( $pass_change_email['to'], sprintf( $pass_change_email['subject'], $blog_name ), $pass_change_email['message'], $pass_change_email['headers'] );
+./wp-includes/user.php:			 *            Used to build wp_mail().
+./wp-includes/user.php:			wp_mail( $email_change_email['to'], sprintf( $email_change_email['subject'], $blog_name ), $email_change_email['message'], $email_change_email['headers'] );
+./wp-includes/user.php:	} elseif ( ! is_email( $user_email ) ) {
+./wp-includes/class-wp-xmlrpc-server.php:				elseif ( !is_email($comment['comment_author_email']) )
+./wp-includes/class-http.php: * @since 3.7.0 Combined with the fsockopen transport and switched to stream_socket_client().
+./wp-includes/class-http.php:	 * @since 3.7.0 Combined with the fsockopen transport and switched to stream_socket_client().
+./wp-includes/class-http.php:				$handle = @stream_socket_client( 'tcp://' . $proxy->host() . ':' . $proxy->port(), $connection_error, $connection_error_str, $connect_timeout, STREAM_CLIENT_CONNECT, $context );
+./wp-includes/class-http.php:				$handle = @stream_socket_client( $connect_host . ':' . $arrURL['port'], $connection_error, $connection_error_str, $connect_timeout, STREAM_CLIENT_CONNECT, $context );
+./wp-includes/class-http.php:				$handle = stream_socket_client( 'tcp://' . $proxy->host() . ':' . $proxy->port(), $connection_error, $connection_error_str, $connect_timeout, STREAM_CLIENT_CONNECT, $context );
+./wp-includes/class-http.php:				$handle = stream_socket_client( $connect_host . ':' . $arrURL['port'], $connection_error, $connection_error_str, $connect_timeout, STREAM_CLIENT_CONNECT, $context );
+./wp-includes/class-http.php:	 * @since 3.7.0 Combined with the fsockopen transport and switched to stream_socket_client().
+./wp-includes/class-http.php:			curl_exec( $handle );
+./wp-includes/class-http.php:		curl_exec( $handle );
+./wp-includes/ms-deprecated.php: * @deprecated Use is_email()
+./wp-includes/ms-deprecated.php: * @see is_email()
+./wp-includes/ms-deprecated.php:function validate_email( $email, $check_domain = true) {
+./wp-includes/ms-deprecated.php:	_deprecated_function( __FUNCTION__, '3.0', 'is_email()' );
+./wp-includes/ms-deprecated.php:	return is_email( $email, $check_domain );
+./wp-includes/ms-deprecated.php:	if ( is_email( $string ) )
+./wp-includes/SimplePie/File.php:				$this->headers = curl_exec($fp);
+./wp-includes/SimplePie/File.php:					$this->headers = curl_exec($fp);
+./wp-includes/SimplePie/File.php:				$fp = @fsockopen($socket_host, $url_parts['port'], $errno, $errstr, $timeout);
+./wp-includes/SimplePie/Author.php:	 * @see get_email()
+./wp-includes/SimplePie/Author.php:	public function get_email()
+./wp-includes/SimplePie/Sanitize.php:				$data = base64_decode($data);
+./wp-includes/SimplePie/Cache/MySQL.php:			$query = $this->mysql->exec('CREATE TABLE `' . $this->options['extras']['prefix'] . 'cache_data` (`id` TEXT CHARACTER SET utf8 NOT NULL, `items` SMALLINT NOT NULL DEFAULT 0, `data` BLOB NOT NULL, `mtime` INT UNSIGNED NOT NULL, UNIQUE (`id`(125)))');
+./wp-includes/SimplePie/Cache/MySQL.php:			$query = $this->mysql->exec('CREATE TABLE `' . $this->options['extras']['prefix'] . 'items` (`feed_id` TEXT CHARACTER SET utf8 NOT NULL, `id` TEXT CHARACTER SET utf8 NOT NULL, `data` TEXT CHARACTER SET utf8 NOT NULL, `posted` INT UNSIGNED NOT NULL, INDEX `feed_id` (`feed_id`(125)))');
+./wp-includes/class-pop3.php:        $fp = @fsockopen("$server", $port, $errno, $errstr);
+./wp-includes/class-smtp.php:            $this->smtp_conn = @stream_socket_client(
+./wp-includes/class-smtp.php:            $this->smtp_conn = fsockopen(
+./wp-includes/class-smtp.php:                $challenge = base64_decode(substr($this->last_reply, 4));
+./wp-includes/class-smtp.php:    public function mail($from)
+./wp-includes/class-smtp.php:    public function sendAndMail($from)
+./wp-includes/class-IXR.php:                $value = base64_decode($this->_currentTagContents);
+./wp-includes/class-IXR.php:            $fp = @fsockopen($this->server, $this->port, $errno, $errstr, $this->timeout);
+./wp-includes/class-IXR.php:            $fp = @fsockopen($this->server, $this->port, $errno, $errstr);
+./wp-includes/ms-functions.php:	$user_email = sanitize_email( $user_email );
+./wp-includes/ms-functions.php:	if ( !is_email( $user_email ) )
+./wp-includes/ms-functions.php:	$user_email = sanitize_email( $user_email );
+./wp-includes/ms-functions.php:		 * Content should be formatted for transmission via wp_mail().
+./wp-includes/ms-functions.php:	wp_mail( $user_email, wp_specialchars_decode( $subject ), $message, $message_headers );
+./wp-includes/ms-functions.php:		 * Content should be formatted for transmission via wp_mail().
+./wp-includes/ms-functions.php:	wp_mail( $user_email, wp_specialchars_decode( $subject ), $message, $message_headers );
+./wp-includes/ms-functions.php:	if ( is_email($email) == false )
+./wp-includes/ms-functions.php:	wp_mail( $email, sprintf( __( 'New Site Registration: %s' ), $siteurl ), $msg );
+./wp-includes/ms-functions.php:	if ( is_email($email) == false )
+./wp-includes/ms-functions.php:	wp_mail( $email, sprintf(__('New User Registration: %s'), $user->user_login), $msg );
+./wp-includes/ms-functions.php:	 * Content should be formatted for transmission via wp_mail().
+./wp-includes/ms-functions.php:	wp_mail( $user->user_email, wp_specialchars_decode( $subject ), $message, $message_headers );
+./wp-includes/ms-functions.php:	 * Content should be formatted for transmission via wp_mail().
+./wp-includes/ms-functions.php:	wp_mail( $user->user_email, wp_specialchars_decode( $subject ), $message, $message_headers );
+./wp-includes/Text/Diff/Engine/shell.php:        $diff = shell_exec($this->_diffCommand . ' ' . $from_file . ' ' . $to_file);
+./wp-includes/class-json.php: * Javascript, and can be directly eval()'ed with no further parsing
+./wp-includes/pluggable.php:function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
+./wp-includes/pluggable.php:	 * Filter the wp_mail() arguments.
+./wp-includes/pluggable.php:	 * @param array $args A compacted array of wp_mail() arguments, including the "to" email,
+./wp-includes/pluggable.php:	// Set to use PHP's mail()
+./wp-includes/pluggable.php:	$phpmailer->IsMail();
+./wp-includes/pluggable.php:	 * Filter the wp_mail() content type.
+./wp-includes/pluggable.php:	 * @param string $content_type Default wp_mail() content type.
+./wp-includes/pluggable.php:	 * Filter the default wp_mail() charset.
+./wp-includes/pluggable.php:		@wp_mail( $email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+./wp-includes/pluggable.php:		@wp_mail( $email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+./wp-includes/pluggable.php:		wp_mail(get_option('admin_email'), sprintf(__('[%s] Password Lost/Changed'), $blogname), $message);
+./wp-includes/pluggable.php:	@wp_mail(get_option('admin_email'), sprintf(__('[%s] New User Registration'), $blogname), $message);
+./wp-includes/pluggable.php:	wp_mail($user->user_email, sprintf(__('[%s] Your username and password info'), $blogname), $message);
+./wp-includes/pluggable-deprecated.php:function get_user_by_email($email) {
+./wp-includes/formatting.php:function is_email( $email, $deprecated = false ) {
+./wp-includes/formatting.php:		 * @param bool   $is_email Whether the email address has passed the is_email() checks. Default false.
+./wp-includes/formatting.php:function sanitize_email( $email ) {
+./wp-includes/formatting.php:		 * @param string $email   The email address, as provided to sanitize_email().
+./wp-includes/formatting.php:				$value = sanitize_email( $value );
+./wp-includes/formatting.php:				if ( ! is_email( $value ) ) {
+./wp-includes/formatting.php:function wp_staticize_emoji_for_email( $mail ) {
+./wp-includes/formatting.php:	 * in wp_mail() - get the Content-Type from the headers, if there is one,
+./wp-includes/comment-template.php:function get_comment_author_email( $comment_ID = 0 ) {
+./wp-includes/comment-template.php:function comment_author_email( $comment_ID = 0 ) {
+./wp-includes/comment-template.php:	$author_email = get_comment_author_email( $comment_ID );
+./wp-includes/theme-compat/comments.php:<label for="email"><small><?php _e('Mail (will not be published)'); ?> <?php if ($req) _e('(required)'); ?></small></label></p>
+./wp-content/plugins/jetpack/modules/custom-post-types/comics.php:function comics_welcome_email( $welcome_email, $blog_id, $user_id, $password, $title, $meta ) {
+./wp-content/plugins/jetpack/modules/comments/base.php:			} elseif ( ! is_email( $_POST['email'] ) ) {
+./wp-content/plugins/jetpack/modules/sharedaddy/sharedaddy.php:	wp_mail( $data['target'], '['.__( 'Shared Post', 'jetpack' ).'] '.$data['post']->post_title, $content, $headers );
+./wp-content/plugins/jetpack/modules/sharedaddy/sharing-sources.php:		if ( isset( $post_data['source_email'] ) && is_email( $post_data['source_email'] ) )
+./wp-content/plugins/jetpack/modules/sharedaddy/sharing-sources.php:		if ( isset( $post_data['target_email'] ) && is_email( $post_data['target_email'] ) )
+./wp-content/plugins/jetpack/modules/monitor.php:			<?php $user_email = Jetpack::get_connected_user_email(); ?>
+./wp-content/plugins/jetpack/modules/custom-css/custom-css/preprocessors/scss.inc.php:	protected function shouldEval($value) {
+./wp-content/plugins/jetpack/modules/custom-css/custom-css/preprocessors/scss.inc.php:				return $this->shouldEval($value[2], $value[3]);
+./wp-content/plugins/jetpack/modules/custom-css/custom-css/preprocessors/scss.inc.php:				$inExp = $inExp || $this->shouldEval($left) || $this->shouldEval($right);
+./wp-content/plugins/jetpack/modules/custom-css/custom-css/preprocessors/scss.inc.php:				$inExp = $inExp || $this->shouldEval($exp);
+./wp-content/plugins/jetpack/modules/contact-form/admin.php:			wp_mail( $to, $subject, $message, $headers );
+./wp-content/plugins/jetpack/modules/contact-form/grunion-contact-form.php:			if ( !is_email( $email ) ) {
+./wp-content/plugins/jetpack/modules/contact-form/grunion-contact-form.php:			wp_mail( $to, "{$spam}{$subject}", $message, $headers );
+./wp-content/plugins/jetpack/modules/contact-form/grunion-contact-form.php:			wp_mail( $to, "{$spam}{$subject}", $message, $headers );
+./wp-content/plugins/jetpack/modules/contact-form/grunion-contact-form.php:			if ( !is_email( $field_value ) ) {
+./wp-content/plugins/jetpack/modules/sso.php:	public function render_match_by_email() {
+./wp-content/plugins/jetpack/modules/sso.php:	public function validate_jetpack_sso_match_by_email( $input ) {
+./wp-content/plugins/jetpack/modules/sso.php:		if ( empty( $user ) && self::match_by_email() ) {
+./wp-content/plugins/jetpack/modules/sso.php:			if ( self::match_by_email() || ! get_user_by( 'email', $user_data->email ) ) {
+./wp-content/plugins/jetpack/modules/sso.php:	static function match_by_email() {
+./wp-content/plugins/jetpack/modules/sso.php:		if ( self::match_by_email() ) {
+./wp-content/plugins/jetpack/modules/carousel/jetpack-carousel.php:				if ( ! is_email( $email ) )
+./wp-content/plugins/jetpack/modules/subscriptions.php:	function maybe_send_subscription_email( $new_status, $old_status, $post ) {
+./wp-content/plugins/jetpack/modules/subscriptions.php:		if ( !is_email( $email ) ) {
+./wp-content/plugins/jetpack/class.jetpack.php:	public static function get_connected_user_email( $user_id = null ) {
+./wp-content/plugins/jetpack/class.jetpack.php:	public static function get_master_user_email() {
+./wp-content/plugins/jetpack/class.jetpack.php:			return self::get_connected_user_email( $master_user_id );
+./wp-content/plugins/jetpack/class.jetpack.php:		$data = json_decode( base64_decode( stripslashes( $_GET['data'] ) ) );
+./wp-content/plugins/jetpack/class.jetpack-debugger.php:						<p><?php printf( __( 'The primary connection is owned by <strong>%s</strong>\'s WordPress.com account.', 'jetpack' ), esc_html( Jetpack::get_master_user_email() ) ); ?></p>
+./wp-content/plugins/jetpack/json-endpoints/class.wpcom-json-api-update-invites-endpoint.php:		return wp_mail(
+./wp-content/plugins/jetpack/class.jetpack-cli.php:				} elseif ( is_email( $user_id ) ) {
+./wp-content/plugins/jetpack/class.jetpack-heartbeat.php:	public function cron_exec() {
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:				wp_mail($email, "Unlock email requested", $content, "Content-Type: text/html");
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:		$result = wp_mail($_POST['email'], "Wordfence Test Email", "This is a test email from " . site_url() . ".\nThe IP address that requested this was: " . wfUtils::getIP());
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:		wp_mail($_POST['email'], "Wordfence Activity Log", $content);
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:					wp_mail($user->user_email, "Your Password on $homeURL Has Been Changed.", wfUtils::tmpl('email_passwdChanged.php', array(
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:					wp_mail($user->user_email, "Please Change Your Password on $homeURL", wfUtils::tmpl('email_pleaseChangePasswd.php', array(
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:		wp_mail(implode(',', $emails), $subject, $content);
+./wp-content/plugins/wordfence/lib/wordfenceClass.php:		return $report->sendReportViaEmail($email) ?
+./wp-content/plugins/wordfence/lib/menu_options.php:						       onclick="WFAD.sendTestEmail(jQuery('#testEmailDest').val());"/></td>
+./wp-content/plugins/wordfence/lib/wfActivityReport.php:		$report->sendReportViaEmail(wfConfig::getAlertEmails());
+./wp-content/plugins/wordfence/lib/wfActivityReport.php:	public function sendReportViaEmail($email_addresses) {
+./wp-content/plugins/wordfence/lib/wfActivityReport.php:		return wp_mail($email_addresses, 'Wordfence activity for ' . date_i18n(get_option('date_format')) . ' on ' . $shortSiteURL, $this->toEmailView()->__toString(), 'Content-Type: text/html');
+./wp-content/plugins/wordfence/lib/conntest.php:	curl_exec($curl);
+./wp-content/plugins/wordfence/lib/wfIssues.php:		wp_mail(implode(',', $emails), $subject, $content, 'Content-type: text/html');
+./wp-content/plugins/wordfence/lib/wordfenceScanner.php:										'longMsg' => "This file is a PHP executable file and contains the word 'eval' (without quotes) and the word '" . $badStringFound . "' (without quotes). The eval() function along with an encoding function like the one mentioned are commonly used by hackers to hide their code. If you know about this file you can choose to ignore it to exclude it from future scans.",
+./wp-content/plugins/wordfence/lib/wfLog.php:	public function getCBLCookieVal(){
+./wp-content/plugins/wordfence/lib/wfLog.php:		wfUtils::setcookie('wfCBLBypass', self::getCBLCookieVal(), time() + (86400 * 365), '/', null, null, true);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-filescan-menu.php:            $email_address = sanitize_email($_POST['aiowps_fcd_scan_email_address']);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-filescan-menu.php:            if(!is_email($email_address))
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-database-menu.php:            $email_address = sanitize_email($_POST['aiowps_backup_email_address']);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-database-menu.php:            if(!is_email($email_address))
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-user-login-menu.php:            $email_address = sanitize_email($_POST['aiowps_email_address']);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-user-login-menu.php:            if(!is_email($email_address))
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-list-registered-users.php:                        $sendMail = wp_mail($to_email_address, $subject, $email_msg, $email_header);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/admin/wp-security-list-registered-users.php:                $sendMail = wp_mail($to_email_address, $subject, $email_msg, $email_header);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/other-includes/wp-security-rename-login-feature.php:    if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
+./wp-content/plugins/all-in-one-wp-security-and-firewall/other-includes/wp-security-rename-login-feature.php:        wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
+./wp-content/plugins/all-in-one-wp-security-and-firewall/other-includes/wp-security-unlock-request.php:    if (empty($email) || !is_email($email))
+./wp-content/plugins/all-in-one-wp-security-and-firewall/other-includes/wp-security-unlock-request.php:        $sanitized_email = sanitize_email($email);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/other-includes/wp-security-unlock-request.php:                AIOWPSecurity_User_Login::send_unlock_request_email($email, $unlock_url);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.client.php:			$ptr = @fsockopen($server, $port, $errno, $errstr, $this->STIMEOUT);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.parser.php:			eval("\$block".getvarname($k)."=\$v;");
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.parser.php:						eval($var.'="'.str_replace('"','\"',$itm).'";');
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.parser.php:				eval('$r'.$var.'=$itm;');
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.parser.php:			if ($var != '[]') eval('$r'.$var.'=$block;');
+./wp-content/plugins/all-in-one-wp-security-and-firewall/lib/whois/whois.parser.php:				eval('$r'.getvarname($field).'=$itm;');
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-backup.php:        $this->aiowps_send_backup_email(); //Send backup file via email if applicable
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-backup.php:    function aiowps_send_backup_email()
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-backup.php:            if ( is_email( $aio_wp_security->configs->get_value('aiowps_backup_email_address') ) ) 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-backup.php:            wp_mail( $to, $subject, $message, $headers, $attachment );
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-user-login.php:            $this->send_ip_lock_notification_email($username, $ip_range, $ip);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-user-login.php:    function send_ip_lock_notification_email($username, $ip_range, $ip)
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-user-login.php:            $sendMail = wp_mail($to_email_address, $subject, $email_msg, $email_header);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-user-login.php:    static function send_unlock_request_email($email, $unlock_link)
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-user-login.php:        $sendMail = wp_mail($to_email_address, $subject, $email_msg, $email_header);
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                $this->aiowps_send_file_change_alert_email(); //Send file change scan results via email if applicable
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:    function aiowps_send_file_change_alert_email()
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:            if ( is_email( $aio_wp_security->configs->get_value('aiowps_fcd_scan_email_address') ) ) 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:            wp_mail( $to, $subject, $message, $headers );
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(option_value, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($option_value),'eval(')!==false) $found_options.="eval() statement found in the option_value field for option_name: ".$option_name;
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(post_author), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(post_title), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(post_name), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(guid), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(post_content), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['post_author']),'eval(')!==false) $found_posts.="post_author: eval() "; 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['post_title']),'eval(')!==false) $found_posts.="post_title: eval() "; 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['post_name']),'eval(')!==false) $found_posts.="post_name: eval() "; 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['guid']),'eval(')!==false) $found_posts.="guid: eval() "; 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['post_content']),'eval(')!==false) $found_posts.="post_content: eval() "; 
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_url), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_image), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_description), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_notes), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_rel), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(link_rss), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_url']),'eval(')!==false) $found_links.="eval() statement found in the link_url field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_image']),'eval(')!==false) $found_links.="eval() statement found in the link_image field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_description']),'eval(')!==false) $found_links.="eval() statement found in the link_description field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_notes']),'eval(')!==false) $found_links.="eval() statement found in the link_notes field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_rel']),'eval(')!==false) $found_links.="eval() statement found in the link_rel field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['link_rss']),'eval(')!==false) $found_links.="eval() statement found in the link_rss field for link_id: ".$entry['link_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(comment_author_url), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(comment_agent), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(comment_author), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(comment_author_email), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(comment_content), 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['comment_author']),'eval(')!==false) $found_comments.="eval() statement found in the comment_author field for link_id: ".$entry['comment_ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['comment_author_url']),'eval(')!==false) $found_comments.="eval() statement found in the comment_author_url field for link_id: ".$entry['comment_ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['comment_agent']),'eval(')!==false) $found_comments.="eval() statement found in the comment_agent field for link_id: ".$entry['comment_ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['comment_author_email']),'eval(')!==false) $found_comments.="eval() statement found in the comment_author_email field for link_id: ".$entry['comment_ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['comment_content']),'eval(')!==false) $found_comments.="eval() statement found in the comment_content field for link_id: ".$entry['comment_ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(meta_value), 'eval(')>0
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['meta_value']),'eval(')!==false) $found_postmeta.="eval() statement found in the meta_value field for meta_id: ".$entry['meta_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(LCASE(meta_value), 'eval(')>0
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['meta_value']),'eval(')!==false) $found_usermeta.="eval() statement found in the meta_value field for meta_id: ".$entry['umeta_id'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(user_login, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(user_nicename, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(user_email, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(user_url, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:        INSTR(display_name, 'eval(') +
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['user_login']),'eval(')!==false) $found_users.="eval() statement found in the user_login field for user ID: ".$entry['ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['user_nicename']),'eval(')!==false) $found_users.="eval() statement found in the user_nicename field for user ID: ".$entry['ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['user_email']),'eval(')!==false) $found_users.="eval() statement found in the user_email field for user ID: ".$entry['ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['user_url']),'eval(')!==false) $found_users.="eval() statement found in the user_url field for user ID: ".$entry['ID'];
+./wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-file-scan.php:                if (strpos(strtolower($entry['display_name']),'eval(')!==false) $found_users.="eval() statement found in the display_name field for user ID: ".$entry['ID'];
+./wp-content/plugins/wordpress-seo/admin/class-import.php:			WP_Filesystem();
+./wp-content/plugins/wordpress-seo/admin/onpage/class-onpage-notifier.php:	public function send_email( $old_status, $new_status ) {
+./wp-content/plugins/wordpress-seo/admin/onpage/class-onpage-notifier.php:		wp_mail(
+./wp-content/plugins/wordpress-seo/admin/onpage/class-onpage.php:		$notify->send_email( $old_status, $new_status );
+./wp-content/plugins/wordpress-seo/vendor/yoast/api-libs/google/io/Google_CurlIO.php:    $respData = curl_exec($ch);
+./wp-content/plugins/wordpress-seo/vendor/yoast/api-libs/google/io/Google_CurlIO.php:      $respData = curl_exec($ch);
+./wp-content/plugins/wordpress-seo/vendor/yoast/api-libs/google/service/Google_Utils.php:    return base64_decode($b64);
+./wp-content/plugins/wordpress-seo/vendor/xrstf/composer-php52/lib/xrstf/Composer52/AutoloadGenerator.php:		$filesystem = new Filesystem();
+./wp-mail.php:				$author = sanitize_email($author);
+./wp-mail.php:				if ( is_email($author) ) {

@@ -1,0 +1,136 @@
+<!--@subject {{var store.getFrontendName()}}: New Order # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var order.increment_id":"Order Id",
+"var order.getCreatedAtFormated('long')":"Order Created At (datetime)",
+"var order.getBillingAddress().format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.getShippingAddress().format('html')":"Shipping Address",
+"var order.getShippingDescription()":"Shipping Description",
+"layout handle=\"sales_email_order_items\" order=$order":"Order Items Grid",
+"var order.getEmailCustomerNote()":"Email Order Note"}
+@-->
+<!--@styles
+@-->
+
+<body>
+  {{inlinecss file="aurelia-email-inline.css"}}
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="table-default" >
+  <tbody>
+    <tr>
+      <td align="center" valign="bottom"><img src="{{skin url="images/email/logo.jpg"}}" width="600" height="118" alt="Aurelia Probiotic Skincare"/></td>
+    </tr>
+    <tr>
+      <td valign="top" class="top-link"><a href="{{store url="about"}}">ABOUT</a><a href="{{store url="products"}}">PRODUCTS</a><a href="{{store url="science-qa"}}">SCIENCE</a><a href="{{store url="stockists"}}">STOCKISTS</a><a href="{{store url="press-coverage"}}">PRESS</a><a href="{{store url="aurelia-tv"}}">TV</a><a href="{{store url="blog"}}">BLOG</a><a href="{{store url="contacts"}}">CONTACT </a></td>
+    </tr>
+    
+      <tr>
+      <td><img src="{{skin url="images/email/banner-img.jpg"}}" width="600" height="237" alt=""/></td>
+    </tr>
+    <tr>
+      <td class="td"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top:5px">
+          <tbody>
+            <tr>
+              <td>Dear  {{htmlescape var=$order.getCustomerName()}},</td>
+            </tr>
+            <tr>
+              <td style="padding-top:15px; padding-bottom:15px;"> Thank you for shopping with us and for discovering the power of probiotics. Your order is now being processed  ready to be beautifully wrapped, tied with a bow and sent out for you to receive very soon!</td>
+            </tr>
+            <tr>
+              <td>With love, <br/>
+                Aurelia Probiotic Skincare x</td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+ 
+    <tr>
+      <td height="10"></td>
+    </tr>
+    <tr>
+      <td class="td">
+    
+  {{layout handle="sales_email_order_items2" order=$order}}  
+  </td>
+    </tr>
+    
+    <tr>
+      <td height="20">&nbsp;</td>
+    </tr>
+  <td class="td" align="center"><h2 class="heading"><span style="font-weight:normal">IN LOVE WITH AURELIA?</span></h2>
+  </tr>
+    <tr>
+    <td class="td"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <th scope="col"><img src="{{skin url="images/email/small-img.jpg"}}" width="271" height="258" alt=""/></th>
+            <th width="20" rowspan="3" scope="col">&nbsp;</th>
+            <th scope="col"><img src="{{skin url="images/email/small-img1.jpg"}}" width="271" height="258" alt=""/></th>
+          </tr>
+          <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+          </tr>
+          <tr>
+            <td align="center">Join ‘Aurelia Loyalty’ and let us thank you with
+              complimentary delivery, exclusive offers and loyalty
+              gift cards. Create an account to find out more.</td>
+            <td align="center">Discover the power of probiotics for all skin types and
+              ages and learn how to layer the products for your skin.
+              Watch our Aurelia films to find out more.</td>
+          </tr>
+          <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+          </tr>
+          <tr>
+            <td align="center"><a href="{{store url="customer/account/create"}}" class="btn">CREATE AN ACCOUNT &gt;</a></td>
+            <th scope="col">&nbsp;</th>
+            <td align="center"><a href="{{store url="aurelia-tv"}}" class="btn">WATCH NOW &gt;</a></td>
+          </tr>
+        </tbody>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="25">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="td" align="center"><h2 class="heading"><span style="font-weight:normal">DISCOVER MORE</span></h2>
+      <p>Keep up to date with all our news, usefull hints &amp; tips and general beauty knowledge by reading the Aurelia Blog!</p>
+      <a href="{{store url="blog"}}" class="btn">READ OUR BLOG ></a> </td>
+  </tr>
+  <tr>
+    <td class="td"><div class="line"></div></td>
+  </tr>
+  <tr>
+    <td height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td  class="graybox" ><div class="inner">If you have any questions about your order please contact us via email at <a href="mailto:customerservices@aureliaskincare.com">customerservices@aureliaskincare.com</a>
+        or call us on 0207 751 0022. Office hours are from Monday - Friday 9:00am - 5.30pm GMT.</div></td>
+  </tr>
+      <tr>
+      <td><img src="{{skin url="images/email/next-banner.jpg"}}" width="599" height="127" alt=""/></td>
+    </tr>
+   <tr>
+      <td align="center" style="padding-top:8px; padding-bottom:8px;">
+      <a href="https://www.facebook.com/AureliaProbioticSkincare" target="_blank"><img src="{{skin url="images/email/soical-icon1.jpg"}}" width="36" height="33" alt=""/></a>
+      <a href="https://twitter.com/AureliaSkincare" target="_blank"><img src="{{skin url="images/email/soical-icon2.jpg"}}" width="36" height="33" alt=""/></a>
+      <a href="http://instagram.com/aureliaskincare" target="_blank"><img src="{{skin url="images/email/soical-icon3.jpg"}}" width="36" height="33" alt=""/></a>
+      <a href="http://pinterest.com/aureliaskincare/" target="_blank"><img src="{{skin url="images/email/soical-icon4.jpg"}}" width="36" height="33" alt=""/></a>
+      <a href="http://www.youtube.com/user/AureliaSkincare" target="_blank"><img src="{{skin url="images/email/soical-icon5.jpg"}}" width="36" height="33" alt=""/></a></td>
+    </tr>
+    <tr>
+      <td align="center">If you would like to stop receiving emails from Aurelia Probiotic Skincare, please click <a href="{{store url=''}}" style="color:#a9a9a9; text-decoration:none;">unsubscribe</a></td>
+    </tr>
+    <tr>
+      <td height="20">&nbsp;</td>
+    </tr>    
+</tbody>
+</table>
+</body>

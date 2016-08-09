@@ -22,10 +22,7 @@ var/
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
-*.txt
-*.html
 # OS generated files #
 ######################
 .DS_Store

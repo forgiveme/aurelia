@@ -1,0 +1,32 @@
+#DB Set-up
+
+##1 Make DB on the localhost with the following login info...
+
+db location = "localhost";
+db user     = "v8dz4vcugc4yuu5i";
+db pass  	= "v8dz4vcugc4yuu5i";
+db name		= "AureliaSkinDB";
+
+
+
+##2 Import AureliaSkinDB.sql or AureliaSkinDB.xml file in _HANDOVER directory.
+
+The admin area requires PHP with a version >= 5.3.7 - It uses php-login-minimal from
+http://www.php-login.net/
+
+
+
+#Todo before launch
+
+##1 Batch replace "v8dz4vcugc4yuu5i7c2x.wallacetestbed.co.uk" with the domain in which the tool 
+will sit.
+
+e.g "v8dz4vcugc4yuu5i7c2x.wallacetestbed.co.uk" to become "tool.aureliaskincare.com"
+
+
+
+#Add links
+
+At the bottom of the response.html (desktop) and responses.html (mobile) files there 
+is setter statements find "//SETTER STATMENTS" use the id's "musthave_buylink" and 
+"recommended_buylink" divs to set the products based on which products need to be shown
