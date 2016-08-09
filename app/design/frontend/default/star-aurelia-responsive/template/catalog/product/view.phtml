@@ -460,19 +460,19 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 
 	 <script>
 
-		// function plus(){
-    // var currentVal = parseInt(jQuery("#qty-cc").val());
-    // if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
-    // jQuery("#qty-cc").val(currentVal + 1);
-// }
+		function plus(){
+    var currentVal = parseInt(jQuery("#qty-cc").val());
+    if (!currentVal || currentVal == "" || currentVal == "NaN") currentVal = 1;
+    jQuery("#qty-cc").val(currentVal + 1);
+}
 
-	// function minus() {
-    // var currentVal = parseInt(jQuery("#qty-cc").val());
-    // if (currentVal == "NaN") currentVal = 1;
-    // if (currentVal > 1) {
-        // jQuery("#qty-cc").val(currentVal - 1);
-    // }
-// }
+	function minus() {
+    var currentVal = parseInt(jQuery("#qty-cc").val());
+    if (currentVal == "NaN") currentVal = 1;
+    if (currentVal > 1) {
+        jQuery("#qty-cc").val(currentVal - 1);
+    }
+}
 
 	function plus2(){
     var currentVal = parseInt(jQuery("#qty-cc2").val());
