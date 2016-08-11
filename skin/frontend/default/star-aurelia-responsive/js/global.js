@@ -168,6 +168,7 @@ if($('.checkout-cart-index').length > 0) {
 		$giftMessage.hide();
 	}
 
+	var quoteHasGiftCard;
 	if($giftWrapChecked.length > 0 || quoteHasGiftCard == true) {
 		$giftMessage.show();
 	}	
