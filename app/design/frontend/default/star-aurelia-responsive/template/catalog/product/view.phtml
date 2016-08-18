@@ -47,12 +47,8 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
  
 <div id="content-center-text" class="product-view" itemscope itemtype="http://schema.org/Product">
     <div class="product-essential <?php if($_product->getSku() == "APS018"){ echo "no-scroll-form"; } ?>">
-		<?php if($_product->getSku() == "APS018"){ ?>
+		<?php if($_product->getSku() != "APS018"){ ?>
 		
-		<?php  $url = $this->getUrl('campaignmonitor/notify/new/'); ?>
-		<form action="<?php echo $url; ?>" method="post" id="subscribed_newproduct">
-		 <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
-		<?php }else{ ?>
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 	<?php } ?>
 	
@@ -189,7 +185,9 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 					<?php 	$customHelper=Mage::helper('custom');
 					if(!$customHelper->isMobileOrTablet())   {  ?>
 						<?php if($_product->getSku() == "APS018"){ ?>
-				
+					<?php  $url = $this->getUrl('campaignmonitor/notify/new/'); ?>
+		<form action="<?php echo $url; ?>" method="post" id="subscribed_newproduct">
+		 <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
 						<div class="latest-pro-info">
 						
 							<div class="field">
@@ -276,7 +274,9 @@ $productIngredientDescription = $_product->getingredientdescription(); $productP
 		 ?>
 			
 				<?php if($_product->getSku() == "APS018"){ ?>
-				
+					<?php  $url = $this->getUrl('campaignmonitor/notify/new/'); ?>
+		<form action="<?php echo $url; ?>" method="post" id="subscribed_newproduct">
+		 <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
 						<div class="latest-pro-info new-launch">
 						
 							<div class="field">
