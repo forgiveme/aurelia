@@ -148,7 +148,8 @@ body.catalogsearch-result-index .products-grid li, body.catalog-category-view .p
 .product-essential {
 	width: auto !important;
 	margin: 0 15px !important;
-	overflow-x:hidden
+	overflow-x:hidden;
+	position:relative;
 }
 .product-img-box {
 	width: 100% !important
