@@ -217,6 +217,192 @@ truedash('trackRemoveFromCart', 'sku', 'name', 'category', 'unit price', 'quanti
 
 <!-- Truedash —>
 
+<!-- Facebook Pixel Code -->
+
+<script>
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+ 
+
+fbq('init', '1759485774264810');
+
+fbq('track', "PageView");
+
+<?php
+  $pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
+  $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
+	if ($pageIdentifier == 'catalogsearch_result_index'){ 
+	$term = $_REQUEST['q'];
+  $ids=array();
+  if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
+		$productCollection = $listBlock->getLoadedProductCollection();
+		$prosize= $productCollection->getSize();
+		$ids=$productCollection->getAllIds();
+		
+		 $searchProductsIds = implode(',',$ids);
+		
+	 } ?>
+fbq('track', 'Search', { 
+    search_string: '<?php echo $term ?>',
+    content_category: 'Product Search',
+    content_ids: [<?php  echo $searchProductsIds ?>],
+    value: "",
+    currency: '<?php echo $currency_code; ?>'
+});
+<?php }   ?>
+
+<?php
+// echo $this->getRequest()->getControllerName();
+if($this->getRequest()->getControllerName()=='product') {
+  // only works on products page
+$_product = Mage::registry('current_product');
+$proId= $_product->getId();
+$productName= $_product->getName();
+$price = number_format($_product->getPrice(), 2);
+$cats = $_product->getCategoryId();
+  $_cat = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($cats);
+$categoryName= $_cat->getName();   
+  } 
+	$controllerName= $this->getRequest()->getControllerName();
+	
+if($controllerName=="cart") {
+ $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+ if($items!=""){
+        $max = 0;
+        $lastItem = null;
+        foreach ($items as $item){
+            if ($item->getId() > $max) {
+                $max = $item->getId();
+                $lastItem = $item;
+            }
+        }
+        if ($lastItem){
+            $_product = $lastItem->getProduct();
+            $xproductsku = $_product->getSku();
+           $xproductname = $_product->getName();               
+           $xproductqty = $_product->getQty();  
+           $xproductprice = $_product->getPrice();   
+           $xproducturl = $_product->getUrl();
+		    $xproductid = $_product->getId();
+        }
+	
+?>
+fbq('track', 'AddToCart',{
+content_type:'product',
+content_name:'<?php echo $xproductname ?>',
+content_ids:'<?php echo $xproductid; ?>',
+value:'<?php echo $xproductprice; ?>',
+currency: '<?php  echo $currency_code; ?>'
+
+});
+<?php }
+} 
+$items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+// foreach($items as $itms){
+
+// $data.= $items->getId().",";
+
+// }
+
+$quote = Mage::getModel('checkout/session')->getQuote();
+$quoteData= $quote->getData();
+$grandTotal=$quoteData['grand_total'];
+$count = $this->helper('checkout/cart')->getSummaryCount();
+
+foreach ($quote->getAllItems() as $item) {
+    $productId[] = $item->getProduct()->getId();
+   
+}
+
+$productsids = implode(',',$productId);
+
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+if (strpos($currentUrl, 'onestepcheckout') !== false) {
+    
+?>
+
+fbq('track', 'InitiateCheckout',{
+content_type:'product',
+content_name:'initate checkout details',
+content_ids:[<?php  echo $productsids; ?>],
+num_items: '<?php echo $count; ?>',
+value:'<?php echo $grandTotal; ?>',
+currency:'<?php  echo $currency_code; ?>'
+});
+
+<?php } 
+ // order success
+$fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
+	if($fullActionName=="checkout_onepage_success") {
+	
+	
+	$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+	$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+	$grandtotal = $order->getGrandTotal();
+	$shippingAmount= $order->getShippingAmount();
+
+	$grandtotal= number_format($grandtotal, 2, '.', '');
+$orderItems = $order->getAllItems();
+
+	foreach($orderItems as $orderItem) { 
+	$orderIds[]=$orderItem->getId();
+	}
+	$orderids =implode(',',$orderIds);
+?>
+
+ fbq('track', 'Purchase',{
+ content_type:'product',
+ content_ids:[<?php echo $orderids ?>],
+ order_id:'<?php echo $orderId; ?>',
+ value:'<?php echo $grandtotal; ?>',
+currency:'<?php  echo $currency_code; ?>'
+
+ });
+
+ <?php }
+
+$fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
+
+if($fullActionName=="customer_account_index") {
+
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+ $createdate = $customer->getCreatedAt();
+ $customerName= $customer->getName();
+ $data = explode('T',$createdate);
+ $date = explode('-',$data[0]);
+ $currentDate= date('d');
+ if($date[2]==$currentDate){
+ ?>
+ 
+ fbq('track', 'CompleteRegistration',{
+ content_name: '<?php echo $customerName;?>',
+ status:'new registration ',
+currency:'<?php  echo $currency_code; ?>'
+ 
+ });
+ 
+ <?php } 
+ } ?>
+ 
+</script>
+
+<noscript><img height="1" width="1" style="display:none"
+
+src="https://www.facebook.com/tr?id=1759485774264810&ev=PageView&noscript=1"
+
+/></noscript>
+
+<!-- End Facebook Pixel Code -->
 
 <!-- preloading images-->
     <script language="JavaScript">
