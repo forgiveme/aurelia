@@ -37,8 +37,8 @@
 		<input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo (int)$this->getRequest()->getParam('replytocom', 0) ?>"/>
 	</div>
 	<div class="fieldset">
-		<div class="legend"><?php echo $this->__('Leave a Reply') ?></div>
-		<?php// if ($this->customerMustLogin()): ?>	
+		<div class="legend"><?php echo $this->__('Leave a Reply'); ?></div>
+		<?php // if ($this->customerMustLogin()): ?>	
 			<!--<p><?php echo $this->__('Sorry, you must be logged in to post a comment.') ?></p>
 			<p><button class="button btn-login" type="button" onclick="setLocation('<?php echo $this->getLoginLink() ?>');"><span><span><?php echo $this->__('Login') ?></span></span></button></p>-->
 		<?php // else: ?>

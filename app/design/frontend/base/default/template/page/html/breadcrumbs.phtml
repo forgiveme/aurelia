@@ -42,5 +42,80 @@
             </li>
         <?php endforeach; ?>
     </ul>
+	
+	
+	<div class="page-title blog-title">
+
+
+ <?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+if (strpos($currentUrl, 'blog/search') !== false) {
+ // $searchTearm = $_REQUEST['s'];
+ // $result = explode("search/",$currentUrl);
+	$data= $this->getRequest()->getParams('s');
+	$searchResult=$data['s'];
+ 
+  ?>
+	<h1><?php echo $this->__("Search: " )."".$searchResult; ?></h1>
+	<div class="back-toblog"><a href="<?php echo $this->getUrl('blog'); ?>"><span><</span> Back to Blog </a></div>
+	<?php  }else{
+	if(Mage::registry('wordpress_archive')){ 
+	$archiveName= Mage::registry('wordpress_archive')->getName(); 
+	?>
+	
+		<h1><?php echo $this->__('Aurelia Archives: %s', $archiveName); ?></h1>
+		<div class="back-toblog"><a href="<?php echo $this->getUrl('blog'); ?>"><span><</span> Back to Blog </a></div>
+	<?php }else{
+		
+		if(Mage::registry('wordpress_category')){
+		$category = Mage::registry('wordpress_category');
+	?>
+		<h1><?php  echo $this->escapeHtml($category->getName()); ?></h1>
+		<div class="back-toblog"><a href="<?php echo $this->getUrl('blog'); ?>"><span><</span> Back to Blog </a></div>
+		
+		<?php }else{
+				if(Mage::registry('wordpress_post_tag')){
+				$tag = Mage::registry('wordpress_post_tag');
+
+				?>
+				<h1><?php echo $this->__('Tag Archives') ?>: <?php echo $tag->getName(); ?></h1>
+		<div class="back-toblog"><a href="<?php echo $this->getUrl('blog'); ?>"><span><</span> Back to Blog </a></div>
+				<?php }else{ ?>
+		<h1><?php echo "Latest News From The Aurelia Blog";  // echo $this->escapeHtml($this->getBlogTitle()) ?></h1>
+		
+	<?php 
+			}
+		}
+				}
+			} 
+	 
+	
+	?>
+	
+</div>
+
+
+
+
+
+<?php  //echo Mage::getSingleton('core/layout') ->createBlock('wordpress/sidebar_widget_categories')->setTemplate('wordpress/sidebar/widget/categories.phtml')->toHtml(); ?>
+<div class="blog-categories">
+<?php $categories = Mage::getResourceModel('wordpress/post_category_collection'); ?>
+			<ul>
+	<?php 		foreach ($categories as $category){ ?>
+			
+		 <li> <a href="<?php echo $category->getUrl(); ?>"><?php echo  $category->getName(); ?></a></li>
+			
+			
+			
+	<?php 		}
+		
+		//	print_r($categories); 
+ ?>
+</ul>
+</div>
+	
+	
 </div>
 <?php endif; ?>
+
