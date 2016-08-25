@@ -6,19 +6,19 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 ?>
-<form id="respond" method="post" action="<?php echo $this->getCommentFormAction() ?>">
+<form id="respond" method="post" action="<?php echo Mage::helper('wordpress')->getBaseUrl('wp-comments-post.php'); ?>">
 	<div class="display-none">
 		<input type="hidden" name="comment_post_ID" value="<?php echo $this->getPostId() ?>"/>
 		<input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo (int)$this->getRequest()->getParam('replytocom', 0) ?>"/>
 	</div>
 	<div class="fieldset">
 		<div class="legend"><?php echo $this->__('Leave a Reply') ?></div>
-		<?php if ($this->customerMustLogin()): ?>	
-			<p><?php echo $this->__('Sorry, you must be logged in to post a comment.') ?></p>
-			<p><button class="button btn-login" type="button" onclick="setLocation('<?php echo $this->getLoginLink() ?>');"><span><span><?php echo $this->__('Login') ?></span></span></button></p>
-		<?php else: ?>
+		<?php// if ($this->customerMustLogin()): ?>	
+			<!--<p><?php echo $this->__('Sorry, you must be logged in to post a comment.') ?></p>
+			<p><button class="button btn-login" type="button" onclick="setLocation('<?php echo $this->getLoginLink() ?>');"><span><span><?php echo $this->__('Login') ?></span></span></button></p>-->
+		<?php // else: ?>
 			<ul class="form-list">
-				<?php if (!$this->isCustomerLoggedIn()): ?>
+				<?php // if (!$this->isCustomerLoggedIn()): ?>
 					<li class="fields">
 						<div class="field">
 							<label for="author" class="required"><?php echo $this->__('Name') ?> <em>*</em></label>
@@ -33,13 +33,13 @@
 							</div>
 						</div>
 					</li>
-				<?php endif; ?>
-				<li>
+				<?php // endif; ?>
+				<!-- <li>
 					<label for="url"><?php echo $this->__('Website') ?></label>
 					<div class="input-box">
 						<input type="text" id="url" name="url" class="input-text" value=""/>
 					</div>
-				</li>
+				</li> -->
 				<li class="wide">
 					<label for="comment" class="required"><?php echo $this->__('Comment') ?> <em>*</em></label>
 					<div class="input-box">
@@ -48,9 +48,9 @@
 				</li>
 				<?php echo $this->getChildHtml('before_form_end') ?>
 			</ul>
-		<?php endif; ?>
+		<?php // endif; ?>
 	</div>
-	<?php if (!$this->customerMustLogin()): ?>	
+	<?php // if (!$this->customerMustLogin()): ?>	
 	<div class="buttons-set">
 		<button type="submit" name="submit"  class="button" value="Post your comment" id="post-the-comment">
 			<span><span><?php echo $this->__('Leave a comment') ?></span></span>
@@ -64,5 +64,5 @@
 		new fishpig.WP.Comments.Form('respond', '<?php echo $this->getPost()->getPermalink() ?>');
 	//]]>
 	</script>
-	<?php endif; ?>
+	<?php // endif; ?>
 </form>

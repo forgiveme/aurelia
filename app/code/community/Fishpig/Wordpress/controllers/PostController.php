@@ -39,7 +39,39 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 	 */
 	public function viewAction()
 	{
+			 
 		$post = Mage::registry('wordpress_post');
+		
+		if($this->getRequest()->isPost()){
+		
+		$commentsData['comment_post_ID']= $this->getRequest()->getPost('comment_post_ID');
+		$commentsData['comment_author'] = $this->getRequest()->getPost('author');
+		$commentsData['comment_author_email']  = $this->getRequest()->getPost('email');
+		$commentsData['comment_content'] =$this->getRequest()->getPost('comment');
+		$commentsData['comment_author_IP']= $_SERVER['REMOTE_ADDR']; 
+		$commentsData['comment_author_url'] = Mage::helper('core/url')->getCurrentUrl();
+		$commentsData['comment_date'] = date("Y-m-d H:i:s");
+		$commentsData['comment_date_gmt'] = date("Y-m-d H:i:s");
+		$commentsData['comment_approved'] = 0;
+		 $results=Mage::getModel('wordpress/post_comment');
+		$result = $results->addcomments($commentsData); 		
+	
+		if($result==1){
+		
+		Mage::getSingleton("core/session")->addSuccess("Thank you for leaving a comment. Your post has been sent for approval by our Skincare team.");
+		// $this->_redirectReferer();
+		// $Url = Mage::helper('core/url')->getCurrentUrl();
+		
+		$this->_redirectReferer();
+		return false;
+		}else{
+					Mage::getSingleton("core/session")->addError("please enter all the fields"); 
+					$this->_redirectReferer();
+					return false;
+		}
+		
+		 
+		}
 		
 		$this->_rootTemplates[] = 'post_view';
 
@@ -88,6 +120,8 @@ class Fishpig_Wordpress_PostController extends Fishpig_Wordpress_Controller_Abst
 
 		$this->renderLayout();
 	}
+	
+	
 
 	/**
 	 * Display the appropriate message for a posted comment

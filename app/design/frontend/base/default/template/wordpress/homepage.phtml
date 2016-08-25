@@ -6,12 +6,134 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 ?>
-<div class="page-title blog-title <?php if (!$this->isFirstPage()): ?>not-<?php endif; ?>first-page<?php if ($this->isFirstPage() && $this->getTagLine()): ?> with-tagline<?php endif; ?>">
-	<h1><?php echo $this->escapeHtml($this->getBlogTitle()) ?></h1>
-</div>
+<style>
+	.hiddenbeforeload
+	{
+		display: none;
+	}
+</style>
+<!--div class="page-title blog-title <?php if (!$this->isFirstPage()): ?>not-<?php endif; ?>first-page<?php if ($this->isFirstPage() && $this->getTagLine()): ?> with-tagline<?php endif; ?>">
+	<h1><?php // echo $this->escapeHtml($this->getBlogTitle()) ?></h1>
+</div-->
 <?php if ($this->isFirstPage() && $this->getTagLine()): ?>
 	<p class="blog-desc blog-tag-line"><?php echo $this->escapeHtml($this->getTagLine()) ?></p>
 <?php endif; ?>
+
+<?php $customHelper=Mage::helper('custom');
+					if($customHelper->isMobileOrTablet())   {  ?>
+<div class="search-bar-mobile">
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('wordpress/sidebar/widget/search.phtml')->setFromId('searchformmobile')->toHtml(); ?>
+</div>
+<?php } ?>
 <div class="blog-home">
 	<?php echo $this->getPostListHtml() ?>
 </div>
+
+		<?php $path = $this->getUrl('blog/page/'); ?>
+
+<script>
+
+jQuery(document).ready(function(){
+	jQuery("#post-list .hiddenbeforeload").removeClass("hiddenbeforeload");
+		
+	/*jQuery(window).bind('beforeunload',function(){
+
+    //jQuery('#post-list').masonry('destroy');
+	jQuery('#post-list').masonry({
+	  itemSelector: 'li.item',
+	  columnWidth: 211,
+	  gutter: 20,
+	  //percentPosition: true
+	});*/
+	
+var $container = jQuery('#post-list');
+
+jQuery('#post-list').masonry({
+	  itemSelector: 'li.item',
+	  columnWidth: 211,
+	  gutter: 20,
+	  //percentPosition: true
+});
+
+jQuery(window).on("load", function(){
+	reload();
+});//window load
+
+function reload(){
+		jQuery('#post-list').imagesLoaded( function() {
+			jQuery('#post-list').masonry('reloadItems');
+			jQuery('#post-list').masonry();
+	});		
+}
+
+ var global_variable ="";
+  
+	function getresult(url) {
+	
+	global_variable = jQuery.ajax({
+			url: url,
+			type: "GET",
+		//	data:  {rowcount:jQuery("#rowcount").val()},
+			beforeSend: function(){
+			jQuery('#loader-icon').show();
+			},
+			complete: function(){
+			jQuery('#loader-icon').hide();
+			},
+			success: function(data){
+			// jQuery("").find(data);		
+			nextposts = jQuery(data).find('.blog-home #post-list').html();			
+			 jQuery('.blog-home #post-list').append(nextposts);
+			 var numberImages = jQuery("#post-list .hiddenbeforeload").length;
+			// alert("before load: "+numberImages);
+			 var counter = numberImages;
+			 
+			 jQuery("#post-list").imagesLoaded( function(){
+				// counter--;
+				// console.log( "counter: "+counter);
+				// if( counter <= 0 )
+				// {
+					// alert("after load");
+					jQuery("#post-list .hiddenbeforeload").removeClass("hiddenbeforeload");
+					reload();
+					pagerdata = jQuery(data).find('.blog-home .pager').html();
+					jQuery('.blog-home .pager').html(pagerdata);
+					setTimeout( function(){ 
+						// Do something after 1 second 
+						global_variable = "";
+					  }  , 1500 );				
+				// }
+			 });//img load
+			jQuery('#loader-icon').hide();
+			
+			
+			//console.log(data);
+			},
+			error: function(){} 	        
+	   });
+	}
+	jQuery(window).scroll(function(){ //console.log(jQuery(window).scrollTop() );
+	// console.log(jQuery('.post-list').height() );
+	if(global_variable){
+	 
+	}else{
+		if (jQuery(window).scrollTop() >=jQuery('.post-list').height()-400){
+		// console.log('height reached');
+		//if (jQuery(window).scrollTop() == jQuery(document).height() - jQuery(window).height()){
+		var	last = parseInt(jQuery('.pager li .last').text());
+		var current = parseInt(jQuery('.pager li.current').text());
+				 //console.log(last);
+				//console.log(current);
+			if(current <= last) {
+			// console.log("njkjkjk");
+				var pagenum = parseInt(current) + 1;
+				var dpath= "<?php echo $path ?>";
+				//console.log(dpath);
+				getresult(dpath+pagenum);
+				
+			}
+		}
+		 }
+	});
+});
+</script>

@@ -66,6 +66,25 @@ class Fishpig_Wordpress_Model_Post_Comment extends Fishpig_Wordpress_Model_Abstr
 		return Mage::helper('wordpress')->formatTime($this->getData('comment_date'), $format);
 	}
 	
+	public function addcomments($data){
+		// $data =array('comment_post_ID'=>'1','comment_author'=>'test');
+		
+		if($data['comment_author']!="" && $data['comment_author_email']!="" && $data['comment_content']!="" ){
+			//$this->setData($data);
+			
+			$this->setData($data);
+			$this->save();
+			$result =1;
+			// $this->_redirect('*/*/');
+		}else{
+		
+			$result =0;
+			
+		}
+	return $result;	 
+		
+	}
+	
 	/**
 	 * Return the URL for the comment author
 	 *
@@ -121,6 +140,8 @@ class Fishpig_Wordpress_Model_Post_Comment extends Fishpig_Wordpress_Model_Abstr
 		
 		return $this->getData('url');
 	}
+	
+	
 	
 	/**
 	 * Retrieve the page number that the comment is on

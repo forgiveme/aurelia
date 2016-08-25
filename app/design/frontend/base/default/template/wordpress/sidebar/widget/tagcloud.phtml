@@ -6,7 +6,11 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 ?>
-<?php if ($tags = $this->getTags()): ?>
+<?php
+ // echo "<pre>";
+ // print_r($this->getTags());
+ // exit();
+ if ($tags = $this->getTags()): ?>
 	<?php $tagCount = count($tags) ?>
 	<div class="block block-blog block-blog-tag-cloud block-tags">
 		<?php if ($title = $this->getTitle()): ?>
@@ -16,9 +20,14 @@
 		<?php endif; ?>
 		<div class="block-content">
 			<ul class="tags-list">
+				<?php $i=0; ?>
 				<?php foreach ($tags as $tag): ?>
+				<?php if($i < 50): ?>
 					<li<?php if (--$tagCount < 1): ?> class="last"<?php endif; ?>><a href="<?php echo $tag->getUrl() ?>" style="font-size:<?php echo $this->getFontSize($tag) ?>%;"><?php echo $this->htmlEscape($tag->getName()) ?></a></li>
-				<?php endforeach; ?>
+				<?php
+					endif;
+					$i++;
+					endforeach; ?>
 			</ul>
 		</div>
 	</div>

@@ -124,7 +124,9 @@ abstract class Fishpig_Wordpress_Model_Post_Abstract extends Fishpig_Wordpress_M
 		if (!$this->hasData('featured_image')) {
 			$this->setFeaturedImage($this->getResource()->getFeaturedImage($this));
 		}
-	
+	// echo "<pre>";
+	// print_r($this->getData('featured_image'));
+	// exit();
 		return $this->getData('featured_image');	
 	}
 	
@@ -294,6 +296,31 @@ abstract class Fishpig_Wordpress_Model_Post_Abstract extends Fishpig_Wordpress_M
 	public function isSticky()
 	{
 		return $this->_getData('is_sticky');
+	}
+	
+	public function getPostLike($postId)
+	{
+		
+		
+		$tableName= "wp_wti_like_post";
+		$selectField="value";
+			$select = $this->_getReadAdapter()
+				->select()
+				->from($tableName, $selectField)
+				->where( 'post_id =?', $postId)
+				->limit(1);
+
+			if(($value = $this->_getReadAdapter()->fetchOne($select)) !== false) {
+				return trim($value);
+			}
+
+		
+		return null;
+	}
+	
+	protected function _getReadAdapter()
+	{
+		return Mage::helper('wordpress/database')->getReadAdapter();
 	}
 	
 	/**

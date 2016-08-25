@@ -16,3 +16,41 @@
 		<?php echo $this->getText() ?>
 	</div>
 </div>
+
+
+<?php if($title=="Aurelia Event" || $title=="Aurelia Events"){
+
+// $username = "AureliaSkincare";
+// $limit = 5;
+
+ $_helper = Mage::helper('wordpress/twitter')->getTweets();
+ ?>
+ 
+<div class="block block-blog block-blog-tweets">
+<div class="block-title">
+			<span><?php echo $this->__('tweets') ?></span>
+		</div>
+<?php 
+foreach($_helper as $tweetrersult)
+ {
+
+    if (isset($tweetrersult->text)){ ?>
+	<?php $tweetUrl =$tweetrersult->entities->media[0]->url; 
+				if($tweetUrl==""){
+				$tweetUrl= "https://twitter.com/aureliaskincare";
+				}
+	?>
+		<div class="block-content">
+		<a target="_blank" href="<?php echo $tweetUrl; ?>"> <?php echo $tweetrersult->text; ?></a>
+		</div>
+		<?php 	}
+	
+	}
+	
+	?>
+	
+	</div>
+	<?php 
+   
+   }
+ ?>

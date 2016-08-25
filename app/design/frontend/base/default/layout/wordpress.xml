@@ -52,6 +52,8 @@
 		<reference name="head">
 			<action method="addCss" ifconfig="wordpress/misc/include_css"><style>wordpress/styles.css</style></action>
 			<action method="addJs"><script>fishpig/wordpress/search.js</script></action>
+			<action method="addJs"><script>fishpig/wordpress/masonry.pkgd.js</script></action>
+			<action method="addJs"><script>fishpig/wordpress/imagesloaded.pkgd.min.js</script></action>
 		</reference>
 		<reference name="left">
 			<action method="unsetChildren" ifconfig="wordpress/misc/sidebar_left_empty" />
@@ -61,6 +63,7 @@
 		</reference>
 		<reference name="sidebar">
 			<action method="unsetChildren" ifconfig="wordpress/misc/sidebar_left_empty" />
+		
 			<block type="wordpress/sidebar" name="wordpress_sidebar_sidebar" as="wp.sidebar.left" before="-">
 				<action method="setWidgetArea"><area>sidebar-1</area></action>
 			</block>
@@ -87,7 +90,7 @@
 		</reference>
 	</wordpress_post_list>
 	<!--
-	/**
+	/**/home1/
 	 * WordPress Homepage
 	 *
 	 */

@@ -7,16 +7,100 @@
  */
 ?>
 <?php $posts = $this->getPosts() ?>
+
 <?php if (count($posts) > 0): ?>
 	<div class="post-list">
+	<?php 
+	$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+		if(Mage::registry('wordpress_archive')){
+		$archive= Mage::registry('wordpress_archive');
+		$archiveData = $archive->getName(); 
+		}
+			if (strpos($currentUrl, 'blog/search') == false && $archiveData=="" && strpos($currentUrl, 'blog/category') == false ) {  ?>
+			<ul id="fetured-postdata">
+			<?php $i=0; ?>
+				<?php foreach($posts as $post): 
+							if($i < 1){
+							if ($post->getMetaValue('meta-checkbox') == "yes"){ 
+							
+							?>
+						
+							<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> featured-post">
+								<?php echo $this->getPostRenderer($post)->toHtml() ?>
+							</li>
+							
+						<?php 
+						$i++;
+								}
+								 }
+						endforeach; 
+					?>
+			</ul>
+			<?php } ?>
 		<ul id="post-list">
+			<?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+		 	if (strpos($currentUrl, 'blog/search') !== false) { ?>
 			<?php foreach($posts as $post): ?>
-				<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?>">
+			
+				<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> hiddenbeforeload">
 					<?php echo $this->getPostRenderer($post)->toHtml() ?>
 				</li>
+				
 			<?php endforeach; ?>
+			
+			<?php }else{
+				if(Mage::registry('wordpress_archive')){ 
+			$archiveName= Mage::registry('wordpress_archive')->getName(); 
+			?>
+			
+				<?php foreach($posts as $post): ?>
+			
+				<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> hiddenbeforeload">
+					<?php echo $this->getPostRenderer($post)->toHtml() ?>
+				</li>
+				
+			<?php endforeach; ?>
+			
+			
+			<?php }else{ ?>
+				
+
+						<?php foreach($posts as $post): 	
+				if ($post->getMetaValue('meta-checkbox') != "yes"){  ?>
+					<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?>  hiddenbeforeload">
+						<?php echo $this->getPostRenderer($post)->toHtml() ?>
+					</li>
+					
+				<?php 
+				}
+				endforeach; 
+				
+				
+				
+				} 
+			
+			}
+			?>
+			
 		</ul>
+		<?php $mediaUrl= Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>
+		<img style="display:none" id ="loader-icon" src="<?php echo $mediaUrl."LoaderIcon.gif"; ?>"/>
 		<script type="text/javascript">decorateList($('post-list'));</script>
 		<?php echo $this->getPagerHtml() ?>
 	</div>
+
+	<script>
+		// jQuery('#post-list').masonry({
+	  // itemSelector: 'li.item',
+	  // columnWidth: 211,
+	  // gutter: 20,
+	//  percentPosition: true
+	// });
+	
+
+	</script>
+	
+	
+
 <?php endif; ?>

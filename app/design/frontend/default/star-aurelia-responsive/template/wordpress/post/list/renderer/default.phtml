@@ -7,25 +7,97 @@
  */
 ?>
 <?php $post = $this->getPost() ?>
+
+<?php 
+ // echo "<pre>";
+ // print_r($post->getComments()); 
+  // print_r($post);
+ // exit();
+  //comment_count
+ ?>
+
 <div class="post-list-item">
-	<div class="custom-post-date"><?php echo $post->getPostDate(d) ?><br><span><?php echo $post->getPostDate(M) ?></span></div>
-	<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+	<!--div class="custom-post-date"><?php echo $post->getPostDate(d) ?><br><span><?php echo $post->getPostDate(M) ?></span></div-->
+	
 	<?php echo $this->getBeforePostContentHtml() ?>
 	<div class="post-entry entry<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
 		<?php if ($post->isViewableForVisitor()): ?>
 			<?php if ($featuredImage = $post->getFeaturedImage()): ?>
-				<div class="featured-image left">
-					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+				<div class="featured-image left"> 
+				<?php // $featuredImage->getAvailableImage(); ?>
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+					<?php if($post->getMetaValue('meta-checkbox') =="yes"): ?>
+					<img src="<?php echo $featuredImage->getFullSizeImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+					<?php else:
+						$featuredMedium = $featuredImage->getMediumImage();
+							if($featuredMedium !=""):
+						?>
+						<img src="<?php echo $featuredImage->getMediumImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+						<?php  else: ?>
+
+					<img src="<?php echo $featuredImage->getMediumImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+
+						<?php 		endif;
+						endif;
+					
+					
+					?>
+					 
+					</a>
 				</div>
-			<?php endif; ?>
-			<?php if ($this->displayExcerptInFeed() || $post->hasMoreTag()): ?>
-				<?php echo $post->getPostExcerpt() ?>
-			<?php else: ?>
-				<?php echo $post->getPostContent() ?>
-			<?php endif; ?>
+				<?php
+				else:
+						$content= $post->getPostContent();
+						preg_match('/\<img(.*?)\/\>/', $content, $matches); ?>
+						<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+						<?php echo $matches[0]; ?> </a>
+						<?php endif; ?>
+						<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+			<?php   if ($this->displayExcerptInFeed() || $post->hasMoreTag()): 
+		//	if($post->getPostExcerpt()):
+			?>
+				<?php    $postExcerpts= $post->getPostExcerpt();
+								//$postExcerpts = preg_replace("/<img[^>]+\>/i", " ", $postExcerpts); 
+								$postExcerpts = strip_tags($postExcerpts);
+								$postExcerptLimited = substr($postExcerpts, 0, 80);
+								 echo $postExcerptLimited;
+				?> <a href="<?php echo $post->getPermalink() ?>"><?php echo $this->__('READ MORE  >');  ?></a>
+			<?php  else: ?>
+				<?php   $content= $post->getPostContent();
+						// echo substr($content, 0, 80);
+				//  $content = preg_replace("/<img[^>]+\>", " ", $content); 
+								 //$content = preg_replace("/<img[^>]+\>/i", " ", $content); 
+								 $content = strip_tags($content);
+								$contentData= substr($content, 0, 80);
+								echo "<div class='short-desc'>".$contentData."</div>";	
+								
+							//	$postcntnt =  substr($content,1,100);  
+								//echo $postcntnt;
+				?>
+			<a href="<?php echo $post->getPermalink() ?>"><?php echo $this->__('READ MORE  >');  ?></a>
+			 <?php 	// $content = preg_replace("/<img[^>]+\>/i", "(image) ", $content);          
+				// $content = apply_filters('the_content', $content);
+				// $content = str_replace(']]>', ']]>', $content);
+				// echo $content; ?>
+				
+			<?php  endif; ?>
+			<div class="post-footer-counter">
+			<?php 
+			$plikes= $post->getPostLike($post->getId());
+			if($plikes !=""){ ?>
+			<span class="post-likes"><?php echo $post->getPostLike($post->getId()); ?></span>
+			<?php  }
+			$postCount = $post->getCommentCount(); 
+			if($postCount !=0){
+			?>
+			<span class="comment-count"><?php  echo $post->getCommentCount(); ?></span> <?php }?> </div>
+			<?php 		// echo $post->getMetaValue('meta-checkbox');   // use to check current post is featured-post or not 
+			 
+			
+			?>
 		<?php else: ?>
 			<?php echo $this->getPasswordProtectHtml($post) ?>
-		<?php endif; ?>
+		<?php endif; ?> 
 	</div>
-	<?php echo $this->getAfterPostContentHtml() ?>
+	<?php // echo $this->getAfterPostContentHtml() ?>
 </div>

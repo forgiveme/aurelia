@@ -13,16 +13,18 @@
 		</div>
 	<?php endif; ?>
 	<div class="block-content">
-		<form method="get" action="<?php echo $this->getFormActionUrl() ?>" id="blog-search-form">
+	<?php // echo $this->getFormActionUrl() ?>
+		<form method="get" action="<?php echo $this->getUrl('blog/search') ?>" id="<?php echo $this->getFromId(); ?>">
 			<div class="blog-search">
 				<?php if ($this->getPostType()): ?>
 				<div class="no-display">
 					<input type="hidden" name="post_type" value="<?php echo $this->getPostType() ?>" />
 				</div>
 				<?php endif; ?>
-				<input type="text" name="s" class="input-text" title="<?php echo $this->__('Search Posts') ?>" value="<?php echo $this->escapeHtml($this->getSearchTerm()) ?>"/>
+				<?php // echo $this->escapeHtml($this->getSearchTerm()) ?>
+				<input type="text" name="s" class="input-text" title="<?php echo $this->__('Search the blog') ?>" placeholder="Search the blog" value=""/>
 				<button class="button" title="<?php echo $this->__('Search') ?>" type="submit"><span><span><?php echo $this->__('Search') ?></span></span></button>
-				<script type="text/javascript">new fishpig.WP.Search.Form('blog-search-form');</script>
+				<script type="text/javascript">new fishpig.WP.Search.Form('<?php echo $this->getFromId(); ?>');</script>
 			</div>
 		</form>
 	</div>

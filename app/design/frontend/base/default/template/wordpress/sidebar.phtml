@@ -3,6 +3,65 @@
  *
  */
 ?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl()."js/instafeed.min.js"; ?>"></script>
 <div class="wp-sidebar">
+
+<?php  echo $this->getLayout()->createBlock('core/template')->setTemplate('wordpress/sidebar/widget/search.phtml')->setFromId('searchformside')->toHtml(); ?>
+
+<div class="aurelia-tv">
+<!-- https://www.youtube.com/channel/UC4gv2-gAsJwi2jQuJu0wl9A  -->
+<div class="tv-heading"><span class="tv-line">Aurelia TV </span> <a href="<?php echo $this->getUrl('aurelia-tv'); ?>" target="_blank">WATCH MORE</a></div>
+<iframe width="240" height="220" src="<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blog_vedio_url')->toHtml(); ?>">
+</iframe>
+</div>
+
+
+<script type="text/javascript"> 
+    // var feed = new Instafeed({
+        // get: 'tagged',
+        // tagName: '@aureliaskincare',
+		 // limit: 6,
+        // clientId: '1b756a684f634501925d6ac6acfb4ced'
+    // });
+    // feed.run();
+</script>
+
+<script type="text/javascript">
+    var userFeed = new Instafeed({
+        get: 'user',
+		limit: 6,
+        userId: '312882674',
+        accessToken: '312882674.1b756a6.da7c2c076a014d08bffd6b117031bcac'
+    });
+    userFeed.run();
+</script>
+<div class="block block-blog instagram-thumbs">
+<div class="block-title">
+	<span>instagram </span>
+	<a style ="float:right;font-size:10.5px; letter-spacing:0.5px; " href="https://www.instagram.com/aureliaskincare/">FOLLOW US 	</a>
+	</div>
+<div id="instafeed"></div>
+
+<!--div class="instagram-bottom-part"><a href="https://www.instagram.com/aureliaskincare/">SEE MORE </a> </div-->
+</div>
+
+<div class="block block-blog block-blog-skin-tools">
+<div class="block-title">
+	<span>take our skin tool</span>
+	</div>
+	<div class="block-content">
+	<?php $mediaUrl= Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>
+	<a href="<?php echo $this->getUrl('skintools'); ?>"><img src="<?php echo $mediaUrl."skin-tool.jpg"; ?>" alt="skin-tools"/></a>
+	</div>
+</div>
+
+	<!--div class="block block-blog block-blog-events">
+	<div class="block-title">
+		<strong><span>Aurelia Events</span></strong>
+	</div> 
+	<div class="block-content">
+	 <?php //  echo $this->getLayout()->createBlock('cms/block')->setBlockId('events_data')->toHtml(); ?>
+	</div>
+	</div-->
 	<?php echo $this->getChildHtml() ?>
 </div>

@@ -11,7 +11,7 @@
 	<div class="block block-blog block-blog-archives">
 		<?php if ($title = $this->getTitle()): ?>
 			<div class="block-title">
-				<strong><span><?php echo $this->__($title) ?></span></strong>
+				<strong><span class="archive-data"><?php echo $this->__($title) ?></span></strong>
 			</div>
 		<?php endif; ?>
 		<div class="block-content">
@@ -28,15 +28,54 @@
 					</select>
 				</li>
 			<?php else: ?>
+				<?php $archiveYears=array(); ?>
 				<?php foreach($archives as $archive): ?>
+								<?php $postDetail= $archive->getName() ; 
+									$postdata=explode(' ',$postDetail);
+									if (!in_array($postdata[1], $archiveYears, true)) {
+										$archiveYears[]=$postdata[1];
+									}
+									
+					endforeach;
+						?>
+						<?php
+						foreach($archiveYears as $archiveYrs){ ?>
+						<li class="items years">
+							<a href="javascript:void(0);" title="<?php echo $archiveYrs?>"><?php echo $archiveYrs; ?> <span class="year-icon"></span></a>
+						
+					<ul>
+						<?php foreach($archives as $archive):  
+						$postDetails= $archive->getName() ; 
+									$postdata2=explode(' ',$postDetails); ?>
+					<?php 	if($postdata2[1]==$archiveYrs){ ?>
 					<li class="item<?php if ($this->isCurrentArchive($archive)): ?> active<?php endif; ?>">
+							
 						<a href="<?php echo $archive->getUrl() ?>" title="<?php echo $archive->getName() ?>"><?php echo $this->translateDate($archive->getName()) ?></a>
 						<?php if ($this->getCount()): ?> (<?php echo $archive->getPostCount() ?>)<?php endif; ?>
 					</li>
-				<?php endforeach; ?>
+				<?php } endforeach; ?>
+				</ul>
+				</li>
+				
+			<?php 	}
+					// echo "<pre>";
+						// print_r($archiveYears);
+				?>
 			<?php endif; ?>
 			</ul>
 			<script type="text/javascript">decorateList('wp-archive-list')</script>
 		</div>
 	</div>
+	
+	<script>
+	jQuery('#wp-archive-list .years a').click(function() {
+ 
+   jQuery(this).next('ul').toggle("slow");
+   	jQuery(this).children('.year-icon').toggleClass( "down" );
+   
+  });
+	
+	</script>
+	
 <?php endif; ?>
+

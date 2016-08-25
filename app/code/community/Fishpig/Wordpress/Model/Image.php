@@ -71,7 +71,9 @@ class Fishpig_Wordpress_Model_Image extends Fishpig_Wordpress_Model_Post_Attachm
 	public function getAvailableImage()
 	{
 		if ($sizes = $this->getSizes()) {
+
 			foreach($sizes as $type => $data) {
+			
 				return $this->_getImagePath($type);
 			}
 		}
@@ -102,6 +104,7 @@ class Fishpig_Wordpress_Model_Image extends Fishpig_Wordpress_Model_Post_Attachm
 		
 		if ($type == null) {
 			$filename = basename($this->getFile());
+		
 		}
 		else {
 			$sizes = $this->getSizes();
@@ -109,6 +112,7 @@ class Fishpig_Wordpress_Model_Image extends Fishpig_Wordpress_Model_Post_Attachm
 			if (isset($sizes[$type]['file'])) {
 				$filename = $sizes[$type]['file'];
 			}
+		
 		}
 	
 		if (!$filename) {

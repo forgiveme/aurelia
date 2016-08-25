@@ -6,11 +6,18 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 ?>
+<style>
+	.hiddenbeforeload
+	{
+		display: none;
+	}
+</style>
 <?php $_category = $this->getCategory() ?>
 <?php if ($_category): ?>
-	<div class="page-title">
+	<!--div class="page-title">
 		<h1><?php echo $this->escapeHtml($_category->getName()) ?></h1>
-	</div>
+		<?php // echo $_category->getUrl(); ?>
+	</div-->
 	<?php if ($description = $_category->getDescription()): ?>
 		<p class="blog-desc"><?php echo $description ?></p>
 	<?php endif; ?>
@@ -20,3 +27,93 @@
 		<p class="note-msg"><?php echo $this->__('There are no posts matching your selection.') ?>
 	<?php endif; ?>
 <?php endif; ?>
+
+	<?php $path = $_category->getUrl(); 
+				$path=$path."page/";
+	?>
+<script>
+jQuery(document).ready(function(){
+	jQuery("#post-list .hiddenbeforeload").removeClass("hiddenbeforeload");
+
+ 	 var $container = jQuery('#post-list');
+
+jQuery('#post-list').masonry({
+	  itemSelector: 'li.item',
+	  columnWidth: 211,
+	  gutter: 20,
+	  //percentPosition: true
+	});
+jQuery(window).on("load", function(){
+	reload();
+});//window load
+
+function reload(){
+		jQuery('#post-list').imagesLoaded( function() {
+			jQuery('#post-list').masonry('reloadItems');
+			jQuery('#post-list').masonry();
+	});		
+}
+
+ var global_variable ="";
+  
+	function getresult(url) {
+	
+	global_variable = jQuery.ajax({
+			url: url,
+			type: "GET",
+		//	data:  {rowcount:jQuery("#rowcount").val()},
+			beforeSend: function(){
+			jQuery('#loader-icon').show();
+			},
+			complete: function(){
+			jQuery('#loader-icon').hide();
+			},
+			success: function(data){
+			// jQuery("").find(data);
+		
+			nextposts = jQuery(data).find('.page #post-list').html();
+			
+			 jQuery('.wordpress-post-category-view #post-list').append(nextposts);
+				 jQuery("#post-list").imagesLoaded( function(){
+				
+					jQuery("#post-list .hiddenbeforeload").removeClass("hiddenbeforeload");
+					reload();
+			var pagerdata = jQuery(data).find('.post-list .pager').html();
+			jQuery('.wordpress-post-category-view .pager').html(pagerdata);
+					setTimeout( function(){ 
+						// Do something after 1 second 
+						global_variable = "";
+					  }  , 1500 );				
+				// }
+			 });//img load
+				jQuery('#loader-icon').hide();
+			},
+			error: function(){} 	        
+	   });
+	}
+	jQuery(window).scroll(function(){ //console.log(jQuery(window).scrollTop() );
+	// console.log(jQuery('.post-list').height() );
+	if(global_variable){
+	 
+	}else{
+		if (jQuery(window).scrollTop() >=jQuery('.post-list').height()-200){
+		// console.log('height reached');
+		//if (jQuery(window).scrollTop() == jQuery(document).height() - jQuery(window).height()){
+		var	last = parseInt(jQuery('.pager li .last').text());
+		var current = parseInt(jQuery('.pager li.current').text());
+				 //console.log(last);
+				//console.log(current);
+			if(current <= last) {
+			// console.log("njkjkjk");
+				var pagenum = parseInt(current) + 1;
+				var dpath= "<?php echo $path ?>";
+				//console.log(dpath);
+				//console.log(pagenum);
+				getresult(dpath+pagenum);
+				
+			}
+		}
+		 }
+	}); 
+});
+</script>
