@@ -12219,9 +12219,9 @@ h1.newpop-heading{color:#706f6f; font-weight:600; font-size:19px; font-weight:70
 
 .popup-content-sub #loading_mask_load2{width:100%; text-align:center; margin:0!important; padding-top:10px} 
 
-.success-result{padding:10px 0 0 15px;background: url(../images/i_msg-success.gif) 0 8px no-repeat; color: #868280; height:16px; display:none; font-size:11px;}
+.success-result{padding:10px 0 0 15px;background: url(../images/i_msg-success.gif) 0 8px no-repeat; color: #868280; height:30px; display:none; font-size:11px;}
 
-.error-result{padding:10px 0 0 15px; background:url(../images/i_msg-error.gif) 0 8px no-repeat; color: #868280; word-wrap: break-word; height:16px; display:none; font-size:11px;}
+.error-result{padding:10px 0 0 15px; background:url(../images/i_msg-error.gif) 0 8px no-repeat; color: #868280; word-wrap: break-word; height:30px; display:none; font-size:11px;}
 
 .success-result li {text-align:left; padding-left:15px;}
 
