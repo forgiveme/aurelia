@@ -1175,6 +1175,18 @@ a[href^="tel"] {
 
 /***************************************/
 
+.boutique-top-section *{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.boutique-top-section img{ max-width:100%;}
+.boutique-top-section{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; display: block; width: 100%; float: left; padding:14px 30px; text-align:center;}
+.boutique-right-banner{ float:right; width:55%;}
+.boutique-left-section{float:left; width:40%;}
+.boutique-left-section p{ font-size:18px; line-height:135%; margin-top:16px; }
+.boutique-left-heading{ background:url(/media/boutique-txt.jpg) no-repeat center top; min-width:100%;     padding-bottom: 57.4%;    margin: 0 -122px 0 -30px;}
+.uppercase{ text-transform:uppercase;}
+.boutique-contant-section{ width:100%; clear:both; display:block; padding-top:57px;}
+.boutique-contant-section p{ font-size:16px; line-height:150%;}
+.boutique-contant-section figure{ margin:58px 0 16px 0;}
+.boutique-left-heading img{ display:none;}
 
 @media (min-width: 1000px) and (max-width: 1024px) {
 ul#video-slider li {
@@ -1373,6 +1385,11 @@ body div.onestepcheckout-threecolumns div.onestepcheckout-column-right {
 	width: 28% !important;
 }
 }
+
+.boutique-right-banner{width:50%;}
+.boutique-left-section{width:50%;}	
+.boutique-left-heading{margin: 0 -32px 0 -30px; padding-bottom: 48%; background-size: 100%;}
+
 .biography-img {
 	display: none;
 }
@@ -2205,6 +2222,12 @@ div.giftwrap {
 .customer-account-create .wrapper .page .register-form .buttons-set button.button span span {
 	padding: 0px;
 }
+.boutique-right-banner{width:100%;}
+.boutique-left-section{width:100%; margin-top:40px;}
+.boutique-left-heading{margin: 0 -30px; padding-bottom:0; background: none;}
+.boutique-left-heading img{ display:inline-block; max-width:inherit; width:100%;}
+.boutique-contant-section p{ display:none;}
+.boutique-contant-section figure{ margin-top:0px;}
 }
 .onestepcheckout-index-index .preferences {
 	margin-top: 20px;
@@ -2535,6 +2558,7 @@ button.button span {
 .new-changes p br {
 	display: none;
 }
+.boutique-left-section p{ font-size:17px;}
 }
 
 @media (min-width: 320px) and (max-width: 320px) {
