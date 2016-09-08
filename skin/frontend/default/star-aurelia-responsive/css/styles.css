@@ -12447,3 +12447,6 @@ body.checkout-cart-index .totals button span{width:100%; float:left; }
 .wordpress-index-index .wp-sidebar .block-blog-tag-cloud{display:block !important;}
 .wordpress-post-view .post-view .post-meta{display:block;}
 .is-blog .wp-sidebar .block-tags{display:block !important;}
+.stockists #sidebar-nav .corporate-image a {padding:0px;}
+.stockists #sidebar-nav a{text-transform:capitalize;height:auto;width:100%; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.stockists .corporate-image img{ width:100%; margin:-5px 0 -16px 0;}
