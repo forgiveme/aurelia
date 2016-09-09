@@ -17,9 +17,9 @@
 //define("DB_PASS", "kVBC%KC^^v5p");
 
 define("DB_HOST", "localhost");
-define("DB_NAME", "aureliadb");
-define("DB_USER", "aureliauseruser");
-define("DB_PASS", "aureliaPje8)e");
+define("DB_NAME", "aureliag_arlagitdb");
+define("DB_USER", "aureliag_arlagit");
+define('DB_PASS', 'OK3a$ERym4q&');
 // Create connection
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306);
 

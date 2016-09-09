@@ -52,7 +52,7 @@ $top3 = explode(",", $q6);
 
 $url_data  = "?insid=". $insertId . "&q1=" . $q1 . "&q2=" . $q2 . "&q3=" . $q3 . "&q4=". $q4. "&q5=". $q5 . "&q6=" . $top3[0] . ","  . $top3[1] . ","  . $top3[2] . "&q7=". $q7 . "&q8=". $q8 . "&q9=". $q9 . "&q10=". $q10 . "&q11=". $q11 . "&q12=". $q12 . "&q13=". $q13 . "&q14=". $q14 . "&q15=". $q15;
 
-header('Location: responses.html' . $url_data);
+header('Location: response.html' . $url_data);
 
 $stmt->close();
 $conn->close();
