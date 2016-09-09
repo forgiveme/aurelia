@@ -134,28 +134,7 @@
         </table></td>
     </tr>
     <tr>
-      <td height="30">&nbsp;</td>
-    </tr>
-    <tr>
-      <td ><img src="{{skin url="images/email/image1.jpg"}}" alt=""/></td>
-    </tr>
-    <tr>
-      <td class="txt1" style="font-size:13px; line-height:25px; padding-top:15px; color:#4d4d4d; text-align:center; font-family: Georgia,Times,Times New Roman,serif;">To welcome you to Aurelia Loyalty you will receive complimentary delivery for your next order of any
-        value to a UK address only. Redeemable on our website <a href="http://www.aureliaskincare.com/" title="www.aureliaskincare.com" style="text-decoration:none; color:#4d4d4d;">www.aureliaskincare.com</a> at checkout. This code
-        expires after 30 days. Next-day delivery on all orders placed before 12.00pm GMT</td>
-    </tr>
-    <tr>
       <td height="20">&nbsp;</td>
-    </tr>
-    <tr>
-      <td class="td" align="center"><div class="gift-card" style="color:#4d4d4d;" >{{var code}}</div></td>
-    </tr>
-    <tr>
-      <td class="txt1" style="font-size:13px; color:#4d4d4d; line-height:25px; padding-top:15px; text-align:center; font-family: Georgia,Times,Times New Roman,serif;"> Don’t forget as a member of Aurelia Loyalty you will recieve complimentary delivery, on all orders in
-        the UK over £50 and worldwide orders over &pound;150.</td>
-    </tr>
-    <tr>
-      <td height="10">&nbsp;</td>
     </tr>
     <tr>
       <td  class="graybox" style=" font-family: Georgia,Times,Times New Roman,serif; background:#999999;
