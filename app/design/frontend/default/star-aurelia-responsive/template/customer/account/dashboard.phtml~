@@ -49,7 +49,7 @@
 		
 		<div class="loyaltytxt">
 		<h3>Aurelia Loyalty</h3>
-		<p> <?php echo $this->__("Once you have cumulatively spent £350 we will send you a £35 Aurelia Gift Card. Don’t forget there is complimentary delivery on all UK orders over £50 and on all international orders over £100."); ?></p>
+		<p> <?php echo $this->__("Once you have cumulatively spent £350 we will send you a beautifully boxed £35 Aurelia gift card.  Don’t forget Free UK Delivery all orders over £50 and Free international delivery when you spend over £150."); ?></p>
 		
 		</div>
 		
