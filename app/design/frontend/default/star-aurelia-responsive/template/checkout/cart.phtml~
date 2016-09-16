@@ -125,7 +125,7 @@ $customHelper=Mage::helper('custom');
 		$freeshipDifference = $freeshipThreshold - $cartTotal;
 		
 		if($cartTotal < $freeshipThreshold){
-			echo '<p class="free-shipping-threshold-message onestepcheckout-description">Spend a further <strong>&pound;'.$freeshipDifference.'</strong> to qualify for FREE UK Delivery! Aurelia Loyalty offers complimentary worldwide delivery over &pound;100.</p>';
+			echo '<p class="free-shipping-threshold-message onestepcheckout-description">Spend a further <strong>&pound;'.$freeshipDifference.'</strong> to qualify for FREE UK Delivery! Aurelia Loyalty offers complimentary worldwide delivery over &pound;150.</p>';
 		}
 		?>	
 		
