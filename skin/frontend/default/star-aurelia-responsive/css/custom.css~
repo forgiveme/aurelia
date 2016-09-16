@@ -2237,17 +2237,6 @@ div.giftwrap {
 .boutique-contant-section p{ display:none;}
 .boutique-contant-section figure{ margin-top:0px;}
 
-.boutique-popup1{ padding:0 15px 15px 15px;}
-.boutique-popup1 figure{ margin:0 -15px; padding:0 0 25px 0;}
-.boutique-popup1 h3{ font-size:18px;}
-.boutique-popup2{ padding:0 15px 15px 15px;}
-.boutique-popup2 figure{ margin:0 -15px;}
-.boutique-popup2 h2{margin-top:0px;}
-.boutique-popup2 h3{ font-size:16px; line-height:150%;}
-.boutique-popup2 h3 small{ display:block;}
-#boutique-popup1-popup-sub,
-#boutique-popup2-popup-sub{ max-width:88%; left: 6%;}
-
 .CorporateGiftingMain{ background-image:none;}
 .CorporateGiftingMain h2{ margin:30px 0 0 0;}
 .CorporateGiftingMain h4{ margin:15px 0 0 0;}

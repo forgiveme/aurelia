@@ -12193,7 +12193,7 @@ h1.newpop-heading{color:#706f6f; font-weight:600; font-size:19px; font-weight:70
 
 
 
-.cms-home .popup-exit-sub,.cms-aureliaboutiquedemo .popup-exit-sub {
+.cms-home .popup-exit-sub {
 
     background: url(../images/popup_close.png) no-repeat center center;
 
