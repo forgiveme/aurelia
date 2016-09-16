@@ -1173,20 +1173,49 @@ a[href^="tel"] {
 .customer-account-login .loyalty-section .loyalty-img{margin-bottom:24px;}
 .customer-account-login .loyalty-section p{font-size:14px; line-height:20px; height:50px;}
 
-/***************************************/
+/*************boutique**************************/
 
 .boutique-top-section *{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
 .boutique-top-section img{ max-width:100%;}
 .boutique-top-section{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; display: block; width: 100%; float: left; padding:14px 30px; text-align:center;}
-.boutique-right-banner{ float:right; width:55%;margin-top: 50px;}
+.boutique-right-banner{ float:right; width:55%; margin-top:30px;}
 .boutique-left-section{float:left; width:40%;}
-.boutique-left-section p{ font-size:18px; line-height:135%; margin-top:16px; }
+.boutique-left-section p{ font-size:16px; line-height:135%; margin-top:16px; }
 .boutique-left-heading{ background:url(/media/boutique-txt.jpg) no-repeat center top; min-width:100%;     padding-bottom: 57.4%;    margin: 0 -122px 0 -30px;}
-.uppercase{ text-transform:uppercase;}
-.boutique-contant-section{ width:100%; clear:both; display:block; padding-top:57px;}
-.boutique-contant-section p{ font-size:16px; line-height:150%;}
+.boutique-left-section p.uppercase{ text-transform:uppercase; line-height:190%; margin-top:9px;}
+.boutique-left-section p.smalltext{ font-size:14px; font-style:italic; margin-top:10px;}
+.boutique-contant-section{ width:100%; clear:both; display:block; padding-top:47px;}
+.boutique-contant-section h2{ margin-bottom:0; padding-bottom:15px;}
+.boutique-contant-section h3{ font-size:18px; text-transform:uppercase; margin:20px 0 0 0;}
+.boutique-contant-section h3 span{ display:block; letter-spacing:0px; font-size:14px; font-style:italic; text-transform:none;}
+.boutique-contant-section p{ font-size:14px; line-height:150%; margin-top:10px;}
+.boutique-top-section sup{ font-size:10px;}
+.boutique-contant-section p span{ display:block;}
 .boutique-contant-section figure{ margin:58px 0 16px 0;}
 .boutique-left-heading img{ display:none;}
+.boutique-contant-section .BookNow{ font-size:14px; background:#95918e; color:#fff; text-align:center; display:table; text-transform:uppercase; border:1px solid #6d6f71; padding:9px 30px; margin:30px auto auto auto;}
+.boutique-contant-section hr{ height:1px; background:#8e8e8e; border:0px none; margin:33px 0 45px 0;}
+.boutique-contant-section p.italictext{ font-style:italic;}
+.boutique-contant-section p.largetext{ font-size:16px;}
+
+.boutique-popup1{ max-width:804px; width:100%; margin:auto; text-align:center; clear:both; padding:0 60px 38px 60px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;  background:#fff;}
+.boutique-popup1 figure{ margin:0 -60px; padding:0 0 25px 0;}
+.boutique-popup1 h3{ font-size:18px; text-transform:uppercase; padding:0px; margin:10px 0 0 0; color:#868280;}
+.boutique-popup1 h3 span{ display:block; letter-spacing:0px; font-size:14px; font-style:italic; text-transform:none;}
+.boutique-popup1 p{ font-size:14px; line-height:150%; margin:21px 0 0 0; padding:0px; color:#868280; text-align:center;}
+.boutique-popup1 .BookNow{ font-size:18px; background:#95918e; color:#fff !important; text-align:center; display:table; border:1px solid #6d6f71; padding:9px 30px; margin:30px auto auto auto;}
+
+.boutique-popup2{ max-width:804px; width:100%; margin:auto; text-align:center; clear:both; padding:0 60px 38px 60px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; background:#fff;}
+.boutique-popup2 figure{ margin:0 -60px; padding:0px;}
+.boutique-popup2 figure img{ width:100%;}
+.boutique-popup2 h2{font-size:18px; text-transform:uppercase; margin: -26px 0 0 0; padding:0px; color:#868280;}
+.boutique-popup2 h3{ font-size:16px; text-transform:uppercase; margin:15px 0 0 0; color:#868280; line-height: 226%;}
+.boutique-popup2 h3 small{letter-spacing:0px; font-style:italic; text-transform:none; font-size:100%;}
+.boutique-popup2 p{ font-size:14px; line-height:150%; margin:21px 0 0 0; padding:0px; color:#868280; text-align:center;}
+.boutique-popup2 .BookNow{ font-size:18px; background:#95918e; color:#fff !important; text-align:center; display:table; border:1px solid #6d6f71; padding:9px 30px; margin:30px auto auto auto;}
+
+
+/*************boutique**************************/
 
 .CorporateGiftingMain *{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
 .CorporateGiftingMain{ text-align:center; display:block;  background:url(/media/bottom_flower.jpg) no-repeat center bottom #fff; padding:20px 20px 40px 20px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
@@ -1392,11 +1421,15 @@ ul#tv-grid {
 body div.onestepcheckout-threecolumns div.onestepcheckout-column-right {
 	width: 28% !important;
 }
-}
+
 
 .boutique-right-banner{width:50%;}
 .boutique-left-section{width:50%;}	
 .boutique-left-heading{margin: 0 -32px 0 -30px; padding-bottom: 48%; background-size: 100%;}
+
+.boutique-contant-section p span{ display: inline;}
+
+}
 
 .biography-img {
 	display: none;
@@ -2236,6 +2269,17 @@ div.giftwrap {
 .boutique-left-heading img{ display:inline-block; max-width:inherit; width:100%;}
 .boutique-contant-section p{ display:none;}
 .boutique-contant-section figure{ margin-top:0px;}
+
+.boutique-popup1{ padding:0 15px 15px 15px;}
+.boutique-popup1 figure{ margin:0 -15px; padding:0 0 25px 0;}
+.boutique-popup1 h3{ font-size:18px;}
+.boutique-popup2{ padding:0 15px 15px 15px;}
+.boutique-popup2 figure{ margin:0 -15px;}
+.boutique-popup2 h2{margin-top:0px;}
+.boutique-popup2 h3{ font-size:16px; line-height:150%;}
+.boutique-popup2 h3 small{ display:block;}
+#boutique-popup1-popup-sub,
+#boutique-popup2-popup-sub{ max-width:88%; left: 6%;}
 
 .CorporateGiftingMain{ background-image:none;}
 .CorporateGiftingMain h2{ margin:30px 0 0 0;}
