@@ -2263,12 +2263,13 @@ div.giftwrap {
 .customer-account-create .wrapper .page .register-form .buttons-set button.button span span {
 	padding: 0px;
 }
+
 .boutique-right-banner{width:100%;}
 .boutique-left-section{width:100%; margin-top:40px;}
 .boutique-left-heading{margin: 0 -30px; padding-bottom:0; background: none;}
 .boutique-left-heading img{ display:inline-block; max-width:inherit; width:100%;}
-.boutique-contant-section p{ display:none;}
 .boutique-contant-section figure{ margin-top:0px;}
+.boutique-contant-section p span{ display:inline;}
 
 .boutique-popup1{ padding:0 15px 15px 15px;}
 .boutique-popup1 figure{ margin:0 -15px; padding:0 0 25px 0;}

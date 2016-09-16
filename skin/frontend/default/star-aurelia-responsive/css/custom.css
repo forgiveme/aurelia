@@ -1181,7 +1181,7 @@ a[href^="tel"] {
 .boutique-right-banner{ float:right; width:55%; margin-top:30px;}
 .boutique-left-section{float:left; width:40%;}
 .boutique-left-section p{ font-size:16px; line-height:135%; margin-top:16px; }
-.boutique-left-heading{ background:url(/media/boutique-txt.jpg) no-repeat center top; min-width:100%;     padding-bottom: 57.4%;    margin: 0 -122px 0 -30px;}
+.boutique-left-heading{ background:url(/media/boutique-txt.jpg) no-repeat center top; min-width:100%;     padding-bottom: 57.4%;    margin: 0 -122px 0 -30px; background-size:100%;}
 .boutique-left-section p.uppercase{ text-transform:uppercase; line-height:190%; margin-top:9px;}
 .boutique-left-section p.smalltext{ font-size:14px; font-style:italic; margin-top:10px;}
 .boutique-contant-section{ width:100%; clear:both; display:block; padding-top:47px;}
