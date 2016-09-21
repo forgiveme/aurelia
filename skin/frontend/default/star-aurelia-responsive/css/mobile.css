@@ -1537,7 +1537,8 @@ li.wishlist-list .product-name, li.wishlist-list .product-name a{ border-top:non
 .cart-item.simplebox .product-image > img{ margin-top:20px;}
 
 .cms-page-view .ui-accordion h3.ui-state-default, .cms-page-view .ui-accordion h3.ui-state-active{background:none}
-
+div.radio span {background-position:0 0;}
+div.radio span.checked {background-position: 0 -23px;}
 
 }
 
