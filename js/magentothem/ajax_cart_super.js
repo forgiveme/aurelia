@@ -319,7 +319,7 @@ function showBoxInfo(product_info,related_pro) {
     str += product_info;
 	str+="<div id='pro_related'>"+related_pro+"</div>";
     str += "<div class='bottom-btn'><div class='continue-btn'><a href='"+cart_url+"'  id ='shopping_cart'>PROCEED TO CHECKOUT</a></div>";
-	  str += "<div class='continue-btn1'><a href= '"+anchor+"'  id ='continue_shopping'>"+title_shopping_continue+"</a></div></div></div></div>";
+	  str += "<div class='continue-btn1'><a href= '"+anchor+"'  id ='continue_shopping'>"+title_shopping_continue+"</a></div></div></div>";
     //$jq('.loadding_ajaxcart').html(str);
     $jq(str).insertAfter('#wraper_ajax');
     $jq('#wraper_ajax').css('opacity',0.8);
