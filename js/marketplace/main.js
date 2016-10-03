@@ -1190,8 +1190,9 @@ function Cn_Cmi_dateOpen(id)
     }, 1);
 }
 document.addEventListener('DOMContentLoaded', function() {
-	if (document.body.className.match(/marketplace-adminhtml-offers-index/) || document.body.className.match(/marketplace-adminhtml-scheduler-index/)) {
+	if (document.body.className.match(/adminhtml-marketplace-offers-index/) || document.body.className.match(/adminhtml-marketplace-scheduler-index/)) {
 		var calender_array = document.getElementsByClassName("cnc_date_div");
+
 		for (i = 0; i < calender_array.length; i++) {
 			var calender_id = calender_array[i].id;
 			var input = calender_array[i].getElementsByTagName("input")[0];

@@ -9,24 +9,31 @@
 			<block type="marketplace/adminhtml_notificationbar" name="notification_cnc" template="marketplace/cnc_notification.phtml" />
 		</reference>
 	</default>
-	<adminhtml_marketplace_configuration_index>
-		<reference name="content">
-			<block type="marketplace/adminhtml_configuration" name="configuration" template="marketplace/configuration.phtml"/>
-		</reference>
-	</adminhtml_marketplace_configuration_index>
 	<adminhtml_marketplace_products_index>
 		<reference name="content">
 			<block type="marketplace/adminhtml_products" name="products" template="marketplace/products.phtml"/>
+		</reference>
+		<reference name="content">
+			<block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher" before="offers"/>
+			<action method="setUseConfirm"><params>0</params></action>
 		</reference>
 	</adminhtml_marketplace_products_index>
 	<adminhtml_marketplace_offers_index>
 		<reference name="content">
 			<block type="marketplace/adminhtml_offers" name="offers" template="marketplace/offers.phtml"/>
 		</reference>
+		<reference name="content">
+			<block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher" before="offers"/>
+			<action method="setUseConfirm"><params>0</params></action>
+		</reference>
 	</adminhtml_marketplace_offers_index>
 	<adminhtml_marketplace_orders_index>
 		<reference name="content">
 			<block type="marketplace/adminhtml_orders" name="orders" template="marketplace/orders.phtml"/>
+		</reference>
+		<reference name="content">
+			<block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher" before="offers"/>
+			<action method="setUseConfirm"><params>0</params></action>
 		</reference>
 	</adminhtml_marketplace_orders_index>
 	<adminhtml_marketplace_scheduler_index>

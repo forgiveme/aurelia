@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <marketplace translate="label" module="marketplace">
+            <label>Style.com / Marketplace</label>
+            <sort_order>100</sort_order>
+        </marketplace>
+    </tabs>
+    <sections>
+        <marketplace translate="label" module="marketplace">
+            <label>Style.com / Marketplace</label>
+            <tab>sales</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <configuration translate="label">
+                    <comment><![CDATA[<img src="/skin/adminhtml/default/default/marketplace/images/style-logo.png" width="150" />]]></comment>
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <api_url trnaslate="label">
+                            <label>API URL</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_url>
+                        <api_key trnaslate="label">
+                            <label>API Key</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_key>
+                        <shop_name translate="label">
+                            <label>Shop Name</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Name of your Mirakl Shop</comment>
+                        </shop_name>
+                        <shop_id translate="label">
+                            <label>Shop ID</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shop_id>
+                    </fields>
+                </configuration>
+                <offer_settings translate="label">
+                    <label>Marketplace  Offer Upload</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <cron_expr translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>marketplace/adminhtml_system_config_source_offer_options</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cron_expr>
+                    </fields>
+                </offer_settings>
+                <product_settings translate="label">
+                    <label>Marketplace Product upload</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <cron_expr translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>marketplace/adminhtml_system_config_source_product_options</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cron_expr>
+                        <ignored_attributes translate="label">
+                            <label>Ignored Attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>marketplace/adminhtml_system_config_source_product_attributes</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Specify attributes to be ignored from the CSV export (you can select more than one)]]></comment>
+                        </ignored_attributes>
+                        <attributes_from_configurable translate="label">
+                            <label>Attributes From Configurable</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>marketplace/adminhtml_system_config_source_product_configurable</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Specify attributes which will be grabbed from configurable INSTEAD of simple e.g "description"]]></comment>
+                        </attributes_from_configurable>
+                        <categories translate="label">
+                            <label>Categories</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>marketplace/adminhtml_system_config_source_category_options</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Specify more than one category that you wish to upload to Mirakl]]></comment>
+                        </categories>
+                    </fields>
+                </product_settings>
+                <acceptance_settings translate="label">
+                    <label>Acceptance settings</label>
+                    <comment>If you choose automatic you will be need to map the order state order status and shipping carriers</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <automation_active translate="label">
+                            <label>Automation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </automation_active>
+                        <shipping_confirmation translate="label">
+                            <label>Shipping Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </shipping_confirmation>
+                        <tracking_details translate="label">
+                            <label>Tracking Details</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </tracking_details>
+                        <shipping_status translate="label">
+                            <label>Shipping</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </shipping_status>
+                        <order_shipped translate="label">
+                            <label>Shipped</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </order_shipped>
+                        <order_recieved translate="label">
+                            <label>Received</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </order_recieved>
+                        <order_closed translate="label">
+                            <label>Closed</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </order_closed>
+                        <order_refused translate="label">
+                            <label>Refused</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>marketplace/adminhtml_system_config_source_states_options</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </order_refused>
+                        <order_cancelled translate="label">
+                            <label>Cancelled</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </order_cancelled>
+                        <flatrate_flaterate translate="label">
+                            <label>Flate Rate</label>
+                            <comment>Choose flat rate</comment>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </flatrate_flaterate>
+                        <freeshipping translate="label">
+                            <label>Free Shipping</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </freeshipping>
+                        <fedex translate="label">
+                            <label>Fedex</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </fedex>
+                        <ups translate="label">
+                            <label>UPS</label>
+                            <frontend_type>select</frontend_type>
+                            <validate>required-entry</validate>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <automation_active>
+                                    <value>1</value>
+                                </automation_active>
+                            </depends>
+                        </ups>
+                    </fields>
+                </acceptance_settings>
+            </groups>
+        </marketplace>
+    </sections>
+</config>

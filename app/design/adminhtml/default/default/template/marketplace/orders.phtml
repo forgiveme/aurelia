@@ -5,159 +5,210 @@ $unread_orders = $this->getData('unread_orders');
 $limitstart = $this->getData('limitstart');
 $carriers = $this->getData('carriers');
 $refund_reasons = $this->getData('refund_reasons');
-$order_acceptance = $this->getData('order_acceptance');
+$order_acceptance = Mage::getStoreConfig('marketplace/acceptance_settings/automation_active');
 $filters = $this->getData('filters');
 $orderMessages = $this->getData('orderMessages');
 $totalintable = $this->getData('totalintable');
 $mirakle_data = $this->getData('mirakle_data');
 
 $filters_arr = json_decode($filters);
-$filters_arr = isset($filters_arr)?$filters_arr:array();
+$filters_arr = isset($filters_arr) ? $filters_arr : array();
 ?>
 <div class="order_container">
     <div class="grid">
-        <form action = "<?php echo $this->getFormAction(); ?>" name = "orderActivity" id ="orderForm" method = "post">
-            <input type="hidden" name="activity" id="activity" value="confirm" />
-            <input type="hidden" name="url" id="url_ajax_msgForm" value="<?php echo $this->getGetOrderMessagesAction(); ?>" />
-            <input type="hidden" name="reject" id="reject" value="0" />
-            <input type="hidden" name="pagination_url" id="pagination_url" value="<?php echo $this->getPaginationAction(); ?>" />
-            <input type="hidden" name="orderId" id="orderId" value="" />
-            <input type="hidden" name="status_order" id="status_order" value="" />
-            <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
-            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <form action="<?php echo $this->getFormAction(); ?>" name="orderActivity" id="orderForm" method="post">
+            <input type="hidden" name="activity" id="activity" value="confirm"/>
+            <input type="hidden" name="url" id="url_ajax_msgForm"
+                   value="<?php echo $this->getGetOrderMessagesAction(); ?>"/>
+            <input type="hidden" name="reject" id="reject" value="0"/>
+            <input type="hidden" name="pagination_url" id="pagination_url"
+                   value="<?php echo $this->getPaginationAction(); ?>"/>
+            <input type="hidden" name="orderId" id="orderId" value=""/>
+            <input type="hidden" name="status_order" id="status_order" value=""/>
+            <input type="hidden" name="filter_item" value='<?php echo $filters ?>'>
+            <input type="hidden" name="form_key"
+                   value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
         </form>
-        <form action ="<?php echo $this->getChangeUnreadIncidentAction(); ?>" name = "incidentReadForm" id ="incidentReadForm" method = "post" >
-            <input type="hidden" name="incident_orderId" id="incident_orderId" value="" />
-            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <form action="<?php echo $this->getChangeUnreadIncidentAction(); ?>" name="incidentReadForm"
+              id="incidentReadForm" method="post">
+            <input type="hidden" name="incident_orderId" id="incident_orderId" value=""/>
+            <input type="hidden" name="form_key"
+                   value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
         </form>
-        <form action ="<?php echo $this->getorderLinesAction(); ?>" name = "orderLinesGet" id ="orderLinesGet" method = "post" >
-            <input type="hidden" name="orderId_lines" id="orderId_lines" value="" />
-            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <form action="<?php echo $this->getorderLinesAction(); ?>" name="orderLinesGet" id="orderLinesGet"
+              method="post">
+            <input type="hidden" name="orderId_lines" id="orderId_lines" value=""/>
+            <input type="hidden" name="form_key"
+                   value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
         </form>
-        <div class = "top_bar_container clear">
+        <div class="top_bar_container clear">
             <div class="order_filter">
                 <div class="status-filter">
-                    <span id ="filter-opener" class="fil-span filter_bar">Filter </span>
-                    <span id ="filter-dropdown"  class = "cnc_marketplace_sprite_icons" onclick= "Cn_Cmi_toggleContent()"></span>
+                    <span id="filter-opener" class="fil-span filter_bar">Filter </span>
+                    <span id="filter-dropdown" class="cnc_marketplace_sprite_icons"
+                          onclick="Cn_Cmi_toggleContent()"></span>
                 </div>
-                <div id ="filter-container" style="display : none">
+                <div id="filter-container" style="display : none">
                     <!--<div id="status-collapse" class="collapse-heading">Status</div>-->
-                    <form action = "<?php echo $this->getPaginationAction(); ?>" method = "post" name = "filter" id="filter_form">
+                    <form action="<?php echo $this->getPaginationAction(); ?>" method="post" name="filter"
+                          id="filter_form">
                         <div class="status-collapse  filter-container-border">
-                            <div class="filter-item" > 
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="waitAcceptance" <?php if(in_array('WAITING_ACCEPTANCE',$filters_arr)) { echo 'checked'; } ?> value="WAITING_ACCEPTANCE" name="filter_item[]"/>
-                                <label class="cnc_marketplace_sprite_icons control-label" for="waitAcceptance">Waiting for acceptance</label>
+                            <div class="filter-item">
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="waitAcceptance" <?php if (in_array('WAITING_ACCEPTANCE', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="WAITING_ACCEPTANCE" name="filter_item[]"/>
+                                <label class="cnc_marketplace_sprite_icons control-label" for="waitAcceptance">Waiting
+                                    for acceptance</label>
                             </div>
                             <div class="filter-item">
-                                <input type="checkbox" class = "all cnc_hide cnc_checkbox" id="awaitingpayment" <?php if(in_array('WAITING_DEBIT_PAYMENT',$filters_arr)){echo 'checked'; }?> value="WAITING_DEBIT-WAITING_DEBIT_PAYMENT" name="filter_item[]" />
-                                <label class="cnc_marketplace_sprite_icons control-label" for="awaitingpayment">Awaiting Payment</label>
+                                <input type="checkbox" class="all cnc_hide cnc_checkbox"
+                                       id="awaitingpayment" <?php if (in_array('WAITING_DEBIT_PAYMENT', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="WAITING_DEBIT-WAITING_DEBIT_PAYMENT" name="filter_item[]"/>
+                                <label class="cnc_marketplace_sprite_icons control-label" for="awaitingpayment">Awaiting
+                                    Payment</label>
                             </div>
                             <div class="filter-item">
-                                 <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="shipProgress"<?php if(in_array('SHIPPING',$filters_arr)) { echo 'checked'; } ?> value="SHIPPING" name="filter_item[]"/>
-                                <label class="cnc_marketplace_sprite_icons control-label" for="shipProgress">Shipping in-progress</label>
-                                
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="shipProgress"<?php if (in_array('SHIPPING', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="SHIPPING" name="filter_item[]"/>
+                                <label class="cnc_marketplace_sprite_icons control-label" for="shipProgress">Shipping
+                                    in-progress</label>
+
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="shipped" <?php if(in_array('SHIPPED',$filters_arr)) { echo 'checked'; } ?> value="SHIPPED" name="filter_item[]"/>
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="shipped" <?php if (in_array('SHIPPED', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="SHIPPED" name="filter_item[]"/>
                                 <label class="cnc_marketplace_sprite_icons control-label" for="shipped">Shipped</label>
-                                
+
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="received" <?php //if(in_array('RECEIVED',$filters_arr)) { echo 'checked'; } ?> value="RECEIVED" name="filter_item[]"/>
-                              <label class="cnc_marketplace_sprite_icons control-label" for="received">Received</label>
-                                
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="received" <?php //if(in_array('RECEIVED',$filters_arr)) { echo 'checked'; } ?>
+                                       value="RECEIVED" name="filter_item[]"/>
+                                <label class="cnc_marketplace_sprite_icons control-label"
+                                       for="received">Received</label>
+
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="closed" <?php if(in_array('CLOSED',$filters_arr)) { echo 'checked'; } ?> value="CLOSED" name="filter_item[]"/>
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="closed" <?php if (in_array('CLOSED', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="CLOSED" name="filter_item[]"/>
                                 <label class="cnc_marketplace_sprite_icons control-label" for="closed">Closed</label>
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="refused" <?php if(in_array('REFUSED',$filters_arr)) { echo 'checked'; } ?> value="REFUSED" name="filter_item[]"/>
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="refused" <?php if (in_array('REFUSED', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="REFUSED" name="filter_item[]"/>
                                 <label class="cnc_marketplace_sprite_icons control-label" for="refused">Refused</label>
-                                
+
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="cancel" <?php if(in_array('CANCELED',$filters_arr)) { echo 'checked'; } ?> value="CANCELED" name="filter_item[]"/>
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="cancel" <?php if (in_array('CANCELED', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="CANCELED" name="filter_item[]"/>
                                 <label class="cnc_marketplace_sprite_icons control-label" for="cancel">Canceled</label>
                             </div>
                             <div class="filter-item">
-                                <input type='checkbox' class = "all cnc_hide cnc_checkbox" id="refund"<?php if(in_array('REFUNDED',$filters_arr)) { echo 'checked'; } ?> value="REFUNDED" name="filter_item[]"/>
+                                <input type='checkbox' class="all cnc_hide cnc_checkbox"
+                                       id="refund"<?php if (in_array('REFUNDED', $filters_arr)) {
+                                    echo 'checked';
+                                } ?> value="REFUNDED" name="filter_item[]"/>
                                 <label class="cnc_marketplace_sprite_icons control-label" for="refund">Refunded</label>
                             </div>
-                            <input type="hidden" name="filter_exit" value="true" />
-                            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                            <input type="submit" onclick = "Cn_Cmi_showWaitNoReason()" value="go" class="go-button">
+                            <input type="hidden" name="filter_exit" value="true"/>
+                            <input type="hidden" name="form_key"
+                                   value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                            <input type="submit" onclick="Cn_Cmi_showWaitNoReason()" value="go" class="go-button">
                         </div>
                     </form>
                 </div>
             </div>
-            
-            <?php if($filters_arr) { ?>
-                 <div class="filter_status">
-                    <div class = "filter_text">FILTER:</div>
-                    <div class = "left_scroll cnc_marketplace_sprite_icons scroll" onclick="Cn_Cmi_scrollFilter('l', 50); return false;" ></div>
+
+            <?php if ($filters_arr) { ?>
+                <div class="filter_status">
+                    <div class="filter_text">FILTER:</div>
+                    <div class="left_scroll cnc_marketplace_sprite_icons scroll"
+                         onclick="Cn_Cmi_scrollFilter('l', 50); return false;"></div>
                     <div id="scroller">
                         <div id="inner-scroller">
                             <ul id="filte" style="margin-left:0px;margin-right:0px;">
-                               <?php 
-                                     foreach ($filters_arr as $value) {
-                                        $merged_filter = '';
-                                        $filterName = '';
+                                <?php
+                                foreach ($filters_arr as $value) {
+                                    $merged_filter = '';
+                                    $filterName = '';
 
-                                        switch($value){
-                                            case 'WAITING_ACCEPTANCE':
-                                                $filterName = 'Waiting for acceptance';
-                                                break;
-                                            //case 'WAITING_DEBIT':
-                                            case 'WAITING_DEBIT_PAYMENT':
-                                                $filterName = 'Awaiting Payment';
-                                                $merged_filter = 'WAITING_DEBIT-WAITING_DEBIT_PAYMENT';
-                                                break;
-                                            case 'SHIPPING':
-                                                $filterName = 'Shipping in-progress';
-                                                break;
-                                            case 'SHIPPED':
-                                                $filterName = 'Shipped';
-                                                break;
-                                            case 'RECEIVED':
-                                                $filterName = 'Received';
-                                                break;
-                                            case 'CLOSED':
-                                                $filterName = 'Closed';
-                                                break;
-                                            case 'REFUSED':
-                                                $filterName = 'Refused';
-                                                break;
-                                            case 'CANCELED':
-                                                $filterName = 'Canceled';
-                                                break;
-                                            case 'REFUNDED':
-                                                $filterName = 'Refunded';
-                                                break;
-                                        }
-                                        if(!empty($merged_filter)) {$value = $merged_filter;}
-                                        if(!empty($filterName)) {
-                                         ?>
-                                         <li class="filterlist">
-                                         <?php   
-                                           echo $filterName ;?>
-                                           <span class = "remove_filter_icon cnc_marketplace_sprite_icons" id="remove_<?php echo $value ?>" onclick="Cn_Cmi_removeFromFilter('<?php echo $value ?>')">&nbsp;</span></li>  
+                                    switch ($value) {
+                                        case 'WAITING_ACCEPTANCE':
+                                            $filterName = 'Waiting for acceptance';
+                                            break;
+                                        //case 'WAITING_DEBIT':
+                                        case 'WAITING_DEBIT_PAYMENT':
+                                            $filterName = 'Awaiting Payment';
+                                            $merged_filter = 'WAITING_DEBIT-WAITING_DEBIT_PAYMENT';
+                                            break;
+                                        case 'SHIPPING':
+                                            $filterName = 'Shipping in-progress';
+                                            break;
+                                        case 'SHIPPED':
+                                            $filterName = 'Shipped';
+                                            break;
+                                        case 'RECEIVED':
+                                            $filterName = 'Received';
+                                            break;
+                                        case 'CLOSED':
+                                            $filterName = 'Closed';
+                                            break;
+                                        case 'REFUSED':
+                                            $filterName = 'Refused';
+                                            break;
+                                        case 'CANCELED':
+                                            $filterName = 'Canceled';
+                                            break;
+                                        case 'REFUNDED':
+                                            $filterName = 'Refunded';
+                                            break;
+                                    }
+                                    if (!empty($merged_filter)) {
+                                        $value = $merged_filter;
+                                    }
+                                    if (!empty($filterName)) {
+                                        ?>
+                                        <li class="filterlist">
+                                            <?php
+                                            echo $filterName; ?>
+                                            <span class="remove_filter_icon cnc_marketplace_sprite_icons"
+                                                  id="remove_<?php echo $value ?>"
+                                                  onclick="Cn_Cmi_removeFromFilter('<?php echo $value ?>')">&nbsp;</span>
+                                        </li>
                                     <?php }
-                                    }?>
-                             </ul>
-                        </div>                       
-                    </div> 
-                     <div class = "right_scroll cnc_marketplace_sprite_icons scroll" onclick="Cn_Cmi_scrollFilter('r', 50); return false;"></div>
+                                } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_scroll cnc_marketplace_sprite_icons scroll"
+                         onclick="Cn_Cmi_scrollFilter('r', 50); return false;"></div>
                 </div>
-                <?php }?>
-            
-            <!--<?php if($order_acceptance) { ?>
+            <?php } ?>
+
+            <!--<?php if ($order_acceptance) { ?>
                 <div class="search_orders">
                     <form action = "<?php echo $this->getPaginationAction(); ?>" name = "refresh" method = "post">
-                        <input type="text" value="<?php if($search_field) echo $search_field; ?>" name = "search_field">
+                        <input type="text" value="<?php if ($search_field) echo $search_field; ?>" name = "search_field">
                         <select name = "search_which_order">
-                            <option value = "0" <?php if($search_which_order == 0){ echo "selected"; } ?>>Magento Increment ID</option>
-                            <option value = "1" <?php if($search_which_order == 1){ echo "selected"; } ?>>CN Marketplace Order ID</option>
+                            <option value = "0" <?php if ($search_which_order == 0) {
+                echo "selected";
+            } ?>>Magento Increment ID</option>
+                            <option value = "1" <?php if ($search_which_order == 1) {
+                echo "selected";
+            } ?>>CN Marketplace Order ID</option>
                         </select>
                         <button type="submit" class="scalable btn-orange">Search</button>
                         <input type="hidden" name="filter_exit" value="true" />
@@ -165,10 +216,10 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
                         <input type = "hidden" name = "filter_item" value = ''>
                     </form>
                 </div>
-            <?php } else{ ?>
+            <?php } else { ?>
                 <div class="search_orders">
                     <form action = "<?php echo $this->getPaginationAction(); ?>" name = "refresh" method = "post">
-                        <input type="text" value="<?php if($search_field) echo $search_field; ?>" name = "search_field" placeholder = "Order ID">
+                        <input type="text" value="<?php if ($search_field) echo $search_field; ?>" name = "search_field" placeholder = "Order ID">
                         <input name = "search_which_order" type = "hidden" value = "1">
                         <button type="submit" class="scalable btn-orange">Search</button>
                         <input type="hidden" name="filter_exit" value="true" />
@@ -177,17 +228,22 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
                     </form>
                 </div>
             <?php
-                }
+            }
             ?> -->
             <div class="cnc_float_right">
-                <form action = "<?php echo $this->getPaginationAction(); ?>" name = "refresh" id  = "refresh_page" method = "post">
-                    <input type="submit" value="Refresh orders" onclick = "Cn_Cmi_showWaitNoReason()" class="bulk_action_button">
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
+                <form action="<?php echo $this->getPaginationAction(); ?>" name="refresh" id="refresh_page"
+                      method="post">
+                    <input type="submit" value="Refresh orders" onclick="Cn_Cmi_showWaitNoReason()"
+                           class="bulk_action_button">
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                    <input type="hidden" name="filter_item" value='<?php echo $filters ?>'>
                 </form>
-                <form action = "<?php echo $this->getOrderLoadingAction(); ?>" name = "OrderLoading" id = "OrderLoading" method = "post">
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
+                <form action="<?php echo $this->getOrderLoadingAction(); ?>" name="OrderLoading" id="OrderLoading"
+                      method="post">
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                    <input type="hidden" name="filter_item" value='<?php echo $filters ?>'>
                 </form>
                 <!--<form action = "<?php /* echo $OrderSessionClose; ?>" name = "OrderSessionClose" id = "OrderSessionClose" method = "post">
                     <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
@@ -199,322 +255,368 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
                 </div>
                 <form action = "<?php echo $this->getOrderLoadingAction()Session; ?>" name = "OrderLoadingSession" id = "OrderLoadingSession" method = "post">
                     <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters */?>'>
+                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters */ ?>'>
                 </form>-->
-                
+
             </div>
         </div>
         <table cellspacing="0" class="data blocks" id="OrderDetails">
             <thead>
 
-                <tr class="headings block-headings">
-                     <th class="no-link th-padding" rowspan="2">
+            <tr class="headings block-headings">
+                <th class="no-link th-padding" rowspan="2">
                         <span class="nobr table-label">
-                            <input type="checkbox" class="all cnc_hide cnc_checkbox" id = "check_all" onclick = "Cn_Cmi_checkboxActionHandler('order_check cnc_hide cnc_checkbox')"/>
-                            <label class = "cnc_marketplace_sprite_icons" for="check_all"></label>
+                            <input type="checkbox" class="all cnc_hide cnc_checkbox" id="check_all"
+                                   onclick="Cn_Cmi_checkboxActionHandler('order_check cnc_hide cnc_checkbox')"/>
+                            <label class="cnc_marketplace_sprite_icons" for="check_all"></label>
                         </span>
+                </th>
+                <th class="no-link th-padding" colspan="2" rowspan="2"><span
+                        class="nobr table-label">Order Number</span></th>
+                <th class="no-link th-padding" colspan="2" rowspan="2"><span
+                        class="nobr table-label">Updated Date</span></th>
+                <th class="no-link th-padding" rowspan="2"><span class="nobr table-label">Amount</span></th>
+                <th class="no-link th-padding" colspan="2" rowspan="2"><span class="nobr table-label">Status</span></th>
+                <th class="no-link th-padding" colspan="3" rowspan="2"><span class="nobr table-label">SLA</span></th>
+                <th class="no-link th-padding" rowspan="2"><span class="nobr table-label">Message</span></th>
+                <th class="no-link th-padding" colspan="3"><span class="nobr table-label">Product information</span>
+                </th>
+                <?php if ($order_acceptance) { ?>
+                    <th class="no-link th-padding" colspan="3" rowspan="2"><span class="nobr table-label">Order Created in Magento?</span>
                     </th>
-                    <th class="no-link th-padding" colspan = "2" rowspan="2"><span class="nobr table-label">Order Number</span></th>
-                    <th class="no-link th-padding" colspan = "2" rowspan="2"><span class="nobr table-label">Updated Date</span></th>
-                    <th class="no-link th-padding" rowspan="2"><span class="nobr table-label">Amount</span></th>
-                    <th class="no-link th-padding" colspan = "2" rowspan="2"><span class="nobr table-label">Status</span></th>
-                    <th class="no-link th-padding" colspan = "3" rowspan="2"><span class="nobr table-label">SLA</span></th>
-                    <th class="no-link th-padding" rowspan="2"><span class="nobr table-label">Message</span></th>
-                    <th class="no-link th-padding" colspan="3"><span class="nobr table-label">Product information</span></th>
-                    <?php if($order_acceptance) { ?>
-                        <th class="no-link th-padding" colspan = "3" rowspan="2"><span class="nobr table-label">Order Created in Magento?</span></th>
-                        <th class="no-link th-padding" colspan = "3" rowspan="2"><span class="nobr table-label">Error Messages</span></th>
-                        <th class="no-link th-padding" colspan = "2" rowspan="2"><span class="nobr table-label">Actions</span></th>
-                    <?php } else { ?>
-                        <th class="no-link th-padding" colspan = "3" rowspan="2"><span class="nobr table-label">Actions</span></th>
-                    <?php } ?>
-                </tr>
-                <tr class="headings block-headings">
-                    <th class="no-link th-padding" ><span class="nobr table-label">Sku</span></th>
-                    <th class="no-link th-padding" ><span class="nobr table-label">Qty</span></th>
-                    <th class="no-link th-padding" ><span class="nobr table-label">Incidents</span></th>
-                </tr>
+                    <th class="no-link th-padding" colspan="3" rowspan="2"><span
+                            class="nobr table-label">Error Messages</span></th>
+                    <th class="no-link th-padding" colspan="2" rowspan="2"><span class="nobr table-label">Actions</span>
+                    </th>
+                <?php } else { ?>
+                    <th class="no-link th-padding" colspan="3" rowspan="2"><span class="nobr table-label">Actions</span>
+                    </th>
+                <?php } ?>
+            </tr>
+            <tr class="headings block-headings">
+                <th class="no-link th-padding"><span class="nobr table-label">Sku</span></th>
+                <th class="no-link th-padding"><span class="nobr table-label">Qty</span></th>
+                <th class="no-link th-padding"><span class="nobr table-label">Incidents</span></th>
+            </tr>
             </thead>
             <tbody>
-                <?php
-                    
-                    foreach($mirakle_data as $key =>$value)
-                    {
-                        $class = '';
-                        $even = '';
-                        if($value['order_read'] == '1' && $value['order_state'] == 'WAITING_ACCEPTANCE') {
-                            $class= 'unread_order';          
-                        }
-                        $all_fields = json_decode($value['all_fields']);
-                        $rowspan = '1';
-                        if($all_fields != '' && $all_fields!= 0) {
-                            $rowspan = count($all_fields->order_lines);
-                        }
-                        
-                        if($key%2 == 0)
-                        {
-                            $even = 'even_orders';
-                        }
-                    ?>
-                        <tr class="order_tr <?php echo $key.' '.$class.' '.$even;?>">
-                            
-                            <td class="select-option" rowspan ="<?php echo $rowspan;?>">
-                               
+            <?php
+
+            foreach ($mirakle_data as $key => $value)
+            {
+            $class = '';
+            $even = '';
+            if ($value['order_read'] == '1' && $value['order_state'] == 'WAITING_ACCEPTANCE') {
+                $class = 'unread_order';
+            }
+            $all_fields = json_decode($value['all_fields']);
+            $rowspan = '1';
+            if ($all_fields != '' && $all_fields != 0) {
+                $rowspan = count($all_fields->order_lines);
+            }
+
+            if ($key % 2 == 0) {
+                $even = 'even_orders';
+            }
+            ?>
+            <tr class="order_tr <?php echo $key . ' ' . $class . ' ' . $even; ?>">
+
+                <td class="select-option" rowspan="<?php echo $rowspan; ?>">
+
                                 <span class="nobr table-label">
-                                    <input type="checkbox" data-action= "<?php echo $value['order_state']; ?>" class = "order_check cnc_hide cnc_checkbox" id = "<?php echo $value['orderid'];?>" name = "check_name" value="<?php echo $value['orderid'];?>">
-                                    <label class = "cnc_marketplace_sprite_icons" for="<?php echo $value['orderid']; ?>"</label>
+                                    <input type="checkbox" data-action="<?php echo $value['order_state']; ?>"
+                                           class="order_check cnc_hide cnc_checkbox"
+                                           id="<?php echo $value['orderid']; ?>" name="check_name"
+                                           value="<?php echo $value['orderid']; ?>">
+                                    <label class="cnc_marketplace_sprite_icons"
+                                           for="<?php echo $value['orderid']; ?>"</label>
                                 </span>
-                            </td>
-                            <td colspan = "2" rowspan ="<?php echo $rowspan;?>"><span class="order-id modal_open" onclick = "Cn_Cmi_orderDetailsActionHandler('<?php echo $value['orderid']; ?>')"><?php echo $value['orderid']; ?></span></td>
-                            <td colspan = "2" rowspan ="<?php echo $rowspan;?>"><?php echo $value['last_updated_date']; ?></td>
-                            <td rowspan ="<?php echo $rowspan;?>"><?php echo $value['total_price']; ?></td>
-                            <td colspan = "2" rowspan ="<?php echo $rowspan;?>" class= "order_state"><?php echo $value['order_state']; ?></td>
-                            <td colspan = "3" rowspan="<?php echo $rowspan;?>">
-                                <div class ="cnc_clockdiv" id = "cnc_clock_<?php echo $value['orderid']; ?>">
-                                    <input type="hidden" value = "<?php echo $value['last_updated_date']; ?>" class = "update_timer" />
-                                    <input type="hidden" value = "<?php echo $value['order_state']; ?>" class = "order_status_date" />
-                                    <input type="hidden" value = "0" class = "clock_stopper" />
-                                    <div class ="cnc_clockdiv_inner">
+                </td>
+                <td colspan="2" rowspan="<?php echo $rowspan; ?>"><span class="order-id modal_open"
+                                                                        onclick="Cn_Cmi_orderDetailsActionHandler('<?php echo $value['orderid']; ?>')"><?php echo $value['orderid']; ?></span>
+                </td>
+                <td colspan="2" rowspan="<?php echo $rowspan; ?>"><?php echo $value['last_updated_date']; ?></td>
+                <td rowspan="<?php echo $rowspan; ?>"><?php echo $value['total_price']; ?></td>
+                <td colspan="2" rowspan="<?php echo $rowspan; ?>"
+                    class="order_state"><?php echo $value['order_state']; ?></td>
+                <td colspan="3" rowspan="<?php echo $rowspan; ?>">
+                    <div class="cnc_clockdiv" id="cnc_clock_<?php echo $value['orderid']; ?>">
+                        <input type="hidden" value="<?php echo $value['last_updated_date']; ?>" class="update_timer"/>
+                        <input type="hidden" value="<?php echo $value['order_state']; ?>" class="order_status_date"/>
+                        <input type="hidden" value="0" class="clock_stopper"/>
+                        <div class="cnc_clockdiv_inner">
+                            <div>
+                                <span class="days"></span>
+                                <div class="smalltext">Days</div>
+                            </div>
+                            <div>
+                                <span class="hours"></span>
+                                <div class="smalltext">Hours</div>
+                            </div>
+                            <div>
+                                <span class="minutes"></span>
+                                <div class="smalltext">Mins</div>
+                            </div>
+                            <div>
+                                <span class="seconds"></span>
+                                <div class="smalltext">Secs</div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td rowspan="<?php echo $rowspan; ?>" class="messages modal_open">
+                    <?php
+                    $msg = array();
+                    $msg_count = array();
+                    foreach ($orderMessages as $orderMessage) {
+                        if (in_array($value['orderid'], $orderMessage)) {
+                            if ($orderMessage['read_msg'] == 0)
+                                $msg_count[] = $orderMessage['id'];
+                            $msg[] = $orderMessage['id'];
+                        }
+                    }
+                    if (count($msg) > 0) {
+                        ?>
+                        <div
+                            onclick="Cn_Cmi_OpenOrderMessage('<?php echo $value['orderid']; ?>','<?php echo count($msg_count); ?>')">
+                                                <span class="messages_order cnc_marketplace_sprite_icons">
+                                                    <span class="number_msgs"
+                                                          id="make_zero_<?php echo $value['orderid']; ?>"><?php echo count($msg_count); ?></span>
+                                                </span>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </td>
+
+                <?php
+
+                if (!empty($all_fields)) {
+                    $order_number = 1;
+                    $orderlines_all = $all_fields->order_lines;
+
+                    $orderlines_sort = array();
+                    foreach ($orderlines_all as $items_list) {
+                        $orderlines_sort[] = $items_list->order_line_index;
+
+                    }
+                    array_multisort($orderlines_sort, SORT_ASC, $orderlines_all);
+
+                    foreach ($orderlines_all as $order_lines) {
+                        if ($order_number != 1) {
+                            echo '<tr class = ' . $even . $class . '>';
+                        }
+                        echo '<td class = "prod_sku_table">' . $order_lines->product_sku . '</td><td>' . $order_lines->quantity . '</td>'; ?>
+                        <td>
+                        <?php
+                        $all_fields = json_decode($value['all_fields']);
+                        if (trim($order_lines->order_line_state_reason_code) != '') {
+                            if ($all_fields->has_incident) {
+                                ?>
+                                <div class="open_incident modal_open"
+                                     onclick="Cn_Cmi_open_incident('<?php echo $order_lines->order_line_id; ?>')">Open
+                                </div>
+                                <?php
+                            }
+
+                            ?>
+                            <div class="modal fade incident_popup"
+                                 id="incident_popup_<?php echo $order_lines->order_line_id; ?>">
+                                <div class="close_modal cnc_marketplace_sprite_icons"
+                                     onclick="Cn_Cmi_closePopup(event)"></div>
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <h3>Incident Details</h3>
                                         <div>
-                                            <span class="days"></span>
-                                            <div class="smalltext">Days</div>
-                                        </div>
-                                        <div>
-                                            <span class="hours"></span>
-                                            <div class="smalltext">Hours</div>
-                                        </div>
-                                        <div>
-                                            <span class="minutes"></span>
-                                            <div class="smalltext">Mins</div>
-                                        </div>
-                                        <div>
-                                            <span class="seconds"></span>
-                                            <div class="smalltext">Secs</div>
+                                            <?php
+                                            echo '<div class = "parent-container one_step">';
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Incident Reason: </span><span>' . $order_lines->order_line_state_reason_label . '</span></div>';
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Order line state: </span><span>' . $order_lines->order_line_state . '</span></div>';
+                                            echo '<div class = "parent-container"><span class = "parent-heading">' . $order_lines->product_title . '</span>
+                                                                        <br />
+                                                                        Prod sku: ' . $order_lines->product_sku . ' | Offer sku: ' . $order_lines->offer_sku;
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Product unit Price:</span> ' . $order_lines->price_unit . '</span></div>';
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Product quantity:</span> ' . $order_lines->quantity . '</span></div>';
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Product shipping price:</span> ' . $order_lines->shipping_price . '</span></div>';
+                                            echo '<div class = "leaf-container"><span class = "bold-heading">Product total price:</span> ' . $order_lines->total_price . '</span></div>';
+                                            echo '</div>';
+                                            if (count($order_lines->refunds) > 0) {
+                                                echo '<div class = "parent-container"><span class = "parent-heading">Refunds:</span>';
+                                                foreach ($order_lines->refunds as $refunds) {
+                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Refund amount: </span><span>' . $refunds->amount . '</span></div>';
+                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Refund Created date: </span><span>' . $refunds->created_date . '</span></div>';
+                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Refund Quantity: </span><span>' . $refunds->quantity . '</span></div>';
+                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Refund Shipping amount: </span><span>' . $refunds->shipping_amount . '</span></div>';
+                                                }
+                                                echo '</div>';
+                                            }
+                                            echo '</div>';
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </td>
-                            <td rowspan ="<?php echo $rowspan;?>" class="messages modal_open">
-                                <?php
-                                    $msg = array();
-                                    $msg_count = array();
-                                    foreach($orderMessages as $orderMessage)
-                                    {
-                                        if(in_array($value['orderid'], $orderMessage)) {
-                                            if($orderMessage['read_msg'] == 0)
-                                                $msg_count[] = $orderMessage['id'];
-                                            $msg[] = $orderMessage['id'];
-                                        }
-                                    }
-                                    if(count($msg) > 0)
-                                    {
-                                        ?>
-                                            <div onclick = "Cn_Cmi_OpenOrderMessage('<?php echo $value['orderid']; ?>','<?php echo count($msg_count); ?>')">
-                                                <span class="messages_order cnc_marketplace_sprite_icons">
-                                                    <span class="number_msgs" id = "make_zero_<?php echo $value['orderid']; ?>"><?php echo count($msg_count); ?></span>
-                                                </span>
-                                            </div>
-                                        <?php
-                                    }
-                                ?>
-                            </td>
-                           
-                                <?php 
-                                    
-                                    if(!empty($all_fields)) {
-                                        $order_number = 1;
-                                        $orderlines_all = $all_fields->order_lines;
-                                        
-                                        $orderlines_sort = array();
-                                        foreach ($orderlines_all as $items_list) {
-                                            $orderlines_sort[] = $items_list->order_line_index;
-                                           
-                                        }
-                                        array_multisort($orderlines_sort, SORT_ASC, $orderlines_all);
+                            <?php
+                        }
+                        if ($order_number == 1) {
+                            if ($order_acceptance) { ?>
+                                <td colspan="3" class="order-action" rowspan="<?php echo $rowspan; ?>">
+                                    <?php
+                                    //if($value['m_order_id'])
+                                    //{
+                                    //    $order_real = Mage::getModel('sales/order')->loadByIncrementId($value['m_order_id']);
+                                    //    echo $order_real->getidentityStyleCom();
+                                    //    echo 'test';
+                                    //}
+                                    //
 
-                                        foreach($orderlines_all as $order_lines)
-                                        {
-                                            if ($order_number != 1) {
-                                                echo '<tr class = '.$even.$class.'>';
-                                            } 
-                                            echo '<td class = "prod_sku_table">'.$order_lines->product_sku.'</td><td>'.$order_lines->quantity.'</td>';?>
-                                            <td>
-                                            <?php 
-                                            $all_fields = json_decode($value['all_fields']);
-                                            if(trim($order_lines->order_line_state_reason_code) != '')
-                                            {
-                                                if($all_fields->has_incident){
-                                                    ?>
-                                                    <div class = "open_incident modal_open" onclick = "Cn_Cmi_open_incident('<?php echo $order_lines->order_line_id; ?>')">Open</div>
-                                                    <?php 
-                                                }
-                                                
-                                                ?>
-                                                <div class="modal fade incident_popup" id="incident_popup_<?php echo $order_lines->order_line_id; ?>">
-                                                    <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <h3>Incident Details</h3>
-                                                            <div>
-                                                                <?php
-                                                                echo '<div class = "parent-container one_step">';
-                                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Incident Reason: </span><span>'.$order_lines->order_line_state_reason_label.'</span></div>';
-                                                                    echo '<div class = "leaf-container"><span class = "bold-heading">Order line state: </span><span>'.$order_lines->order_line_state.'</span></div>';
-                                                                    echo '<div class = "parent-container"><span class = "parent-heading">'.$order_lines->product_title.'</span>
-                                                                        <br />
-                                                                        Prod sku: '.$order_lines->product_sku.' | Offer sku: '.$order_lines->offer_sku;
-                                                                        echo '<div class = "leaf-container"><span class = "bold-heading">Product unit Price:</span> '.$order_lines->price_unit.'</span></div>';
-                                                                        echo '<div class = "leaf-container"><span class = "bold-heading">Product quantity:</span> '.$order_lines->quantity.'</span></div>';
-                                                                        echo '<div class = "leaf-container"><span class = "bold-heading">Product shipping price:</span> '.$order_lines->shipping_price.'</span></div>';
-                                                                        echo '<div class = "leaf-container"><span class = "bold-heading">Product total price:</span> '.$order_lines->total_price.'</span></div>';
-                                                                    echo '</div>';
-                                                                    if(count($order_lines->refunds) > 0)
-                                                                    {
-                                                                        echo '<div class = "parent-container"><span class = "parent-heading">Refunds:</span>';
-                                                                        foreach($order_lines->refunds as $refunds)
-                                                                        {
-                                                                            echo '<div class = "leaf-container"><span class = "bold-heading">Refund amount: </span><span>'.$refunds->amount.'</span></div>';
-                                                                            echo '<div class = "leaf-container"><span class = "bold-heading">Refund Created date: </span><span>'.$refunds->created_date.'</span></div>';
-                                                                            echo '<div class = "leaf-container"><span class = "bold-heading">Refund Quantity: </span><span>'.$refunds->quantity.'</span></div>';
-                                                                            echo '<div class = "leaf-container"><span class = "bold-heading">Refund Shipping amount: </span><span>'.$refunds->shipping_amount.'</span></div>';
-                                                                        }
-                                                                        echo '</div>';
-                                                                    }
-                                                                echo '</div>';
-                                                                ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <?php
-                                            }
-                                            if ($order_number == 1) {
-                                               if($order_acceptance) { ?>
-                                                <td colspan = "3" class="order-action" rowspan ="<?php echo $rowspan;?>">
-                                                    <?php
-                                                    //if($value['m_order_id'])
-                                                    //{
-                                                    //    $order_real = Mage::getModel('sales/order')->loadByIncrementId($value['m_order_id']);
-                                                    //    echo $order_real->getidentityStyleCom();
-                                                    //    echo 'test';
-                                                    //}
-                                                    //
-                                                    
-                                                    if(trim($value['m_order_id'])) { echo 'Yes - Order Increment id: '.$value['m_order_id']; } else { echo 'No'; } ?>
-                                                </td>
-                                                <td colspan = "3" class="order-action" rowspan ="<?php echo $rowspan;?>">
-                                                    <?php echo $value['message']; ?>
-                                                </td>
-                                                <td colspan = "2" class="order-action order-icons modal_open td_reject_order_button" rowspan ="<?php echo $rowspan;?>">
-                                                    <div class="reject_automation">
+                                    if (trim($value['m_order_id'])) {
+                                        echo 'Yes - Order Increment id: ' . $value['m_order_id'];
+                                    } else {
+                                        echo 'No';
+                                    } ?>
+                                </td>
+                                <td colspan="3" class="order-action" rowspan="<?php echo $rowspan; ?>">
+                                    <?php echo $value['message']; ?>
+                                </td>
+                                <td colspan="2" class="order-action order-icons modal_open td_reject_order_button"
+                                    rowspan="<?php echo $rowspan; ?>">
+                                    <div class="reject_automation">
                                                         <span data-tooltip="Rejct Order" class="reject_manual"
-                                                            <?php if( $value['order_state'] != "WAITING_ACCEPTANCE") { ?> id = "reject_manual_greyed_out" <?php } ?> onclick="Cn_Cmi_orderLinePopup('<?php echo $value['orderid']; ?>','<?php echo $value['order_state']; ?>')">
+                                                            <?php if ($value['order_state'] != "WAITING_ACCEPTANCE") { ?> id="reject_manual_greyed_out" <?php } ?>
+                                                              onclick="Cn_Cmi_orderLinePopup('<?php echo $value['orderid']; ?>','<?php echo $value['order_state']; ?>')">
                                                         </span>
-                                                        <span data-tooltip="Send Refund information" class="refund" <?php if( $value['order_state'] != "SHIPPING" && $value['order_state'] != "RECEIVED" && $value['order_state'] != "SHIPPED") { ?> id = "refund_greyed_out"  <?php } ?>  onclick="Cn_Cmi_refundActionHandler('refund','<?php echo $value['order_state']; ?>','<?php echo $value['orderid']; ?>')"></span>
-                                                    </div>
-                                                </td>
-                                            <?php } else { ?>
-                                                <td colspan = "3" class="order-action modal_open order-icons" rowspan ="<?php echo $rowspan;?>">
-                                                    <?php $count_orderLines = count($all_fields->order_lines); ?>
-                                                    <span data-tooltip="Confirm Order" class="confirm"
-                                                        <?php if( $value['order_state'] != "WAITING_ACCEPTANCE") { ?> id = "confirm_greyed_out" <?php } ?> onclick="Cn_Cmi_orderLinePopup('<?php echo $value['orderid']; ?>','<?php echo $value['order_state']; ?>')">
+                                        <span data-tooltip="Send Refund information"
+                                              class="refund" <?php if ($value['order_state'] != "SHIPPING" && $value['order_state'] != "RECEIVED" && $value['order_state'] != "SHIPPED") { ?> id="refund_greyed_out"  <?php } ?>
+                                              onclick="Cn_Cmi_refundActionHandler('refund','<?php echo $value['order_state']; ?>','<?php echo $value['orderid']; ?>')"></span>
+                                    </div>
+                                </td>
+                            <?php } else { ?>
+                                <td colspan="3" class="order-action modal_open order-icons"
+                                    rowspan="<?php echo $rowspan; ?>">
+                                    <?php $count_orderLines = count($all_fields->order_lines); ?>
+                                    <span data-tooltip="Confirm Order" class="confirm"
+                                        <?php if ($value['order_state'] != "WAITING_ACCEPTANCE") { ?> id="confirm_greyed_out" <?php } ?>
+                                          onclick="Cn_Cmi_orderLinePopup('<?php echo $value['orderid']; ?>','<?php echo $value['order_state']; ?>')">
                                                     </span>
 
-                                                    <span data-tooltip="Confirm Shipment" class="shipped" <?php if( $value['order_state'] != "SHIPPING") { ?> id = "shipped_greyed_out" <?php } ?> onclick="Cn_Cmi_orderActionHandler(event)"></span>
+                                    <span data-tooltip="Confirm Shipment"
+                                          class="shipped" <?php if ($value['order_state'] != "SHIPPING") { ?> id="shipped_greyed_out" <?php } ?>
+                                          onclick="Cn_Cmi_orderActionHandler(event)"></span>
 
-                                                    <span data-tooltip="Send Tracking details" class="tracking" <?php  if( $value['order_state'] != "SHIPPING" &&  $value['order_state'] != "SHIPPED") { ?> id = "tracking_greyed_out" <?php } ?> onclick="Cn_Cmi_trackActionHandler(event)"></span>
+                                    <span data-tooltip="Send Tracking details"
+                                          class="tracking" <?php if ($value['order_state'] != "SHIPPING" && $value['order_state'] != "SHIPPED") { ?> id="tracking_greyed_out" <?php } ?>
+                                          onclick="Cn_Cmi_trackActionHandler(event)"></span>
 
-                                                    <span data-tooltip="Send Refund information" class="refund" <?php if( $value['order_state'] != "SHIPPING" && $value['order_state'] != "RECEIVED" && $value['order_state'] != "SHIPPED") { ?> id = "refund_greyed_out"  <?php } ?>  onclick="Cn_Cmi_refundActionHandler('refund','<?php echo $value['order_state']; ?>','<?php echo $value['orderid']; ?>')"></span>
+                                    <span data-tooltip="Send Refund information"
+                                          class="refund" <?php if ($value['order_state'] != "SHIPPING" && $value['order_state'] != "RECEIVED" && $value['order_state'] != "SHIPPED") { ?> id="refund_greyed_out"  <?php } ?>
+                                          onclick="Cn_Cmi_refundActionHandler('refund','<?php echo $value['order_state']; ?>','<?php echo $value['orderid']; ?>')"></span>
 
-                                                </td>
-                                            <?php }
-                                            }
-                                            $order_number++;
-                                            echo '</tr>';
-                                        }
-                                    }
-                                ?>               
-                    <?php
+                                </td>
+                            <?php }
+                        }
+                        $order_number++;
+                        echo '</tr>';
                     }
-                    ?>
+                }
+                ?>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
         <!-- Pagination start -->
-        <?php if($search_field == '' || $unread_orders != '') { ?>
+        <?php if ($search_field == '' || $unread_orders != '') { ?>
             <div class="navigation">
-                <form action = "<?php echo $this->getPaginationAction(); ?>" name = "previous" method = "post">
-                    <input type = "hidden" name = "limitstart" value = "<?php echo $limitstart-1; ?>">
-                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
-                    <input type = "hidden" name = "unread_orders" value = '<?php echo $unread_orders ?>'>
-                    <input type = "submit" id="prev" <?php if($limitstart-1 <= 0) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled'; } else { echo 'class = "cnc_marketplace_sprite_icons"'; } ?>  value = "" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                <form action="<?php echo $this->getPaginationAction(); ?>" name="previous" method="post">
+                    <input type="hidden" name="limitstart" value="<?php echo $limitstart - 1; ?>">
+                    <input type="hidden" name="filter_item" value='<?php echo $filters ?>'>
+                    <input type="hidden" name="unread_orders" value='<?php echo $unread_orders ?>'>
+                    <input type="submit" id="prev" <?php if ($limitstart - 1 <= 0) {
+                        echo 'class="inactive cnc_marketplace_sprite_icons" disabled';
+                    } else {
+                        echo 'class = "cnc_marketplace_sprite_icons"';
+                    } ?> value=""/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
                 </form>
                 <?php
-                    $total_pages = ceil($totalintable/20);
-                    for($pages=1;$pages<$total_pages+1;$pages++)
-                    {
-                        if($pages == $limitstart) { 
+                $total_pages = ceil($totalintable / 20);
+                for ($pages = 1; $pages < $total_pages + 1; $pages++) {
+                    if ($pages == $limitstart) {
                         ?>
-                            <div class="content">
-                                <span id="count"><?php echo $pages; ?></span>
-                                <span>Page of</span>
-                                <span id="total"><?php echo $total_pages; ?></span>
-                            </div>
+                        <div class="content">
+                            <span id="count"><?php echo $pages; ?></span>
+                            <span>Page of</span>
+                            <span id="total"><?php echo $total_pages; ?></span>
+                        </div>
                         <?php
-                        }
                     }
+                }
                 ?>
-                <form action = "<?php echo $this->getPaginationAction(); ?>" name = "previous" method = "post">
-                    <input type = "hidden" name = "limitstart" value = "<?php echo $limitstart+1; ?>">
-                    <input type = "hidden" name = "filter_item" value = '<?php echo $filters ?>'>
-                    <input type = "hidden" name = "unread_orders" value = '<?php echo $unread_orders ?>'>
-                    <input type = "submit" id="next" <?php if($totalintable <= 20*$limitstart) { echo 'class="inactive cnc_marketplace_sprite_icons" disabled'; } else { echo 'class = "cnc_marketplace_sprite_icons"'; } ?> value = "" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                <form action="<?php echo $this->getPaginationAction(); ?>" name="previous" method="post">
+                    <input type="hidden" name="limitstart" value="<?php echo $limitstart + 1; ?>">
+                    <input type="hidden" name="filter_item" value='<?php echo $filters ?>'>
+                    <input type="hidden" name="unread_orders" value='<?php echo $unread_orders ?>'>
+                    <input type="submit" id="next" <?php if ($totalintable <= 20 * $limitstart) {
+                        echo 'class="inactive cnc_marketplace_sprite_icons" disabled';
+                    } else {
+                        echo 'class = "cnc_marketplace_sprite_icons"';
+                    } ?> value=""/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
                 </form>
             </div>
         <?php } ?>
         <!-- Pagination end -->
         <div class="bulk-action">
-        <?php if(!$order_acceptance) { ?>
-                <input type="button" value="Shipment Confirmation" class="bulk_action_button" data-action="shipped" onclick="Cn_Cmi_statusChange(event)">
-        <?php }  ?>
-            <form action = "<?php echo $this->getDownloadJsonAction(); ?>" onsubmit = "return Cn_Cmi_bulkExport()" id = "download_json" method="post">
-                <input type="hidden" name="order_idd_down_bulk" id="order_idd_down_bulk" value="" />
-                <input type="hidden" name="all_the_fields" id="all_the_fields" value="" />
-                <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                <input class="bulk_action_button" type = "submit" value = 'Export Json' />
+            <?php if (!$order_acceptance) { ?>
+                <input type="button" value="Shipment Confirmation" class="bulk_action_button" data-action="shipped"
+                       onclick="Cn_Cmi_statusChange(event)">
+            <?php } ?>
+            <form action="<?php echo $this->getDownloadJsonAction(); ?>" onsubmit="return Cn_Cmi_bulkExport()"
+                  id="download_json" method="post">
+                <input type="hidden" name="order_idd_down_bulk" id="order_idd_down_bulk" value=""/>
+                <input type="hidden" name="all_the_fields" id="all_the_fields" value=""/>
+                <input type="hidden" name="form_key"
+                       value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                <input class="bulk_action_button" type="submit" value='Export Json'/>
             </form>
-            <form action = "<?php echo $this->getChangeUnreadOrderAction(); ?>" onsubmit = "return Cn_Cmi_bulkChangeOrderRead()" id = "download_json" method="post">
-                <input type="hidden" name="order_unread_bulk" id="order_unread_bulk" value="" />
-                <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                <?php if($unread_orders) { ?>
-                    <input type = "hidden" name = "filter_item[]" value = ''>
-                    <input type="hidden" name="order_read" value="order_read" />
-                    <input type="hidden" name="filter_exit" value="false" />
-                <?php }?>
-                <input class="bulk_action_button" type = "submit" value = 'Mark as Read' />
+            <form action="<?php echo $this->getChangeUnreadOrderAction(); ?>"
+                  onsubmit="return Cn_Cmi_bulkChangeOrderRead()" id="download_json" method="post">
+                <input type="hidden" name="order_unread_bulk" id="order_unread_bulk" value=""/>
+                <input type="hidden" name="form_key"
+                       value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                <?php if ($unread_orders) { ?>
+                    <input type="hidden" name="filter_item[]" value=''>
+                    <input type="hidden" name="order_read" value="order_read"/>
+                    <input type="hidden" name="filter_exit" value="false"/>
+                <?php } ?>
+                <input class="bulk_action_button" type="submit" value='Mark as Read'/>
             </form>
         </div>
     </div>
-    
+
     <div class="modal fade" id="tracking">
         <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3>Shipment Tracking</h3>
-                <form  class="form-horizontal" action = "<?php echo $this->getFormAction(); ?>" name = "trackingActivity"  id="trackingForm" method = "post">
-                    <input type="hidden" name="activity" value="tracking" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                <form class="form-horizontal" action="<?php echo $this->getFormAction(); ?>" name="trackingActivity"
+                      id="trackingForm" method="post">
+                    <input type="hidden" name="activity" value="tracking"/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
                     <div class="form-group border grey">
                         <label for="courier" class="control-label">Carrier Name</label>
-                        <div class = "cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
-                            <select class="form-control cnc_marketplace_select_box" onchange = "Cn_Cmi_selectCarrierCode(this)">
-                                <option value = "">-Select-</option>
+                        <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
+                            <select class="form-control cnc_marketplace_select_box"
+                                    onchange="Cn_Cmi_selectCarrierCode(this)">
+                                <option value="">-Select-</option>
                                 <?php
-                                foreach($carriers->carriers as $carriers)
-                                {
-                                  echo '<option value ="'.$carriers->label.'-_-'.$carriers->code.'">'.$carriers->label.'</option>';
+                                foreach ($carriers->carriers as $carriers) {
+                                    echo '<option value ="' . $carriers->label . '-_-' . $carriers->code . '">' . $carriers->label . '</option>';
                                 }
                                 ?>
                             </select>
@@ -529,10 +631,11 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
                     <div class="form-group border grey">
                         <label for="no" class="control-label">Tracking No.</label>
                         <div>
-                          <input type="text" class="cnc_marketplace_text_box form-control" id="tracking-no" name="trackingNumber">
+                            <input type="text" class="cnc_marketplace_text_box form-control" id="tracking-no"
+                                   name="trackingNumber">
                         </div>
                     </div>
-                     <div class="form-group buttons">
+                    <div class="form-group buttons">
                         <button type="button" class="cnc_button" onclick="Cn_Cmi_callAPI('trackingForm')">Send</button>
                     </div>
                     <input type="hidden" name="orderId" id="orderid" value="">
@@ -540,76 +643,89 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="order_details">
         <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3>Order Details</h3>
-                <form action = "<?php echo $this->getDownloadJsonAction(); ?>" id = "download_json" method="post">
-                    <input type="hidden" name="order_idd_down" id="order_idd_down" value="" />
-                    <input type="hidden" name="all_the_fields" id="all_the_fields" value="" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <button class = "download_json" type = "submit">Export Json</button>
+                <form action="<?php echo $this->getDownloadJsonAction(); ?>" id="download_json" method="post">
+                    <input type="hidden" name="order_idd_down" id="order_idd_down" value=""/>
+                    <input type="hidden" name="all_the_fields" id="all_the_fields" value=""/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                    <button class="download_json" type="submit">Export Json</button>
                 </form>
-                <div id = "order_det" class = "order_det">
+                <div id="order_det" class="order_det">
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="refund_dialog">
         <div class="close_modal cnc_marketplace_sprite_icons" onclick="Cn_Cmi_closePopup(event)"></div>
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3>Refund Shipment</h3>
-                <form  class="form-horizontal" action = "<?php echo $this->getFormAction(); ?>" name = "refundActivity" id="refundForm" method = "post">
-                    <input type="hidden" name="activity" value="refund" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+                <form class="form-horizontal" action="<?php echo $this->getFormAction(); ?>" name="refundActivity"
+                      id="refundForm" method="post">
+                    <input type="hidden" name="activity" value="refund"/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
                     <div class="form-group border grey">
                         <label for="refund_order_id" class="col-sm-4 control-label">Order ID</label>
                         <div class="col-sm-5 refundmodal_inputs">
-                          <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="refund_order_id" name="orderId" readonly>
+                            <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="refund_order_id"
+                                   name="orderId" readonly>
                         </div>
                     </div>
-                    <div id = "refund_orderline_ajax" class="parent-container one_step">
+                    <div id="refund_orderline_ajax" class="parent-container one_step">
                     </div>
-                    <div id = "refund_fields" class = "refund_fields cnc_hide">
-                        <div class = "refund_diff_fields">
+                    <div id="refund_fields" class="refund_fields cnc_hide">
+                        <div class="refund_diff_fields">
                             <div class="form-group border grey">
                                 <label for="amt" class="col-sm-4 control-label">Refund Amount<span class="req">*</span></label>
                                 <div>
-                                  <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="amt" name="refundAmount[]">
+                                    <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="amt"
+                                           name="refundAmount[]">
                                 </div>
                             </div>
                             <div class="form-group border grey">
-                                <label for="qty" class="col-sm-4 control-label">Quantity<span class="req">*</span></label>
+                                <label for="qty" class="col-sm-4 control-label">Quantity<span
+                                        class="req">*</span></label>
                                 <div>
-                                  <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="qty" name="quantity[]">
+                                    <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="qty"
+                                           name="quantity[]">
                                 </div>
                             </div>
                             <div class="form-group border grey">
-                                <label for="code" class="col-sm-4 control-label">Reason Code<span class="req">*</span></label>
+                                <label for="code" class="col-sm-4 control-label">Reason Code<span
+                                        class="req">*</span></label>
                                 <div class="cnc_marketplace_select_box_div cnc_marketplace_sprite_icons">
-                                    <select name="reason[]" id="code"  class="cnc_marketplace_select_box refund_orderinputs">
+                                    <select name="reason[]" id="code"
+                                            class="cnc_marketplace_select_box refund_orderinputs">
                                         <option value="">Select a reason...</option>
-                                        <?php foreach($refund_reasons->reasons as $reason) {  ?>
-                                            <option value = "<?php echo $reason->code; ?>"><?php echo $reason->label; ?></option>
+                                        <?php foreach ($refund_reasons->reasons as $reason) { ?>
+                                            <option
+                                                value="<?php echo $reason->code; ?>"><?php echo $reason->label; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group border grey">
-                                <label for="code" class="col-sm-4 control-label">Shipping Amount<span class="req">*</span></label>
+                                <label for="code" class="col-sm-4 control-label">Shipping Amount<span
+                                        class="req">*</span></label>
                                 <div>
-                                  <input type="text" class="cnc_marketplace_text_box refund_orderinputs" id="shipping_amount" name="shipAmount[]">
+                                    <input type="text" class="cnc_marketplace_text_box refund_orderinputs"
+                                           id="shipping_amount" name="shipAmount[]">
                                 </div>
                             </div>
                         </div>
                     </div>
-                        <div class="form-group buttons">
-                            <button type="button" class="cnc_button" onclick="return Cn_Cmi_callAPI('refundForm')">Submit</button>
-                        </div>
+                    <div class="form-group buttons">
+                        <button type="button" class="cnc_button" onclick="return Cn_Cmi_callAPI('refundForm')">Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -619,13 +735,17 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
         <div class="modal-dialog entry-edit">
             <div class="modal-content">
                 <h3>Order Line details</h3>
-                <form class="form-horizontal" id = "order_line_form" action = "<?php echo $this->getorderLinesPostAction(); ?>" method = "post">
-                    <div id = "order_line_ajax" class = "parent-container one_step">
-                        
+                <form class="form-horizontal" id="order_line_form"
+                      action="<?php echo $this->getorderLinesPostAction(); ?>" method="post">
+                    <div id="order_line_ajax" class="parent-container one_step">
+
                     </div>
-                    <input type="hidden" name="order_id_lines" id = "order_id_lines" value="" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <button class = "cnc_button" onclick = "return Cn_Cmi_ConfirmValidation();" type = "submit" name = "submit">Submit</button>
+                    <input type="hidden" name="order_id_lines" id="order_id_lines" value=""/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                    <button class="cnc_button" onclick="return Cn_Cmi_ConfirmValidation();" type="submit" name="submit">
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>
@@ -635,34 +755,39 @@ $filters_arr = isset($filters_arr)?$filters_arr:array();
         <div class="modal-dialog entry-edit">
             <div class="modal-content">
                 <h3>Order Messages</h3>
-                <form class="form-horizontal" id = "message_order_answer" action = "<?php echo $this->getOrderMessageAnswerAction(); ?>" method = "post">
-                    <div class = "scroll_holder" id = "scroll_holder">
-                        <fieldset id = "ajax_message_insert" class = "offer_msg_fieldset">
-                            
+                <form class="form-horizontal" id="message_order_answer"
+                      action="<?php echo $this->getOrderMessageAnswerAction(); ?>" method="post">
+                    <div class="scroll_holder" id="scroll_holder">
+                        <fieldset id="ajax_message_insert" class="offer_msg_fieldset">
+
                         </fieldset>
                     </div>
                     <div class="form-group border grey">
                         <label for="id" class="control-label">Subject</label>
                         <div class="offer_dialog_inputs">
-                            <input type= "text" class = "cnc_marketplace_text_box" id = "message_subject" name = "subject" />
+                            <input type="text" class="cnc_marketplace_text_box" id="message_subject" name="subject"/>
                         </div>
                     </div>
                     <div class="form-group border grey">
                         <label for="id" class="control-label">Reply</label>
                         <div class="offer_dialog_inputs">
-                          <textarea class="message_answer" id="message_answer" class = "ClassValidation" name="message_answer"></textarea>
+                            <textarea class="message_answer" id="message_answer" class="ClassValidation"
+                                      name="message_answer"></textarea>
                         </div>
                     </div>
-                    <input type = "hidden" name="order_msg_order_id" id = "order_msg_order_id" value = "" />
-                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-                    <button type="button" onclick = "return Cn_Cmi_CreateNewMsg()" class = "cnc_button" name = 'submit'>Submit</button>
+                    <input type="hidden" name="order_msg_order_id" id="order_msg_order_id" value=""/>
+                    <input type="hidden" name="form_key"
+                           value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                    <button type="button" onclick="return Cn_Cmi_CreateNewMsg()" class="cnc_button" name='submit'>
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 <script>
-window.onload = function () {
-   // orderLoadingHandler();
-};
+    window.onload = function () {
+        // orderLoadingHandler();
+    };
 </script>

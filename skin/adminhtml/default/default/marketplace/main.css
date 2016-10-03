@@ -10,7 +10,7 @@
 .adminhtml-marketplace-offers-index .offer-page .cnc_marketplace_sprite_icons,
 .adminhtml-marketplace-scheduler-index .schedular_block .cnc_marketplace_sprite_icons
 {
-   background-image: url("../../../../../skin/adminhtml/default/default/marketplace/magento_tool_icons.png");
+   background-image: url("magento_tool_icons.png");
    background-repeat: no-repeat;
 }
 .adminhtml-marketplace-configuration-index .login_container .cnc_marketplace_select_box_div,
@@ -946,7 +946,7 @@
    padding:0;
 }
 .adminhtml-marketplace-orders-index .order_container .order-action span {
-   background-image: url("../../../../../skin/adminhtml/default/default/marketplace/magento_tool_icons.png");
+   background-image: url("magento_tool_icons.png");
    background-repeat: no-repeat;
    float: left;
    height: 15px;
