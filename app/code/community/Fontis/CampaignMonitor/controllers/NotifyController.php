@@ -14,7 +14,7 @@ class Fontis_CampaignMonitor_NotifyController extends Mage_Core_Controller_Front
            
           
             $apiKey ="748091197600da830bca086216264f56b1ecac88c86a37de";
-            $listID = "90869be08731fe1c81cebb508e4e2818";
+            $listID = "676ee077f196f1e89a9b0e01a0ed6fca";
         
             if($apiKey && $listID) {
                 try {
