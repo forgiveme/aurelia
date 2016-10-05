@@ -40,14 +40,9 @@
 //]]>
 </script>
 <![endif]-->
-
- <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery.tools.min.js"></script>
- 
- 
-
-
-    <!-- Jquery UI Required for bxSlider, accordions -->
-     <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery-ui.min.js"></script>
+<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery.tools.min.js"></script>
+<!-- Jquery UI Required for bxSlider, accordions -->
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/jquery-ui.min.js"></script>
 	
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
@@ -55,70 +50,44 @@
 <?php echo $this->getIncludes() ?>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>js/jquery/js-cookie.js"></script>
 <!-- Truedash -->
-
 	<?php
-		if(Mage::getSingleton('customer/session')->isLoggedIn()){
-			$customerData=Mage::getSingleton('customer/session')->getCustomer();
-			//echo "<pre>";
-			$UserEmail= $customerData->getEmail();
-
-		}else{
-		$UserEmail = "";
-		
-		}?>
-
+	if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+		$customerData=Mage::getSingleton('customer/session')->getCustomer();
+		$UserEmail= $customerData->getEmail();
+	} else {
+		$UserEmail = "";	
+	}?>
 <script type="text/javascript">
-
 	(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-
 	p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-
 	};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
-
 	n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//dh48fr8sp13gg.cloudfront.net/sp.js","truedash"));
-
 	window.truedash('newTracker', 'mycljcoll', 'truetag.truedash.com', { // Initialise a tracker
-
-	  appId: 'Aurelia',
-
-	  cookieDomain: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>',
-
-	   cookieName: 'truedash'
-
+		appId: 'Aurelia',
+		cookieDomain: '<?php echo str_replace("/","",str_replace("https://www","",Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB))); ?>',
+		cookieName: 'truedash'
 	});
-
 	truedash('setUserId', '<?php echo $UserEmail; ?>');
-
 	truedash('enableActivityTracking', 30, 30);
-
-
 	truedash('trackPageView');
-
-	 <?php $pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
-	if ($pageIdentifier == 'catalogsearch_result_index'){ 
-	$term = $_REQUEST['q'];
-
-	if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
-		$productCollection = $listBlock->getLoadedProductCollection();
-		$prosize= $productCollection->getSize();
-	 }
+	<?php
+	$pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
+	if ($pageIdentifier == 'catalogsearch_result_index') {
+		$term = $_REQUEST['q'];
+		if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
+			$productCollection = $listBlock->getLoadedProductCollection();
+			$prosize= $productCollection->getSize();
+		}
 	?>
-
-	truedash('trackSiteSearch',  
-
-	['<?php echo $term; ?>'],  // search terms comma separated - example dresses, casual, boots
-
-	[''],          // filters - example books
-
-	<?php echo $prosize;?>,                 // results found - example 10
-
-	<?php echo $prosize;?>,                  // results displayed on first page - 10
-	);
-
+		truedash('trackSiteSearch',  
+			['<?php echo $term; ?>'],  // search terms comma separated - example dresses, casual, boots
+			[''],	// filters - example books
+			<?php echo $prosize;?>,	// results found - example 10
+			<?php echo $prosize;?>,	// results displayed on first page - 10
+		);
 	<?php 
-	} 
+	}
 	?>
-
 	var config = {
 	   forms: {
 		 blacklist: []
@@ -127,156 +96,107 @@
 		 blacklist: ['password']
 	   }
 	};
-
 	truedash('enableLinkClickTracking');
 	truedash('enableFormTracking', config);
 	<?php
-	 $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
-        $max = 0;
-        $lastItem = null;
-        foreach ($items as $item){
-            if ($item->getId() > $max) {
-                $max = $item->getId();
-                $lastItem = $item;
-            }
-        }
-        if ($lastItem){
-            $_product = $lastItem->getProduct();
-            $xproductsku = $_product->getSku();
-           $xproductname = $_product->getName();               
-           $xproductqty = $_product->getQty();  
-           $xproductprice = $_product->getPrice();   
-           $xproducturl = $_product->getUrl();
-        }
-   
-		?>
+	$items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+	$max = 0;
+	$lastItem = null;
+	foreach ($items as $item){
+		if ($item->getId() > $max) {
+			$max = $item->getId();
+			$lastItem = $item;
+		}
+	}
+	if ($lastItem) {
+		$_product = $lastItem->getProduct();
+		$xproductsku = $_product->getSku();
+		$xproductname = $_product->getName();               
+		$xproductqty = $_product->getQty();  
+		$xproductprice = $_product->getPrice();   
+		$xproducturl = $_product->getUrl();
+	}
+	?>
 	truedash('trackAddToCart', '<?php echo $xproductsku; ?>', '<?php echo $xproductname; ?>', 'category','<?php echo $xproductprice; ?>', '<?php echo $xproductqty; ?>', '£');
-
-truedash('trackRemoveFromCart', 'sku', 'name', 'category', 'unit price', 'quantity', 'currency');
+	truedash('trackRemoveFromCart', 'sku', 'name', 'category', 'unit price', 'quantity', 'currency');
 	<?php 
 	$fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
 	if($fullActionName=="checkout_onepage_success") {
-	
-	
-	$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
-	$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-	$grandtotal = $order->getGrandTotal();
-	$shippingAmount= $order->getShippingAmount();
-
-	$grandtotal= number_format($grandtotal, 2, '.', '');
-	?>
+		$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+		$grandtotal = $order->getGrandTotal();
+		$shippingAmount= $order->getShippingAmount();
+		$grandtotal= number_format($grandtotal, 2, '.', '');
+		?>
 		truedash('addTrans',
-
-		'<?php echo $orderId; ?>',           // order ID - 
-
-		'Aurelia',  // affiliation or store name
-
-		'<?php echo $grandtotal; ?>',          // total - 
-
-
-		'<?php echo $shippingAmount; ?>',              // shipping
-
-	
-
-	  );
-	
-	<?php 
-	// echo $orderId;
-	// echo "<br>".$grandtotal;
-	// echo "<br>".$shippingAmount;
-	// echo "---------------------------------------------<br>";
-	$orderItems = $order->getAllItems();
-
-	foreach($orderItems as $orderItem) { ?>
-	// prints out _addItem for each
-
-	  truedash('addItem',
-
-		'<?php echo $orderId; ?>',           // order ID 
-		'<?php echo $orderItem->getSku(); ?>',     // SKU/code
-
-		'<?php echo $orderItem->getName(); ?>',     // product name
-
-		'<?php echo   $orderItem->getPrice(); ?>',          // unit price - required
-
-		'<?php  echo $orderItem->getQtyOrdered(); ?>'               // quantity - required
-
-	  );
-	
-	
-	<?php }?>
-	
-	 truedash('trackTrans');
-	 
-	<?php }	
-	
-	
-	?>
-	
+			'<?php echo $orderId; ?>',	// order ID - 
+			'Aurelia',	// affiliation or store name
+			'<?php echo $grandtotal; ?>',	// total - 
+			'<?php echo $shippingAmount; ?>',	// shipping
+		);
+		<?php
+		$orderItems = $order->getAllItems();
+		foreach($orderItems as $orderItem) { ?>
+			// prints out _addItem for each
+			truedash('addItem',
+				'<?php echo $orderId; ?>',	// order ID 
+				'<?php echo $orderItem->getSku(); ?>',	// SKU/code
+				'<?php echo $orderItem->getName(); ?>',	// product name
+				'<?php echo   $orderItem->getPrice(); ?>',	// unit price - required
+				'<?php  echo $orderItem->getQtyOrdered(); ?>'	// quantity - required
+			);	
+		<?php } ?>
+	truedash('trackTrans'); 
+	<?php }	?>
 </script>
-
 <!-- Truedash —>
-
 <!-- Facebook Pixel Code -->
-
 <script>
-
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
- 
-
 fbq('init', '1759485774264810');
-
 fbq('track', "PageView");
-
 <?php
-  $pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
-  $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
-	if ($pageIdentifier == 'catalogsearch_result_index'){ 
-	$term = $_REQUEST['q'];
-  $ids=array();
-  if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
-		$productCollection = $listBlock->getLoadedProductCollection();
-		$prosize= $productCollection->getSize();
-		$ids=$productCollection->getAllIds();
-		
-		 $searchProductsIds = implode(',',$ids);
-		
-	 } ?>
-fbq('track', 'Search', { 
-    search_string: '<?php echo $term ?>',
-    content_category: 'Product Search',
-    content_ids: [<?php  echo $searchProductsIds ?>],
-    value: "",
-    currency: '<?php echo $currency_code; ?>'
-});
-<?php }   ?>
+	$pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
+	$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
+	if ($pageIdentifier == 'catalogsearch_result_index') {
+		$term = $_REQUEST['q'];
+		$ids=array();
+		if($listBlock = $this->getLayout()->getBlock('search_result_list')) {
+			$productCollection = $listBlock->getLoadedProductCollection();
+			$prosize= $productCollection->getSize();
+			$ids=$productCollection->getAllIds();
+			$searchProductsIds = implode(',',$ids);
+		} ?>
+		fbq('track', 'Search', { 
+			search_string: '<?php echo $term ?>',
+			content_category: 'Product Search',
+			content_ids: [<?php  echo $searchProductsIds ?>],
+			value: "",
+			currency: '<?php echo $currency_code; ?>'
+		});
+	<?php } ?>
 
 <?php
 // echo $this->getRequest()->getControllerName();
 if($this->getRequest()->getControllerName()=='product') {
-  // only works on products page
-$_product = Mage::registry('current_product');
-$proId= $_product->getId();
-$productName= $_product->getName();
-$price = number_format($_product->getPrice(), 2);
-$cats = $_product->getCategoryId();
-  $_cat = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($cats);
-$categoryName= $_cat->getName();   
-  } 
+	// only works on products page
+	$_product = Mage::registry('current_product');
+	$proId= $_product->getId();
+	$productName= $_product->getName();
+	$price = number_format($_product->getPrice(), 2);
+	$cats = $_product->getCategoryId();
+	$_cat = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($cats);
+	$categoryName= $_cat->getName();   
+} 
 	$controllerName= $this->getRequest()->getControllerName();
 	
 if($controllerName=="cart") {
- $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
- if($items!=""){
+	$items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+	if($items!=""){
         $max = 0;
         $lastItem = null;
         foreach ($items as $item){
@@ -294,189 +214,137 @@ if($controllerName=="cart") {
            $xproducturl = $_product->getUrl();
 		    $xproductid = $_product->getId();
         }
-	
-?>
-fbq('track', 'AddToCart',{
-content_type:'product',
-content_name:'<?php echo $xproductname ?>',
-content_ids:'<?php echo $xproductid; ?>',
-value:'<?php echo $xproductprice; ?>',
-currency: '<?php  echo $currency_code; ?>'
-
-});
-<?php }
-} 
+		?>
+		fbq('track', 'AddToCart',{
+			content_type:'product',
+			content_name:'<?php echo $xproductname ?>',
+			content_ids:['<?php echo $xproductsku; ?>'],
+			value:'<?php echo $xproductprice; ?>',
+			currency: '<?php  echo $currency_code; ?>'
+		});
+	<?php }
+}
 $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
-// foreach($items as $itms){
-
-// $data.= $items->getId().",";
-
-// }
-
 $quote = Mage::getModel('checkout/session')->getQuote();
 $quoteData= $quote->getData();
 $grandTotal=$quoteData['grand_total'];
 $count = $this->helper('checkout/cart')->getSummaryCount();
 
 foreach ($quote->getAllItems() as $item) {
-    $productId[] = $item->getProduct()->getId();
-   
+	$productId[] = $item->getProduct()->getId();
 }
-
 $productsids = implode(',',$productId);
-
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-
 if (strpos($currentUrl, 'onestepcheckout') !== false) {
-    
 ?>
-
-fbq('track', 'InitiateCheckout',{
-content_type:'product',
-content_name:'initate checkout details',
-content_ids:[<?php  echo $productsids; ?>],
-num_items: '<?php echo $count; ?>',
-value:'<?php echo $grandTotal; ?>',
-currency:'<?php  echo $currency_code; ?>'
-});
-
-<?php } 
+	fbq('track', 'InitiateCheckout',{
+		content_type:'product',
+		content_name:'initate checkout details',
+		content_ids:[<?php  echo $productsids; ?>],
+		num_items: '<?php echo $count; ?>',
+		value:'<?php echo $grandTotal; ?>',
+		currency:'<?php  echo $currency_code; ?>'
+	});
+<?php }
  // order success
 $fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
 	if($fullActionName=="checkout_onepage_success") {
-	
-	
-	$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
-	$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-	$grandtotal = $order->getGrandTotal();
-	$shippingAmount= $order->getShippingAmount();
+		$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+		$grandtotal = $order->getGrandTotal();
+		$shippingAmount= $order->getShippingAmount();
 
-	$grandtotal= number_format($grandtotal, 2, '.', '');
-$orderItems = $order->getAllItems();
-
-	foreach($orderItems as $orderItem) { 
-	$orderIds[]=$orderItem->getId();
-	}
-	$orderids =implode(',',$orderIds);
-?>
-
- fbq('track', 'Purchase',{
- content_type:'product',
- content_ids:[<?php echo $orderids ?>],
- order_id:'<?php echo $orderId; ?>',
- value:'<?php echo $grandtotal; ?>',
-currency:'<?php  echo $currency_code; ?>'
-
- });
-
- <?php }
+		$grandtotal= number_format($grandtotal, 2, '.', '');
+		$orderItems = $order->getAllItems();
+		$ss=0;
+		foreach($orderItems as $orderItem) { 
+			$orderIds[]="'".$orderItem->getSku()."'";
+			$ss=$ss+1;
+		}
+		$orderids =implode(',',$orderIds);
+		if($ss > 1) {
+			$productType="product_group";
+		} else {
+			$productType="product";
+		}
+	?>
+	fbq('track', 'Purchase',{
+		content_type:'<?php echo $productType;?>',
+		content_ids:[<?php echo $orderids ?>],
+		order_id:'<?php echo $orderId; ?>',
+		value:'<?php echo $grandtotal; ?>',
+		currency:'<?php  echo $currency_code; ?>'
+	});
+<?php }
 
 $fullActionName= Mage::app()->getFrontController()->getAction()->getFullActionName();
 
 if($fullActionName=="customer_account_index") {
-
-$customer = Mage::getSingleton('customer/session')->getCustomer();
- $createdate = $customer->getCreatedAt();
- $customerName= $customer->getName();
- $data = explode('T',$createdate);
- $date = explode('-',$data[0]);
- $currentDate= date('d');
- if($date[2]==$currentDate){
- ?>
- 
- fbq('track', 'CompleteRegistration',{
- content_name: '<?php echo $customerName;?>',
- status:'new registration ',
-currency:'<?php  echo $currency_code; ?>'
- 
- });
- 
- <?php } 
- } ?>
- 
+	$customer = Mage::getSingleton('customer/session')->getCustomer();
+	$createdate = $customer->getCreatedAt();
+	$customerName= $customer->getName();
+	$data = explode('T',$createdate);
+	$date = explode('-',$data[0]);
+	$currentDate= date('d');
+	if($date[2]==$currentDate) {
+	?>
+		fbq('track', 'CompleteRegistration',{
+			content_name: '<?php echo $customerName;?>',
+			status:'new registration ',
+			currency:'<?php  echo $currency_code; ?>'
+		});
+	<?php } 
+} ?>
 </script>
-
-<noscript><img height="1" width="1" style="display:none"
-
-src="https://www.facebook.com/tr?id=1759485774264810&ev=PageView&noscript=1"
-
-/></noscript>
-
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1759485774264810&ev=PageView&noscript=1"/></noscript>
 <!-- End Facebook Pixel Code -->
-
 <!-- preloading images-->
     <script language="JavaScript">
-
-        function preloader()
-        {
-
-         // counter
+    function preloader() {
+        // counter
         var i = 0;
-
         // create object
         imageObj = new Image();
-
         // set image list
         images = new Array();
         images[0]="media/slide1.jpg"
         images[1]="media/slide2.jpg"
         images[2]="media/slide3.jpg"
-
         // start preloading
-        for(i=0; i<=2; i++)
-        {
+        for(i=0; i<=2; i++) {
               imageObj.src=images[i];
         }
- 
-        }
-
-
-        var $j = jQuery.noConflict();
-
-        $j(document).ready(function() {  
- 
-        
-  //Read More text
-    $j("#read-more").click(function () {
-    $j("#more-biog").slideDown("slow");
-    $j("#read-more").css('display', 'none');
-    });
-    //Open external links in new tab or window
-    $j("a[rel='external']").each(function(i){$j(this).attr("target","_blank");});
-    //Fade transparency of video-thumb images on Hover
-    $j(".video-thumb").hover(function() {
-          $j(".fade", this).stop().animate({opacity: "0.75"}, 'fast');
-        },
-        function() {
-          $j(".fade", this).stop().animate({opacity: "1"}, 'fast');
-        });
-    
-	
-	<?php 
-	
-		//Detect Mobile or Tablet device
-	//	include 'Mobile_Detect.php';
-		//$detect = new Mobile_Detect;
-		
-		//if ($detect->isMobile() || $detect->isTablet()) {
-if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'Android')|| strstr($_SERVER['HTTP_USER_AGENT'],'BlackBerry')|| strstr($_SERVER['HTTP_USER_AGENT'],'iPad'))
- {   
-		?>
-            
-			//Initiate Fancybox YouTube links with fixed width and height
-			$j(".fancyYoutube").fancybox({
+    }
+    var $j = jQuery.noConflict();
+    $j(document).ready(function() { 
+		//Read More text
+		$j("#read-more").click(function () {
+			$j("#more-biog").slideDown("slow");
+			$j("#read-more").css('display', 'none');
+		});
+		//Open external links in new tab or window
+		$j("a[rel='external']").each(function(i){$j(this).attr("target","_blank");});
+		//Fade transparency of video-thumb images on Hover
+		$j(".video-thumb").hover(function() {
+			$j(".fade", this).stop().animate({opacity: "0.75"}, 'fast');
+		},
+		function() {
+			$j(".fade", this).stop().animate({opacity: "1"}, 'fast');
+		});
+	<?php
+	if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'Android')|| strstr($_SERVER['HTTP_USER_AGENT'],'BlackBerry')|| strstr($_SERVER['HTTP_USER_AGENT'],'iPad')) {   
+	?>       
+		//Initiate Fancybox YouTube links with fixed width and height
+		$j(".fancyYoutube").fancybox({
 			'padding' : 0,
 			type: "iframe",
-    		iframe : {
-      		preload: false
-   			 }
-			 
-  			});
-			
+			iframe : {
+				preload: false
+			}
+		});
 	<?php } else { ?>
-	
-	//Initiate Fancybox YouTube links with fixed width and height
-			$j(".fancyYoutube").fancybox({
+		//Initiate Fancybox YouTube links with fixed width and height
+		$j(".fancyYoutube").fancybox({
 			'transitionIn' : 'fade',
 			'overlayShow': true,
 			'overlayOpacity' : 0.85,
@@ -486,64 +354,32 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
 			'width' : 680,
 			'height' : 495,
 			type: "iframe"
-
-			});
-			
-	<?php } ?>	 
-
-
-
+		});	
+	<?php } ?>
     //Initiate Fancybox Image links
     $j(".fancyImage").fancybox({
-    'transitionIn' : 'fade',
-    'overlayShow': true,
-    'overlayOpacity' : 0.85,
-    'padding' : 0,
-    'autoScale' : true,
-    'transitionOut' : 'fade',
+		'transitionIn' : 'fade',
+		'overlayShow': true,
+		'overlayOpacity' : 0.85,
+		'padding' : 0,
+		'autoScale' : true,
+		'transitionOut' : 'fade',
     });
-
-
-    });// end document.ready */
-
-    </script>
+});// end document.ready */
+</script>
 <script type="text/javascript">
-
-        var $j = jQuery.noConflict();
-
-        $j(document).ready(function() {
-			
-		/*$j(function()
-		{
-			$j('.scroll-pane').jScrollPane();
-		}); */
-		
-		//GET SESSION DATA
-
-	//$j.cookie("page", "logged-out", {path: '/', domain: '.aureliaskincare.com' });
-
-		
-				
-			
-			$j("a.wishlist-text").click(function() {
-			 	$j.cookie("page", "wishlist", {path: '/' });
-			});	
-			
-			$j('.stockists #sidebar-nav a').click(function(){
-				$j(this).addClass('option-selected');
-			});
-		
-					
-             var $customInputs = $j('input[type="checkbox"], input[type="radio"]');
-            if($customInputs.length > 0 && $customInputs.uniform){
-                $customInputs.uniform();    
-            }
-            
-
-        		
-		
-
-
+	var $j = jQuery.noConflict();
+	$j(document).ready(function() {
+		$j("a.wishlist-text").click(function() {
+		 	$j.cookie("page", "wishlist", {path: '/' });
+		});	
+		$j('.stockists #sidebar-nav a').click(function(){
+			$j(this).addClass('option-selected');
+		});
+        var $customInputs = $j('input[type="checkbox"], input[type="radio"]');
+        if($customInputs.length > 0 && $customInputs.uniform){
+            $customInputs.uniform();    
+        }
         $j('#gift_wrap_check').click(function() {
             $j.ajax({
                 url: "<?php echo $this->getUrl('giftmodule/index/giftwrap')?>",
@@ -557,7 +393,6 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
                 }
             });
         });
-
         $j('#gift_wrap_check_checked').click(function() {
             $j.ajax({
                 url: "<?php echo $this->getUrl('giftmodule/index/giftwrap')?>",
@@ -571,8 +406,7 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
                 }
             });
         });
-		
-	$j('.newsletter-not-checked').click(function() {
+		$j('.newsletter-not-checked').click(function() {
             $j.ajax({
                 url: "<?php echo $this->getUrl('silverpop/index/save')?>",
                 dataType: "json",
@@ -585,9 +419,7 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
                 }
             });
         });
-		
-		
-	$j('.newsletter-checked').click(function() {
+		$j('.newsletter-checked').click(function() {
             $j.ajax({
                 url: "<?php echo $this->getUrl('silverpop/index/save')?>",
                 dataType: "json",
@@ -600,26 +432,21 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
                 }
             });
         });
-		
 		$j('#gift_message_check').click(function(){
 			//$j('.gift-message-fields').toggle();
 			//$j('.gift-message-fields input, .gift-message-fields textarea').toggleClass('required-entry');
 			//alert('show');
-			
 	    });
-		
 		$j('#gift_wrap_check').click(function(){
 			$j('.gift-wrap-submit').toggle();
 			//alert('show');	
 	   	 });
-	    
 	 });
 </script>
-
 <script type="text/javascript">
 $j(document).ready(function() {
 
-$j('#slider2').tinycarousel({ display: 1 });
+	$j('#slider2').tinycarousel({ display: 1 });
 
     $j('.accordion-header-desc-down').toggle(function() {
         $j(this).parent().next().hide(200);
@@ -641,7 +468,6 @@ $j('#slider2').tinycarousel({ display: 1 });
         $j(this).parent().next().hide(200);
         $j(this).removeClass('accordion-header-down');
     });
-    
     $j('.mobile .nav-dropdown a.general-nav').toggle(function() {
         $j(this).parent().siblings().children('div').hide(200);
         $j(this).next('div').show(200);
@@ -652,16 +478,8 @@ $j('#slider2').tinycarousel({ display: 1 });
     });
     
     $j('.backtotop').click(function(){
-
         var body = $j("html, body");
-        body.stop().animate({scrollTop:0}, '500', 'swing', function() { 
-  // alert("Finished animating");
-        });
-
-
+        body.stop().animate({scrollTop:0}, '500', 'swing', function() { });
     });
-    
-    
 });
-
 </script>
