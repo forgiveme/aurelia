@@ -391,51 +391,118 @@ class Cnc_Marketplace_Helper_Data extends Mage_Core_Helper_Abstract
             $selected_fields
         );
     }
-
-    public function getOffersToUpload()
+	
+	public function getOffersToUpload($cron)
     {
-        $productIds = $this->getStyledotComProducts(array(), true);
-        if (count($productIds) > 0) {
-            $dbConfig = Mage::getConfig()->getResourceConnectionConfig("default_setup");
-            $offersQuery = "
-                SELECT
-                    cpe.sku AS sku,
-                    cpe.sku AS 'product-id',
-                    'SHOP_SKU' AS 'product-id-type',
-                    ROUND(cpip.price,0) AS price,
-                    ROUND(csi.qty,0) AS quantity,
-                    '11' AS state
-                FROM catalog_product_entity AS cpe
-                LEFT JOIN catalog_product_index_price AS cpip ON cpip.entity_id = cpe.entity_id
-                LEFT JOIN cataloginventory_stock_item AS csi ON csi.product_id = cpe.entity_id
-                WHERE
-                  cpip.price > 0
-                  AND csi.qty > 0
-                  AND cpe.entity_id IN (" . implode(",", $productIds) . ")
-                GROUP BY cpe.entity_id
-            ";
+        /**
+         * ==== Important ====
+         * This uses the legacy offer upload function but has been replaced with the shell_exec()
+         * & Raw SQL command. Due to the merchants setup a 400 Bad CSV Header was returned preventing
+         * The offer upload file from being created.
+         *
+         * Current module version is v2.2.0
+         */
 
-            $exportDir = Mage::getBaseDir() . '/var/cnc_marketplace/';
-            if (!file_exists($exportDir)) {
-                mkdir($exportDir, 0777, true);
+        if ($cron) {
+            $mapped_fields = json_decode($this->getConfigurationData('product_map'));
+        } else {
+            $mapped_fields = Mage::app()->getRequest()->getPost();
+            $mapped_fields = $mapped_fields['map_value'];
+        }
+        if (count($mapped_fields) > 0 && $mapped_fields) {
+            $existing_fields = $this->getConfigurationData('product_map');
+            list($field_heading, $selected_fields) = $this->getOffersAttrHeadings($existing_fields, $mapped_fields, $cron);
+            // Create variable to hold content of CSV file.
+            $file_string = $field_heading . "\n";
+            $_products = $this->getStyledotComProducts();
+            $image = Mage::getModel('catalog/product_media_config');
+            $product = Mage::getModel('catalog/product');
+            foreach ($_products as $_product) {
+                $_product->getId();
+                $product->load($_product->getId());
+                $prod_attributes = $_product->getData();
+                $thumbnail_path_url = $image->getMediaUrl($product->getThumbnail());
+                $smallimage_path_url = $image->getMediaUrl($product->getSmallImage());
+                $image_path_url = $image->getMediaUrl($product->getImage());
+                $prod_attributes['thumbnail'] = $thumbnail_path_url;
+                $prod_attributes['small_image'] = $smallimage_path_url;
+                $prod_attributes['image'] = $image_path_url;
+                $prod_attributes['url_path'] = $this->getProductUrl($prod_attributes['sku']);
+                $prod_attributes['category_ids'] = $this->getCategoryPath($prod_attributes['sku']);
+                $stock_list = $this->getStockDataByProductId($product);
+                foreach ($mapped_fields as $fields_title) {
+                    if ($cron)
+                        $fields_title = $fields_title->value;
+                    $attribute = $_product->getResource()->getAttribute($fields_title);
+                    if ($attribute) {
+                        $check = $_product->getAttributeText($fields_title);
+                        if ((!is_array($check)) && $check && trim($check) != '') {
+                            unset($prod_attributes[$fields_title]);
+                            $prod_attributes[$fields_title] = $_product->getAttributeText($fields_title);
+                        } else if (is_array($check)) {
+                            $check = implode(",", $check);
+                            unset($prod_attributes[$fields_title]);
+                            $prod_attributes[$fields_title] = $check;
+                        }
+                    }
+                }
+                $all_product = array_merge($prod_attributes, $stock_list);
+                $product_field_value = $this->getOfferValuesForAttrFields($selected_fields, $all_product);
+                // tag on '11' for the 'state' field
+                $product_field_value .= ';"11"';
+                $file_string .= $product_field_value . "\n";
             }
-
-            $csvFilename = 'offer';
-            $tmpOutputFile = $exportDir . $csvFilename . '_tmp.csv';
-            $outputFile = $exportDir . $csvFilename . '.csv';
-            @unlink($outputFile);
-
-            $cmd = "mysql --host=" . $dbConfig->host . " -u" . $dbConfig->username . " -p" . $dbConfig->password . " " . $dbConfig->dbname . " -B -e \"$offersQuery\" | tr '\\t' ';' > $tmpOutputFile";
-            shell_exec($cmd);
-            shell_exec('sed \'s,\\\\\\\\,\\\\,g\' ' . $tmpOutputFile . ' > ' . $outputFile);
-            @unlink($tmpOutputFile);
-
+            // Create CSV file
+            Mage::helper('marketplace/util')->writeExportFile('offer', $file_string);
             $callApi = Mage::helper('marketplace/callapi');
             $callApi->uploadOfferData();
-        } else {
-            Mage::log('OFFERS : no product selection specified', null, 'cnc_marketplace_errors.log', true);
         }
     }
+
+    // public function getOffersToUpload()
+    // {
+        // $productIds = $this->getStyledotComProducts(array(), true);
+        // if (count($productIds) > 0) {
+            // $dbConfig = Mage::getConfig()->getResourceConnectionConfig("default_setup");
+            // $offersQuery = "
+                // SELECT
+                    // cpe.sku AS sku,
+                    // cpe.sku AS 'product-id',
+                    // 'SHOP_SKU' AS 'product-id-type',
+                    // ROUND(cpip.price,0) AS price,
+                    // ROUND(csi.qty,0) AS quantity,
+                    // '11' AS state
+                // FROM catalog_product_entity AS cpe
+                // LEFT JOIN catalog_product_index_price AS cpip ON cpip.entity_id = cpe.entity_id
+                // LEFT JOIN cataloginventory_stock_item AS csi ON csi.product_id = cpe.entity_id
+                // WHERE
+                  // cpip.price > 0
+                  // AND csi.qty > 0
+                  // AND cpe.entity_id IN (" . implode(",", $productIds) . ")
+                // GROUP BY cpe.entity_id
+            // ";
+
+            // $exportDir = Mage::getBaseDir() . '/var/cnc_marketplace/';
+            // if (!file_exists($exportDir)) {
+                // mkdir($exportDir, 0777, true);
+            // }
+
+            // $csvFilename = 'offer';
+            // $tmpOutputFile = $exportDir . $csvFilename . '_tmp.csv';
+            // $outputFile = $exportDir . $csvFilename . '.csv';
+            // @unlink($outputFile);
+
+            // $cmd = "mysql --host=" . $dbConfig->host . " -u" . $dbConfig->username . " -p" . $dbConfig->password . " " . $dbConfig->dbname . " -B -e \"$offersQuery\" | tr '\\t' ';' > $tmpOutputFile";
+            // shell_exec($cmd);
+            // shell_exec('sed \'s,\\\\\\\\,\\\\,g\' ' . $tmpOutputFile . ' > ' . $outputFile);
+            // @unlink($tmpOutputFile);
+
+            // $callApi = Mage::helper('marketplace/callapi');
+            // $callApi->uploadOfferData();
+        // } else {
+            // Mage::log('OFFERS : no product selection specified', null, 'cnc_marketplace_errors.log', true);
+        // }
+    // }
 
     public function getProductAttrHeadings($fields_selected, $cron = false, $productIds = array())
     {
