@@ -92,15 +92,15 @@
     </global>
 	 <crontab>
         <jobs>
-            <review_reminder>
+            <review_reminder_email>
                 <schedule>
-                    <cron_expr>00 00 * * *</cron_expr>
+                    <cron_expr>45 23 * * *</cron_expr>
                     <!-- minute(0-59) Hour(0-23) day of month(1-31) month(1-12) day of week(0-7 0 or 7 is Sunday)-->
                 </schedule>
                 <run>
                     <model>reminder/observer::sendReviewReminder</model>
                 </run>
-            </review_reminder>
+            </review_reminder_email>
         </jobs>
     </crontab>
 </config>
