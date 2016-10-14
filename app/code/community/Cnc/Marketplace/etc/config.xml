@@ -44,11 +44,11 @@
             <marketplace>
                 <class>Cnc_Marketplace_Block</class>
             </marketplace>
-            <adminhtml>
+            <!-- <adminhtml>
                 <rewrite>
                     <sales_order_grid>Cnc_Marketplace_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
                 </rewrite>
-            </adminhtml>
+            </adminhtml> -->
         </blocks>
         <resources>
             <marketplace_setup>
