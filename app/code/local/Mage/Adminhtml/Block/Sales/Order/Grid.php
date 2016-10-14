@@ -116,6 +116,16 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 			'column_css_class'=>'no-display',
 			'header_css_class'=>'no-display',		 
 		));
+	    
+	    	$this->addColumn('is_mirakl_order', array(
+			'header'    => Mage::helper('Sales')->__('Style.com Order'),
+			'width'     => '100px',
+			'index'     => 'is_mirakl_order',
+			'type'        => 'options',
+			'renderer' => 'marketplace/adminhtml_grid_column_renderer_order_status',
+		    	'options' => array('1'=>'Yes', '0'=>'No'),
+		    	'separator' => '<br/>'
+		));
 
         if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/view')) {
             $this->addColumn('action',
