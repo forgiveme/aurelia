@@ -123,7 +123,7 @@ $$('#checkout-payment-method-load dt input').invoke('observe', 'click', function
     var name = 'payment_form_' + element.getValue();
     payment.currentMethod = element.getValue();
     /* Hide all other forms */
-    $$('dd.payment-method').invoke('hide');
+    //$$('dd.payment-method').invoke('hide');
 
     if(element.checked) {
         payment.switchMethod(payment.currentMethod);

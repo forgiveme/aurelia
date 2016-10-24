@@ -1225,6 +1225,56 @@ a[href^="tel"] {
 .CorporateGiftingMain p{ font-size:14px; color:#868280; font-weight:400; margin:30px 0 0 0; padding:0px; line-height:140%;}
 .CorporateGiftingMain a{color:#868280; text-decoration:none; display:inline-block; margin-top:11px;}
 
+/*************PayPal**************************/
+
+.paypal-express-review .info-set-new,
+.paypal-express-review .info-set-new *{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.paypal-express-review .info-set-new{ display:block; padding:27px 0; clear:both; width:100%; float:left;}
+.paypal-express-review .info-set-new h2{ color:#868280; font-size:16px; text-align:center; text-transform:uppercase; letter-spacing:1px; padding:0 0 25px 0; margin:0px; line-height:120%;}
+.paypal-express-review .info-set-new .data-table td,
+.paypal-express-review .info-set-new .data-table th{ padding:5px !important; letter-spacing:0.5px !important; border:0px none !important; text-align:left !important; width:10%;}
+.paypal-express-review .info-set-new .data-table td,
+.paypal-express-review .info-set-new .data-table td .product-name,
+.paypal-express-review .info-set-new .data-table td .price{ font-size:12px; text-transform:capitalize;}
+.paypal-express-review .info-set-new .data-table td .product-name{ text-transform:uppercase;}
+.paypal-express-review .info-set-new .data-table th{font-size:14px;}
+.paypal-express-review .info-set-new .data-table td:first-child,
+.paypal-express-review .info-set-new .data-table th:first-child{ width:62%; padding-left:90px !important;}
+.paypal-express-review .info-set-new .data-table td:nth-child(3){ width:8% !important; padding-left:18px !important;}
+.paypal-express-review .info-set-new .data-table th:nth-child(3){ width:8% !important;}
+.paypal-express-review .info-set-new .data-table th{ background:#ebebeb; padding-top:10px !important; padding-bottom:10px !important;}
+.paypal-express-review .info-set-new .data-table tfoot .first td{ border-top:1px solid #e7d8cd !important;}
+.paypal-express-review .info-set-new .data-table tfoot td{ background:#fff !important;}
+.paypal-express-review .info-set-new .data-table tfoot td:first-child{ text-align:right !important; padding-right:7% !important;}
+.paypal-express-review .info-set-new .data-table tfoot td strong,
+.paypal-express-review .info-set-new .data-table tfoot td strong span{ font-weight:normal !important; font-size:14px !important; text-transform:uppercase;}
+.paypal-express-review .info-set-new .data-table tfoot tr:first-child td{padding-top:12px!important;}
+.paypal-express-review .info-set-new .data-table tbody tr:first-child td{ padding-top:25px!important;}
+.paypal-express-review .info-set-new .data-table tbody tr:last-child td{ padding-bottom:25px!important;}
+.paypal-express-review .info-set-new.graybgcolor{ background:#ebebeb; border-top:1px solid #e7d8cd; border-bottom:1px solid #e7d8cd; padding:27px 90px;}
+.paypal-express-review .info-set-new.graybgcolor h2{ padding-bottom:35px;}
+.paypal-express-review .info-set-new .col-half{ width:65%; float:left;}
+.paypal-express-review .info-set-new .col-half.one{ width:35%; float:left;}
+.paypal-express-review .info-set-new .col-half .box{ width:100%; float:left; display:block;}
+.paypal-express-review .info-set-new .col-half .box h3{color:#868280; font-size:14px; text-align:left; text-transform:uppercase; letter-spacing:1px; padding:0 0 17px 0; margin:0px; line-height:120%;}
+.paypal-express-review .info-set-new .col-half .box-content{ font-size:12px; line-height:140%;}
+.paypal-express-review .info-set-new .col-half .box-content address{ margin-bottom:20px;}
+.paypal-express-review .info-set-new .col-half .box-content select{ max-width:252px; height:29px; width:100%; padding:0 20px 0 6px; -webkit-appearance: none; -moz-appearance: none; appearance: none; background:url(../images/selectarrow.jpg) no-repeat right 0 #fff;}
+.paypal-express-review #order_review_form{ width:100%; clear:both; float:left; padding:0 90px;}
+.paypal-express-review .info-set-new.bottomgraphic .checkout-agreements li{ padding:0px; margin:0px;}
+.paypal-express-review .info-set-new.bottomgraphic{ 
+/*background-image:url(../images/paypal_left_graphic.jpg), url(../images/paypal_right_graphic.jpg); 
+background-repeat:no-repeat, no-repeat;
+background-position:left bottom, right bottom;*/}
+.paypal-express-review .info-set-new.bottomgraphic .buttons-set-order{clear:both; padding-top:40px; margin:0px; text-align:center;}
+.paypal-express-review .info-set-new.bottomgraphic p.helptetxt{text-align:center; padding-top:50px;  color:#868280; font-size:12px; line-height:140%; margin:0px;}
+.paypal-express-review .info-set-new.bottomgraphic .helptetxt .blocktxt{ display:block;}
+.paypal-express-review .info-set-new .checker{ margin:-4px 5px 0 0;}
+.paypal-express-review .info-set-new .checkout-agreements .agree label{ font-weight:400;}
+.paypal-express-review .info-set-new .checkout-agreements .agree{ padding:15px 0 0 0; margin:0px;}
+.paypal-express-review .info-set-new button.button{ height:auto; max-width:285px; width:100%; display:inline-block;  border:1px solid #6d6f71;}
+.paypal-express-review .info-set-new button.button span{ padding:0px; min-height:36px;  font-size:17px; background:#95918e; text-align:center; line-height:36px; display:block;}
+.paypal-express-review .checkout-agreements .agreement-content{ border:none;}
 @media (min-width: 1000px) and (max-width: 1024px) {
 ul#video-slider li {
 	width: 321px !important
@@ -2619,6 +2669,8 @@ button.button span {
 	display: none;
 }
 .boutique-left-section p{ font-size:17px;}
+.boutique-contant-section h3{ font-size:14px;}
+.boutique-left-section p.smalltext{ font-size:12px;}
 }
 
 @media (min-width: 320px) and (max-width: 320px) {
@@ -3159,6 +3211,17 @@ color:#868280 !important;
 .onestepcheckout-column-right .shopping-bag button{padding-top: 7px !important;
     padding-bottom: 7px !important;}
 	
+/*************PayPal**************************/	
+.paypal-express-review .info-set-new .data-table td:first-child, .paypal-express-review .info-set-new .data-table th:first-child{ padding-left:10px !important; width:50%;}	
+.paypal-express-review .info-set-new .data-table tfoot td:first-child{    padding-right: 6% !important;}
+.paypal-express-review .info-set-new.graybgcolor{    padding: 27px 10px;}
+.paypal-express-review #order_review_form{ padding:0px;}
+.paypal-express-review .info-set-new button.button span{ width:100%;}
+.paypal-express-review .info-set-new .col-half{width:60%;}
+.paypal-express-review .info-set-new .col-half.one{width:40%;}
+.paypal-express-review .info-set-new.bottomgraphic{ background-size:150px;}
+.paypal-express-review .info-set-new.bottomgraphic p.helptetxt{ padding:25px 15px 50px 15px;}
+.paypal-express-review .info-set-new.bottomgraphic .helptetxt .blocktxt{ display:inline;}
 	
 	
 }
@@ -3166,6 +3229,9 @@ color:#868280 !important;
 @media only screen and (max-width: 479px) {
 .onestepcheckout-coupons input#id_couponcode{width:97%;}
 .login-form-right #login-form .registered-users{float:none; margin:auto;}
+/*************PayPal**************************/	
+.paypal-express-review .info-set-new .col-half{width:100%;}
+.paypal-express-review .info-set-new .col-half.one{width:100%; padding-top:20px;}
 }
 
 @media only screen and (max-width: 479px) {
@@ -3269,3 +3335,4 @@ color:#868280 !important;
 .deoNew .new-launch{ margin-top:0px;}
 .new-launch button.button{font-size:21px !important; color:#fff !important; width:100% !important; height:45px !important; margin-top:34px !important; cursor:pointer; text-transform:uppercase !important;}
 .popup-content-sub .new-launch button.button span{ font-size:inherit !important; padding:inherit !important;}
+#review-please-wait { position:absolute; }

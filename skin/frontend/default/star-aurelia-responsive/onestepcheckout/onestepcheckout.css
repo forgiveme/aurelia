@@ -58,7 +58,10 @@ ol.checkout-agreements {
     letter-spacing: 0.1em;
     margin-bottom: 39px;
     padding: 3px 2px;
-	text-transform:uppercase; }
+	text-transform:uppercase;
+	
+	width:100%;
+	}
 
    
     .orange.onestepcheckout-button, .orange.onestepcheckout-button:visited        { 
@@ -957,4 +960,22 @@ div.onestepcheckout-comments textarea {
 
 #checkout-payment-method-load > dt {
     margin-bottom: 12px;
+
+
+	}
+
+	.payment-methods dd li.form-alt {
+		padding-left: 10px;
+	}
+
+
+#checkout-payment-method-load dd{ position:relative;}
+#container_payment_method_paypal_express ul#payment_form_paypal_express:before{ width:25px; height:25px; display:inline-block; content:""; background:url(../images/alertIconG.png) no-repeat 0 0; position:absolute; left:0px; background-size:100%;}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+#container_payment_method_paypal_express ul#payment_form_paypal_express:before{ width:20px; height:20px; background-size:100%;}
+	.payment-methods dd li.form-alt {
+    padding-left: 0px;
+}
 }
