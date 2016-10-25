@@ -1,0 +1,184 @@
+<?php
+$orderData = $this->getorderData();
+$cartData = $this->getcartproductData($orderData);
+$sampleData = $this->getcartsampleData($orderData);
+?>
+<style>
+body{margin:0cm; padding:0cm; text-align: left;color:#6d6e71;font-size:10pt; font-family:"Avenir LT 35 Light"; letter-spacing:0.5px; background: transparent url(<?php echo $this->getSkinUrl('custompdf/body-bg.png'); ?>) repeat center center; background-color:#fee2c8;}
+.main-wapper{background-color:#fff; padding:0.8cm; position:relative; z-index:2; }	
+.rowblock{ width:100%; clear:both; margin-top:0.5cm;}
+.leftblock{width:50%; float:left; text-align:left; }
+.rightblock{width:50%; float:right; text-align:right; }
+.onecol{width:100%; float:left; text-align:left; }
+.tablemain{margin-top:0.5cm; width:100%; float:left; background-color:#939598; }
+.tableheader{width:100%; float:left; text-align:center;  color:#fff; display:flex; background-color:#939598; vertical-align:top; }
+.tablebody{width:100%; float:left; text-align:center;  color:#6d6e71;  display:flex; background: transparent url(<?php echo $this->getSkinUrl('custompdf/dotline.jpg'); ?>) repeat-y left top; background-color:#ffffff; vertical-align:top; border-bottom:1px solid #939598;}
+.tablebody div, .tableheader div{background: transparent url(<?php echo $this->getSkinUrl('custompdf/dotline.jpg'); ?>) repeat-y right top; }
+.qty{width:15%; float:left; padding:1%;}
+.product{width:64%; float:left; padding:1%;}
+.price{width:15%; float:right; padding:1%;}
+.tablebody .product{text-align:left;}
+.sample{width:98%; float:left; text-align:center;  color:#fff; background-color:#939598; vertical-align:top;  padding:1%;}
+
+.tablefooter{width:100%; float:left; text-align:center;  color:#6d6e71; display:flex; vertical-align:top;  background-color:#fff;}
+.tablefooterinner{width:50%; float:right; text-align:center;  color:#939598; display:flex;  vertical-align:top; clear:both; border-bottom:1px solid #939598; background: transparent url(<?php echo $this->getSkinUrl('custompdf/dotline.jpg'); ?>) repeat-y left top;}
+.tablefooterinner div{background: transparent url(<?php echo $this->getSkinUrl('custompdf/dotline.jpg'); ?>) repeat-y right top; color:#6d6e71;}
+.totaltext{width:64%; float:left; padding:2% 1%;}
+.totalprice{width:32%; float:right; padding:2% 1%;}
+.forgettext{width:50%; float:right; text-align:center; padding:2% 1%; color:#6d6e71;}
+
+.footerblock{ clear:both; margin:0cm; border-top:1px dotted #939598; text-align:center;  background: #fff url(<?php echo $this->getSkinUrl('custompdf/flower_left.jpg'); ?>) no-repeat -7% bottom; background-size:auto 100%;}
+.footerblock1{background: transparent url(<?php echo $this->getSkinUrl('custompdf/flower_right.jpg'); ?>) no-repeat 107% bottom; background-size:auto 100%; padding:0.2cm 0.5cm 0cm 0.5cm;}
+.footerblock1 a{color:#6d6e71; text-decoration:none;}
+.footerblock p{line-height:200%;}
+.footerblock ul{margin:0.5cm 15%;}
+.footerblock ul li{ width:21%; float:left; margin-right:-4px; padding:0 1%;list-style:none;}
+.footerblock ul li img {width:100%;}	
+.footersocial{text-align:center;  color:#fff; background-color:#6d6e71; clear:both; padding:1% 0; margin:0cm -0.5cm -0.5cm -0.5cm;} 
+.footersocial a{color:#fff; text-decoration:none; display:inline-block;}
+.footersocial td.footersocialimg{ padding:0 0.1cm 0 0.2cm;}
+
+.mainlist{margin-top:0.5cm; width:100%;}
+.mainlist table{border-top:1px solid #939598;}
+
+.mainlist table td{ border-bottom:1px solid #939598; border-left:1px solid #939598; padding:1.5% 1%; text-align:center;}
+.graycolor{background-color:#939598; color:#fff;}
+.mainlist table .graycolor td{color:#fff;}
+.mainlist table td.lefttext{text-align:left;}
+
+.mainlist table td.none{border:0px none;}
+.mainlist table td.rightb{border-right:1px solid #939598;}
+.fixedbg{ background-color:#fff; width:100%; height:100%; position:relative;}
+
+</style>
+
+
+<?php echo '<htmlpageheader name="myHTMLHeader2" style="display:none">
+<div class="fixedbg"></div>
+</htmlpageheader>
+<sethtmlpageheader name="myHTMLHeader2" value="on" show-this-page="2"/>
+';?>
+
+<div class="main-wapper">
+	<div style="width:150px; margin:auto;"><img src="<?php echo $this->getSkinUrl('custompdf/logo.png'); ?>" alt=""/></div>
+	<div class="rowblock">
+		<div class="leftblock"><?php echo $this->getconfigData('custompdf_address'); ?>
+		</div>
+		<div class="rightblock"><?php echo __('DELIVERY ADDRESS'); ?><br />
+			<?php
+			echo $orderData->getShippingAddress()->format('html');
+			?>
+		</div>
+	</div>
+	<div class="rowblock">
+		<div class="leftblock"><?php echo __('ORDER NUMBER'); ?>:<?php echo $orderData->getincrementId();?></div>
+		<div class="rightblock"><?php echo __('DATE'); ?>:<?php echo Mage::getModel('core/date')->date('d/m/Y', strtotime($orderData->getCreatedAt()));?></div>
+	</div>
+	<div class="rowblock">
+		<div class="onecol">
+			<?php echo __('Dear'); ?> <?php echo $orderData->getcustomerFirstname(); ?>, <br><?php echo $this->getconfigData('custompdf_thanks_top'); ?>
+		</div>
+	</div>
+    <div class="mainlist">
+    <table width="100%" cellspacing="0" cellpadding="0">
+     	<tr class="graycolor">
+            <td><?php echo __('QUANTITY');?></td>
+            <td colspan="2"><?php echo __('PRODUCTS ORDERED');?></td>
+            <td class="rightb"><?php echo __('PRICE');?></td>
+        </tr>
+  <?php foreach($cartData as $item) { ?>
+    <tr>
+      <td><?php echo (int) $item['qty']; ?></td>
+      <td class="lefttext" colspan="2"><?php echo $item['name']; ?></td>
+      <td class="rightb"><?php echo Mage::helper('core')->currency($item['price'], true, false); ?></td>
+    </tr>
+   <?php } ?>
+
+   <?php foreach($cartData as $item) { ?>
+    <tr>
+      <td><?php echo (int) $item['qty']; ?></td>
+      <td class="lefttext" colspan="2"><?php echo $item['name']; ?></td>
+      <td class="rightb"><?php echo Mage::helper('core')->currency($item['price'], true, false); ?></td>
+    </tr>
+   <?php } ?>
+   
+    <tr class="graycolor">
+      <td class="rightb" colspan="4"><?php echo __('COMPLIMENTARY SAMPLES');?></td>
+    </tr>
+    <?php foreach($sampleData as $sitem) { ?>
+    <tr>
+      <td><?php echo (int) $sitem['qty']; ?></td>
+      <td class="lefttext" colspan="2"><?php echo $sitem['name']; ?></td>
+      <td  class="rightb"><?php echo Mage::helper('core')->currency($sitem['price'], true, false); ?></td>
+    </tr>
+    <?php } ?>
+    	<tr>
+        	<td class="none" width="15%"></td>
+            <td class="none" width="40%"></td>
+            <td width="30%"><?php echo __('SUBTOTAL');?></td>
+            <td width="15%" class="rightb"><?php echo Mage::helper('core')->currency($orderData->getSubtotal(), true, false); ?></td>
+        </tr>
+        <tr>
+        	<td class="none" width="15%"></td>
+            <td class="none" width="40%"></td>
+            <td width="30%"><?php echo __('SUBTOTAL');?></td>
+            <td width="15%" class="rightb"><?php echo Mage::helper('core')->currency($orderData->getSubtotal(), true, false); ?></td>
+        </tr>
+        <tr>
+            <td class="none"></td>
+            <td class="none"></td>
+            <td><?php echo __('GIFT CODE');?></td>
+            <td class="rightb"><?php echo Mage::helper('core')->currency($orderData->getDiscountAmount(), true, false); ?></td>
+        </tr>
+        <tr>
+            <td class="none"></td>
+            <td class="none"></td>
+            <td><?php echo __('DELIVERY');?></td>
+            <td class="rightb"><?php echo Mage::helper('core')->currency($orderData->getShippingAmount(), true, false); ?></td>
+        </tr>
+        <tr>
+            <td class="none"></td>
+            <td class="none"></td>
+            <td><?php echo __('TOTAL');?></td>
+            <td class="rightb"><?php echo Mage::helper('core')->currency($orderData->getGrandTotal(), true, false); ?></td>
+        </tr>
+         <tr>
+            <td class="none" colspan="2"></td>
+            <td class="none" colspan="2"><?php echo $this->getconfigData('custompdf_loyality_text'); ?></td>
+        </tr>
+        
+
+</table>
+</div>
+</div>
+<htmlpagefooter name="firstpagefooter" style="display:none">
+	<div class="footerblock">
+		<div class="footerblock1">
+			<p><?php echo $this->getconfigData('custompdf_bottom_text'); ?></p>
+				<ul>
+					<li><img src="<?php echo $this->getSkinUrl('custompdf/logo-1.jpg'); ?>" alt=""/></li>
+					<li><img src="<?php echo $this->getSkinUrl('custompdf/logo-3.jpg'); ?>" alt=""/></li>
+					<li><img src="<?php echo $this->getSkinUrl('custompdf/logo-4.jpg'); ?>" alt=""/></li>
+					<li><img src="<?php echo $this->getSkinUrl('custompdf/logo-2.jpg'); ?>" alt=""/></li>
+				</ul>
+			<p style="font-size:8pt;"><?php echo __('For our terms & conditions please visit '); ?><a href="<?php echo $this->getUrl('terms'); ?>"><?php echo $this->getCleanurl('terms'); ?></a></p>
+
+			<div class="footersocial">
+				<table width="74%" border="0" align="center" cellspacing="0" cellpadding="0">
+				  <tbody>
+					<tr>
+					  <td><a href="<?php echo $this->getCleanurl(''); ?>"><?php echo $this->getCleanurl(''); ?></a></td>
+					  <td class="footersocialimg"><img src="<?php echo $this->getSkinUrl('custompdf/twitter-icon.png'); ?>" alt="" width="18"/></td>
+					  <td><a href="https://twitter.com/AureliaSkincare?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><?php echo __('@AureliaSkincare'); ?></a></td>
+					  <td class="footersocialimg"><img src="<?php echo $this->getSkinUrl('custompdf/facebook-icon.png'); ?>" alt="" width="18"/></td>
+					  <td><a href="http://www.facebook.com/AureliaProbioticSkincare"><?php echo __('AureliaProbioticSkincare'); ?></a></td>
+					  <td class="footersocialimg"><img src="<?php echo $this->getSkinUrl('custompdf/instagram-icon.png'); ?>" alt="" width="18"/></td>
+					  <td><a href="https://www.instagram.com/aureliaskincare/?hl=en"><?php echo __('aureliaskincare'); ?></a></td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+    </htmlpagefooter>
+    		<sethtmlpagefooter name="firstpagefooter" value="on" />

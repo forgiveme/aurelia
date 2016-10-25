@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Custompdf_Invoice>
+            <version>0.0.1</version>
+        </Custompdf_Invoice>
+    </modules>
+    <global>
+		<models>
+            <custompdfinvoice>
+                <class>Custompdf_Invoice_Model</class>
+            </custompdfinvoice>
+		</models>
+        <helpers>
+            <custompdfinvoice>
+                <class>Custompdf_Invoice_Helper</class>
+            </custompdfinvoice>
+        </helpers>
+        <blocks>
+            <custompdfinvoice>
+                <class>Custompdf_Invoice_Block</class>
+            </custompdfinvoice>
+        </blocks>
+		<events>
+            <adminhtml_widget_container_html_before>
+                <observers>
+                    <add_custom_pdf_button>
+                        <class>custompdfinvoice/adminhtml_observer</class>
+                        <method>adminhtmlWidgetContainerHtmlBefore</method>
+                    </add_custom_pdf_button> <!-- should be lowercase here-->
+                </observers>
+            </adminhtml_widget_container_html_before>
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <custompdfinvoice after="Mage_Adminhtml">Custompdf_Invoice</custompdfinvoice>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <custompdfinvoice>
+                                            <title>Custom Pdf Settings</title>
+                                        </custompdfinvoice>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

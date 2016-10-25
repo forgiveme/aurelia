@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Custompdf_Invoice>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Custompdf_Invoice>
+    </modules>
+</config>
