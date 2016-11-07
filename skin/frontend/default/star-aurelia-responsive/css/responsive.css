@@ -39,6 +39,7 @@ div#main-nav-top{ z-index:999; overflow:visible !important}
 
 .category-image img{max-width:100%;  width:100%;}
 .category-title {padding-top:10px;  background:#fff;}
+.category-title-christmas {padding-top:15px;  background:#fff;}
 .category-title h1 {
   border-top: 1px solid #95918e;
   color: #868280;
@@ -46,7 +47,14 @@ div#main-nav-top{ z-index:999; overflow:visible !important}
   margin-bottom: 25px;
   text-align: center;
 }
-.category-title h1 span {
+.category-title-christmas h1 {
+	border-top: 1px solid #95918e;
+	color: #868280;
+	line-height: normal;
+	text-align: center;
+	margin-bottom: 0px;
+}
+.category-title-christmas h1 span, .category-title h1 span {
     background: #ffffff none repeat scroll 0 0;
     display: initial;
     line-height: normal;
@@ -495,7 +503,7 @@ left: 5px;
 margin: 12px 0 30px;
 }
     .footer-stockists {display:none;}
-    .catalog-category-view .products-grid .boxgrid a.product-image {height:165px;}
+    .cms-christmas .products-grid .boxgrid a.product-image , .catalog-category-view .products-grid .boxgrid a.product-image {height:165px;}
     
     .cms-aurelia-tv #content-center-text h1 {margin-left:5px;}
 	
@@ -848,6 +856,7 @@ ul#sidebar-nav{background:#fff;}
 
 @media (max-width: 320px) {
 	.catalog-category-view .products-grid .product-name {font-size: 0.85em;}
+	.cms-christmas .products-grid .product-name {font-size: 0.85em;}
 	
 }
 
@@ -862,6 +871,7 @@ ul#sidebar-nav{background:#fff;}
 	/* .category-title								{background:#FCF5F0;border:1px solid #E7D8CD;margin:10px 0 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 	 .category-title h1							{color: #1B1B1B;font-weight: normal;margin: 0;padding: 10px 15px;}*/
 	
+	 .cms-christmas .products-grid,
 	 .catalog-category-view .products-grid,
 	 .catalogsearch-result-index .products-grid		{width:100%;}
 
@@ -870,8 +880,10 @@ ul#sidebar-nav{background:#fff;}
 	  body.category-moisturisers .products-grid li ,
 	 body.catalogsearch-result-index .products-grid li 								{border:0;height:auto;list-style:none !important;margin:0 0 0 0%;width:50% !important; min-height: 130px; text-align:center;}
 	 */
+	 .cms-christmas .products-grid .boxgrid a ,
 	 .catalog-category-view .products-grid .boxgrid a ,
 	 .catalogsearch-result-index .products-grid .boxgrid a 						{float:left;width:50%;}
+	 .cms-christmas .products-grid .boxgrid a.product-image,
 	 .catalog-category-view .products-grid .boxgrid a.product-image,
 	 .catalogsearch-result-index .products-grid .boxgrid a.product-image			{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;} 
 	 .catalog-category-view .products-grid .boxgrid a.product-image	 img ,
@@ -884,19 +896,21 @@ ul#sidebar-nav{background:#fff;}
 	 .catalogsearch-result-index .products-grid .product-name					{min-height: 54px;margin:0 0 0 10px; font-size: 12px; line-height: 18px;}
 
 /* Mobile 'View all products' box spacing fix */
-.catalog-category-view .products-grid .boxgrid {height:auto;overflow:visible!important;}/*
+.cms-christmas .products-grid .boxgrid, .catalog-category-view .products-grid .boxgrid {height:auto;overflow:visible!important;}
+
+/*
 .catalog-category-view .products-grid .boxgrid a.product-image {height: 205px; overflow: hidden;}*/
-.catalog-category-view .products-grid .boxgrid a.product-image img {padding-top:15px; border:none; }
+.cms-christmas .products-grid .boxgrid a.product-image img , .catalog-category-view .products-grid .boxgrid a.product-image img {padding-top:15px; border:none; }
 
 
-.catalog-category-view .products-grid .boxgrid a.product-image {
+.cms-christmas .products-grid .boxgrid a.product-image , .catalog-category-view .products-grid .boxgrid a.product-image {
 width:50%;
 position:relative;
 height:auto;
 overflow: hidden;
 }
 
-.catalog-category-view .products-grid .boxgrid a.product-image::before {
+.cms-christmas .products-grid .boxgrid a.product-image::before, .catalog-category-view .products-grid .boxgrid a.product-image::before {
 content:””;
 display:block;
 padding-top:100%;
@@ -922,6 +936,7 @@ padding-top:100%;
 		margin: 0 auto;
 		float: none;
 	}
+	 .cms-christmas .products-grid .actions button.button span,
 	 .catalog-category-view .products-grid .actions button.button span,
 	 .catalogsearch-result-index .products-grid .actions button.button span		{
 		margin: 0;

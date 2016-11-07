@@ -5,7 +5,11 @@ class Review_Reminder_Model_Observer {
 	const XML_PATH_EMAIL_SENDER     = 'reminder/general_settings/sender_email_identity';
 	const XML_PATH_EMAIL_TEMPLATE   = 'reminder/general_settings/email_template';
 	 
-	public function sendReviewReminder() {	
+	public function sendReviewReminder() {
+		
+		$read = Mage::getSingleton('core/resource')->getConnection('core_read');
+		$write = Mage::getSingleton('core/resource')->getConnection('core_write');
+		
 		//check is extension enabled
 		if (!Mage::helper('reminder')->isExtensionEnabled()) {
 			return;
@@ -22,10 +26,18 @@ class Review_Reminder_Model_Observer {
 			->addAttributeToFilter('created_at', array('from'=>$fromDate, 'to'=>$toDate))
 			->setOrder('created_at','DESC');
 		
+		//echo $salesCollection->getSelect();
+		
 		foreach($salesCollection as $order) {
-	
 			$createdDate=$order->getCreatedAt();
 			$orderId=$order->getIncrementId();
+			
+			$sql = "SELECT * FROM `order_review_email_debug` WHERE `order_id`='".$orderId."'";
+			$rows = $read->fetchOne($sql); 
+			if($rows) {
+				//echo "<br>continuing--".$orderId;
+				continue;
+			}		
 			
 			$configNumOfDaysAfterOrder= Mage::getStoreConfig(self::XML_PATH_NUM_OF_DAYS_AFTER_ORDER, $storeId);
 
@@ -47,7 +59,7 @@ class Review_Reminder_Model_Observer {
 				if($categoryIds && in_array('16', $categoryIds)) {
 					continue;
 				}
-				$productUrl = $productObj->getProductUrl();
+				$productUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$productObj->getUrlPath();
 				
 				if($total==1){
 					$allProducts.= $productName;
@@ -80,7 +92,7 @@ class Review_Reminder_Model_Observer {
 				$template = Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE, Mage::app()->getStore()->getId());
 
 				$mailSender = Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER, Mage::app()->getStore()->getId());
-				
+								
 				$mailTemplate->sendTransactional(
 					$template,
 					$mailSender,
@@ -94,14 +106,20 @@ class Review_Reminder_Model_Observer {
 				);
 				
 				if (!$mailTemplate->getSentSuccess()) {
+					$write->insert(
+							"order_review_email_debug", 
+							array("customer_email" => $customerEmail, "customer_name" => $firstName, "order_id" => $orderId, "time_sent" => date("Y-m-d H:i:s"), "status" => '0')
+					);
 					throw new Exception();
+				} else {
+					$write->insert(
+							"order_review_email_debug", 
+							array("customer_email" => $customerEmail, "customer_name" => $firstName, "order_id" => $orderId, "time_sent" => date("Y-m-d H:i:s"), "status" => '1')
+					);
 				}
-					
 				$translate->setTranslateInline(true);
-				return true;
 			} catch (Exception $ex) {
 				$translate->setTranslateInline(true);
-				return false;
 			}
 		}
 	}

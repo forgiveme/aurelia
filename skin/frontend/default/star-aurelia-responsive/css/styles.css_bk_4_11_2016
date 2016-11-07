@@ -4808,10 +4808,8 @@ ul#main-nav {
 
 .category-title { border:0; display:block; margin:0 0 7px; }
 
-.cms-christmas .category-title-christmas { border:0; display:block; margin:25px 0 7px; }
 .category-title { border:0; display:block; margin:0 0 0 0px; }
 
-.category-title-christmas > h1 {margin:0 20px 16px; }
 .category-title > h1 {margin:0 20px 16px; }
 
 .catalog-category-view { margin-bottom: 16px; }
@@ -4834,7 +4832,6 @@ ul#main-nav {
 
 .products-grid {position:relative; width:680px; }
 
-body.cms-christmas .products-grid li,
 body.catalogsearch-result-index .products-grid li,
 
 body.catalog-category-view .products-grid li	{
@@ -4889,7 +4886,6 @@ right: 6px;
 
 }
 
-.cms-christmas .products-grid .product-image  img,
 .catalogsearch-result-index .products-grid .product-image  img,
 
 .catalog-category-view .products-grid .product-image  img 	{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}

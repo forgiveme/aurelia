@@ -120,6 +120,7 @@
 .product-upsell-image img {
 	display: inline-block;
 }
+body.cms-christmas .products-grid li,
 body.catalogsearch-result-index .products-grid li, body.catalog-category-view .products-grid li {
 	width: 50%;
 	list-style: none !important;

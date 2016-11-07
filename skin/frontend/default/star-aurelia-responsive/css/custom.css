@@ -1185,6 +1185,8 @@ a[href^="tel"] {
 .boutique-left-section p.uppercase{ text-transform:uppercase; line-height:190%; margin-top:9px;}
 .boutique-left-section p.smalltext{ font-size:14px; font-style:italic; margin-top:10px;}
 .boutique-contant-section{ width:100%; clear:both; display:block; padding-top:47px;}
+.cms-christmas .boutique-contant-section{ padding-top:0px !important;}
+.cms-christmas .boutique-top-section{ -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; display: block; width: 100%; float: left; padding:0px 0px; text-align:center;}
 .boutique-contant-section h2{ margin-bottom:0; padding-bottom:15px;}
 .boutique-contant-section h3{ font-size:18px; text-transform:uppercase; margin:20px 0 0 0;}
 .boutique-contant-section h3 span{ display:block; letter-spacing:0px; font-size:14px; font-style:italic; text-transform:none;}
@@ -1192,6 +1194,7 @@ a[href^="tel"] {
 .boutique-top-section sup{ font-size:10px;}
 .boutique-contant-section p span{ display:block;}
 .boutique-contant-section figure{ margin:58px 0 16px 0;}
+.cms-christmas .boutique-contant-section figure{ margin:0px 0 16px 0 !important;}
 .boutique-left-heading img{ display:none;}
 .boutique-contant-section .BookNow{ font-size:14px; background:#95918e; color:#fff; text-align:center; display:table; text-transform:uppercase; border:1px solid #6d6f71; padding:9px 30px; margin:30px auto auto auto;}
 .boutique-contant-section hr{ height:1px; background:#8e8e8e; border:0px none; margin:33px 0 45px 0;}
@@ -1868,14 +1871,17 @@ div.giftwrap {
 .promotion-index-index .loyalty-form-right {
 	width: 100%;
 	float: right;
-	margin-right: 0%
+	margin-right: 0%;
 }
+.cms-christmas .products-grid .boxgrid a.product-image,
 .catalog-category-view .products-grid .boxgrid a.product-image {
 	width: 100%
 }
+.cms-christmas .products-grid .boxgrid a,
 .catalog-category-view .products-grid .boxgrid a, .catalogsearch-result-index .products-grid .boxgrid a {
 	width: 100% 
 }
+.cms-christmas .products-grid .price-box,
 .catalog-category-view .products-grid .price-box, .catalogsearch-result-index .products-grid .price-box {
 	float: none;
 	margin-left: 0px;
