@@ -277,8 +277,9 @@ jQuery(".mengamenu h2").click(function(){
 		<span class="popup-exit-sub"></span>
 			<div class="popup-content-sub">
 				<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('skincaretool_homepagepopup')->toHtml() ;?>
-				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('deo_pre_register')->toHtml() ;?>
+				<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('deo_pre_register')->toHtml() ;?>
 				<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('new_signup_popup')->toHtml() ;?>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('new_signup_popup_only_image')->toHtml() ;?>
 			</div>
 		</div>
 	</div>
@@ -292,7 +293,7 @@ jQuery(".mengamenu h2").click(function(){
 	$webOS   = stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
 	$windows = stripos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone os');
 	if( $iPod || $iPhone || $Android || $webOS || $windows ){
-}else{
+}else {
 	?>
 		<script type='text/javascript'>//<![CDATA[ 
 	jQuery(window).load(function(){

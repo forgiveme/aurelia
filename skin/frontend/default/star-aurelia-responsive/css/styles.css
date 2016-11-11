@@ -12067,7 +12067,7 @@ margin: 200px 0px 0px 200px;
 
     position: fixed;
 
-    top: 6%;
+    top: 10%;
 
     left:0; right:0;	
 
@@ -12097,7 +12097,8 @@ margin: 200px 0px 0px 200px;
 
     min-height: 168px;
 
-    width: 804px;
+    /*width: 804px;*/
+	width:600px;
 
     margin:0 auto;
 
@@ -12141,7 +12142,7 @@ margin: 200px 0px 0px 200px;
 
     opacity: 1;
 
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; min-height:586px;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; /*min-height:586px;*/
 
 
 
