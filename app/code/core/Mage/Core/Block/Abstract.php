@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -36,6 +36,10 @@
  */
 abstract class Mage_Core_Block_Abstract extends Varien_Object
 {
+    /**
+     * Prefix for cache key
+     */
+    const CACHE_KEY_PREFIX = 'BLOCK_';
     /**
      * Cache group Tag
      */
@@ -1289,7 +1293,13 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
     public function getCacheKey()
     {
         if ($this->hasData('cache_key')) {
-            return $this->getData('cache_key');
+            $cacheKey = $this->getData('cache_key');
+            if (strpos($cacheKey, self::CACHE_KEY_PREFIX) !== 0) {
+                $cacheKey = self::CACHE_KEY_PREFIX . $cacheKey;
+                $this->setData('cache_key', $cacheKey);
+            }
+
+            return $cacheKey;
         }
         /**
          * don't prevent recalculation by saving generated cache key
@@ -1470,15 +1480,5 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
             $tags = array_merge($tags, $itemTags);
         }
         return $tags;
-    }
-
-    /**
-     * Checks is request Url is secure
-     *
-     * @return bool
-     */
-    protected function _isSecure()
-    {
-        return $this->_getApp()->getFrontController()->getRequest()->isSecure();
     }
 }

@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    Mage
  * @package     Mage_Paypal
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -945,7 +945,7 @@ class Mage_Paypal_Model_Express_Checkout
         $shipping   = $quote->isVirtual() ? null : $quote->getShippingAddress();
 
         $customerId = $this->_lookupCustomerId();
-        if ($customerId) {
+        if ($customerId && !$this->_customerEmailExists($quote->getCustomerEmail())) {
             $this->getCustomerSession()->loginById($customerId);
             return $this->_prepareCustomerQuote();
         }
@@ -1060,5 +1060,27 @@ class Mage_Paypal_Model_Express_Checkout
     public function getCustomerSession()
     {
         return $this->_customerSession;
+    }
+
+    /**
+     * Check if customer email exists
+     *
+     * @param string $email
+     * @return bool
+     */
+    protected function _customerEmailExists($email)
+    {
+        $result    = false;
+        $customer  = Mage::getModel('customer/customer');
+        $websiteId = Mage::app()->getStore()->getWebsiteId();
+        if (!is_null($websiteId)) {
+            $customer->setWebsiteId($websiteId);
+        }
+        $customer->loadByEmail($email);
+        if (!is_null($customer->getId())) {
+            $result = true;
+        }
+
+        return $result;
     }
 }

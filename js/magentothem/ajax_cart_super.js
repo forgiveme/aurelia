@@ -822,6 +822,6 @@ $jq(document).ajaxComplete(function(){
     addProductWishlist();
     //deleteCartInCheckoutPage();
 
-})
+});
 
 //]]>
